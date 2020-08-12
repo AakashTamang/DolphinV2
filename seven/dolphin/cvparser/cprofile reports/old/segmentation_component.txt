@@ -1,0 +1,99 @@
+         13468 function calls in 0.013 seconds
+
+   Ordered by: cumulative time
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.013    0.013 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphinlab\dolphinlab\seven\dolphin\pipeline.py:63(segmentation_component)
+        1    0.000    0.000    0.013    0.013 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphinlab\dolphinlab\seven\dolphin\segmentation\segmentresume.py:105(format_segment)
+        1    0.000    0.000    0.013    0.013 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphinlab\dolphinlab\seven\dolphin\segmentation\segmentresume.py:76(sliced_resume_text)
+        1    0.001    0.001    0.013    0.013 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphinlab\dolphinlab\seven\dolphin\segmentation\segmentresume.py:39(unique_index_headings)
+       80    0.000    0.000    0.011    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\sklearn\naive_bayes.py:63(predict)
+       80    0.003    0.000    0.006    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\sklearn\naive_bayes.py:451(_joint_log_likelihood)
+      160    0.000    0.000    0.005    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\sklearn\utils\validation.py:60(inner_f)
+       80    0.000    0.000    0.004    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\sklearn\naive_bayes.py:215(_check_X)
+       80    0.001    0.000    0.004    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\sklearn\utils\validation.py:398(check_array)
+      480    0.000    0.000    0.002    0.000 {built-in method numpy.core._multiarray_umath.implement_array_function}
+      320    0.000    0.000    0.002    0.000 <__array_function__ internals>:2(sum)
+      320    0.000    0.000    0.002    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\core\fromnumeric.py:2092(sum)
+      320    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\core\fromnumeric.py:73(_wrapreduction)
+      320    0.001    0.000    0.001    0.000 {method 'reduce' of 'numpy.ufunc' objects}
+       80    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\sklearn\utils\validation.py:77(_assert_all_finite)
+       80    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\sklearn\utils\validation.py:181(_num_samples)
+       80    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\sklearn\utils\validation.py:956(check_is_fitted)
+      240    0.001    0.000    0.001    0.000 {built-in method numpy.array}
+        1    0.000    0.000    0.000    0.000 doc.pyx:343(__str__)
+        1    0.000    0.000    0.000    0.000 doc.pyx:337(__unicode__)
+       80    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\sklearn\utils\validation.py:1016(<listcomp>)
+       80    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\warnings.py:165(simplefilter)
+      800    0.000    0.000    0.000    0.000 {built-in method builtins.isinstance}
+       80    0.000    0.000    0.000    0.000 <__array_function__ internals>:2(argmax)
+       80    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\core\_asarray.py:16(asarray)
+       80    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\warnings.py:181(_add_filter)
+       80    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\core\fromnumeric.py:1112(argmax)
+       80    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\core\numerictypes.py:365(issubdtype)
+      800    0.000    0.000    0.000    0.000 {built-in method builtins.hasattr}
+       80    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\abc.py:137(__instancecheck__)
+       80    0.000    0.000    0.000    0.000 {built-in method _abc._abc_instancecheck}
+       80    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\core\fromnumeric.py:55(_wrapfunc)
+      320    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\core\fromnumeric.py:74(<dictcomp>)
+       80    0.000    0.000    0.000    0.000 <__array_function__ internals>:2(size)
+       80    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\warnings.py:474(__enter__)
+       69    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphinlab\dolphinlab\seven\dolphin\segmentation\segmentresume.py:46(<listcomp>)
+      720    0.000    0.000    0.000    0.000 {method 'endswith' of 'str' objects}
+      160    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\core\numerictypes.py:293(issubclass_)
+       80    0.000    0.000    0.000    0.000 {method 'argmax' of 'numpy.ndarray' objects}
+       80    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\sklearn\utils\validation.py:391(_ensure_no_complex_data)
+       80    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:1009(_handle_fromlist)
+       80    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphinlab\dolphinlab\seven\dolphin\segmentation\segmentresume.py:54(<listcomp>)
+      424    0.000    0.000    0.000    0.000 doc.pyx:315(__iter__)
+       80    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\warnings.py:493(__exit__)
+       80    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\abc.py:141(__subclasscheck__)
+       80    0.000    0.000    0.000    0.000 {method 'remove' of 'list' objects}
+       80    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:416(parent)
+      160    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\sklearn\utils\validation.py:72(<dictcomp>)
+      480    0.000    0.000    0.000    0.000 {method 'startswith' of 'str' objects}
+       80    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\warnings.py:453(__init__)
+       80    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\core\_asarray.py:88(asanyarray)
+       80    0.000    0.000    0.000    0.000 {built-in method _abc._abc_subclasscheck}
+       80    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\sklearn\_config.py:14(get_config)
+      632    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+      240    0.000    0.000    0.000    0.000 {built-in method builtins.issubclass}
+       80    0.000    0.000    0.000    0.000 c:\python\Lib\inspect.py:72(isclass)
+      151    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+      160    0.000    0.000    0.000    0.000 {method 'update' of 'dict' objects}
+      423    0.000    0.000    0.000    0.000 token.pxd:19(cinit)
+      320    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\core\fromnumeric.py:2087(_sum_dispatcher)
+      552    0.000    0.000    0.000    0.000 {method 'strip' of 'str' objects}
+       80    0.000    0.000    0.000    0.000 {method 'insert' of 'list' objects}
+      334    0.000    0.000    0.000    0.000 {method 'items' of 'dict' objects}
+      160    0.000    0.000    0.000    0.000 c:\python\Lib\inspect.py:2835(parameters)
+       80    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\scipy\sparse\base.py:1192(isspmatrix)
+      160    0.000    0.000    0.000    0.000 {built-in method builtins.getattr}
+       80    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\core\fromnumeric.py:3079(size)
+       80    0.000    0.000    0.000    0.000 {built-in method builtins.vars}
+      173    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+      240    0.000    0.000    0.000    0.000 {built-in method _warnings._filters_mutated}
+       10    0.000    0.000    0.000    0.000 doc.pyx:245(__get__)
+       80    0.000    0.000    0.000    0.000 {method 'copy' of 'dict' objects}
+       80    0.000    0.000    0.000    0.000 {method 'rpartition' of 'str' objects}
+       80    0.000    0.000    0.000    0.000 {method 'istitle' of 'str' objects}
+      160    0.000    0.000    0.000    0.000 {method 'isupper' of 'str' objects}
+       10    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\tokens\underscore.py:61(__setattr__)
+      162    0.000    0.000    0.000    0.000 {method 'lower' of 'str' objects}
+       10    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\tokens\underscore.py:16(__init__)
+        2    0.000    0.000    0.000    0.000 {method 'splitlines' of 'str' objects}
+       41    0.000    0.000    0.000    0.000 {method 'intersection' of 'set' objects}
+       80    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\core\fromnumeric.py:3075(_size_dispatcher)
+       80    0.000    0.000    0.000    0.000 {method 'islower' of 'str' objects}
+       80    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\core\fromnumeric.py:1108(_argmax_dispatcher)
+       10    0.000    0.000    0.000    0.000 {method 'join' of 'str' objects}
+       10    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\tokens\underscore.py:79(_get_key)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\compat.py:118(is_config)
+       10    0.000    0.000    0.000    0.000 {method 'get' of 'dict' objects}
+        8    0.000    0.000    0.000    0.000 {method 'add' of 'set' objects}
+        9    0.000    0.000    0.000    0.000 {method 'extend' of 'list' objects}
+       10    0.000    0.000    0.000    0.000 doc.pyx:352(__get__)
+       10    0.000    0.000    0.000    0.000 doc.pxd:48(__get__)
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+
+

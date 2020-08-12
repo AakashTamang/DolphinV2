@@ -1,0 +1,1022 @@
+         510539 function calls (507899 primitive calls) in 0.934 seconds
+
+   Ordered by: cumulative time
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.876    0.876 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphin2\seven\dolphin\pipeline.py:24(__init__)
+        1    0.000    0.000    0.553    0.553 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\__init__.py:26(load)
+        1    0.000    0.000    0.553    0.553 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\util.py:154(load_model)
+        1    0.000    0.000    0.552    0.552 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\util.py:188(load_model_from_package)
+        1    0.000    0.000    0.552    0.552 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\en_core_web_sm\__init__.py:11(load)
+        1    0.000    0.000    0.552    0.552 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\util.py:221(load_model_from_init_py)
+        1    0.000    0.000    0.552    0.552 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\util.py:194(load_model_from_path)
+        1    0.000    0.000    0.356    0.356 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\language.py:926(from_disk)
+      2/1    0.000    0.000    0.356    0.356 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\util.py:681(from_disk)
+        2    0.002    0.001    0.353    0.176 tokenizer.pyx:420(_load_special_tokenization)
+     2492    0.004    0.000    0.351    0.000 tokenizer.pyx:426(add_special_case)
+     2501    0.239    0.000    0.240    0.000 tokenizer.pyx:202(_flush_cache)
+        1    0.000    0.000    0.198    0.198 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphin2\seven\dolphin\word2vec.py:20(__init__)
+        1    0.000    0.000    0.198    0.198 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\gensim\models\word2vec.py:1120(load)
+        1    0.000    0.000    0.198    0.198 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\gensim\models\base_any2vec.py:1199(load)
+        1    0.000    0.000    0.196    0.196 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\language.py:147(__init__)
+        1    0.000    0.000    0.180    0.180 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\language.py:88(create_tokenizer)
+        1    0.000    0.000    0.180    0.180 tokenizer.pyx:32(__init__)
+        1    0.000    0.000    0.179    0.179 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\language.py:957(<lambda>)
+        1    0.000    0.000    0.179    0.179 {method 'from_disk' of 'spacy.tokenizer.Tokenizer' objects}
+        1    0.000    0.000    0.179    0.179 tokenizer.pyx:545(from_disk)
+        1    0.000    0.000    0.178    0.178 tokenizer.pyx:581(from_bytes)
+        1    0.000    0.000    0.177    0.177 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\language.py:945(deserialize_vocab)
+        1    0.000    0.000    0.177    0.177 {method 'from_disk' of 'spacy.vocab.Vocab' objects}
+        1    0.001    0.001    0.177    0.177 vocab.pyx:455(from_disk)
+        2    0.000    0.000    0.174    0.087 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lookups.py:143(from_disk)
+        2    0.171    0.085    0.173    0.087 {built-in method _pickle.load}
+        1    0.000    0.000    0.172    0.172 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\gensim\models\base_any2vec.py:575(load)
+        1    0.000    0.000    0.172    0.172 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\gensim\utils.py:402(load)
+        2    0.001    0.001    0.171    0.086 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lookups.py:113(from_bytes)
+        1    0.000    0.000    0.171    0.171 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\gensim\utils.py:1381(unpickle)
+     1500    0.001    0.000    0.140    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\language.py:463(make_doc)
+     1500    0.003    0.000    0.139    0.000 tokenizer.pyx:136(__call__)
+     1957    0.001    0.000    0.113    0.000 tokenizer.pyx:233(_tokenize)
+     1502    0.000    0.000    0.112    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\language.py:738(pipe)
+     1502    0.001    0.000    0.111    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\language.py:811(<genexpr>)
+     2492    0.073    0.000    0.108    0.000 vocab.pyx:251(make_fused_token)
+     2884    0.035    0.000    0.106    0.000 vocab.pyx:168(_new_lexeme)
+     1957    0.007    0.000    0.090    0.000 tokenizer.pyx:297(_attach_tokens)
+        9    0.000    0.000    0.084    0.009 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lookups.py:182(__init__)
+        9    0.084    0.009    0.084    0.009 {built-in method from_error_rate}
+     2323    0.002    0.000    0.075    0.000 vocab.pyx:134(get)
+        9    0.022    0.002    0.075    0.008 {method 'update' of 'collections.OrderedDict' objects}
+    45101    0.029    0.000    0.053    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lookups.py:200(__setitem__)
+        2    0.000    0.000    0.037    0.018 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphin2\seven\dolphin\pipeline.py:247(process_text)
+        2    0.000    0.000    0.037    0.018 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\language.py:421(__call__)
+     4830    0.002    0.000    0.035    0.000 vocab.pyx:154(get_by_orth)
+        1    0.023    0.023    0.027    0.027 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\gensim\models\word2vec.py:1592(make_cum_table)
+     1500    0.009    0.000    0.022    0.000 doc.pyx:175(__init__)
+        2    0.000    0.000    0.022    0.011 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphin2\seven\dolphin\datareader.py:122(prepare_text)
+    45101    0.021    0.000    0.021    0.000 {method 'add' of 'preshed.bloom.BloomFilter' objects}
+        3    0.000    0.000    0.021    0.007 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\srsly\_msgpack_api.py:19(msgpack_loads)
+        3    0.000    0.000    0.020    0.007 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\srsly\msgpack\__init__.py:53(unpackb)
+        3    0.020    0.007    0.020    0.007 {srsly.msgpack._unpacker.unpackb}
+     1957    0.003    0.000    0.020    0.000 tokenizer.pyx:245(_split_affixes)
+        1    0.000    0.000    0.016    0.016 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphin2\seven\dolphin\datareader.py:62(pdf_to_text)
+        1    0.000    0.000    0.016    0.016 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\language.py:65(create_vocab)
+     2884    0.010    0.000    0.015    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lang\lex_attrs.py:150(word_shape)
+        2    0.000    0.000    0.014    0.007 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\fitz\utils.py:436(getText)
+        2    0.000    0.000    0.014    0.007 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\fitz\fitz.py:3712(getTextPage)
+        2    0.000    0.000    0.014    0.007 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\fitz\fitz.py:3709(_get_text_page)
+        2    0.014    0.007    0.014    0.007 {built-in method fitz._fitz.Page__get_text_page}
+     2146    0.013    0.000    0.013    0.000 tokenizer.pyx:406(find_suffix)
+     1500    0.001    0.000    0.012    0.000 doc.pyx:92(_get_chunker)
+     1501    0.001    0.000    0.011    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\util.py:67(get_lang_class)
+5274/2884    0.005    0.000    0.011    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\util.py:435(_get_attr_unless_lookup)
+        1    0.001    0.001    0.010    0.010 vocab.pyx:35(__init__)
+     2884    0.006    0.000    0.010    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lang\en\lex_attrs.py:47(like_num)
+        1    0.000    0.000    0.009    0.009 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lookups.py:51(add_table)
+        4    0.000    0.000    0.009    0.002 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\io\parsers.py:530(parser_f)
+        4    0.000    0.000    0.009    0.002 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\io\parsers.py:416(_read)
+     1913    0.008    0.000    0.008    0.000 tokenizer.pyx:378(find_infix)
+        4    0.000    0.000    0.008    0.002 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\io\parsers.py:1131(read)
+        2    0.000    0.000    0.007    0.004 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphin2\seven\dolphin\pipeline.py:75(segmentation_component)
+     1501    0.002    0.000    0.007    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\catalogue.py:85(get)
+     2884    0.005    0.000    0.007    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lang\lex_attrs.py:124(like_url)
+        4    0.000    0.000    0.006    0.002 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\frame.py:414(__init__)
+        4    0.000    0.000    0.006    0.002 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\internals\construction.py:213(init_dict)
+        2    0.000    0.000    0.006    0.003 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphin2\seven\dolphin\segmentation\segmentresume.py:108(format_segment)
+        2    0.000    0.000    0.006    0.003 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphin2\seven\dolphin\segmentation\segmentresume.py:76(sliced_resume_text)
+        2    0.000    0.000    0.006    0.003 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphin2\seven\dolphin\segmentation\segmentresume.py:39(unique_index_headings)
+      247    0.006    0.000    0.006    0.000 {method 'add_special_case' of 'spacy.morphology.Morphology' objects}
+     5258    0.003    0.000    0.005    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lookups.py:238(__contains__)
+    50375    0.005    0.000    0.005    0.000 {spacy.strings.get_string_id}
+        1    0.000    0.000    0.005    0.005 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphin2\seven\dolphin\datareader.py:81(docx_to_text)
+       34    0.000    0.000    0.005    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\sklearn\naive_bayes.py:63(predict)
+        1    0.000    0.000    0.005    0.005 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\docx2txt\docx2txt.py:72(process)
+     2884    0.003    0.000    0.004    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lang\lex_attrs.py:34(is_ascii)
+     1501    0.001    0.000    0.004    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\catalogue.py:153(_get)
+        1    0.001    0.001    0.004    0.004 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\docx2txt\docx2txt.py:50(xml2text)
+    16/12    0.000    0.000    0.004    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\series.py:183(__init__)
+     2884    0.002    0.000    0.004    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lang\lex_attrs.py:27(is_punct)
+     2146    0.003    0.000    0.004    0.000 tokenizer.pyx:392(find_prefix)
+    15486    0.004    0.000    0.004    0.000 {built-in method builtins.round}
+     2884    0.001    0.000    0.003    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lang\lex_attrs.py:120(like_email)
+     1502    0.002    0.000    0.003    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\catalogue.py:49(__contains__)
+    15038    0.003    0.000    0.003    0.000 {method 'startswith' of 'str' objects}
+1567/1563    0.001    0.000    0.003    0.000 {built-in method builtins.all}
+       40    0.000    0.000    0.003    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\indexes\base.py:5293(ensure_index)
+       34    0.001    0.000    0.003    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\sklearn\naive_bayes.py:451(_joint_log_likelihood)
+     5736    0.002    0.000    0.002    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lang\lex_attrs.py:177(lower)
+        1    0.000    0.000    0.002    0.002 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\util.py:661(from_bytes)
+        1    0.000    0.000    0.002    0.002 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphin2\seven\dolphin\segmentation\segmentresume.py:8(__init__)
+    28/12    0.000    0.000    0.002    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\indexes\base.py:276(__new__)
+       68    0.000    0.000    0.002    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\sklearn\utils\validation.py:60(inner_f)
+        4    0.000    0.000    0.002    0.001 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\internals\construction.py:56(arrays_to_mgr)
+      196    0.002    0.000    0.002    0.000 {method 'items' of 'dict' objects}
+     2733    0.001    0.000    0.002    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\docx2txt\docx2txt.py:38(qn)
+       12    0.002    0.000    0.002    0.000 {method 'read' of '_io.BufferedReader' objects}
+        4    0.000    0.000    0.002    0.001 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\series.py:313(_init_dict)
+     2884    0.001    0.000    0.002    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lang\lex_attrs.py:112(is_currency)
+     2926    0.002    0.000    0.002    0.000 {method 'match' of 're.Pattern' objects}
+       34    0.000    0.000    0.002    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\sklearn\naive_bayes.py:215(_check_X)
+        4    0.000    0.000    0.002    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\construction.py:590(create_series_with_explicit_dtype)
+     5920    0.002    0.000    0.002    0.000 {method 'replace' of 'str' objects}
+     8060    0.001    0.000    0.002    0.000 {built-in method builtins.isinstance}
+     3003    0.001    0.000    0.002    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\catalogue.py:130(get_entry_point)
+     6004    0.001    0.000    0.002    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\catalogue.py:160(<genexpr>)
+       34    0.000    0.000    0.002    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\sklearn\utils\validation.py:398(check_array)
+    19836    0.002    0.000    0.002    0.000 {method 'isalpha' of 'str' objects}
+     2884    0.001    0.000    0.002    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lang\lex_attrs.py:213(is_stop)
+    11691    0.001    0.000    0.001    0.000 {method 'lower' of 'str' objects}
+     6162    0.001    0.000    0.001    0.000 {built-in method unicodedata.category}
+        3    0.000    0.000    0.001    0.000 <frozen importlib._bootstrap>:978(_find_and_load)
+     1957    0.001    0.000    0.001    0.000 tokenizer.pyx:357(_save_cached)
+    18446    0.001    0.000    0.001    0.000 {method 'isupper' of 'str' objects}
+        2    0.000    0.000    0.001    0.001 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphin2\seven\dolphin\datareader.py:9(clean_text)
+        1    0.000    0.000    0.001    0.001 <frozen importlib._bootstrap>:948(_find_and_load_unlocked)
+     2884    0.001    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lang\lex_attrs.py:201(is_space)
+     2884    0.001    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lang\lex_attrs.py:189(is_alpha)
+        8    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\re.py:185(sub)
+      210    0.000    0.000    0.001    0.000 {built-in method numpy.core._multiarray_umath.implement_array_function}
+     2884    0.001    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lang\lex_attrs.py:197(is_lower)
+     2884    0.001    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lang\lex_attrs.py:193(is_digit)
+        1    0.000    0.000    0.001    0.001 c:\python\Lib\xml\etree\ElementTree.py:1302(XML)
+        4    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\io\parsers.py:2035(read)
+        1    0.001    0.001    0.001    0.001 {method 'feed' of 'xml.etree.ElementTree.XMLParser' objects}
+     2884    0.001    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lang\lex_attrs.py:60(is_quote)
+        1    0.000    0.000    0.001    0.001 <frozen importlib._bootstrap>:663(_load_unlocked)
+    16702    0.001    0.000    0.001    0.000 {built-in method builtins.ord}
+    11829    0.001    0.000    0.001    0.000 {method 'append' of 'list' objects}
+        2    0.000    0.000    0.001    0.001 doc.pyx:343(__str__)
+        5    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\compat.py:161(unescape_unicode)
+        2    0.001    0.000    0.001    0.001 doc.pyx:337(__unicode__)
+        1    0.000    0.000    0.001    0.001 <frozen importlib._bootstrap_external>:722(exec_module)
+       23    0.001    0.000    0.001    0.000 {built-in method nt.stat}
+     2884    0.001    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lang\lex_attrs.py:205(is_title)
+       13    0.001    0.000    0.001    0.000 {built-in method io.open}
+        4    0.001    0.000    0.001    0.000 {method 'read' of 'pandas._libs.parsers.TextReader' objects}
+        4    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\internals\managers.py:1667(create_block_manager_from_arrays)
+      136    0.000    0.000    0.001    0.000 <__array_function__ internals>:2(sum)
+     1508    0.001    0.000    0.001    0.000 vocab.pyx:78(__get__)
+        4    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\io\parsers.py:792(__init__)
+     2884    0.001    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lang\lex_attrs.py:85(is_left_punct)
+     4851    0.001    0.000    0.001    0.000 tokenizer.pyx:220(_try_cache)
+     2847    0.001    0.000    0.001    0.000 {method 'count' of 'str' objects}
+     2884    0.001    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lang\lex_attrs.py:209(is_upper)
+     2884    0.001    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lang\lex_attrs.py:55(is_bracket)
+        8    0.001    0.000    0.001    0.000 {method 'sub' of 're.Pattern' objects}
+     2739    0.001    0.000    0.001    0.000 {method 'format' of 'str' objects}
+     2884    0.001    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lang\lex_attrs.py:107(is_right_punct)
+        5    0.000    0.000    0.001    0.000 c:\python\Lib\ast.py:38(literal_eval)
+      136    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\core\fromnumeric.py:2092(sum)
+        4    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\io\parsers.py:1112(_make_engine)
+        5    0.000    0.000    0.001    0.000 c:\python\Lib\ast.py:30(parse)
+     2884    0.001    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lang\lex_attrs.py:185(suffix)
+       54    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\re.py:271(_compile)
+        5    0.001    0.000    0.001    0.000 {built-in method builtins.compile}
+        4    0.001    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\io\parsers.py:1864(__init__)
+       17    0.000    0.000    0.001    0.000 c:\python\Lib\pathlib.py:1156(stat)
+     7213    0.001    0.000    0.001    0.000 {method 'isdigit' of 'str' objects}
+       16    0.000    0.000    0.001    0.000 c:\python\Lib\pathlib.py:1334(exists)
+      288    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\base.py:247(is_dtype)
+        3    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\srsly\_json_api.py:41(read_json)
+       12    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\construction.py:388(sanitize_array)
+        3    0.000    0.000    0.001    0.000 {built-in method _warnings.warn}
+     2934    0.001    0.000    0.001    0.000 {method 'join' of 'str' objects}
+        1    0.000    0.000    0.001    0.001 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\sklearn\base.py:325(__setstate__)
+        4    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\internals\managers.py:1700(form_blocks)
+      137    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\core\fromnumeric.py:73(_wrapreduction)
+        1    0.000    0.000    0.001    0.001 <frozen importlib._bootstrap>:211(_call_with_frames_removed)
+        1    0.000    0.000    0.001    0.001 {built-in method builtins.exec}
+        1    0.000    0.000    0.001    0.001 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\sklearn\naive_bayes.py:7(<module>)
+        4    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\series.py:4400(isna)
+6532/6458    0.001    0.000    0.001    0.000 {built-in method builtins.len}
+        4    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\generic.py:7264(isna)
+        1    0.000    0.000    0.001    0.001 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\lib\npyio.py:291(load)
+        1    0.000    0.000    0.001    0.001 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\warnings.py:96(_showwarnmsg)
+        1    0.000    0.000    0.001    0.001 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\warnings.py:20(_showwarnmsg_impl)
+        8    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\missing.py:49(isna)
+        8    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\missing.py:132(_isna_new)
+        1    0.001    0.001    0.001    0.001 tokenizer.pyx:213(_reset_specials)
+     2884    0.001    0.000    0.001    0.000 vocab.pyx:192(_add_lex_to_vocab)
+       16    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\internals\blocks.py:3027(make_block)
+        4    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\missing.py:225(_isna_ndarraylike)
+        9    0.000    0.000    0.001    0.000 {built-in method builtins.__build_class__}
+        1    0.000    0.000    0.001    0.001 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\lib\format.py:695(read_array)
+        5    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:759(compile)
+     4393    0.001    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lang\en\__init__.py:17(_return_en)
+     2884    0.001    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lang\lex_attrs.py:181(prefix)
+      320    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\common.py:1708(_is_dtype_type)
+     3277    0.000    0.000    0.000    0.000 doc.pyx:648(__pyx_fuse_0push_back)
+        7    0.000    0.000    0.000    0.000 c:\python\Lib\pathlib.py:1177(open)
+     2977    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+      146    0.000    0.000    0.000    0.000 {method 'reduce' of 'numpy.ufunc' objects}
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\lib\format.py:570(_read_array_header)
+      182    0.000    0.000    0.000    0.000 {built-in method numpy.array}
+     3474    0.000    0.000    0.000    0.000 {method 'get' of 'dict' objects}
+     1176    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\generic.py:10(_check)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\warnings.py:117(_formatwarnmsg)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\warnings.py:35(_formatwarnmsg_impl)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\fitz\fitz.py:2439(__init__)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:793(get_code)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\frame.py:2767(__getitem__)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\linecache.py:15(getline)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\linecache.py:37(getlines)
+       16    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\internals\blocks.py:2981(get_block_type)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\linecache.py:82(updatecache)
+      113    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\abc.py:137(__instancecheck__)
+     2918    0.000    0.000    0.000    0.000 {method 'islower' of 'str' objects}
+       20    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\re.py:170(match)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\internals\construction.py:300(_homogenize)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\zipfile.py:1172(__init__)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\generic.py:11341(logical_func)
+       12    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\construction.py:506(_try_cast)
+      180    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\common.py:1565(is_extension_array_dtype)
+     2918    0.000    0.000    0.000    0.000 {method 'istitle' of 'str' objects}
+        8    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\indexes\base.py:4046(equals)
+       12    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\internals\managers.py:1467(__init__)
+       34    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\sklearn\utils\validation.py:77(_assert_all_finite)
+      113    0.000    0.000    0.000    0.000 {built-in method _abc._abc_instancecheck}
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\series.py:3857(_reduce)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\language.py:937(deserialize_meta)
+     2884    0.000    0.000    0.000    0.000 {method 'isspace' of 'str' objects}
+        3    0.000    0.000    0.000    0.000 {built-in method srsly.ujson.ujson.load}
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\series.py:4027(reindex)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\generic.py:4299(reindex)
+     2502    0.000    0.000    0.000    0.000 tokenizer.pyx:205(_reset_cache)
+     2432    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\srsly\msgpack\_msgpack_numpy.py:105(decode_numpy)
+       97    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphin2\seven\dolphin\segmentation\segmentresume.py:46(<listcomp>)
+     1224    0.000    0.000    0.000    0.000 doc.pyx:315(__iter__)
+       21    0.000    0.000    0.000    0.000 {built-in method builtins.next}
+        5    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\sklearn\utils\validation.py:39(_deprecate_positional_args)
+       90    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\core\_asarray.py:16(asarray)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\random\_pickle.py:62(__randomstate_ctor)
+      4/1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\gensim\utils.py:440(_load_specials)
+     1501    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\catalogue.py:144(check_exists)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\internals\managers.py:122(__init__)
+       12    0.000    0.000    0.000    0.000 c:\python\Lib\pathlib.py:900(__truediv__)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\fitz\fitz.py:2531(loadPage)
+        1    0.000    0.000    0.000    0.000 {built-in method fitz._fitz.new_Document}
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\lib\format.py:529(_filter_header)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\internals\managers.py:1797(_simple_blockify)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\util.py:238(get_model_meta)
+      839    0.000    0.000    0.000    0.000 {built-in method builtins.hasattr}
+        5    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:919(parse)
+       34    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\sklearn\utils\validation.py:956(check_is_fitted)
+     4292    0.000    0.000    0.000    0.000 tokenizer.pyx:86(__get__)
+       12    0.000    0.000    0.000    0.000 c:\python\Lib\pathlib.py:687(_make_child)
+       56    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\common.py:987(is_datetime64_any_dtype)
+     4292    0.000    0.000    0.000    0.000 tokenizer.pyx:94(__get__)
+        8    0.000    0.000    0.000    0.000 {pandas._libs.lib.clean_index_list}
+     4065    0.000    0.000    0.000    0.000 tokenizer.pyx:70(__get__)
+       96    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\common.py:542(is_categorical_dtype)
+       34    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\sklearn\utils\validation.py:181(_num_samples)
+       52    0.000    0.000    0.000    0.000 {pandas._libs.lib.is_list_like}
+       71    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lemmatizer.py:35(__call__)
+       84    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\common.py:506(is_interval_dtype)
+        7    0.000    0.000    0.000    0.000 c:\python\Lib\pathlib.py:1037(_opener)
+       84    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\common.py:472(is_period_dtype)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\generic.py:3581(_get_item_cache)
+        7    0.000    0.000    0.000    0.000 {built-in method nt.open}
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:523(_compile_bytecode)
+   108/43    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\abc.py:141(__subclasscheck__)
+       12    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\cast.py:1209(maybe_cast_to_datetime)
+     3838    0.000    0.000    0.000    0.000 tokenizer.pyx:78(__get__)
+     3826    0.000    0.000    0.000    0.000 tokenizer.pyx:102(__get__)
+        8    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\generic.py:4530(<genexpr>)
+        1    0.000    0.000    0.000    0.000 {built-in method marshal.loads}
+     1842    0.000    0.000    0.000    0.000 {built-in method builtins.getattr}
+      167    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:1009(_handle_fromlist)
+   108/43    0.000    0.000    0.000    0.000 {built-in method _abc._abc_subclasscheck}
+        5    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:417(_parse_sub)
+       40    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\common.py:1435(is_bool_dtype)
+       68    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\dtypes.py:1124(is_dtype)
+       14    0.000    0.000    0.000    0.000 c:\python\Lib\pathlib.py:633(_parse_args)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\logging\__init__.py:1074(__init__)
+       68    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\dtypes.py:917(is_dtype)
+        2    0.000    0.000    0.000    0.000 tokenizer.pyx:89(__set__)
+        5    0.000    0.000    0.000    0.000 c:\python\Lib\inspect.py:3081(signature)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\indexes\base.py:4076(identical)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tag\stanford.py:198(__init__)
+        2    0.000    0.000    0.000    0.000 {built-in method fitz._fitz.Document_loadPage}
+        5    0.000    0.000    0.000    0.000 c:\python\Lib\inspect.py:2829(from_callable)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\fitz\fitz.py:3619(__del__)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tag\stanford.py:46(__init__)
+        5    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:475(_parse)
+       72    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\common.py:403(is_datetime64tz_dtype)
+        5    0.000    0.000    0.000    0.000 c:\python\Lib\inspect.py:2198(_signature_from_callable)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\colorama\ansitowin32.py:40(write)
+       22    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\tokenize.py:487(_tokenize)
+        1    0.000    0.000    0.000    0.000 {method 'readlines' of '_io._IOBase' objects}
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\io\common.py:144(get_filepath_or_buffer)
+        5    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:598(_code)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\colorama\ansitowin32.py:160(write)
+        9    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\abc.py:125(__new__)
+       60    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\common.py:372(is_datetime64_dtype)
+        8    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\missing.py:402(array_equivalent)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\colorama\ansitowin32.py:177(write_and_convert)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\zipfile.py:1281(_RealGetContents)
+        2    0.000    0.000    0.000    0.000 tokenizer.pyx:97(__set__)
+        2    0.000    0.000    0.000    0.000 tokenizer.pyx:105(__set__)
+        2    0.000    0.000    0.000    0.000 tokenizer.pyx:81(__set__)
+       28    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\common.py:219(asarray_tuplesafe)
+       34    0.000    0.000    0.000    0.000 <__array_function__ internals>:2(argmax)
+       16    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\internals\blocks.py:118(__init__)
+       12    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\internals\blocks.py:2591(__init__)
+       84    0.000    0.000    0.000    0.000 {built-in method __new__ of type object at 0x00007FFF3EAD4BA0}
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\nanops.py:396(nanany)
+       12    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\common.py:575(is_string_dtype)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:882(_find_spec)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\logging\__init__.py:1116(_open)
+       16    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\common.py:1647(_is_dtype)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\zipfile.py:1426(read)
+      184    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\dtypes.py:75(find)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\colorama\ansitowin32.py:193(write_plain_text)
+       34    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\sklearn\utils\validation.py:1016(<listcomp>)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\smart_open\smart_open_lib.py:109(open)
+       12    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\indexes\base.py:5463(_maybe_cast_data_without_dtype)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1272(find_spec)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1240(_get_spec)
+        1    0.000    0.000    0.000    0.000 {method 'write' of '_io.TextIOWrapper' objects}
+       68    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\common.py:441(is_timedelta64_dtype)
+       39    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\warnings.py:181(_add_filter)
+       34    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\warnings.py:165(simplefilter)
+       16    0.000    0.000    0.000    0.000 {pandas._libs.lib.infer_dtype}
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1356(find_spec)
+        5    0.000    0.000    0.000    0.000 c:\python\Lib\inspect.py:2117(_signature_from_function)
+       11    0.000    0.000    0.000    0.000 doc.pyx:754(_realloc)
+       14    0.000    0.000    0.000    0.000 c:\python\Lib\pathlib.py:62(parse_parts)
+       52    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\common.py:222(is_object_dtype)
+     2011    0.000    0.000    0.000    0.000 {method 'strip' of 'str' objects}
+     1222    0.000    0.000    0.000    0.000 token.pxd:19(cinit)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\smart_open\smart_open_lib.py:312(_shortcut_open)
+        5    0.000    0.000    0.000    0.000 c:\python\Lib\contextlib.py:107(__enter__)
+       12    0.000    0.000    0.000    0.000 c:\python\Lib\urllib\parse.py:361(urlparse)
+        3    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:74(_path_stat)
+       12    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\common.py:605(condition)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\internals\managers.py:212(_rebuild_blknos_and_blklocs)
+       34    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\core\fromnumeric.py:1112(argmax)
+       10    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\gensim\utils.py:1484(ignore_deprecation_warning)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\catalogue.py:103(get_all)
+       12    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\common.py:608(is_excluded_dtype)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\contextlib.py:71(inner)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\internals\managers.py:950(get)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\nanops.py:234(_get_values)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\genericpath.py:27(isfile)
+       18    0.000    0.000    0.000    0.000 {built-in method builtins.any}
+        1    0.000    0.000    0.000    0.000 {built-in method fitz._fitz.delete_Document}
+       26    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\re.py:232(compile)
+       28    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\generic.py:5276(__setattr__)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\sklearn\naive_bayes.py:121(GaussianNB)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\srsly\_msgpack_api.py:45(read_msgpack)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\srsly\util.py:17(force_path)
+       48    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\indexes\base.py:5393(maybe_extract_name)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\io\common.py:40(is_url)
+      128    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\common.py:1844(pandas_dtype)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\internals.py:836(find_jar)
+       34    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\core\numerictypes.py:365(issubdtype)
+       34    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\core\fromnumeric.py:55(_wrapfunc)
+       36    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\common.py:613(<genexpr>)
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\fitz\fitz.py:4498(_erase)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\logging\__init__.py:1354(setLevel)
+       32    0.000    0.000    0.000    0.000 c:\python\Lib\pathlib.py:703(__fspath__)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\logging\__init__.py:1309(_clear_cache)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\internals.py:695(find_jar_iter)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\tokenize.py:443(open)
+        5    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:536(_compile_info)
+       13    0.000    0.000    0.000    0.000 c:\python\Lib\urllib\parse.py:409(urlsplit)
+      859    0.000    0.000    0.000    0.000 {built-in method builtins.issubclass}
+       12    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\cast.py:1458(construct_1d_object_array_from_listlike)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\indexes\range.py:83(__new__)
+       39    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\warnings.py:474(__enter__)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\indexes\base.py:1656(is_unique)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\language.py:194(meta)
+       36    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\core\_dtype.py:333(_name_get)
+       16    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\internals\blocks.py:251(mgr_locs)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\frame.py:3066(_box_item_values)
+       40    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\common.py:775(is_integer_dtype)
+     10/5    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:71(_compile)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\zipfile.py:876(read)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:914(get_data)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\internals\managers.py:979(iget)
+       28    0.000    0.000    0.000    0.000 {built-in method numpy.empty}
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\importlib\__init__.py:109(import_module)
+       48    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\common.py:1401(is_float_dtype)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:93(_path_isfile)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\zipfile.py:956(_read1)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:84(_path_is_mode_type)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\cast.py:1102(maybe_infer_to_datetimelike)
+        2    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:994(_gcd_import)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\lib\utils.py:1002(safe_eval)
+       16    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\series.py:376(_set_axis)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphin2\seven\dolphin\pipeline.py:230(add_segmentation_component)
+       33    0.000    0.000    0.000    0.000 c:\python\Lib\pathlib.py:693(__str__)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\io\parsers.py:882(close)
+      358    0.000    0.000    0.000    0.000 {method 'endswith' of 'str' objects}
+       10    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\core\_ufunc_config.py:39(seterr)
+       16    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\common.py:339(is_categorical)
+        4    0.000    0.000    0.000    0.000 {method 'items' of 'collections.OrderedDict' objects}
+       56    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\common.py:1672(_get_dtype)
+       36    0.000    0.000    0.000    0.000 {pandas._libs.lib.is_scalar}
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\io\parsers.py:1345(__init__)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\io\parsers.py:1969(close)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\util.py:282(is_package)
+      232    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\common.py:208(<lambda>)
+        8    0.000    0.000    0.000    0.000 {method 'any' of 'numpy.ndarray' objects}
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\zipfile.py:1431(open)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\fitz\fitz.py:3609(_reset_page_refs)
+       12    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\indexes\base.py:5409(_maybe_cast_with_dtype)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\zipfile.py:252(_EndRecData)
+       16    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\construction.py:570(is_empty_data)
+       34    0.000    0.000    0.000    0.000 <__array_function__ internals>:2(size)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\frame.py:3073(_box_col_values)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\internals\managers.py:655(_consolidate_check)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\fitz\fitz.py:4510(__del__)
+       34    0.000    0.000    0.000    0.000 {method 'argmax' of 'numpy.ndarray' objects}
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\language.py:1089(_fix_pretrained_vectors_name)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\fitz\fitz.py:3303(initData)
+        4    0.000    0.000    0.000    0.000 {method 'close' of 'pandas._libs.parsers.TextReader' objects}
+        8    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\core\_methods.py:44(_any)
+      137    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\core\fromnumeric.py:74(<dictcomp>)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\io\parsers.py:885(_get_options_with_defaults)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\io\parsers.py:939(_clean_options)
+        5    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\warnings.py:130(filterwarnings)
+       68    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\core\numerictypes.py:293(issubclass_)
+        5    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\core\_ufunc_config.py:441(__enter__)
+       73    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lookups.py:33(__contains__)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\util.py:402(compile_suffix_regex)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\fitz\fitz.py:5794(_extractText)
+        2    0.000    0.000    0.000    0.000 c:\python\Lib\pathlib.py:1000(__new__)
+        1    0.000    0.000    0.000    0.000 <__array_function__ internals>:2(all)
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\fitz\fitz.py:4485(_reset_annot_refs)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\base.py:1001(tolist)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\internals\managers.py:329(_verify_integrity)
+       21    0.000    0.000    0.000    0.000 c:\python\Lib\inspect.py:2467(__init__)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\internals\managers.py:1828(_stack_arrays)
+       19    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\tokenize.py:147(_compile)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\io\common.py:259(infer_compression)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\catalogue.py:120(get_entry_points)
+       73    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lookups.py:66(get_table)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\internals.py:635(find_file)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\internals\managers.py:656(<listcomp>)
+        6    0.000    0.000    0.000    0.000 {method 'splitlines' of 'str' objects}
+        8    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\cast.py:1088(maybe_castable)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\base.py:1026(__iter__)
+        2    0.000    0.000    0.000    0.000 c:\python\Lib\pathlib.py:653(_from_parts)
+       20    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\generic.py:190(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\sklearn\naive_bayes.py:669(MultinomialNB)
+       10    0.000    0.000    0.000    0.000 {built-in method set_extension}
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\util.py:385(compile_prefix_regex)
+        2    0.000    0.000    0.000    0.000 {built-in method fitz._fitz.TextPage__extractText}
+       16    0.000    0.000    0.000    0.000 c:\python\Lib\pathlib.py:666(_from_parsed_parts)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\internals.py:504(find_file_iter)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\importlib_metadata\__init__.py:99(load)
+       39    0.000    0.000    0.000    0.000 {method 'remove' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\tokenize.py:312(untokenize)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\core\fromnumeric.py:2324(all)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\util.py:167(<listcomp>)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\sklearn\naive_bayes.py:781(ComplementNB)
+        3    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:147(__enter__)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\sklearn\naive_bayes.py:895(BernoulliNB)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\internals\blocks.py:343(ftype)
+       34    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphin2\seven\dolphin\segmentation\segmentresume.py:54(<listcomp>)
+       16    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\common.py:252(is_sparse)
+        5    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\weakref.py:244(values)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphin2\seven\dolphin\datareader.py:25(<listcomp>)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\fitz\fitz.py:3307(<listcomp>)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\core\_asarray.py:223(require)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\indexes\base.py:602(_engine)
+       12    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\indexes\base.py:472(_simple_new)
+       80    0.000    0.000    0.000    0.000 {method 'update' of 'dict' objects}
+       39    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\warnings.py:493(__exit__)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\tokenize.py:238(untokenize)
+       12    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\internals\managers.py:163(shape)
+        3    0.000    0.000    0.000    0.000 c:\python\Lib\pathlib.py:1077(iterdir)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\sklearn\naive_bayes.py:1022(CategoricalNB)
+       45    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:416(parent)
+       24    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\common.py:830(is_signed_integer_dtype)
+        8    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\io\common.py:88(stringify_path)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\internals\blocks.py:275(make_block_same_class)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\language.py:51(create_lookups)
+       10    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\fitz\fitz.py:2810(_getMetadata)
+       20    0.000    0.000    0.000    0.000 doc.pyx:245(__get__)
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\ntpath.py:201(splitext)
+        5    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:157(_get_module_lock)
+       34    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\sklearn\utils\validation.py:391(_ensure_no_complex_data)
+        5    0.000    0.000    0.000    0.000 <__array_function__ internals>:2(concatenate)
+       24    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\series.py:428(name)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\util.py:94(get_data_path)
+       12    0.000    0.000    0.000    0.000 c:\python\Lib\pathlib.py:676(_format_parsed_parts)
+       76    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\inference.py:358(is_hashable)
+       24    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\common.py:887(is_unsigned_integer_dtype)
+        1    0.000    0.000    0.000    0.000 {method 'decompress' of 'zlib.Decompress' objects}
+       10    0.000    0.000    0.000    0.000 doc.pyx:122(set_extension)
+        1    0.000    0.000    0.000    0.000 {method 'read' of '_io.FileIO' objects}
+       39    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\warnings.py:453(__init__)
+       24    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\series.py:480(_values)
+       10    0.000    0.000    0.000    0.000 {built-in method fitz._fitz.Document__getMetadata}
+     10/5    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:174(getwidth)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\tokenize.py:350(detect_encoding)
+       20    0.000    0.000    0.000    0.000 {pandas._libs.lib.values_from_object}
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:576(module_from_spec)
+       40    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\core\_internal.py:830(npy_ctypes_check)
+       12    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\io\common.py:58(_expand_user)
+        4    0.000    0.000    0.000    0.000 {built-in method pandas._libs.missing.isnaobj}
+      232    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\common.py:206(classes)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\io\parsers.py:1517(_maybe_dedup_names)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\indexes\base.py:1737(is_all_dates)
+        2    0.000    0.000    0.000    0.000 {method 'close' of '_io.BufferedReader' objects}
+       31    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\enum.py:284(__call__)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\indexes\range.py:131(_simple_new)
+       46    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:254(get)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\pathlib.py:1359(is_file)
+       12    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\io\parsers.py:1174(_is_potential_multi_index)
+       12    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\construction.py:337(extract_array)
+       70    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:164(__getitem__)
+       20    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\tokens\underscore.py:61(__setattr__)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:504(_init_module_attrs)
+        7    0.000    0.000    0.000    0.000 c:\python\Lib\logging\__init__.py:1373(info)
+       68    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\sklearn\utils\validation.py:72(<dictcomp>)
+        8    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\generic.py:255(_validate_dtype)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\util.py:412(compile_infix_regex)
+       20    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\tokens\underscore.py:16(__init__)
+        5    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\enum.py:836(__and__)
+       88    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\common.py:216(<lambda>)
+        8    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\codecs.py:319(decode)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\util.py:148(get_module_path)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\weakref.py:165(__setitem__)
+        8    0.000    0.000    0.000    0.000 c:\python\Lib\logging\__init__.py:1619(isEnabledFor)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\srsly\msgpack\__init__.py:43(unpack)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\zipfile.py:787(__init__)
+        5    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\core\_ufunc_config.py:446(__exit__)
+        1    0.000    0.000    0.000    0.000 {built-in method nt.listdir}
+        5    0.000    0.000    0.000    0.000 c:\python\Lib\inspect.py:2750(__init__)
+        8    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\inference.py:299(is_dict_like)
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\weakref.py:102(__init__)
+        9    0.000    0.000    0.000    0.000 {built-in method _abc._abc_init}
+        1    0.000    0.000    0.000    0.000 {built-in method numpy.fromfile}
+       10    0.000    0.000    0.000    0.000 c:\python\Lib\zipfile.py:339(__init__)
+       12    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\series.py:414(dtype)
+       13    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\ntpath.py:287(expanduser)
+        5    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\functools.py:37(update_wrapper)
+       24    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\indexes\base.py:3638(values)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\util.py:398(<listcomp>)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\util.py:408(<listcomp>)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:951(path_stats)
+       36    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\internals\managers.py:165(<genexpr>)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\io\common.py:120(is_s3_url)
+       20    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\series.py:432(name)
+        8    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\io\parsers.py:367(_validate_integer)
+       28    0.000    0.000    0.000    0.000 {built-in method builtins.setattr}
+       53    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:233(__next)
+       10    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\tokens\underscore.py:91(get_ext_args)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\tokenize.py:374(read_or_stop)
+       34    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\core\_asarray.py:88(asanyarray)
+       10    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\core\_ufunc_config.py:139(geterr)
+       34    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\sklearn\_config.py:14(get_config)
+        8    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\indexes\base.py:2637(get_loc)
+        1    0.000    0.000    0.000    0.000 {srsly.msgpack._unpacker.unpack}
+       39    0.000    0.000    0.000    0.000 {method 'insert' of 'list' objects}
+        6    0.000    0.000    0.000    0.000 {method 'encode' of 'str' objects}
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\genericpath.py:117(_splitext)
+        2    0.000    0.000    0.000    0.000 c:\python\Lib\zipfile.py:1791(close)
+       14    0.000    0.000    0.000    0.000 c:\python\Lib\pathlib.py:144(splitroot)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\ntpath.py:523(abspath)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\core\_dtype.py:46(__str__)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\nanops.py:189(_maybe_get_mask)
+       24    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\internals\managers.py:1565(internal_values)
+        8    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\indexes\base.py:3911(__getitem__)
+        2    0.000    0.000    0.000    0.000 c:\python\Lib\zipfile.py:1915(_fpclose)
+       25    0.000    0.000    0.000    0.000 c:\python\Lib\urllib\parse.py:109(_coerce_args)
+        3    0.000    0.000    0.000    0.000 c:\python\Lib\zipfile.py:735(read)
+     13/5    0.000    0.000    0.000    0.000 c:\python\Lib\ast.py:64(_convert)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\sklearn\utils\deprecation.py:37(__call__)
+        1    0.000    0.000    0.000    0.000 {method 'readline' of '_io.BufferedReader' objects}
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\fitz\fitz.py:2719(pageCount)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\generic.py:5341(_consolidate_inplace)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\base.py:853(_ndarray_values)
+       15    0.000    0.000    0.000    0.000 {built-in method builtins.sum}
+        2    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:271(cache_from_source)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\io\common.py:127(is_gcs_url)
+       16    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\indexes\base.py:3700(_internal_get_values)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\generic.py:5235(__finalize__)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\logging\__init__.py:1930(getLogger)
+        8    0.000    0.000    0.000    0.000 {built-in method numpy.arange}
+       34    0.000    0.000    0.000    0.000 c:\python\Lib\inspect.py:72(isclass)
+       48    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\indexes\base.py:615(__len__)
+       12    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\internals\managers.py:1548(dtype)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\sklearn\utils\deprecation.py:58(_decorate_class)
+        3    0.000    0.000    0.000    0.000 {built-in method fitz._fitz.Document_pageCount}
+        5    0.000    0.000    0.000    0.000 c:\python\Lib\contextlib.py:237(helper)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\zipfile.py:909(_update_crc)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\common.py:275(maybe_iterable_to_list)
+       73    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lookups.py:94(has_table)
+       16    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lookups.py:219(__getitem__)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\smart_open\smart_open_lib.py:59(_sniff_scheme)
+        2    0.000    0.000    0.000    0.000 {built-in method zlib.crc32}
+        2    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:403(cached)
+      136    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\core\fromnumeric.py:2087(_sum_dispatcher)
+       16    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\generic.py:5257(__getattr__)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\generic.py:5331(_protect_consolidate)
+        8    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\io\parsers.py:1545(_maybe_make_multi_index_columns)
+        4    0.000    0.000    0.000    0.000 {pandas._libs.lib.infer_datetimelike_array}
+        1    0.000    0.000    0.000    0.000 {built-in method numpy.zeros}
+        5    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:58(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\ntpath.py:450(normpath)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\_collections_abc.py:816(clear)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\logging\__init__.py:1221(getLogger)
+       73    0.000    0.000    0.000    0.000 c:\python\Lib\inspect.py:2835(parameters)
+        8    0.000    0.000    0.000    0.000 {built-in method _codecs.utf_8_decode}
+        9    0.000    0.000    0.000    0.000 {method 'seek' of '_io.BufferedReader' objects}
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\generic.py:422(_get_axis)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\io\parsers.py:1551(_make_index)
+        9    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\util.py:120(ensure_path)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:369(_get_cached)
+       20    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\inference.py:96(is_iterator)
+        5    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:224(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\language.py:311(add_pipe)
+        8    0.000    0.000    0.000    0.000 {method 'get_loc' of 'pandas._libs.index.IndexEngine' objects}
+       34    0.000    0.000    0.000    0.000 {method 'rsplit' of 'str' objects}
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\fitz\fitz.py:3603(_forget_page)
+        5    0.000    0.000    0.000    0.000 c:\python\Lib\contextlib.py:116(__exit__)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:276(_optimize_charset)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\io\parsers.py:1321(_validate_parse_dates_arg)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\common.py:1108(is_datetime_or_timedelta_dtype)
+        5    0.000    0.000    0.000    0.000 c:\python\Lib\inspect.py:484(unwrap)
+       34    0.000    0.000    0.000    0.000 {built-in method sys.intern}
+        2    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:194(_lock_unlock_module)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\gensim\utils.py:1454(new_func1)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\logging\__init__.py:1000(__init__)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\weakref.py:336(__new__)
+        8    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\_weakrefset.py:36(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\random.py:681(getrandbits)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\indexes\base.py:1186(name)
+       34    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\scipy\sparse\base.py:1192(isspmatrix)
+       12    0.000    0.000    0.000    0.000 c:\python\Lib\pathlib.py:100(join_parsed_parts)
+       88    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\common.py:211(classes_and_not_datetimelike)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\util.py:773(get_serialization_exclude)
+        4    0.000    0.000    0.000    0.000 {built-in method pandas._libs.lib.is_datetime_array}
+       19    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\types.py:164(__get__)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\io\parsers.py:1842(_do_date_conversions)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\zipfile.py:698(_get_decompressor)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\generic.py:356(_construct_axes_from_arguments)
+       77    0.000    0.000    0.000    0.000 {method 'pop' of 'dict' objects}
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\ntpath.py:75(join)
+        5    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:461(_get_literal_prefix)
+       35    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:172(append)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\io\parsers.py:1979(_set_noconvert_columns)
+       36    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\core\_dtype.py:36(_kind_name)
+       36    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\core\_dtype.py:319(_name_includes_bit_suffix)
+       34    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\core\fromnumeric.py:3079(size)
+       50    0.000    0.000    0.000    0.000 {method 'rpartition' of 'str' objects}
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\logging\__init__.py:813(__init__)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\generic.py:5344(f)
+       42    0.000    0.000    0.000    0.000 {method 'copy' of 'dict' objects}
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\generic.py:3227(_set_as_cached)
+      247    0.000    0.000    0.000    0.000 vocab.pxd:30(__get__)
+       24    0.000    0.000    0.000    0.000 {method 'view' of 'numpy.ndarray' objects}
+       34    0.000    0.000    0.000    0.000 {built-in method builtins.vars}
+        5    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:56(_path_join)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\zipfile.py:209(_EndRecData64)
+       40    0.000    0.000    0.000    0.000 {built-in method nt.fspath}
+       80    0.000    0.000    0.000    0.000 {built-in method builtins.hash}
+        6    0.000    0.000    0.000    0.000 {built-in method builtins.sorted}
+        5    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:78(acquire)
+        3    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:151(__exit__)
+       71    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\catalogue.py:115(<genexpr>)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\colorama\ansitowin32.py:245(convert_osc)
+        5    0.000    0.000    0.000    0.000 c:\python\Lib\contextlib.py:81(__init__)
+       31    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\enum.py:526(__new__)
+       20    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\tokenize.py:225(add_whitespace)
+       18    0.000    0.000    0.000    0.000 c:\python\Lib\pathlib.py:1010(_init)
+       28    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\inference.py:325(<genexpr>)
+       26    0.000    0.000    0.000    0.000 c:\python\Lib\inspect.py:2799(<genexpr>)
+      117    0.000    0.000    0.000    0.000 {built-in method _warnings._filters_mutated}
+       14    0.000    0.000    0.000    0.000 {built-in method _struct.unpack}
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\ntpath.py:122(splitdrive)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\_weakrefset.py:26(__exit__)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\logging\__init__.py:1361(debug)
+       20    0.000    0.000    0.000    0.000 {method 'ravel' of 'numpy.ndarray' objects}
+       30    0.000    0.000    0.000    0.000 {method 'intersection' of 'set' objects}
+        5    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:103(release)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1351(_get_spec)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\_bootlocale.py:11(getpreferredencoding)
+        8    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\_collections_abc.py:72(_check_methods)
+        4    0.000    0.000    0.000    0.000 {method 'tolist' of 'numpy.ndarray' objects}
+       10    0.000    0.000    0.000    0.000 {built-in method numpy.seterrobj}
+        1    0.000    0.000    0.000    0.000 {built-in method zlib.decompressobj}
+       16    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\indexes\base.py:592(_reset_identity)
+       15    0.000    0.000    0.000    0.000 {method 'decode' of 'bytes' objects}
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\codecs.py:309(__init__)
+        5    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:423(_simple)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\zipfile.py:1008(close)
+        6    0.000    0.000    0.000    0.000 c:\python\Lib\logging\__init__.py:212(_acquireLock)
+       16    0.000    0.000    0.000    0.000 {function Table.__contains__ at 0x000000B6D0F99378}
+       27    0.000    0.000    0.000    0.000 {built-in method builtins.min}
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\_weakrefset.py:20(__enter__)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\internals\managers.py:128(<listcomp>)
+       40    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\internals\managers.py:1520(_block)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\series.py:438(values)
+        2    0.000    0.000    0.000    0.000 c:\python\Lib\pathlib.py:1020(_make_child_relpath)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\common.py:183(all_none)
+        8    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\indexes\base.py:4091(<genexpr>)
+       74    0.000    0.000    0.000    0.000 doc.pyx:648(__pyx_fuse_1push_back)
+        8    0.000    0.000    0.000    0.000 {pandas._libs.lib.array_equivalent_object}
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\fitz\fitz.py:3544(__contains__)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\common.py:1369(is_string_like_dtype)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\internals\managers.py:1831(_asarray_compat)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\smart_open\local_file.py:38(extract_local_path)
+       10    0.000    0.000    0.000    0.000 {built-in method _thread.allocate_lock}
+        5    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:176(cb)
+       39    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\_collections_abc.py:392(__subclasshook__)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\fitz\fitz.py:4261(rotation)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\generic.py:396(_get_axis_number)
+       16    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\indexes\range.py:675(__len__)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\io\parsers.py:923(_check_file_or_buffer)
+        1    0.000    0.000    0.000    0.000 tokenizer.pyx:73(__set__)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:432(_generate_overlap_table)
+        5    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\weakref.py:253(popitem)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\core\_asarray.py:300(<setcomp>)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\lib\format.py:223(read_magic)
+       16    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\internals\blocks.py:129(_check_ndim)
+       20    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:160(__len__)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\zipfile.py:992(_read2)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\generic.py:409(_get_axis_name)
+        2    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:62(_path_split)
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\_collections_abc.py:252(__subclasshook__)
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\lib\format.py:891(_read_bytes)
+       24    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\io\parsers.py:1191(<genexpr>)
+       12    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:286(tell)
+       10    0.000    0.000    0.000    0.000 {method 'rfind' of 'str' objects}
+        5    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:58(<listcomp>)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:438(_classify_pyc)
+       12    0.000    0.000    0.000    0.000 <string>:1(__new__)
+        5    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\language.py:249(pipe_names)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\smart_open\compression.py:18(get_supported_extensions)
+       20    0.000    0.000    0.000    0.000 {built-in method numpy.geterrobj}
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:574(spec_from_file_location)
+        8    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\common.py:179(ensure_python_int)
+        8    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\common.py:151(cast_scalar_indexer)
+       36    0.000    0.000    0.000    0.000 {method 'setdefault' of 'dict' objects}
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:318(__exit__)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\core\_ufunc_config.py:437(__init__)
+        8    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\internals\managers.py:331(<genexpr>)
+       16    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\series.py:403(_set_subtyp)
+        5    0.000    0.000    0.000    0.000 {built-in method _sre.compile}
+       10    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:595(isstring)
+        6    0.000    0.000    0.000    0.000 c:\python\Lib\logging\__init__.py:221(_releaseLock)
+        2    0.000    0.000    0.000    0.000 c:\python\Lib\pathlib.py:906(parent)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\internals\managers.py:1562(external_values)
+        4    0.000    0.000    0.000    0.000 vocab.pyx:276(__get__)
+        5    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:903(fix_flags)
+       34    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\core\fromnumeric.py:3075(_size_dispatcher)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\missing.py:601(clean_reindex_fill_method)
+        8    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\indexes\base.py:573(is_)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\io\parsers.py:3258(_process_date_conversion)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\util.py:779(<listcomp>)
+       40    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\tokens\underscore.py:100(<genexpr>)
+        1    0.000    0.000    0.000    0.000 {built-in method _locale._getdefaultlocale}
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.locals}
+       10    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:111(__init__)
+       10    0.000    0.000    0.000    0.000 c:\python\Lib\zipfile.py:456(_decodeExtra)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\logging\__init__.py:1341(__init__)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\indexes\base.py:3897(__contains__)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\internals\managers.py:927(consolidate)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\internals\managers.py:1837(_shape_compat)
+       24    0.000    0.000    0.000    0.000 {pandas._libs.algos.ensure_object}
+        8    0.000    0.000    0.000    0.000 {method 'fill' of 'numpy.ndarray' objects}
+       33    0.000    0.000    0.000    0.000 {method 'isidentifier' of 'str' objects}
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\weakref.py:290(update)
+        5    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\fitz\fitz.py:3647(<lambda>)
+       37    0.000    0.000    0.000    0.000 c:\python\Lib\inspect.py:2529(kind)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\generic.py:381(<dictcomp>)
+      129    0.000    0.000    0.000    0.000 {method 'clear' of 'dict' objects}
+        3    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:51(_r_long)
+        2    0.000    0.000    0.000    0.000 c:\python\Lib\threading.py:75(RLock)
+       24    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\internals\blocks.py:247(mgr_locs)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\util.py:422(add_lookups)
+       20    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\tokens\underscore.py:79(_get_key)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\sklearn\utils\deprecation.py:106(_update_doc)
+       40    0.000    0.000    0.000    0.000 {method 'read' of '_io.BytesIO' objects}
+        5    0.000    0.000    0.000    0.000 {method 'tell' of '_io.BufferedReader' objects}
+       16    0.000    0.000    0.000    0.000 {method 'extend' of 'list' objects}
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\weakref.py:341(__init__)
+       16    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\internals\blocks.py:339(dtype)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\internals\managers.py:943(_consolidate_inplace)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\io\parsers.py:3346(_clean_na_values)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\gensim\utils.py:507(_adapt_by_suffix)
+        5    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:76(__init__)
+       14    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:249(match)
+        2    0.000    0.000    0.000    0.000 c:\python\Lib\logging\__init__.py:1605(getEffectiveLevel)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\lib\format.py:291(descr_to_dtype)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\inference.py:130(is_file_like)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\nanops.py:329(_na_ok_dtype)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\internals\blocks.py:365(iget)
+       19    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\enum.py:628(value)
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:492(_get_charset_prefix)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\_weakrefset.py:16(__init__)
+        6    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\fitz\fitz.py:2076(CheckParent)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\logging\__init__.py:794(_addHandlerRef)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\logging\__init__.py:842(createLock)
+       21    0.000    0.000    0.000    0.000 c:\python\Lib\inspect.py:2517(name)
+        8    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\indexes\base.py:429(<genexpr>)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\util.py:326(get_component_name)
+        4    0.000    0.000    0.000    0.000 {method 'reshape' of 'numpy.ndarray' objects}
+        2    0.000    0.000    0.000    0.000 {built-in method fitz._fitz.Page_rotation}
+       19    0.000    0.000    0.000    0.000 {method 'span' of 're.Match' objects}
+       14    0.000    0.000    0.000    0.000 {method 'find' of 'str' objects}
+        6    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:222(_verbose_message)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\fitz\fitz.py:6048(gen_id)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\logging\__init__.py:513(__init__)
+       10    0.000    0.000    0.000    0.000 c:\python\Lib\inspect.py:158(isfunction)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\cast.py:1483(construct_1d_ndarray_preserving_na)
+       12    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\internals\managers.py:232(items)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\io\parsers.py:1432(_has_complex_date_col)
+        1    0.000    0.000    0.000    0.000 {built-in method fitz._fitz.Document_swiginit}
+        1    0.000    0.000    0.000    0.000 {built-in method nt.urandom}
+        5    0.000    0.000    0.000    0.000 {built-in method builtins.max}
+        7    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\_collections_abc.py:302(__subclasshook__)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\warnings.py:419(__init__)
+        5    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\functools.py:67(wraps)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:408(_uniq)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\fitz\fitz.py:2817(needsPass)
+       34    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\core\fromnumeric.py:1108(_argmax_dispatcher)
+       12    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\indexes\base.py:638(dtype)
+       24    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\internals\blocks.py:213(internal_values)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\compat.py:118(is_config)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lookups.py:24(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\language.py:45(create_lemmatizer)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\sklearn\naive_bayes.py:467(_BaseDiscreteNB)
+       11    0.000    0.000    0.000    0.000 {method 'own' of 'SwigPyObject' objects}
+       16    0.000    0.000    0.000    0.000 {function Table.__getitem__ at 0x000000B6D0F99268}
+       10    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:81(groups)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\weakref.py:109(remove)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\tokenize.py:380(find_cookie)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\common.py:330(apply_if_callable)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\generic.py:238(attrs)
+        2    0.000    0.000    0.000    0.000 {built-in method fitz._fitz.delete_Page}
+       10    0.000    0.000    0.000    0.000 {method 'add' of 'set' objects}
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:792(find_spec)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:471(_validate_timestamp_pyc)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:249(_compile_charset)
+        1    0.000    0.000    0.000    0.000 {built-in method nt._getfullpathname}
+        6    0.000    0.000    0.000    0.000 {method 'acquire' of '_thread.RLock' objects}
+        5    0.000    0.000    0.000    0.000 {method 'popitem' of 'dict' objects}
+       10    0.000    0.000    0.000    0.000 {built-in method builtins.iter}
+        1    0.000    0.000    0.000    0.000 {method 'flush' of 'zlib.Decompress' objects}
+        6    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\_collections_abc.py:271(__subclasshook__)
+        8    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:453(_get_iscased)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\zipfile.py:716(__init__)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\weakref.py:153(__contains__)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\zipfile.py:1359(namelist)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\fitz\fitz.py:2566(_loadOutline)
+        3    0.000    0.000    0.000    0.000 c:\python\Lib\pathlib.py:735(__eq__)
+       25    0.000    0.000    0.000    0.000 c:\python\Lib\urllib\parse.py:98(_noop)
+        5    0.000    0.000    0.000    0.000 c:\python\Lib\inspect.py:504(_is_wrapper)
+       12    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\io\parsers.py:1170(_is_index_col)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\language.py:268(pipe_labels)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\sklearn\naive_bayes.py:41(_BaseNB)
+       10    0.000    0.000    0.000    0.000 doc.pyx:151(has_extension)
+        3    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:143(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\os.py:1076(__subclasshook__)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\_collections_abc.py:367(__subclasshook__)
+        5    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:168(__setitem__)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\logging\__init__.py:1272(_fixupParents)
+        8    0.000    0.000    0.000    0.000 c:\python\Lib\urllib\parse.py:448(<genexpr>)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\internals\managers.py:167(ndim)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\io\common.py:78(validate_header_arg)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\io\parsers.py:2110(<dictcomp>)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\io\parsers.py:3213(_make_date_converter)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\util.py:418(<listcomp>)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lookups.py:46(tables)
+        2    0.000    0.000    0.000    0.000 {method 'finditer' of 're.Pattern' objects}
+        3    0.000    0.000    0.000    0.000 {method 'readline' of '_io.StringIO' objects}
+        3    0.000    0.000    0.000    0.000 {method 'startswith' of 'bytes' objects}
+        9    0.000    0.000    0.000    0.000 {method 'values' of 'dict' objects}
+       14    0.000    0.000    0.000    0.000 {method 'reverse' of 'list' objects}
+        4    0.000    0.000    0.000    0.000 {built-in method from_bytes}
+       13    0.000    0.000    0.000    0.000 {built-in method _imp.acquire_lock}
+        1    0.000    0.000    0.000    0.000 {built-in method _imp._fix_co_filename}
+        4    0.000    0.000    0.000    0.000 {built-in method pandas._libs.missing.checknull}
+        3    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:859(__exit__)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\codecs.py:260(__init__)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\zipfile.py:1390(getinfo)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\fitz\fitz.py:2435(<lambda>)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\logging\__init__.py:1531(addHandler)
+        5    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\core\multiarray.py:145(concatenate)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\dtypes\common.py:1398(<lambda>)
+        8    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\common.py:187(<genexpr>)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\internals\blocks.py:335(shape)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\internals\managers.py:647(is_consolidated)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\sklearn\utils\deprecation.py:34(__init__)
+        1    0.000    0.000    0.000    0.000 tokenizer.pyx:593(lambda10)
+        8    0.000    0.000    0.000    0.000 {pandas._libs.lib.is_integer}
+       10    0.000    0.000    0.000    0.000 {built-in method _thread.get_ident}
+        6    0.000    0.000    0.000    0.000 {method 'find' of 'bytearray' objects}
+        4    0.000    0.000    0.000    0.000 {method 'remove' of 'set' objects}
+       10    0.000    0.000    0.000    0.000 {built-in method builtins.chr}
+       13    0.000    0.000    0.000    0.000 {built-in method _imp.release_lock}
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:35(_new_module)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:369(__init__)
+        3    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:855(__enter__)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:401(_check_name_wrapper)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\_collections_abc.py:349(__subclasshook__)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\zipfile.py:746(close)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\weakref.py:125(_commit_removals)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\pathlib.py:44(_ignore_error)
+        2    0.000    0.000    0.000    0.000 c:\python\Lib\logging\__init__.py:727(__init__)
+        2    0.000    0.000    0.000    0.000 c:\python\Lib\pathlib.py:779(name)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\compat\py3k.py:55(isfileobj)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\missing.py:73(clean_fill_method)
+        8    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\indexes\base.py:1182(name)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\io\parsers.py:2108(<listcomp>)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\language.py:257(pipe_factories)
+       17    0.000    0.000    0.000    0.000 vocab.pxd:31(__get__)
+       20    0.000    0.000    0.000    0.000 doc.pxd:48(__get__)
+        1    0.000    0.000    0.000    0.000 {built-in method _functools.reduce}
+        5    0.000    0.000    0.000    0.000 {method 'items' of 'mappingproxy' objects}
+        4    0.000    0.000    0.000    0.000 {built-in method sys.getfilesystemencoding}
+        2    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:929(_sanity_check)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1203(_path_importer_cache)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\tokenize.py:219(__init__)
+        3    0.000    0.000    0.000    0.000 c:\python\Lib\logging\__init__.py:187(_checkLevel)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\lib\format.py:609(<listcomp>)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\indexes\numeric.py:83(_validate_dtype)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\io\parsers.py:396(_validate_names)
+       20    0.000    0.000    0.000    0.000 doc.pyx:352(__get__)
+        4    0.000    0.000    0.000    0.000 {pandas._libs.lib.is_bool}
+        8    0.000    0.000    0.000    0.000 {pandas._libs.lib.is_float}
+        1    0.000    0.000    0.000    0.000 {built-in method fitz._fitz.Document_needsPass}
+        2    0.000    0.000    0.000    0.000 {method 'group' of 're.Match' objects}
+        2    0.000    0.000    0.000    0.000 {built-in method _weakref.proxy}
+        6    0.000    0.000    0.000    0.000 {method 'release' of '_thread.RLock' objects}
+        9    0.000    0.000    0.000    0.000 {method 'keys' of 'dict' objects}
+        2    0.000    0.000    0.000    0.000 {method 'index' of 'tuple' objects}
+        3    0.000    0.000    0.000    0.000 {method 'lstrip' of 'str' objects}
+       13    0.000    0.000    0.000    0.000 {built-in method builtins.callable}
+        9    0.000    0.000    0.000    0.000 {built-in method builtins.id}
+        4    0.000    0.000    0.000    0.000 {built-in method gc.disable}
+        1    0.000    0.000    0.000    0.000 {method 'iter' of 'xml.etree.ElementTree.Element' objects}
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:311(__enter__)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:884(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\codecs.py:186(__init__)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\zipfile.py:1361(<listcomp>)
+        3    0.000    0.000    0.000    0.000 c:\python\Lib\zipfile.py:1480(<lambda>)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\tokenize.py:672(generate_tokens)
+        4    0.000    0.000    0.000    0.000 c:\python\Lib\urllib\parse.py:394(_checknetloc)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\compat\numpy\function.py:42(__call__)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\nanops.py:166(_get_fill_value)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\internals\blocks.py:202(external_values)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\internals\managers.py:1576(is_consolidated)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\io\parsers.py:1156(_create_index)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\io\parsers.py:1271(_validate_usecols_arg)
+        4    0.000    0.000    0.000    0.000 {pandas._libs.lib.item_from_zerodim}
+        1    0.000    0.000    0.000    0.000 {built-in method fitz._fitz.Document__loadOutline}
+        1    0.000    0.000    0.000    0.000 {built-in method fitz._fitz.Tools_gen_id}
+        3    0.000    0.000    0.000    0.000 {built-in method _stat.S_ISREG}
+        1    0.000    0.000    0.000    0.000 {method 'flush' of '_io.TextIOWrapper' objects}
+        4    0.000    0.000    0.000    0.000 {method 'upper' of 'str' objects}
+        1    0.000    0.000    0.000    0.000 {built-in method _struct.calcsize}
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:36(_relax_case)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:307(__init__)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\zipfile.py:663(_check_compression)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\zipfile.py:1787(__del__)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\logging\__init__.py:426(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\lib\format.py:193(_check_version)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\indexes\base.py:609(<lambda>)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\indexes\numeric.py:155(is_all_dates)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lemmatizer.py:24(__init__)
+        5    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\language.py:255(<listcomp>)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\gensim\models\base_any2vec.py:858(cum_table)
+        1    0.000    0.000    0.000    0.000 tokenizer.pyx:598(lambda15)
+        1    0.000    0.000    0.000    0.000 {built-in method _weakref._remove_dead_weakref}
+        1    0.000    0.000    0.000    0.000 {function ZipExtFile.close at 0x000000B6C7E92598}
+       12    0.000    0.000    0.000    0.000 {method 'rstrip' of 'str' objects}
+        1    0.000    0.000    0.000    0.000 {built-in method _imp.is_frozen}
+        5    0.000    0.000    0.000    0.000 {built-in method sys.getrecursionlimit}
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\abc.py:7(abstractmethod)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\numpy\core\fromnumeric.py:2320(_all_dispatcher)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\indexes\base.py:1383(nlevels)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\pandas\core\series.py:359(_constructor)
+        1    0.000    0.000    0.000    0.000 {method 'seekable' of '_io.BufferedReader' objects}
+        4    0.000    0.000    0.000    0.000 {built-in method gc.enable}
+        4    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:321(<genexpr>)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:424(has_location)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:719(find_spec)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:719(create_module)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:909(get_filename)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\codecs.py:214(setstate)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\contextlib.py:58(_recreate_cm)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\logging\__init__.py:232(_register_at_fork_acquire_release)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\logging\__init__.py:910(setFormatter)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\language.py:54(<dictcomp>)
+        2    0.000    0.000    0.000    0.000 vocab.pxd:36(__get__)
+        1    0.000    0.000    0.000    0.000 tokenizer.pyx:594(lambda11)
+        1    0.000    0.000    0.000    0.000 tokenizer.pyx:595(lambda12)
+        1    0.000    0.000    0.000    0.000 tokenizer.pyx:596(lambda13)
+        1    0.000    0.000    0.000    0.000 tokenizer.pyx:597(lambda14)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\sklearn\naive_bayes.py:1231(BaseNB)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\sklearn\naive_bayes.py:1238(BaseDiscreteNB)
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        1    0.000    0.000    0.000    0.000 {method 'close' of 'xml.etree.ElementTree.XMLParser' objects}
+        1    0.000    0.000    0.000    0.000 vocab.pxd:32(__get__)
+        1    0.000    0.000    0.000    0.000 {method 'keys' of 'collections.OrderedDict' objects}
+
+

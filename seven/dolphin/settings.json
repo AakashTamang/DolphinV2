@@ -1,0 +1,24 @@
+{
+    "project": {
+        "path": "c:\\Users\\isand\\OneDrive\\Documents\\GitHub\\aigeal\\dolphin"
+    },
+    "dataset": {
+        "path": "C:\\Users\\isand\\OneDrive\\Datasets\\dolphwin\\resumes"
+    },
+    "resume": {
+        ".docx": "C:\\Users\\isand\\OneDrive\\Documents\\GitHub\\aigeal\\dolphin\\datasets\\resumes\\ananda.docx",
+        ".pdf": "datasets/resumes/ding.pdf"
+    },
+    "spacy": {
+        "size": "sm"
+    },
+    "factory": "spacy",
+    "valid_extensions": {".docx": "Newer Microsoft Document File"},
+    "pickle": {
+        "dataset": "C:\\Users\\isand\\OneDrive\\Datasets\\dolphwin\\pickle\\",
+        "document": "None"
+    },
+    "db":{
+        "mongodb" : {"host":"localhost", "port":27017}
+    }
+}

@@ -1,0 +1,231 @@
+         16770 function calls (16704 primitive calls) in 0.103 seconds
+
+   Ordered by: cumulative time
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.103    0.103 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphinlab\dolphinlab\seven\dolphin\datareader.py:118(prepare_text)
+        1    0.000    0.000    0.103    0.103 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphinlab\dolphinlab\seven\dolphin\datareader.py:77(docx_to_text)
+        1    0.000    0.000    0.098    0.098 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\docx2txt\docx2txt.py:72(process)
+        1    0.004    0.004    0.058    0.058 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\docx2txt\docx2txt.py:50(xml2text)
+        1    0.020    0.020    0.040    0.040 c:\python\Lib\xml\etree\ElementTree.py:1302(XML)
+        1    0.000    0.000    0.037    0.037 c:\python\Lib\zipfile.py:1172(__init__)
+        1    0.020    0.020    0.020    0.020 {method 'feed' of 'xml.etree.ElementTree.XMLParser' objects}
+        1    0.020    0.020    0.020    0.020 {built-in method io.open}
+        1    0.000    0.000    0.018    0.018 c:\python\Lib\zipfile.py:1281(_RealGetContents)
+       17    0.000    0.000    0.017    0.001 {method 'decode' of 'bytes' objects}
+        1    0.000    0.000    0.017    0.017 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\encodings\__init__.py:71(search_function)
+        1    0.000    0.000    0.017    0.017 {built-in method builtins.__import__}
+        1    0.000    0.000    0.017    0.017 <frozen importlib._bootstrap>:978(_find_and_load)
+        1    0.000    0.000    0.017    0.017 <frozen importlib._bootstrap>:948(_find_and_load_unlocked)
+        1    0.000    0.000    0.017    0.017 <frozen importlib._bootstrap>:663(_load_unlocked)
+        1    0.000    0.000    0.017    0.017 <frozen importlib._bootstrap_external>:722(exec_module)
+        1    0.000    0.000    0.017    0.017 <frozen importlib._bootstrap_external>:793(get_code)
+        1    0.016    0.016    0.017    0.017 <frozen importlib._bootstrap_external>:914(get_data)
+     4719    0.006    0.000    0.014    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\docx2txt\docx2txt.py:38(qn)
+     4719    0.006    0.000    0.006    0.000 {method 'format' of 'str' objects}
+        1    0.000    0.000    0.005    0.005 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphinlab\dolphinlab\seven\dolphin\datareader.py:9(clean_text)
+        3    0.000    0.000    0.005    0.002 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\re.py:185(sub)
+       33    0.000    0.000    0.004    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\re.py:271(_compile)
+        5    0.000    0.000    0.003    0.001 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:759(compile)
+        3    0.003    0.001    0.003    0.001 {method 'sub' of 're.Pattern' objects}
+     4719    0.002    0.000    0.002    0.000 {method 'split' of 'str' objects}
+        5    0.000    0.000    0.002    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:919(parse)
+      9/5    0.000    0.000    0.002    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:417(_parse_sub)
+     11/5    0.001    0.000    0.002    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:475(_parse)
+        5    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:598(_code)
+       30    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\re.py:170(match)
+        1    0.000    0.000    0.001    0.001 c:\python\Lib\zipfile.py:1426(read)
+     22/5    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:71(_compile)
+        1    0.000    0.000    0.001    0.001 c:\python\Lib\zipfile.py:876(read)
+        1    0.000    0.000    0.001    0.001 c:\python\Lib\zipfile.py:956(_read1)
+        1    0.000    0.000    0.000    0.000 {method 'decompress' of 'zlib.Decompress' objects}
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\zipfile.py:1431(open)
+        5    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:536(_compile_info)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\zipfile.py:787(__init__)
+      119    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:254(get)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\zipfile.py:698(_get_decompressor)
+      161    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:164(__getitem__)
+        1    0.000    0.000    0.000    0.000 {built-in method zlib.decompressobj}
+     26/9    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:174(getwidth)
+        6    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:276(_optimize_charset)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:882(_find_spec)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1272(find_spec)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1240(_get_spec)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1356(find_spec)
+      132    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:233(__next)
+        3    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:74(_path_stat)
+        3    0.000    0.000    0.000    0.000 {built-in method nt.stat}
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:211(_call_with_frames_removed)
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.exec}
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\encodings\cp437.py:3(<module>)
+      232    0.000    0.000    0.000    0.000 {built-in method builtins.isinstance}
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:96(closegroup)
+  282/260    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+      433    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\zipfile.py:252(_EndRecData)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:523(_compile_bytecode)
+        5    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\enum.py:836(__and__)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:93(_path_isfile)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:84(_path_is_mode_type)
+        1    0.000    0.000    0.000    0.000 {built-in method marshal.loads}
+        5    0.000    0.000    0.000    0.000 {built-in method builtins.__build_class__}
+        2    0.000    0.000    0.000    0.000 c:\python\Lib\zipfile.py:1791(close)
+        6    0.000    0.000    0.000    0.000 {method 'read' of '_io.BufferedReader' objects}
+       59    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:172(append)
+       12    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:295(_class_escape)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\zipfile.py:909(_update_crc)
+        2    0.000    0.000    0.000    0.000 c:\python\Lib\zipfile.py:1915(_fpclose)
+        2    0.000    0.000    0.000    0.000 {built-in method zlib.crc32}
+       10    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:423(_simple)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:411(_mk_bitmap)
+       78    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:249(match)
+        1    0.000    0.000    0.000    0.000 {method 'close' of '_io.BufferedReader' objects}
+        3    0.000    0.000    0.000    0.000 c:\python\Lib\zipfile.py:735(read)
+        6    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:249(_compile_charset)
+       53    0.000    0.000    0.000    0.000 {built-in method builtins.min}
+       44    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:160(__len__)
+       29    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:286(tell)
+       10    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\enum.py:284(__call__)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:576(module_from_spec)
+       15    0.000    0.000    0.000    0.000 c:\python\Lib\zipfile.py:339(__init__)
+        5    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:224(__init__)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:504(_init_module_attrs)
+        5    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:461(_get_literal_prefix)
+        6    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:408(_uniq)
+        1    0.000    0.000    0.000    0.000 {method 'read' of '_io.FileIO' objects}
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:951(path_stats)
+       30    0.000    0.000    0.000    0.000 {method 'match' of 're.Pattern' objects}
+       26    0.000    0.000    0.000    0.000 {method 'find' of 'bytearray' objects}
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:413(<listcomp>)
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:343(_escape)
+       22    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:111(__init__)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:84(opengroup)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:147(__enter__)
+        2    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:271(cache_from_source)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\zipfile.py:992(_read2)
+        1    0.000    0.000    0.000    0.000 {method 'encode' of 'str' objects}
+        2    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:403(cached)
+        5    0.000    0.000    0.000    0.000 {built-in method _sre.compile}
+        7    0.000    0.000    0.000    0.000 {method 'seek' of '_io.BufferedReader' objects}
+       87    0.000    0.000    0.000    0.000 {built-in method builtins.ord}
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:369(_get_cached)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\zipfile.py:209(_EndRecData64)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\ntpath.py:201(splitext)
+       18    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:81(groups)
+       36    0.000    0.000    0.000    0.000 {method 'get' of 'dict' objects}
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:432(_generate_overlap_table)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\codecs.py:1051(make_identity_dict)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:157(_get_module_lock)
+       10    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\enum.py:526(__new__)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\codecs.py:1059(<dictcomp>)
+        5    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:903(fix_flags)
+       16    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\encodings\cp437.py:14(decode)
+       10    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:595(isstring)
+       18    0.000    0.000    0.000    0.000 {built-in method _struct.unpack}
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\encodings\cp437.py:33(getregentry)
+        5    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:56(_path_join)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:438(_classify_pyc)
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:492(_get_charset_prefix)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1351(_get_spec)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\abc.py:137(__instancecheck__)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\zipfile.py:1008(close)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\encodings\__init__.py:43(normalize_encoding)
+        5    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:76(__init__)
+        1    0.000    0.000    0.000    0.000 {built-in method _abc._abc_instancecheck}
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\genericpath.py:117(_splitext)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:574(spec_from_file_location)
+        1    0.000    0.000    0.000    0.000 {method 'iter' of 'xml.etree.ElementTree.Element' objects}
+       60    0.000    0.000    0.000    0.000 {method 'read' of '_io.BytesIO' objects}
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\codecs.py:94(__new__)
+       15    0.000    0.000    0.000    0.000 c:\python\Lib\zipfile.py:456(_decodeExtra)
+        2    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:62(_path_split)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:318(__exit__)
+       10    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:168(__setitem__)
+       16    0.000    0.000    0.000    0.000 {built-in method _codecs.charmap_decode}
+        1    0.000    0.000    0.000    0.000 {method 'strip' of 'str' objects}
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:151(__exit__)
+        5    0.000    0.000    0.000    0.000 {method 'tell' of '_io.BufferedReader' objects}
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:58(__init__)
+        3    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:51(_r_long)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\abc.py:141(__subclasscheck__)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:65(_combine_flags)
+        8    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:453(_get_iscased)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:103(release)
+        5    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:58(<listcomp>)
+        6    0.000    0.000    0.000    0.000 {built-in method builtins.hasattr}
+        1    0.000    0.000    0.000    0.000 {built-in method _abc._abc_subclasscheck}
+        6    0.000    0.000    0.000    0.000 {built-in method builtins.max}
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:78(acquire)
+        6    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:222(_verbose_message)
+        6    0.000    0.000    0.000    0.000 {method 'extend' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\zipfile.py:716(__init__)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:471(_validate_timestamp_pyc)
+        6    0.000    0.000    0.000    0.000 {built-in method builtins.getattr}
+        2    0.000    0.000    0.000    0.000 {method 'translate' of 'bytearray' objects}
+       15    0.000    0.000    0.000    0.000 {method 'find' of 'str' objects}
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:176(cb)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:1009(_handle_fromlist)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\threading.py:75(RLock)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:792(find_spec)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\os.py:1076(__subclasshook__)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\zipfile.py:1359(namelist)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\zipfile.py:1787(__del__)
+        2    0.000    0.000    0.000    0.000 {built-in method _thread.allocate_lock}
+        1    0.000    0.000    0.000    0.000 {method 'update' of 'dict' objects}
+        1    0.000    0.000    0.000    0.000 {method 'flush' of 'zlib.Decompress' objects}
+        5    0.000    0.000    0.000    0.000 {method 'items' of 'dict' objects}
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\zipfile.py:746(close)
+        8    0.000    0.000    0.000    0.000 {method 'join' of 'str' objects}
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.any}
+       15    0.000    0.000    0.000    0.000 {built-in method builtins.chr}
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:369(__init__)
+        3    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:859(__exit__)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:401(_check_name_wrapper)
+        3    0.000    0.000    0.000    0.000 {built-in method from_bytes}
+        2    0.000    0.000    0.000    0.000 {method 'rsplit' of 'str' objects}
+        6    0.000    0.000    0.000    0.000 {method 'rpartition' of 'str' objects}
+        2    0.000    0.000    0.000    0.000 {built-in method builtins.next}
+        1    0.000    0.000    0.000    0.000 {built-in method _imp._fix_co_filename}
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:35(_new_module)
+        3    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:855(__enter__)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1203(_path_importer_cache)
+        3    0.000    0.000    0.000    0.000 {method 'rfind' of 'str' objects}
+        5    0.000    0.000    0.000    0.000 {method 'isalnum' of 'str' objects}
+        4    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:321(<genexpr>)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\zipfile.py:663(_check_compression)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\zipfile.py:1361(<listcomp>)
+        1    0.000    0.000    0.000    0.000 {method 'close' of 'xml.etree.ElementTree.XMLParser' objects}
+        4    0.000    0.000    0.000    0.000 {built-in method nt.fspath}
+        1    0.000    0.000    0.000    0.000 {function ZipExtFile.close at 0x000000F4266BC1E0}
+        2    0.000    0.000    0.000    0.000 {built-in method builtins.iter}
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:36(_relax_case)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:311(__enter__)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:416(parent)
+       12    0.000    0.000    0.000    0.000 {method 'rstrip' of 'str' objects}
+        1    0.000    0.000    0.000    0.000 {method 'endswith' of 'str' objects}
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:143(__init__)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\zipfile.py:1390(getinfo)
+        3    0.000    0.000    0.000    0.000 c:\python\Lib\zipfile.py:1480(<lambda>)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\encodings\cp437.py:9(Codec)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\encodings\cp437.py:21(IncrementalDecoder)
+        2    0.000    0.000    0.000    0.000 {built-in method _thread.get_ident}
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.setattr}
+        5    0.000    0.000    0.000    0.000 {built-in method _imp.acquire_lock}
+        5    0.000    0.000    0.000    0.000 {built-in method _imp.release_lock}
+        1    0.000    0.000    0.000    0.000 {built-in method _imp.is_frozen}
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:307(__init__)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:719(create_module)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:884(__init__)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:909(get_filename)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\encodings\cp437.py:17(IncrementalEncoder)
+        1    0.000    0.000    0.000    0.000 {built-in method __new__ of type object at 0x00007FF876A14BA0}
+        1    0.000    0.000    0.000    0.000 {method 'seekable' of '_io.BufferedReader' objects}
+        1    0.000    0.000    0.000    0.000 {method 'replace' of 'str' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:424(has_location)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:719(find_spec)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\encodings\cp437.py:25(StreamWriter)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\encodings\cp437.py:28(StreamReader)
+        1    0.000    0.000    0.000    0.000 {method 'lower' of 'str' objects}
+
+

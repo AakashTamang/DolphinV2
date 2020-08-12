@@ -1,0 +1,171 @@
+         18017 function calls (17926 primitive calls) in 0.027 seconds
+
+   Ordered by: cumulative time
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.027    0.027 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphinlab\dolphinlab\seven\dolphin\pipeline.py:109(pattern_matching_component)
+        3    0.000    0.000    0.015    0.005 {method 'add' of 'spacy.matcher.matcher.Matcher' objects}
+        3    0.000    0.000    0.015    0.005 matcher.pyx:79(add)
+        3    0.000    0.000    0.015    0.005 matcher.pyx:638(_preprocess_pattern)
+        7    0.000    0.000    0.015    0.002 matcher.pyx:786(_get_extra_predicates)
+        4    0.014    0.003    0.014    0.003 matcher.pyx:730(__init__)
+        4    0.000    0.000    0.007    0.002 {method 'add' of 'spacy.matcher.phrasematcher.PhraseMatcher' objects}
+        4    0.005    0.001    0.007    0.002 phrasematcher.pyx:157(add)
+        3    0.000    0.000    0.003    0.001 matcher.pyx:216(__call__)
+        3    0.001    0.000    0.003    0.001 matcher.pyx:260(find_matches)
+     1269    0.000    0.000    0.002    0.000 matcher.pyx:322(transition_states)
+     1285    0.000    0.000    0.001    0.000 matcher.pyx:395(update_predicate_cache)
+     1498    0.001    0.000    0.001    0.000 phrasematcher.pyx:327(_convert_to_array)
+        3    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\re.py:271(_compile)
+        3    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:759(compile)
+        2    0.000    0.000    0.001    0.000 matcher.pyx:709(__init__)
+      846    0.001    0.000    0.001    0.000 matcher.pyx:719(__call__)
+        2    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\re.py:232(compile)
+     1288    0.000    0.000    0.001    0.000 doc.pyx:282(__getitem__)
+        3    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:919(parse)
+      6/3    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:417(_parse_sub)
+     13/3    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:475(_parse)
+        4    0.000    0.000    0.000    0.000 vocab.pyx:227(__getitem__)
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:598(_code)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\re.py:225(finditer)
+     1696    0.000    0.000    0.000    0.000 doc.pyx:315(__iter__)
+        4    0.000    0.000    0.000    0.000 vocab.pyx:154(get_by_orth)
+        3    0.000    0.000    0.000    0.000 vocab.pyx:168(_new_lexeme)
+        1    0.000    0.000    0.000    0.000 doc.pyx:488(__get__)
+     2980    0.000    0.000    0.000    0.000 token.pxd:19(cinit)
+        1    0.000    0.000    0.000    0.000 doc.pyx:493(genexpr)
+     26/3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:71(_compile)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphinlab\dolphinlab\seven\dolphin\pipeline.py:173(<genexpr>)
+     3006    0.000    0.000    0.000    0.000 doc.pyx:328(__len__)
+       10    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:276(_optimize_charset)
+        6    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\srsly\_json_api.py:12(json_dumps)
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:536(_compile_info)
+        6    0.000    0.000    0.000    0.000 c:\python\Lib\json\__init__.py:183(dumps)
+      183    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:164(__getitem__)
+      436    0.000    0.000    0.000    0.000 matcher.pyx:740(__call__)
+     28/5    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:174(getwidth)
+      104    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:254(get)
+        4    0.000    0.000    0.000    0.000 phrasematcher.pyx:226(__call__)
+      6/3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\util.py:435(_get_attr_unless_lookup)
+      136    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:233(__next)
+     1288    0.000    0.000    0.000    0.000 doc.pyx:42(bounds_check)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:411(_mk_bitmap)
+        6    0.000    0.000    0.000    0.000 c:\python\Lib\json\encoder.py:182(encode)
+        4    0.000    0.000    0.000    0.000 phrasematcher.pyx:33(__init__)
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lang\lex_attrs.py:150(word_shape)
+        6    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lookups.py:238(__contains__)
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\enum.py:836(__and__)
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lang\en\lex_attrs.py:47(like_num)
+  287/258    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+      214    0.000    0.000    0.000    0.000 {built-in method builtins.isinstance}
+      370    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphinlab\dolphinlab\seven\dolphin\pipeline.py:174(<genexpr>)
+       72    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:249(match)
+        3    0.000    0.000    0.000    0.000 matcher.pyx:245(_normalize_key)
+        4    0.000    0.000    0.000    0.000 c:\python\Lib\json\encoder.py:204(iterencode)
+       13    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:423(_simple)
+       10    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:249(_compile_charset)
+        7    0.000    0.000    0.000    0.000 matcher.pyx:847(_get_operators)
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:224(__init__)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:96(closegroup)
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lang\lex_attrs.py:34(is_ascii)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:413(<listcomp>)
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lang\lex_attrs.py:27(is_punct)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphinlab\dolphinlab\seven\dolphin\pipeline.py:154(<listcomp>)
+       58    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:160(__len__)
+        8    0.000    0.000    0.000    0.000 doc.pyx:245(__get__)
+        6    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\enum.py:284(__call__)
+        8    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:408(_uniq)
+        7    0.000    0.000    0.000    0.000 matcher.pyx:669(_get_attr_values)
+       30    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:286(tell)
+       44    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:172(append)
+        8    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\tokens\underscore.py:61(__setattr__)
+       63    0.000    0.000    0.000    0.000 {built-in method builtins.min}
+        8    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\tokens\underscore.py:16(__init__)
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lang\lex_attrs.py:120(like_email)
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lang\lex_attrs.py:124(like_url)
+        4    0.000    0.000    0.000    0.000 matcher.pyx:39(__init__)
+        3    0.000    0.000    0.000    0.000 matcher.pyx:128(genexpr)
+        6    0.000    0.000    0.000    0.000 {spacy.strings.get_string_id}
+       27    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:111(__init__)
+        5    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:343(_escape)
+        3    0.000    0.000    0.000    0.000 matcher.pyx:575(init_pattern)
+       97    0.000    0.000    0.000    0.000 {built-in method builtins.ord}
+        5    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:295(_class_escape)
+        6    0.000    0.000    0.000    0.000 c:\python\Lib\json\encoder.py:104(__init__)
+        4    0.000    0.000    0.000    0.000 matcher.pyx:733(genexpr)
+       14    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:168(__setitem__)
+        6    0.000    0.000    0.000    0.000 {built-in method unicodedata.category}
+        3    0.000    0.000    0.000    0.000 {method 'match' of 're.Pattern' objects}
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:461(_get_literal_prefix)
+        6    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lang\lex_attrs.py:177(lower)
+       15    0.000    0.000    0.000    0.000 {method 'startswith' of 'str' objects}
+       30    0.000    0.000    0.000    0.000 {method 'find' of 'bytearray' objects}
+        6    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\enum.py:526(__new__)
+        7    0.000    0.000    0.000    0.000 matcher.pyx:863(_get_extensions)
+        4    0.000    0.000    0.000    0.000 {method 'translate' of 'bytearray' objects}
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:903(fix_flags)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:3006(__del__)
+        6    0.000    0.000    0.000    0.000 {method 'replace' of 'str' objects}
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphinlab\dolphinlab\seven\dolphin\pipeline.py:155(<listcomp>)
+        3    0.000    0.000    0.000    0.000 {built-in method _sre.compile}
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:492(_get_charset_prefix)
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lang\lex_attrs.py:189(is_alpha)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphinlab\dolphinlab\seven\dolphin\pipeline.py:169(<listcomp>)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphinlab\dolphinlab\seven\dolphin\pipeline.py:175(<genexpr>)
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lang\lex_attrs.py:55(is_bracket)
+       18    0.000    0.000    0.000    0.000 {method 'get' of 'dict' objects}
+        6    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:595(isstring)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:84(opengroup)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphinlab\dolphinlab\seven\dolphin\pipeline.py:178(<listcomp>)
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lang\lex_attrs.py:197(is_lower)
+        3    0.000    0.000    0.000    0.000 vocab.pyx:192(_add_lex_to_vocab)
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:76(__init__)
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\compat.py:118(is_config)
+       10    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:81(groups)
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lang\lex_attrs.py:181(prefix)
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lang\lex_attrs.py:213(is_stop)
+       12    0.000    0.000    0.000    0.000 {method 'lower' of 'str' objects}
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lang\lex_attrs.py:60(is_quote)
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lang\lex_attrs.py:112(is_currency)
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lang\lex_attrs.py:193(is_digit)
+       39    0.000    0.000    0.000    0.000 {method 'isupper' of 'str' objects}
+        2    0.000    0.000    0.000    0.000 {built-in method _json.encode_basestring_ascii}
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lang\en\__init__.py:17(_return_en)
+       41    0.000    0.000    0.000    0.000 {method 'isalpha' of 'str' objects}
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lang\lex_attrs.py:185(suffix)
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lang\lex_attrs.py:205(is_title)
+        4    0.000    0.000    0.000    0.000 {method 'extend' of 'list' objects}
+        3    0.000    0.000    0.000    0.000 {method 'count' of 'str' objects}
+        3    0.000    0.000    0.000    0.000 {built-in method builtins.next}
+        6    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:453(_get_iscased)
+        8    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\tokens\underscore.py:79(_get_key)
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lang\lex_attrs.py:201(is_space)
+        1    0.000    0.000    0.000    0.000 {method 'finditer' of 're.Pattern' objects}
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lang\lex_attrs.py:209(is_upper)
+        7    0.000    0.000    0.000    0.000 {method 'join' of 'str' objects}
+        8    0.000    0.000    0.000    0.000 {built-in method builtins.max}
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lang\lex_attrs.py:85(is_left_punct)
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\lang\lex_attrs.py:107(is_right_punct)
+        8    0.000    0.000    0.000    0.000 doc.pxd:48(__get__)
+        8    0.000    0.000    0.000    0.000 {method 'isdigit' of 'str' objects}
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:65(_combine_flags)
+        3    0.000    0.000    0.000    0.000 {built-in method builtins.iter}
+        1    0.000    0.000    0.000    0.000 {method 'group' of 're.Match' objects}
+        3    0.000    0.000    0.000    0.000 {method 'items' of 'dict' objects}
+        3    0.000    0.000    0.000    0.000 {method 'islower' of 'str' objects}
+        3    0.000    0.000    0.000    0.000 {method 'isspace' of 'str' objects}
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphinlab\dolphinlab\seven\dolphin\pipeline.py:156(<listcomp>)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphinlab\dolphinlab\seven\dolphin\pipeline.py:179(<listcomp>)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphinlab\dolphinlab\seven\dolphin\pipeline.py:180(<listcomp>)
+        8    0.000    0.000    0.000    0.000 doc.pyx:352(__get__)
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphinlab\dolphinlab\seven\dolphin\pipeline.py:168(<listcomp>)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphinlab\dolphinlab\seven\dolphin\pipeline.py:167(<listcomp>)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphinlab\dolphinlab\seven\dolphin\pipeline.py:170(<listcomp>)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphinlab\dolphinlab\seven\dolphin\pipeline.py:176(<genexpr>)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphinlab\dolphinlab\seven\dolphin\pipeline.py:181(<listcomp>)
+        3    0.000    0.000    0.000    0.000 matcher.pyx:415(finish_states)
+        3    0.000    0.000    0.000    0.000 {method 'istitle' of 'str' objects}
+
+

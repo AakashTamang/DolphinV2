@@ -1,0 +1,471 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Welcome to Dolphin’s documentation! &#8212; Dolphin 0.0.1 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="dolphin" href="README.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="README.html" title="dolphin"
+             accesskey="N">next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">Dolphin 0.0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="welcome-to-dolphin-s-documentation">
+<h1>Welcome to Dolphin’s documentation!<a class="headerlink" href="#welcome-to-dolphin-s-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="README.html">dolphin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html#directory-structure">Directory Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html#pipelines">Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="README.html#document-categorization-pipeline">Document Categorization pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#segmentation-pipeline">Segmentation pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#ner-parser-pipeline">NER Parser pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#pattern-matching-pipeline">Pattern Matching Pipeline</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="README.html#modules-used">Modules Used</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="module-dolphin.datareader">
+<span id="datareader"></span><h1>Datareader<a class="headerlink" href="#module-dolphin.datareader" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="dolphin.datareader.clean_text">
+<code class="descclassname">dolphin.datareader.</code><code class="descname">clean_text</code><span class="sig-paren">(</span><em>text</em>, <em>dolower</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dolphin/datareader.html#clean_text"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dolphin.datareader.clean_text" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Accepts the plain text and makes
+use of regex for cleaning the noise</strong>
+:param: text :type:str
+:return:cleaned text :type str</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dolphin.datareader.doc_to_text">
+<code class="descclassname">dolphin.datareader.</code><code class="descname">doc_to_text</code><span class="sig-paren">(</span><em>filepath</em>, <em>dolower</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dolphin/datareader.html#doc_to_text"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dolphin.datareader.doc_to_text" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Takes the doc file from the
+file path param and returns
+the cleaned the text from the
+file.</strong>
+:param filepath: path/directory of the doc file in the system
+:return: Returns the cleaned text from the file</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dolphin.datareader.docx_to_text">
+<code class="descclassname">dolphin.datareader.</code><code class="descname">docx_to_text</code><span class="sig-paren">(</span><em>file_path</em>, <em>dolower</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dolphin/datareader.html#docx_to_text"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dolphin.datareader.docx_to_text" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Takes docx files and
+extracts plain text
+from the docx files</strong>
+:param file_path :type str
+:return:text     :type str</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dolphin.datareader.img_to_text">
+<code class="descclassname">dolphin.datareader.</code><code class="descname">img_to_text</code><span class="sig-paren">(</span><em>filepath</em>, <em>dolower</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dolphin/datareader.html#img_to_text"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dolphin.datareader.img_to_text" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Takes the image file
+from the file path param and returns
+the cleaned the text from the  image file.</strong>
+:param filepath: path/directory of the image file in the system
+:return: Returns the cleaned text from the image file</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dolphin.datareader.pdf_to_text">
+<code class="descclassname">dolphin.datareader.</code><code class="descname">pdf_to_text</code><span class="sig-paren">(</span><em>file_path</em>, <em>dolower</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dolphin/datareader.html#pdf_to_text"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dolphin.datareader.pdf_to_text" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Takes filepath and extracts
+the plain text from pdf for
+training the word to vec model</strong>
+:param file_path :type str
+:return:text   :type str</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dolphin.datareader.prepare_text">
+<code class="descclassname">dolphin.datareader.</code><code class="descname">prepare_text</code><span class="sig-paren">(</span><em>file</em>, <em>dolower</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dolphin/datareader.html#prepare_text"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dolphin.datareader.prepare_text" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Takes the resume or any other doc;
+checks the extension of doc and then
+uses suitable methods to extract and
+clean the text</strong>
+:param: file :type str
+:return: cleaned tokenized sentences :type list</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dolphin.datareader.prepare_text_from_string">
+<code class="descclassname">dolphin.datareader.</code><code class="descname">prepare_text_from_string</code><span class="sig-paren">(</span><em>text</em>, <em>dolower</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dolphin/datareader.html#prepare_text_from_string"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dolphin.datareader.prepare_text_from_string" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>takes string of text and then
+cleans the noise</strong>
+:param: text      :type str
+:return: cleaned_text :type str</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dolphin.datareader.txt_to_text">
+<code class="descclassname">dolphin.datareader.</code><code class="descname">txt_to_text</code><span class="sig-paren">(</span><em>file_path</em>, <em>dolower</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dolphin/datareader.html#txt_to_text"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dolphin.datareader.txt_to_text" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Extracts plain text from txt files</strong>
+:param file_path :type str
+:return:text     :type str</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-dolphin.document_categorization.doc_classifier_test">
+<span id="document-categorization"></span><h1>Document_categorization<a class="headerlink" href="#module-dolphin.document_categorization.doc_classifier_test" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="dolphin.document_categorization.doc_classifier_test.DocClassifier">
+<em class="property">class </em><code class="descclassname">dolphin.document_categorization.doc_classifier_test.</code><code class="descname">DocClassifier</code><span class="sig-paren">(</span><em>tfidfmodelpath</em>, <em>classifiermodelpath</em>, <em>nlp</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dolphin/document_categorization/doc_classifier_test.html#DocClassifier"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dolphin.document_categorization.doc_classifier_test.DocClassifier" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>This class is developed for the preprocessing of textual contents in any document and use such preprocessed content
+for the prediction of category of the document using tfidf vectorizer developed and SVC classifier model developed</strong></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Param:</th><td class="field-body">tfidfmodelpath: The path of the tfidf vectorizer developed from the training data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">str</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Param:</th><td class="field-body">classifiermodelpath: The path of the classifier model developed by training SVC classifier</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="dolphin.document_categorization.doc_classifier_test.DocClassifier.classify">
+<code class="descname">classify</code><span class="sig-paren">(</span><em>file_content</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dolphin/document_categorization/doc_classifier_test.html#DocClassifier.classify"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dolphin.document_categorization.doc_classifier_test.DocClassifier.classify" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Function to apply preprocessed text to the document categorization model</strong>
+:param: file_content: textual file content of the document
+:type: str
+:return: category of the document
+:rtype: str</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dolphin.document_categorization.doc_classifier_test.DocClassifier.preprocess_words">
+<code class="descname">preprocess_words</code><span class="sig-paren">(</span><em>texts, stop_words, bigram_mod, trigram_mod, allowed_postags=['NOUN', 'ADJ', 'VERB', 'ADV']</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dolphin/document_categorization/doc_classifier_test.html#DocClassifier.preprocess_words"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dolphin.document_categorization.doc_classifier_test.DocClassifier.preprocess_words" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Remove Stopwords, Form Bigrams, Trigrams and Lemmatization</strong> 
+:param: texts: list of tokens in the document
+type: list
+:param: stop_words: list of stopword from nltk corpus
+:type: list
+:param: bigram_mod: bigrams from document evaluated using gensim Phraser
+:type: list
+:param: trigram_mod: trigrams from document evaluated using gensim Phraser
+:type: list
+:param: allowedpos_tags: list of allowed POS tags in the document
+:type: list
+:return: preprocessed list of tokens from document
+:rtype: list</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dolphin.document_categorization.doc_classifier_test.DocClassifier.sent_to_words">
+<code class="descname">sent_to_words</code><span class="sig-paren">(</span><em>file_content</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dolphin/document_categorization/doc_classifier_test.html#DocClassifier.sent_to_words"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dolphin.document_categorization.doc_classifier_test.DocClassifier.sent_to_words" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>remove emails and preprocess the sentences in the document using gensim simple_preprocess function</strong>
+:param: file_content: the textual content of the document
+:type: str
+:return: list of preprocessed sentences
+:rtype: list</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-dolphin.segmentation.segmentresume">
+<span id="resume-segmentation"></span><h1>Resume_segmentation<a class="headerlink" href="#module-dolphin.segmentation.segmentresume" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="dolphin.segmentation.segmentresume.ResumeSegmentCreator">
+<em class="property">class </em><code class="descclassname">dolphin.segmentation.segmentresume.</code><code class="descname">ResumeSegmentCreator</code><a class="reference internal" href="_modules/dolphin/segmentation/segmentresume.html#ResumeSegmentCreator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dolphin.segmentation.segmentresume.ResumeSegmentCreator" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>This class is developed for the segmentation of resumes into several segments.
+The segments are personal info, objective, skills, experiences, projects, academics, rewards, languages, references and links</strong></p>
+<dl class="method">
+<dt id="dolphin.segmentation.segmentresume.ResumeSegmentCreator.format_segment">
+<code class="descname">format_segment</code><span class="sig-paren">(</span><em>text</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dolphin/segmentation/segmentresume.html#ResumeSegmentCreator.format_segment"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dolphin.segmentation.segmentresume.ResumeSegmentCreator.format_segment" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>This function formats the resume segments</strong>
+:param: text : textual content of the resume
+: type: str
+:return: resume segments extracted
+:rtype: dict</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dolphin.segmentation.segmentresume.ResumeSegmentCreator.sliced_resume_text">
+<code class="descname">sliced_resume_text</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/dolphin/segmentation/segmentresume.html#ResumeSegmentCreator.sliced_resume_text"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dolphin.segmentation.segmentresume.ResumeSegmentCreator.sliced_resume_text" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>This function returns the sliced resume text</strong>
+return: sliced text
+rtype: dict</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dolphin.segmentation.segmentresume.ResumeSegmentCreator.unique_index_headings">
+<code class="descname">unique_index_headings</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/dolphin/segmentation/segmentresume.html#ResumeSegmentCreator.unique_index_headings"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dolphin.segmentation.segmentresume.ResumeSegmentCreator.unique_index_headings" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>This function extracts the unique index headings from the resume content</strong>
+return: unique index headings
+rtype: list</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-dolphin.stanfordNER.formatdata">
+<span id="named-entity-recognition"></span><h1>Named_entity_recognition<a class="headerlink" href="#module-dolphin.stanfordNER.formatdata" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="dolphin.stanfordNER.formatdata.formatPersonalinfo">
+<code class="descclassname">dolphin.stanfordNER.formatdata.</code><code class="descname">formatPersonalinfo</code><span class="sig-paren">(</span><em>personal_info</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dolphin/stanfordNER/formatdata.html#formatPersonalinfo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dolphin.stanfordNER.formatdata.formatPersonalinfo" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>This functions takes all the unstructured personal information and returns the formatted and structured
+personal information.</strong>
+:param personal_info: (List) of all the fields required as personal info.
+:return: List(Returns the formatted personal info will all the required fields.)</p>
+</dd></dl>
+
+<span class="target" id="module-dolphin.stanfordNER.namedentityrecognition"></span><dl class="class">
+<dt id="dolphin.stanfordNER.namedentityrecognition.StanfordNER">
+<em class="property">class </em><code class="descclassname">dolphin.stanfordNER.namedentityrecognition.</code><code class="descname">StanfordNER</code><a class="reference internal" href="_modules/dolphin/stanfordNER/namedentityrecognition.html#StanfordNER"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dolphin.stanfordNER.namedentityrecognition.StanfordNER" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class applies the trained custom NER model to return the academics, experiences and personal info from any resume</p>
+<dl class="staticmethod">
+<dt id="dolphin.stanfordNER.namedentityrecognition.StanfordNER.education_parser">
+<em class="property">static </em><code class="descname">education_parser</code><span class="sig-paren">(</span><em>tagged_tuples</em>, <em>text</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dolphin/stanfordNER/namedentityrecognition.html#StanfordNER.education_parser"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dolphin.stanfordNER.namedentityrecognition.StanfordNER.education_parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>** Function to gather all the education predicted tokens and format the tokens**
+param: tagged_tuples: tagged_tuples from NER model
+type: list of tuples
+param: text: textual content to be applied for education parsing
+type: str</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="dolphin.stanfordNER.namedentityrecognition.StanfordNER.experience_parser">
+<em class="property">static </em><code class="descname">experience_parser</code><span class="sig-paren">(</span><em>tagged_tuples</em>, <em>text</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dolphin/stanfordNER/namedentityrecognition.html#StanfordNER.experience_parser"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dolphin.stanfordNER.namedentityrecognition.StanfordNER.experience_parser" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Function to get out the experience related tokens from NER mmodel and format the parsed information</strong>
+param: tagged_tuples: tagged_tuples from NER model
+type: list of tuples
+param: text: textual content to be applied for experience parsing
+type: str
+return: formatted_data
+rtype: dict</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="dolphin.stanfordNER.namedentityrecognition.StanfordNER.ner_parser">
+<em class="property">static </em><code class="descname">ner_parser</code><span class="sig-paren">(</span><em>model</em>, <em>text</em>, <em>mode</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dolphin/stanfordNER/namedentityrecognition.html#StanfordNER.ner_parser"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dolphin.stanfordNER.namedentityrecognition.StanfordNER.ner_parser" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>NER model that chooses the particular model and parser</strong>
+param: model: Stanford NLP model
+param: text: textual content of the resume
+type: str
+param: mode: to select the respective parser
+type: str</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="dolphin.stanfordNER.namedentityrecognition.StanfordNER.personal_info_parser">
+<em class="property">static </em><code class="descname">personal_info_parser</code><span class="sig-paren">(</span><em>tagged_tuples</em>, <em>text</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dolphin/stanfordNER/namedentityrecognition.html#StanfordNER.personal_info_parser"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dolphin.stanfordNER.namedentityrecognition.StanfordNER.personal_info_parser" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Function to be applied for the parsing of personal information from resumes</strong>
+param: tagged_tuples: tagged_tuples from NER model
+type: list of tuples
+param: text: textual content to be applied for experience parsing
+type: str</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="dolphin.stanfordNER.namedentityrecognition.gather_ner">
+<code class="descclassname">dolphin.stanfordNER.namedentityrecognition.</code><code class="descname">gather_ner</code><span class="sig-paren">(</span><em>tagged_tuples</em>, <em>ner='DESIG'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dolphin/stanfordNER/namedentityrecognition.html#gather_ner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dolphin.stanfordNER.namedentityrecognition.gather_ner" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>This method gathers the predicted tokens related to academics, experiences and personal info from NER</strong>
+:param:tagged_tuples
+:list of tuples
+:return : list of entities
+:rtype:list</p>
+</dd></dl>
+
+<span class="target" id="module-dolphin.stanfordNER.standarizedata"></span><dl class="function">
+<dt id="dolphin.stanfordNER.standarizedata.capitalizeinput">
+<code class="descclassname">dolphin.stanfordNER.standarizedata.</code><code class="descname">capitalizeinput</code><span class="sig-paren">(</span><em>inputparameter</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dolphin/stanfordNER/standarizedata.html#capitalizeinput"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dolphin.stanfordNER.standarizedata.capitalizeinput" title="Permalink to this definition">¶</a></dt>
+<dd><p>This will take the raw input text and
+tokenize the string and capitalize all
+the token and returns the formatted
+capitalized text.
+:param inputparameter :type str
+:return: string(text will all the tokens capitalized)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dolphin.stanfordNER.standarizedata.comparedates">
+<code class="descclassname">dolphin.stanfordNER.standarizedata.</code><code class="descname">comparedates</code><span class="sig-paren">(</span><em>datelist</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dolphin/stanfordNER/standarizedata.html#comparedates"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dolphin.stanfordNER.standarizedata.comparedates" title="Permalink to this definition">¶</a></dt>
+<dd><p>this function takes the list of the date
+parse them and compares them and provide
+larger date and smaller date
+:param datelist:type list of str
+:return: sorted dates</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-dolphin.pipeline">
+<span id="pipeline"></span><h1>Pipeline<a class="headerlink" href="#module-dolphin.pipeline" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="dolphin.pipeline.NlpPipeline">
+<em class="property">class </em><code class="descclassname">dolphin.pipeline.</code><code class="descname">NlpPipeline</code><a class="reference internal" href="_modules/dolphin/pipeline.html#NlpPipeline"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dolphin.pipeline.NlpPipeline" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>This class is developed to add the custom spacy pipelines for document categorization, resume segmentation, and resume parsing.</strong></p>
+<dl class="method">
+<dt id="dolphin.pipeline.NlpPipeline.add_category_component">
+<code class="descname">add_category_component</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/dolphin/pipeline.html#NlpPipeline.add_category_component"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dolphin.pipeline.NlpPipeline.add_category_component" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Function to add document categorization component to the spacy custom pipeline</strong></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dolphin.pipeline.NlpPipeline.add_ner_parsing">
+<code class="descname">add_ner_parsing</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/dolphin/pipeline.html#NlpPipeline.add_ner_parsing"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dolphin.pipeline.NlpPipeline.add_ner_parsing" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Function for adding custom NER pipeline in nlp model</strong></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dolphin.pipeline.NlpPipeline.add_pattern_matching">
+<code class="descname">add_pattern_matching</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/dolphin/pipeline.html#NlpPipeline.add_pattern_matching"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dolphin.pipeline.NlpPipeline.add_pattern_matching" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Function for adding pattern matching component in pipeline</strong></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dolphin.pipeline.NlpPipeline.add_segmentation_component">
+<code class="descname">add_segmentation_component</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/dolphin/pipeline.html#NlpPipeline.add_segmentation_component"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dolphin.pipeline.NlpPipeline.add_segmentation_component" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Function to add resume segmentation component to the spacy custom pipeline</strong></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dolphin.pipeline.NlpPipeline.category_component">
+<code class="descname">category_component</code><span class="sig-paren">(</span><em>doc</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dolphin/pipeline.html#NlpPipeline.category_component"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dolphin.pipeline.NlpPipeline.category_component" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>custom function to add resume identification component to the pipeline</strong>
+params: spacy Doc of textual data
+return : Doc object with category embedded</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dolphin.pipeline.NlpPipeline.ner_parsing_component">
+<code class="descname">ner_parsing_component</code><span class="sig-paren">(</span><em>doc</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dolphin/pipeline.html#NlpPipeline.ner_parsing_component"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dolphin.pipeline.NlpPipeline.ner_parsing_component" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Function for preparing custom ner parsing component</strong>
+params: doc of content from file
+return: doc containing parsed information from keyword</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dolphin.pipeline.NlpPipeline.pattern_matching_component">
+<code class="descname">pattern_matching_component</code><span class="sig-paren">(</span><em>doc</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dolphin/pipeline.html#NlpPipeline.pattern_matching_component"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dolphin.pipeline.NlpPipeline.pattern_matching_component" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Function for preparing pattern matching component in spacy</strong>
+params: doc from document
+return : doc containing matched keywords</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dolphin.pipeline.NlpPipeline.process_text">
+<code class="descname">process_text</code><span class="sig-paren">(</span><em>content</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dolphin/pipeline.html#NlpPipeline.process_text"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dolphin.pipeline.NlpPipeline.process_text" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Function to process as spacy doc</strong></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dolphin.pipeline.NlpPipeline.segmentation_component">
+<code class="descname">segmentation_component</code><span class="sig-paren">(</span><em>doc</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dolphin/pipeline.html#NlpPipeline.segmentation_component"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dolphin.pipeline.NlpPipeline.segmentation_component" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>custom function to add resume identification component to the pipeline</strong>
+params: spacy Doc of textual data
+return : Doc object with category embedded</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Welcome to Dolphin’s documentation!</a></li>
+<li><a class="reference internal" href="#module-dolphin.datareader">Datareader</a></li>
+<li><a class="reference internal" href="#module-dolphin.document_categorization.doc_classifier_test">Document_categorization</a></li>
+<li><a class="reference internal" href="#module-dolphin.segmentation.segmentresume">Resume_segmentation</a></li>
+<li><a class="reference internal" href="#module-dolphin.stanfordNER.formatdata">Named_entity_recognition</a></li>
+<li><a class="reference internal" href="#module-dolphin.pipeline">Pipeline</a></li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+  <h4>Next topic</h4>
+  <p class="topless"><a href="README.html"
+                        title="next chapter">dolphin</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="README.html" title="dolphin"
+             >next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">Dolphin 0.0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, Infodevelopers Pvt Ltd.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
+    </div>
+  </body>
+</html>

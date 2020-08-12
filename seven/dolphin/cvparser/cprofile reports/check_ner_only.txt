@@ -1,0 +1,479 @@
+         42152 function calls (41464 primitive calls) in 7.994 seconds
+
+   Ordered by: cumulative time
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        3    0.000    0.000    7.991    2.664 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphin2\seven\dolphin\stanfordNER\namedentityrecognition.py:23(ner_parser)
+        3    0.000    0.000    7.950    2.650 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tag\stanford.py:89(tag)
+        3    0.000    0.000    7.950    2.650 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tag\stanford.py:93(tag_sents)
+        3    0.000    0.000    7.926    2.642 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\internals.py:61(java)
+        3    0.000    0.000    7.921    2.640 c:\python\Lib\subprocess.py:895(communicate)
+        3    0.000    0.000    7.790    2.597 c:\python\Lib\subprocess.py:1242(_communicate)
+       32    7.789    0.243    7.789    0.243 {method 'acquire' of '_thread.lock' objects}
+        6    0.000    0.000    7.788    1.298 c:\python\Lib\threading.py:1000(join)
+        6    0.000    0.000    7.788    1.298 c:\python\Lib\threading.py:1038(_wait_for_tstate_lock)
+        3    0.000    0.000    0.132    0.044 c:\python\Lib\subprocess.py:985(wait)
+        3    0.000    0.000    0.132    0.044 c:\python\Lib\subprocess.py:1221(_wait)
+        3    0.131    0.044    0.131    0.044 {built-in method _winapi.WaitForSingleObject}
+        3    0.000    0.000    0.028    0.009 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\__init__.py:114(word_tokenize)
+        3    0.000    0.000    0.014    0.005 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\__init__.py:131(<listcomp>)
+     2350    0.012    0.000    0.014    0.000 {method 'sub' of 're.Pattern' objects}
+       66    0.001    0.000    0.014    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\destructive.py:106(tokenize)
+        3    0.000    0.000    0.013    0.004 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\__init__.py:96(sent_tokenize)
+        1    0.000    0.000    0.013    0.013 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphin2\seven\dolphin\stanfordNER\namedentityrecognition.py:159(education_parser)
+        3    0.000    0.000    0.011    0.004 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\tempfile.py:303(mkstemp)
+        1    0.000    0.000    0.011    0.011 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphin2\seven\dolphin\stanfordNER\formatdata.py:85(formatEducationalinfo)
+        3    0.000    0.000    0.011    0.004 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\tempfile.py:247(_mkstemp_inner)
+        4    0.011    0.003    0.011    0.003 {built-in method nt.open}
+        2    0.000    0.000    0.009    0.005 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphin2\seven\dolphin\stanfordNER\formatdata.py:134(<listcomp>)
+        2    0.000    0.000    0.009    0.005 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\datefinder\__init__.py:26(find_dates)
+        2    0.000    0.000    0.008    0.004 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\datefinder\__init__.py:98(parse_date_string)
+        3    0.000    0.000    0.007    0.002 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\punkt.py:1268(tokenize)
+        3    0.000    0.000    0.007    0.002 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\punkt.py:1319(sentences_from_text)
+        3    0.000    0.000    0.007    0.002 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\punkt.py:1326(<listcomp>)
+       69    0.000    0.000    0.007    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\punkt.py:1308(span_tokenize)
+       69    0.000    0.000    0.007    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\punkt.py:1343(_realign_boundaries)
+  195/124    0.000    0.000    0.007    0.000 {built-in method builtins.next}
+       22    0.000    0.000    0.007    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\regex.py:268(sub)
+   258/69    0.000    0.000    0.007    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\punkt.py:306(_pair_iter)
+       69    0.002    0.000    0.007    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\punkt.py:1328(_slices_from_text)
+       22    0.001    0.000    0.007    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\regex.py:435(_compile)
+        2    0.000    0.000    0.007    0.003 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\datefinder\__init__.py:48(_find_and_replace)
+        3    0.000    0.000    0.006    0.002 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\data.py:664(load)
+        1    0.005    0.005    0.005    0.005 {built-in method _pickle.load}
+        3    0.000    0.000    0.005    0.002 c:\python\Lib\subprocess.py:656(__init__)
+        3    0.000    0.000    0.004    0.001 c:\python\Lib\subprocess.py:1107(_execute_child)
+        3    0.002    0.001    0.004    0.001 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tag\stanford.py:218(parse_output)
+       63    0.000    0.000    0.004    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\punkt.py:1373(text_contains_sentbreak)
+        3    0.004    0.001    0.004    0.001 {built-in method _winapi.CreateProcess}
+      189    0.000    0.000    0.004    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\punkt.py:1508(_annotate_second_pass)
+        3    0.000    0.000    0.004    0.001 doc.pyx:343(__str__)
+        3    0.003    0.001    0.004    0.001 doc.pyx:337(__unicode__)
+      195    0.000    0.000    0.003    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\punkt.py:577(_annotate_first_pass)
+        3    0.003    0.001    0.003    0.001 {method 'close' of '_io.BufferedWriter' objects}
+        6    0.000    0.000    0.003    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\internals.py:29(config_java)
+      195    0.000    0.000    0.003    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\punkt.py:547(_tokenize_words)
+        6    0.000    0.000    0.003    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\internals.py:679(find_binary)
+      172    0.000    0.000    0.003    0.000 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphin2\seven\dolphin\stanfordNER\formatdata.py:41(cleandata)
+        4    0.003    0.001    0.003    0.001 {built-in method nt.unlink}
+       12    0.000    0.000    0.003    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\internals.py:653(find_binary_iter)
+       12    0.000    0.000    0.003    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\internals.py:504(find_file_iter)
+      180    0.000    0.000    0.002    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\re.py:271(_compile)
+        2    0.000    0.000    0.002    0.001 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\re.py:232(compile)
+        2    0.000    0.000    0.002    0.001 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:759(compile)
+       47    0.000    0.000    0.002    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\genericpath.py:27(isfile)
+       49    0.002    0.000    0.002    0.000 {built-in method nt.stat}
+    31/11    0.000    0.000    0.002    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:382(_parse_pattern)
+    51/11    0.000    0.000    0.002    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:392(parse_sequence)
+    51/11    0.000    0.000    0.002    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:3374(optimise)
+      117    0.000    0.000    0.002    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\punkt.py:259(word_tokenize)
+        4    0.000    0.000    0.002    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\datefinder\__init__.py:131(extract_date_strings_inner)
+       20    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:2938(optimise)
+     1848    0.001    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\re.py:307(_subx)
+       20    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:2011(optimise)
+        2    0.000    0.000    0.001    0.001 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:919(parse)
+     18/2    0.000    0.000    0.001    0.001 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:417(_parse_sub)
+     34/2    0.000    0.000    0.001    0.001 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:475(_parse)
+        6    0.000    0.000    0.001    0.000 c:\python\Lib\threading.py:829(start)
+      117    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\punkt.py:243(_word_tokenizer_re)
+     2577    0.001    0.000    0.001    0.000 {method 'split' of 'str' objects}
+      594    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\re.py:313(filter)
+        6    0.000    0.000    0.001    0.000 c:\python\Lib\threading.py:534(wait)
+      172    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\re.py:185(sub)
+       20    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:768(parse_paren)
+        4    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\dateutil\parser\_parser.py:1276(parse)
+        4    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\dateutil\parser\_parser.py:578(parse)
+        6    0.000    0.000    0.001    0.000 c:\python\Lib\threading.py:264(wait)
+        3    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\punkt.py:275(period_context_re)
+        4    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\dateutil\parser\_parser.py:672(_parse)
+      594    0.001    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:1036(expand_template)
+     2382    0.000    0.000    0.001    0.000 doc.pyx:315(__iter__)
+        3    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\tempfile.py:114(_sanitize_params)
+        3    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\tempfile.py:287(gettempdir)
+        1    0.000    0.000    0.001    0.001 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\tempfile.py:186(_get_default_tempdir)
+       20    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:2115(_split_common_prefix)
+      132    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\punkt.py:394(__init__)
+        2    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\datefinder\__init__.py:187(tokenize_string)
+   125/22    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:1869(compile)
+     4990    0.001    0.000    0.001    0.000 {method 'append' of 'list' objects}
+       11    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:300(_compile_firstset)
+        2    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:598(_code)
+     45/2    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:71(_compile)
+        3    0.000    0.000    0.001    0.000 c:\python\Lib\subprocess.py:491(list2cmdline)
+      879    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:254(get)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\data.py:859(_open)
+       10    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:3386(pack_characters)
+       29    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\ntpath.py:75(join)
+2988/2985    0.000    0.000    0.000    0.000 {method 'join' of 'str' objects}
+      172    0.000    0.000    0.000    0.000 {built-in method maketrans}
+      173    0.000    0.000    0.000    0.000 {method 'translate' of 'str' objects}
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\data.py:473(find)
+     2379    0.000    0.000    0.000    0.000 token.pxd:19(cinit)
+       10    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:3453(_compile)
+       11    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:310(_check_firstset)
+      132    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\punkt.py:598(_first_pass_annotation)
+       28    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\re.py:297(_compile_repl)
+       28    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:951(parse_template)
+     1012    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:233(__next)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\dateutil\parser\_parser.py:205(split)
+      117    0.000    0.000    0.000    0.000 {method 'findall' of 're.Pattern' objects}
+        6    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\dateutil\parser\_parser.py:881(_parse_numeric_token)
+     2474    0.000    0.000    0.000    0.000 {method 'strip' of 'str' objects}
+       89    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\ntpath.py:122(splitdrive)
+       20    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:2965(_compile)
+       20    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:2282(_reduce_to_set)
+      126    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\punkt.py:1518(_second_pass_annotation)
+       10    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:3437(get_firstset)
+        6    0.000    0.000    0.000    0.000 c:\python\Lib\threading.py:758(__init__)
+       15    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:276(_optimize_charset)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\data.py:149(normalize_resource_url)
+       20    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\dateutil\parser\_parser.py:195(__next__)
+       66    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:2453(__init__)
+       11    0.000    0.000    0.000    0.000 {built-in method io.open}
+     1093    0.000    0.000    0.000    0.000 {built-in method builtins.isinstance}
+      132    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\punkt.py:417(_get_type)
+     1380    0.000    0.000    0.000    0.000 {method 'group' of 're.Match' objects}
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\tempfile.py:153(__next__)
+       40    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:3468(_flush_characters)
+       20    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\dateutil\parser\_parser.py:83(get_token)
+        6    0.000    0.000    0.000    0.000 {built-in method _thread.start_new_thread}
+        3    0.000    0.000    0.000    0.000 c:\python\Lib\subprocess.py:1013(_get_handles)
+       11    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:4284(_get_required_string)
+       12    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:3797(_compile)
+       24    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:1167(parse_escape)
+       20    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:2085(_compile)
+       20    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:2102(_flatten_branches)
+       11    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\locale.py:618(getpreferredencoding)
+       22    0.000    0.000    0.000    0.000 {method 'sub' of '_regex.Pattern' objects}
+    51/11    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:3370(fix_groups)
+       11    0.000    0.000    0.000    0.000 {built-in method regex._regex.compile}
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:1389(parse_set)
+1302/1246    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+      251    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:1819(__init__)
+        5    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\data.py:205(normalize_resource_name)
+       10    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:3560(get_required_string)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphin2\seven\dolphin\stanfordNER\namedentityrecognition.py:35(experience_parser)
+        8    0.000    0.000    0.000    0.000 {method 'capturesdict' of '_regex.Match' objects}
+      203    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:3972(get)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:1455(parse_set_imp_union)
+      942    0.000    0.000    0.000    0.000 {built-in method builtins.setattr}
+       10    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\ntpath.py:450(normpath)
+      259    0.000    0.000    0.000    0.000 {method 'match' of 're.Pattern' objects}
+       84    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:4115(match)
+       10    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\dateutil\parser\_parser.py:434(append)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\datefinder\__init__.py:212(merge_tokens)
+       62    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:1822(with_flags)
+      132    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\punkt.py:458(is_ellipsis)
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\os.py:1022(fdopen)
+       11    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\_bootlocale.py:11(getpreferredencoding)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:1478(parse_set_member)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphin2\seven\dolphin\stanfordNER\namedentityrecognition.py:235(personal_info_parser)
+       19    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\os.py:673(__getitem__)
+       20    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:2934(fix_groups)
+        5    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\ntpath.py:523(abspath)
+       33    0.000    0.000    0.000    0.000 c:\python\Lib\subprocess.py:202(Close)
+       10    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:3000(get_required_string)
+      242    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:164(__getitem__)
+       10    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:3879(get_firstset)
+    13/12    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:3777(optimise)
+        8    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\_collections_abc.py:664(__contains__)
+       22    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:341(_flatten_code)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\enum.py:830(__or__)
+       40    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:2336(_flush_set_members)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:1519(parse_set_item)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\tempfile.py:142(rng)
+        8    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\enum.py:284(__call__)
+       20    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:2943(pack_characters)
+        3    0.000    0.000    0.000    0.000 {method 'decode' of 'bytes' objects}
+       11    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:1884(get_required_string)
+       20    0.000    0.000    0.000    0.000 {built-in method builtins.all}
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\datefinder\__init__.py:269(split_date_range)
+        8    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\enum.py:526(__new__)
+        6    0.000    0.000    0.000    0.000 {built-in method _winapi.CreatePipe}
+       10    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:2959(get_firstset)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\genericpath.py:16(exists)
+       81    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:1812(make_sequence)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\tempfile.py:156(<listcomp>)
+       71    0.000    0.000    0.000    0.000 {built-in method builtins.min}
+        4    0.000    0.000    0.000    0.000 {method 'finditer' of '_regex.Pattern' objects}
+        6    0.000    0.000    0.000    0.000 c:\python\Lib\threading.py:499(__init__)
+       60    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:2133(<genexpr>)
+       71    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:3363(__init__)
+       11    0.000    0.000    0.000    0.000 {built-in method _locale._getdefaultlocale}
+      303    0.000    0.000    0.000    0.000 {method 'get' of 'dict' objects}
+        6    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tag\stanford.py:106(<genexpr>)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\enum.py:793(_missing_)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\enum.py:800(_create_pseudo_member_)
+       20    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:4202(open_group)
+      455    0.000    0.000    0.000    0.000 {method 'lower' of 'str' objects}
+       40    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:2926(__init__)
+       20    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:2007(fix_groups)
+        6    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\_weakrefset.py:38(_remove)
+       32    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\random.py:256(choice)
+       10    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:2388(max_width)
+      402    0.000    0.000    0.000    0.000 {method 'extend' of 'list' objects}
+       10    0.000    0.000    0.000    0.000 {built-in method builtins.any}
+       10    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:2078(get_firstset)
+       20    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:3475(<genexpr>)
+       20    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:2061(pack_characters)
+       11    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:4183(__init__)
+       21    0.000    0.000    0.000    0.000 {built-in method _winapi.CloseHandle}
+        5    0.000    0.000    0.000    0.000 {built-in method nt._isdir}
+       47    0.000    0.000    0.000    0.000 {method 'add' of 'set' objects}
+      170    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:249(match)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\enum.py:872(_decompose)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\dateutil\parser\_parser.py:227(__init__)
+        6    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\dateutil\parser\_parser.py:1147(_to_decimal)
+    70/62    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:1875(__hash__)
+       47    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:960(addgroup)
+      201    0.000    0.000    0.000    0.000 {method 'endswith' of 'str' objects}
+        9    0.000    0.000    0.000    0.000 c:\python\Lib\subprocess.py:1085(_make_inheritable)
+       63    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\punkt.py:468(is_initial)
+       22    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:1009(_handle_fromlist)
+       40    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:2003(__init__)
+       63    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\punkt.py:421(type_no_period)
+        6    0.000    0.000    0.000    0.000 c:\python\Lib\threading.py:216(__init__)
+      134    0.000    0.000    0.000    0.000 {method 'update' of 'dict' objects}
+     22/5    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:174(getwidth)
+       18    0.000    0.000    0.000    0.000 {built-in method builtins.max}
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\compat.py:39(_decorator)
+        9    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\ntpath.py:67(isabs)
+       29    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:295(_class_escape)
+       12    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:3576(__init__)
+      115    0.000    0.000    0.000    0.000 {method 'startswith' of 'str' objects}
+       10    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:292(is_cased_i)
+       19    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\os.py:743(encodekey)
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:96(closegroup)
+        6    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\dateutil\parser\_parser.py:1012(_find_hms_idx)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\tempfile.py:159(_candidate_tempdir_list)
+       32    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:3204(_compile)
+       32    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\random.py:224(_randbelow)
+        4    0.000    0.000    0.000    0.000 c:\python\Lib\logging\__init__.py:1361(debug)
+        1    0.000    0.000    0.000    0.000 {built-in method nt.close}
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\data.py:305(__init__)
+       10    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:3862(__init__)
+       30    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:224(__init__)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\dateutil\parser\_parser.py:62(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\data.py:326(open)
+       10    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:2470(rebuild)
+        5    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\re.py:180(search)
+       20    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:1889(__init__)
+       20    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:4154(expect)
+        4    0.000    0.000    0.000    0.000 {built-in method now}
+       20    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:4228(close_group)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\enum.py:890(<listcomp>)
+        3    0.000    0.000    0.000    0.000 c:\python\Lib\subprocess.py:850(__del__)
+        8    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\datefinder\__init__.py:261(get_token_group)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:2845(_compile)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\random.py:88(__init__)
+        4    0.000    0.000    0.000    0.000 c:\python\Lib\logging\__init__.py:1619(isEnabledFor)
+       20    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:2062(<listcomp>)
+      110    0.000    0.000    0.000    0.000 {method 'replace' of 'str' objects}
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\dateutil\parser\_parser.py:401(__init__)
+       52    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:349(make_case_flags)
+        9    0.000    0.000    0.000    0.000 {built-in method _winapi.DuplicateHandle}
+        5    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:411(_mk_bitmap)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\random.py:97(seed)
+       11    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:3960(__init__)
+        3    0.000    0.000    0.000    0.000 {built-in method _winapi.GetExitCodeProcess}
+       32    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:3003(__del__)
+       29    0.000    0.000    0.000    0.000 {method 'pop' of 'list' objects}
+      185    0.000    0.000    0.000    0.000 {built-in method builtins.iter}
+       63    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\punkt.py:1409(_annotate_tokens)
+       10    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:3450(has_simple_start)
+      103    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:160(__len__)
+        5    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\data.py:122(split_resource_url)
+       15    0.000    0.000    0.000    0.000 {built-in method _thread.allocate_lock}
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:536(_compile_info)
+       40    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:1878(__eq__)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\datefinder\__init__.py:287(find_dates)
+       30    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:2389(<genexpr>)
+       63    0.000    0.000    0.000    0.000 {built-in method builtins.hasattr}
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:1286(parse_hex_escape)
+       10    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:3890(_compile)
+       20    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:2046(_add_precheck)
+      139    0.000    0.000    0.000    0.000 {built-in method nt.fspath}
+    70/62    0.000    0.000    0.000    0.000 {built-in method builtins.hash}
+       10    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:3198(get_firstset)
+        8    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\dateutil\parser\_parser.py:342(hms)
+        7    0.000    0.000    0.000    0.000 {method 'close' of '_io.BufferedReader' objects}
+       22    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:343(_escape)
+       12    0.000    0.000    0.000    0.000 c:\python\Lib\threading.py:1214(current_thread)
+        2    0.000    0.000    0.000    0.000 {function Random.seed at 0x000000B510FC8158}
+        6    0.000    0.000    0.000    0.000 c:\python\Lib\threading.py:728(_newname)
+       15    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:249(_compile_charset)
+       42    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\dateutil\parser\_parser.py:214(isnum)
+       60    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:2127(<genexpr>)
+       48    0.000    0.000    0.000    0.000 {method 'read' of '_io.StringIO' objects}
+        4    0.000    0.000    0.000    0.000 {method 'replace' of 'datetime.datetime' objects}
+        6    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\_weakrefset.py:81(add)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:476(apply_quantifier)
+       16    0.000    0.000    0.000    0.000 {method 'discard' of 'set' objects}
+       52    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:286(tell)
+       20    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:1898(_compile)
+       11    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:4245(_check_group_features)
+       10    0.000    0.000    0.000    0.000 {built-in method regex._regex.get_all_cases}
+       19    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:168(__setitem__)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:2816(optimise)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\copy.py:66(copy)
+       51    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:473(<listcomp>)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\datefinder\date_fragment.py:18(get_captures_count)
+        7    0.000    0.000    0.000    0.000 {method 'format' of 'str' objects}
+       66    0.000    0.000    0.000    0.000 {built-in method builtins.chr}
+        6    0.000    0.000    0.000    0.000 c:\python\Lib\threading.py:968(_stop)
+        7    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:267(getuntil)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\compat.py:25(add_py3_data)
+       13    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:423(_simple)
+       53    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:172(append)
+        5    0.000    0.000    0.000    0.000 {method 'search' of 're.Pattern' objects}
+        5    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:413(<listcomp>)
+       22    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\types.py:164(__get__)
+       19    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\os.py:737(check_str)
+       54    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:111(__init__)
+       22    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\dateutil\parser\_parser.py:209(isword)
+        5    0.000    0.000    0.000    0.000 {built-in method builtins.sum}
+        3    0.000    0.000    0.000    0.000 c:\python\Lib\subprocess.py:1094(_filter_handle_list)
+      119    0.000    0.000    0.000    0.000 {built-in method builtins.ord}
+       10    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\enum.py:907(_power_of_two)
+       10    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:2962(has_simple_start)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\datefinder\date_fragment.py:19(<listcomp>)
+       63    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\punkt.py:430(type_no_sentperiod)
+       63    0.000    0.000    0.000    0.000 {method 'end' of 're.Match' objects}
+       52    0.000    0.000    0.000    0.000 {method 'getrandbits' of '_random.Random' objects}
+       63    0.000    0.000    0.000    0.000 {method 'start' of 're.Match' objects}
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\ntpath.py:287(expanduser)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\punkt.py:206(_re_sent_end_chars)
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\os.py:769(getenv)
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\compat.py:118(is_config)
+       10    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:1895(get_firstset)
+        3    0.000    0.000    0.000    0.000 {method 'finditer' of 're.Pattern' objects}
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\enum.py:836(__and__)
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tag\stanford.py:201(_cmd)
+       52    0.000    0.000    0.000    0.000 {method 'isdigit' of 'str' objects}
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\ntpath.py:337(expandvars)
+        6    0.000    0.000    0.000    0.000 c:\python\Lib\threading.py:1120(daemon)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\logging\__init__.py:212(_acquireLock)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:2838(get_firstset)
+       39    0.000    0.000    0.000    0.000 {method 'items' of 'dict' objects}
+        6    0.000    0.000    0.000    0.000 c:\python\Lib\threading.py:240(__enter__)
+        6    0.000    0.000    0.000    0.000 c:\python\Lib\threading.py:255(_is_owned)
+       84    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:1842(fix_groups)
+        8    0.000    0.000    0.000    0.000 {method 'group' of '_regex.Match' objects}
+        5    0.000    0.000    0.000    0.000 {built-in method nt._getfullpathname}
+        5    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:408(_uniq)
+        6    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\dateutil\parser\_parser.py:219(isspace)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\nturl2path.py:8(url2pathname)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:2807(__init__)
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\_collections_abc.py:657(get)
+        3    0.000    0.000    0.000    0.000 c:\python\Lib\subprocess.py:130(__init__)
+       35    0.000    0.000    0.000    0.000 {method 'find' of 'bytearray' objects}
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:2882(get_required_string)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:3594(get_firstset)
+       11    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:4158(at_end)
+        2    0.000    0.000    0.000    0.000 {method 'copy' of 'dict' objects}
+        3    0.000    0.000    0.000    0.000 {built-in method _winapi.GetStdHandle}
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:84(opengroup)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\logging\__init__.py:1605(getEffectiveLevel)
+       13    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:3622(_handle_case_folding)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\datefinder\__init__.py:76(_pop_tz_string)
+        2    0.000    0.000    0.000    0.000 {built-in method _sre.compile}
+        6    0.000    0.000    0.000    0.000 c:\python\Lib\threading.py:243(__exit__)
+        6    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\dateutil\parser\_parser.py:325(jump)
+        8    0.000    0.000    0.000    0.000 {method 'span' of '_regex.Match' objects}
+       19    0.000    0.000    0.000    0.000 {method 'upper' of 'str' objects}
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\dateutil\parser\_parser.py:335(month)
+        6    0.000    0.000    0.000    0.000 {built-in method msvcrt.open_osfhandle}
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\re.py:252(escape)
+       59    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:2473(optimise)
+       32    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:3195(optimise)
+       20    0.000    0.000    0.000    0.000 {method 'clear' of 'set' objects}
+      3/2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:461(_get_literal_prefix)
+        6    0.000    0.000    0.000    0.000 c:\python\Lib\threading.py:252(_acquire_restore)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\datefinder\__init__.py:124(extract_date_strings)
+        3    0.000    0.000    0.000    0.000 {method 'encode' of 'str' objects}
+       19    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\enum.py:623(name)
+        9    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\enum.py:855(_high_bit)
+       41    0.000    0.000    0.000    0.000 {method 'bit_length' of 'int' objects}
+        6    0.000    0.000    0.000    0.000 c:\python\Lib\threading.py:249(_release_save)
+        3    0.000    0.000    0.000    0.000 c:\python\Lib\subprocess.py:1101(<setcomp>)
+       41    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:1848(pack_characters)
+        4    0.000    0.000    0.000    0.000 {method 'write' of '_io.BufferedWriter' objects}
+       22    0.000    0.000    0.000    0.000 {method 'isalpha' of 'str' objects}
+       18    0.000    0.000    0.000    0.000 c:\python\Lib\threading.py:507(is_set)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:492(_get_charset_prefix)
+        6    0.000    0.000    0.000    0.000 c:\python\Lib\threading.py:1104(daemon)
+        3    0.000    0.000    0.000    0.000 c:\python\Lib\subprocess.py:226(_cleanup)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\datefinder\date_fragment.py:9(__init__)
+       10    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\ntpath.py:34(_get_bothseps)
+        6    0.000    0.000    0.000    0.000 c:\python\Lib\subprocess.py:207(Detach)
+       10    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:3907(get_required_string)
+       10    0.000    0.000    0.000    0.000 {method 'lstrip' of 'str' objects}
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\dateutil\parser\_parser.py:328(weekday)
+       20    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:1845(optimise)
+        8    0.000    0.000    0.000    0.000 {built-in method builtins.getattr}
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:359(make_character)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:2813(fix_groups)
+       14    0.000    0.000    0.000    0.000 {method 'release' of '_thread.lock' objects}
+        1    0.000    0.000    0.000    0.000 {method 'acquire' of '_thread.RLock' objects}
+       12    0.000    0.000    0.000    0.000 {built-in method _thread.get_ident}
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\logging\__init__.py:221(_releaseLock)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:2821(pack_characters)
+        4    0.000    0.000    0.000    0.000 {built-in method nt.getpid}
+       10    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:81(groups)
+        3    0.000    0.000    0.000    0.000 c:\python\Lib\subprocess.py:1204(_internal_poll)
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\tempfile.py:93(_infer_return_type)
+        8    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\dateutil\parser\_parser.py:408(has_year)
+       11    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:1866(has_simple_start)
+        6    0.000    0.000    0.000    0.000 {method 'append' of 'collections.deque' objects}
+        1    0.000    0.000    0.000    0.000 {method 'sort' of 'list' objects}
+        6    0.000    0.000    0.000    0.000 c:\python\Lib\threading.py:1080(is_alive)
+        9    0.000    0.000    0.000    0.000 c:\python\Lib\subprocess.py:969(_remaining_time)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\dateutil\parser\_parser.py:348(ampm)
+        5    0.000    0.000    0.000    0.000 {method 'remove' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\re.py:170(match)
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\tempfile.py:233(_get_candidate_names)
+       20    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:1857(can_be_affix)
+       10    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:3223(max_width)
+        7    0.000    0.000    0.000    0.000 {built-in method _stat.S_ISREG}
+        3    0.000    0.000    0.000    0.000 {method 'count' of 'list' objects}
+        2    0.000    0.000    0.000    0.000 {built-in method builtins.sorted}
+       11    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\regex.py:619(<genexpr>)
+       12    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:3677(__del__)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\datefinder\__init__.py:23(__init__)
+        6    0.000    0.000    0.000    0.000 {method 'isspace' of 'str' objects}
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:595(isstring)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:903(fix_flags)
+        6    0.000    0.000    0.000    0.000 {method '__enter__' of '_thread.lock' objects}
+        5    0.000    0.000    0.000    0.000 {method 'translate' of 'bytearray' objects}
+        5    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:65(_combine_flags)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:76(__init__)
+       10    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:1912(max_width)
+       18    0.000    0.000    0.000    0.000 {built-in method _winapi.GetCurrentProcess}
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\dateutil\parser\_parser.py:412(has_month)
+        1    0.000    0.000    0.000    0.000 {method 'title' of 'str' objects}
+        4    0.000    0.000    0.000    0.000 {built-in method builtins.abs}
+        6    0.000    0.000    0.000    0.000 {method 'is_finite' of 'decimal.Decimal' objects}
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\dateutil\parser\_parser.py:1062(_could_be_tzname)
+        6    0.000    0.000    0.000    0.000 {method '__exit__' of '_thread.lock' objects}
+        2    0.000    0.000    0.000    0.000 {method 'index' of 'str' objects}
+        7    0.000    0.000    0.000    0.000 {method 'isidentifier' of 'str' objects}
+        5    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_compile.py:453(_get_iscased)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\dateutil\parser\_parser.py:192(__iter__)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:524(parse_quantifier)
+        1    0.000    0.000    0.000    0.000 {built-in method nt.getcwd}
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:1872(is_empty)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\regex\_regex_core.py:3652(max_width)
+        1    0.000    0.000    0.000    0.000 {built-in method __new__ of type object at 0x00007FFBAF8B4BA0}
+        6    0.000    0.000    0.000    0.000 {method 'locked' of '_thread.lock' objects}
+        3    0.000    0.000    0.000    0.000 {method 'rstrip' of 'str' objects}
+        3    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\enum.py:628(value)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\urllib\parse.py:616(unquote)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\punkt.py:200(__setstate__)
+        1    0.000    0.000    0.000    0.000 {method 'setdefault' of 'dict' objects}
+        1    0.000    0.000    0.000    0.000 {method 'insert' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\enum.py:901(<lambda>)
+        1    0.000    0.000    0.000    0.000 {method 'groups' of 're.Match' objects}
+        1    0.000    0.000    0.000    0.000 {method 'release' of '_thread.RLock' objects}
+
+

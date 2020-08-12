@@ -1,0 +1,192 @@
+         9593 function calls (9506 primitive calls) in 2.502 seconds
+
+   Ordered by: cumulative time
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    2.500    2.500 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphin2\seven\dolphin\stanfordNER\namedentityrecognition.py:23(ner_parser)
+        1    0.000    0.000    2.493    2.493 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tag\stanford.py:89(tag)
+        1    0.000    0.000    2.493    2.493 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tag\stanford.py:93(tag_sents)
+        1    0.000    0.000    2.489    2.489 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\internals.py:61(java)
+        1    0.000    0.000    2.487    2.487 c:\python\Lib\subprocess.py:895(communicate)
+        1    0.000    0.000    2.445    2.445 c:\python\Lib\subprocess.py:1242(_communicate)
+       10    2.444    0.244    2.444    0.244 {method 'acquire' of '_thread.lock' objects}
+        2    0.000    0.000    2.444    1.222 c:\python\Lib\threading.py:1000(join)
+        2    0.000    0.000    2.444    1.222 c:\python\Lib\threading.py:1038(_wait_for_tstate_lock)
+        1    0.000    0.000    0.043    0.043 c:\python\Lib\subprocess.py:985(wait)
+        1    0.000    0.000    0.043    0.043 c:\python\Lib\subprocess.py:1221(_wait)
+        1    0.042    0.042    0.042    0.042 {built-in method _winapi.WaitForSingleObject}
+        1    0.000    0.000    0.007    0.007 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\__init__.py:114(word_tokenize)
+        1    0.000    0.000    0.005    0.005 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\__init__.py:131(<listcomp>)
+       22    0.000    0.000    0.005    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\destructive.py:106(tokenize)
+      726    0.004    0.000    0.004    0.000 {method 'sub' of 're.Pattern' objects}
+        1    0.000    0.000    0.003    0.003 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\__init__.py:96(sent_tokenize)
+        1    0.000    0.000    0.002    0.002 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\punkt.py:1268(tokenize)
+        1    0.000    0.000    0.002    0.002 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\punkt.py:1319(sentences_from_text)
+        1    0.000    0.000    0.002    0.002 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\punkt.py:1326(<listcomp>)
+       23    0.000    0.000    0.002    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\punkt.py:1308(span_tokenize)
+       23    0.000    0.000    0.002    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\punkt.py:1343(_realign_boundaries)
+    86/23    0.000    0.000    0.002    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\punkt.py:306(_pair_iter)
+       23    0.001    0.000    0.002    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\punkt.py:1328(_slices_from_text)
+    64/41    0.000    0.000    0.002    0.000 {built-in method builtins.next}
+        1    0.000    0.000    0.002    0.002 doc.pyx:343(__str__)
+        1    0.001    0.001    0.002    0.002 doc.pyx:337(__unicode__)
+        1    0.000    0.000    0.002    0.002 c:\python\Lib\subprocess.py:656(__init__)
+        1    0.000    0.000    0.001    0.001 c:\python\Lib\subprocess.py:1107(_execute_child)
+       21    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\punkt.py:1373(text_contains_sentbreak)
+        1    0.001    0.001    0.001    0.001 {built-in method _winapi.CreateProcess}
+       63    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\punkt.py:1508(_annotate_second_pass)
+        1    0.001    0.001    0.001    0.001 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tag\stanford.py:218(parse_output)
+        2    0.000    0.000    0.001    0.001 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\internals.py:29(config_java)
+        2    0.000    0.000    0.001    0.001 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\internals.py:679(find_binary)
+        4    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\internals.py:653(find_binary_iter)
+        4    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\internals.py:504(find_file_iter)
+       65    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\punkt.py:577(_annotate_first_pass)
+        1    0.001    0.001    0.001    0.001 {built-in method nt.unlink}
+        1    0.001    0.001    0.001    0.001 {method 'close' of '_io.BufferedWriter' objects}
+       14    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\genericpath.py:27(isfile)
+       65    0.000    0.000    0.001    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\punkt.py:547(_tokenize_words)
+       14    0.001    0.000    0.001    0.000 {built-in method nt.stat}
+        2    0.000    0.000    0.000    0.000 c:\python\Lib\threading.py:829(start)
+      198    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\re.py:313(filter)
+        2    0.000    0.000    0.000    0.000 c:\python\Lib\threading.py:534(wait)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\tempfile.py:303(mkstemp)
+        2    0.000    0.000    0.000    0.000 c:\python\Lib\threading.py:264(wait)
+      799    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\tempfile.py:247(_mkstemp_inner)
+      616    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\re.py:307(_subx)
+      794    0.000    0.000    0.000    0.000 doc.pyx:315(__iter__)
+       44    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\punkt.py:394(__init__)
+      198    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\sre_parse.py:1036(expand_template)
+        1    0.000    0.000    0.000    0.000 {built-in method nt.open}
+       39    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\punkt.py:259(word_tokenize)
+       44    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\punkt.py:598(_first_pass_annotation)
+      793    0.000    0.000    0.000    0.000 token.pxd:19(cinit)
+     1223    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+       39    0.000    0.000    0.000    0.000 {method 'findall' of 're.Pattern' objects}
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphin2\seven\dolphin\stanfordNER\namedentityrecognition.py:35(experience_parser)
+        9    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\ntpath.py:75(join)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\subprocess.py:491(list2cmdline)
+       42    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\punkt.py:1518(_second_pass_annotation)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\data.py:664(load)
+       44    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\punkt.py:417(_get_type)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\data.py:149(normalize_resource_url)
+  915/914    0.000    0.000    0.000    0.000 {method 'join' of 'str' objects}
+       26    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\ntpath.py:122(splitdrive)
+        2    0.000    0.000    0.000    0.000 c:\python\Lib\threading.py:758(__init__)
+        2    0.000    0.000    0.000    0.000 {built-in method _thread.start_new_thread}
+      766    0.000    0.000    0.000    0.000 {method 'strip' of 'str' objects}
+      460    0.000    0.000    0.000    0.000 {method 'group' of 're.Match' objects}
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\subprocess.py:1013(_get_handles)
+       86    0.000    0.000    0.000    0.000 {method 'match' of 're.Pattern' objects}
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\data.py:205(normalize_resource_name)
+       44    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\punkt.py:458(is_ellipsis)
+      298    0.000    0.000    0.000    0.000 {built-in method builtins.setattr}
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\tempfile.py:153(__next__)
+        3    0.000    0.000    0.000    0.000 {built-in method io.open}
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\os.py:673(__getitem__)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\_collections_abc.py:664(__contains__)
+        2    0.000    0.000    0.000    0.000 {built-in method _winapi.CreatePipe}
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\os.py:1022(fdopen)
+        2    0.000    0.000    0.000    0.000 c:\python\Lib\threading.py:499(__init__)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\ntpath.py:450(normpath)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\tempfile.py:156(<listcomp>)
+       21    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\punkt.py:468(is_initial)
+       21    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\punkt.py:421(type_no_period)
+       11    0.000    0.000    0.000    0.000 c:\python\Lib\subprocess.py:202(Close)
+       66    0.000    0.000    0.000    0.000 {method 'endswith' of 'str' objects}
+        8    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\random.py:256(choice)
+       60    0.000    0.000    0.000    0.000 {built-in method builtins.isinstance}
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\ntpath.py:67(isabs)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\ntpath.py:523(abspath)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tag\stanford.py:106(<genexpr>)
+        2    0.000    0.000    0.000    0.000 c:\python\Lib\threading.py:216(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\re.py:180(search)
+        3    0.000    0.000    0.000    0.000 c:\python\Lib\subprocess.py:1085(_make_inheritable)
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\os.py:743(encodekey)
+        8    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\random.py:224(_randbelow)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\data.py:122(split_resource_url)
+       86    0.000    0.000    0.000    0.000 {method 'lower' of 'str' objects}
+       61    0.000    0.000    0.000    0.000 {built-in method builtins.iter}
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\subprocess.py:850(__del__)
+        7    0.000    0.000    0.000    0.000 {built-in method _winapi.CloseHandle}
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\_weakrefset.py:38(_remove)
+       21    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\punkt.py:1409(_annotate_tokens)
+       39    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\punkt.py:243(_word_tokenizer_re)
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\_weakrefset.py:81(add)
+        5    0.000    0.000    0.000    0.000 {built-in method _thread.allocate_lock}
+       73    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+        2    0.000    0.000    0.000    0.000 c:\python\Lib\threading.py:728(_newname)
+       30    0.000    0.000    0.000    0.000 {method 'replace' of 'str' objects}
+        2    0.000    0.000    0.000    0.000 c:\python\Lib\threading.py:968(_stop)
+        4    0.000    0.000    0.000    0.000 c:\python\Lib\threading.py:1214(current_thread)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\tempfile.py:114(_sanitize_params)
+        1    0.000    0.000    0.000    0.000 {built-in method _winapi.GetExitCodeProcess}
+       39    0.000    0.000    0.000    0.000 {built-in method nt.fspath}
+        1    0.000    0.000    0.000    0.000 {method 'decode' of 'bytes' objects}
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\tempfile.py:142(rng)
+       21    0.000    0.000    0.000    0.000 {method 'end' of 're.Match' objects}
+        3    0.000    0.000    0.000    0.000 {built-in method _winapi.DuplicateHandle}
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\spacy\compat.py:118(is_config)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\re.py:271(_compile)
+        1    0.000    0.000    0.000    0.000 {method 'search' of 're.Pattern' objects}
+       21    0.000    0.000    0.000    0.000 {method 'start' of 're.Match' objects}
+        4    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\os.py:737(check_str)
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.sum}
+        2    0.000    0.000    0.000    0.000 c:\python\Lib\threading.py:240(__enter__)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\compat.py:25(add_py3_data)
+       21    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\punkt.py:430(type_no_sentperiod)
+        2    0.000    0.000    0.000    0.000 c:\python\Lib\threading.py:243(__exit__)
+        2    0.000    0.000    0.000    0.000 c:\python\Lib\threading.py:255(_is_owned)
+        2    0.000    0.000    0.000    0.000 c:\python\Lib\threading.py:1120(daemon)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\subprocess.py:1094(_filter_handle_list)
+        2    0.000    0.000    0.000    0.000 c:\python\Lib\threading.py:249(_release_save)
+        6    0.000    0.000    0.000    0.000 {method 'startswith' of 'str' objects}
+        1    0.000    0.000    0.000    0.000 {method 'finditer' of 're.Pattern' objects}
+        3    0.000    0.000    0.000    0.000 {built-in method builtins.hasattr}
+        2    0.000    0.000    0.000    0.000 c:\python\Lib\threading.py:252(_acquire_restore)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\subprocess.py:130(__init__)
+        6    0.000    0.000    0.000    0.000 {method 'get' of 'dict' objects}
+        2    0.000    0.000    0.000    0.000 {built-in method _stat.S_ISREG}
+       12    0.000    0.000    0.000    0.000 {method 'getrandbits' of '_random.Random' objects}
+        2    0.000    0.000    0.000    0.000 {built-in method msvcrt.open_osfhandle}
+        1    0.000    0.000    0.000    0.000 {built-in method nt._getfullpathname}
+        1    0.000    0.000    0.000    0.000 {method 'encode' of 'str' objects}
+        2    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\ntpath.py:34(_get_bothseps)
+        2    0.000    0.000    0.000    0.000 c:\python\Lib\threading.py:1104(daemon)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\subprocess.py:226(_cleanup)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\subprocess.py:1204(_internal_poll)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\tempfile.py:93(_infer_return_type)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tag\stanford.py:201(_cmd)
+        1    0.000    0.000    0.000    0.000 {method 'write' of '_io.BufferedWriter' objects}
+       33    0.000    0.000    0.000    0.000 {method 'extend' of 'list' objects}
+        2    0.000    0.000    0.000    0.000 {method 'add' of 'set' objects}
+        4    0.000    0.000    0.000    0.000 {method 'upper' of 'str' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        1    0.000    0.000    0.000    0.000 {built-in method _winapi.GetStdHandle}
+        6    0.000    0.000    0.000    0.000 c:\python\Lib\threading.py:507(is_set)
+        1    0.000    0.000    0.000    0.000 c:\python\Lib\subprocess.py:1101(<setcomp>)
+        1    0.000    0.000    0.000    0.000 {built-in method nt.getpid}
+        1    0.000    0.000    0.000    0.000 {method 'count' of 'list' objects}
+        2    0.000    0.000    0.000    0.000 {method 'discard' of 'set' objects}
+        2    0.000    0.000    0.000    0.000 c:\python\Lib\threading.py:1080(is_alive)
+        2    0.000    0.000    0.000    0.000 c:\python\Lib\subprocess.py:207(Detach)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\site-packages\nltk\tokenize\punkt.py:275(period_context_re)
+        2    0.000    0.000    0.000    0.000 {method 'append' of 'collections.deque' objects}
+        4    0.000    0.000    0.000    0.000 {method 'release' of '_thread.lock' objects}
+        4    0.000    0.000    0.000    0.000 {built-in method _thread.get_ident}
+        8    0.000    0.000    0.000    0.000 {method 'bit_length' of 'int' objects}
+        2    0.000    0.000    0.000    0.000 {method 'lstrip' of 'str' objects}
+        1    0.000    0.000    0.000    0.000 {method 'format' of 'str' objects}
+        3    0.000    0.000    0.000    0.000 c:\python\Lib\subprocess.py:969(_remaining_time)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\tempfile.py:233(_get_candidate_names)
+        1    0.000    0.000    0.000    0.000 C:\Users\Aakash\Desktop\Python\Scraping\scrap_env\lib\tempfile.py:287(gettempdir)
+        2    0.000    0.000    0.000    0.000 {method 'close' of '_io.BufferedReader' objects}
+        1    0.000    0.000    0.000    0.000 {method 'update' of 'dict' objects}
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.getattr}
+        6    0.000    0.000    0.000    0.000 {built-in method _winapi.GetCurrentProcess}
+        2    0.000    0.000    0.000    0.000 {method '__enter__' of '_thread.lock' objects}
+        2    0.000    0.000    0.000    0.000 {method '__exit__' of '_thread.lock' objects}
+        2    0.000    0.000    0.000    0.000 {method 'locked' of '_thread.lock' objects}
+        1    0.000    0.000    0.000    0.000 {method 'rstrip' of 'str' objects}
+
+
