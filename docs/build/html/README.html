@@ -1,0 +1,379 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>dolphin &#8212; Dolphin 0.0.1 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Welcome to Dolphin’s documentation!" href="index.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to Dolphin’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Dolphin 0.0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="dolphin">
+<h1>dolphin<a class="headerlink" href="#dolphin" title="Permalink to this headline">¶</a></h1>
+<p>Dolphin is the <strong>Dolphwin</strong>’s Artificial Intelligence component – as
+intelligent as a Dolphin.</p>
+</div>
+<div class="section" id="directory-structure">
+<h1>Directory Structure<a class="headerlink" href="#directory-structure" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>└── dolphwin                      # Main Directory
+
+    ├── dolphin                       # AI package for Dolphwin
+
+            ├── archives
+
+            ├── data                # data for pool parsing
+
+                ├── languages.csv           # predefined pool for languages
+
+                ├── nationality_data.csv    # predefined pool for nationalities
+
+                ├── soft_skills_resume.csv  # predefined pool for soft skills
+
+                ├── technical_skills.csv    # predefined pool for technical skills
+
+            ├── datasets               # data of resume, job description and other files
+
+            ├── docs                   # 📄 project document files
+
+            ├── labs                   # 🔬 contains research program files
+
+            ├── models                 # machine learning models saved
+
+                ├── NER_model.ser.gz   # NER model saved from training with Stanford NLP
+
+                ├── stanford_ner.jar   # pretrained stanford model
+
+                ├── segment_identifier.pkl  # model trained for resume segmentation
+
+                ├── new_model_svc.pkl   # SVC model for document classification
+
+                ├── tfidf1.pkl          # tfidf model used for document classification
+
+            ├── segmentation            # module for resume segmentation
+
+                ├── segment_resume.py   # python module for resume segmentation
+
+            ├── stanfordNER             # module for parsing using NER
+
+                ├── formatdata.py       # module for formatting data
+
+                ├── namedentityrecognition.py   # module for getting named entities
+
+                ├── standardizedata.py          # module for standardizing data
+
+            ├── datareader.py           # python module for reading textual content frommultiple extension files
+
+            ├── pipeline.py             # python module for mantaining every task in custom spacy pipeline
+
+            ├── evaluate_pipeline.py    # python module for testing working of pipeline with a test resume
+
+            ├── settings.py              # python module for mantaining configurations
+
+            ├── settings.json            # configuration in json format
+
+    ├── tests                         # all unit testing files
+
+        ├── test_datareader.py              # unit testing file for datareader module
+
+        ├── test_identify_resume.py         # unit testing file for document categorization module
+
+        ├── test_ner_parsing.py             # unit testing file for testing ner parsing module
+
+        ├── test_segment_resume.py          # unit testing file for testing resume segmentation module
+
+    ├── setup.py                      # setup file for pip
+
+    ├── LICENSE                       # License details
+
+    ├── info.log                      # Logs mantained using logging module
+
+    ├── requirements.txt              # list of python modules required to run the system
+
+    ├── README.md                     # markdown documentation of the system
+</pre></div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="pipelines">
+<h1>Pipelines<a class="headerlink" href="#pipelines" title="Permalink to this headline">¶</a></h1>
+<p>The pipelines used in this system are shown in the below diagram.
+<img alt="pipeline" src="pipeline.png" /></p>
+<div class="section" id="document-categorization-pipeline">
+<h2>Document Categorization pipeline<a class="headerlink" href="#document-categorization-pipeline" title="Permalink to this headline">¶</a></h2>
+<p>This is a custom spacy pipeline which is used for identifying the
+category of any textual documents. The input documents supports
+following file formats:</p>
+<ul class="simple">
+<li>.pdf</li>
+<li>.docx</li>
+<li>.doc</li>
+<li>.txt</li>
+</ul>
+<p>The cateogory defined in the pipeline are as follows:</p>
+<ol class="arabic simple">
+<li>Resume</li>
+<li>Job Decription</li>
+<li>Others</li>
+</ol>
+<p>This pipeline is developed training a Support Vector Classifier with
+training data containing 400 samples each of resume, job descriptions
+and other files.</p>
+<blockquote>
+<div>Trained model for document categorization —–&gt; new_model_svc.pkl</div></blockquote>
+<div class="section" id="usage">
+<h3>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pipeline</span> <span class="kn">import</span> <span class="n">nlp</span>
+
+<span class="n">doc</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="n">textual_content_of_file</span><span class="p">)</span>
+
+<span class="n">category</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">category</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="segmentation-pipeline">
+<h2>Segmentation pipeline<a class="headerlink" href="#segmentation-pipeline" title="Permalink to this headline">¶</a></h2>
+<p>This pipeline is used to segment any resume to following segments:</p>
+<ul class="simple">
+<li>Profile segment</li>
+<li>Objective segment</li>
+<li>SKills segment</li>
+<li>Academics segment</li>
+<li>Experience segment</li>
+<li>Language segment</li>
+<li>Projects segment</li>
+<li>Rewards segment</li>
+<li>References segment</li>
+<li>Links segment</li>
+</ul>
+<p>If any document is categorized as resume, it is passed to the
+segmentation pipeline to break down into different resume segments.</p>
+<blockquote>
+<div>Trained model for resume segmentation –&gt; segment_identifier.pkl</div></blockquote>
+<div class="section" id="id1">
+<h3>Usage<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pipeline</span> <span class="kn">import</span> <span class="n">nlp</span>
+
+<span class="n">doc</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="n">textual_content_of_file</span><span class="p">)</span>
+
+<span class="n">profile_segment</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">profile_segment</span>
+<span class="n">objective_segment</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">objective_segment</span>
+<span class="n">skills_segment</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">skills_segment</span>
+<span class="n">academics_segment</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">academics_segment</span>
+<span class="n">experience_segment</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">experience_segment</span>
+<span class="n">language_segment</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">language_segment</span>
+<span class="n">projects_segment</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">projects_segment</span>
+<span class="n">rewards_segment</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">rewards_segment</span>
+<span class="n">references_segment</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">references_segmen</span>
+<span class="n">links_segment</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">links_segment</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="ner-parser-pipeline">
+<h2>NER Parser pipeline<a class="headerlink" href="#ner-parser-pipeline" title="Permalink to this headline">¶</a></h2>
+<p>This pipeline is developed for the extraction of vital informations from
+any resume such as experience, education, personal information with name
+and address from any resume. For extractoin of such information from any
+resume, custom <strong>Named Entity Recognition(NER)</strong> model has been trained.
+This model has been trained using the <strong>StanfordNLP</strong> NER training
+interface. This model has been trained with the tokens of about 285
+resumes.</p>
+<p>The information extraction from resume using this pipeline are as
+follows:</p>
+<ul>
+<li><p class="first">Name</p>
+</li>
+<li><p class="first">Address</p>
+</li>
+<li><p class="first">Education</p>
+</li>
+<li><p class="first">Experience</p>
+<blockquote>
+<div><p>Trained model for Named Entity Recognition —-&gt; NER_model.ser.gz</p>
+</div></blockquote>
+</li>
+</ul>
+<div class="section" id="id2">
+<h3>Usage<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pipeline</span> <span class="kn">import</span> <span class="n">nlp</span>
+
+<span class="n">doc</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="n">textual_content_of_the_file</span><span class="p">)</span>
+<span class="n">name</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">name</span>
+<span class="n">address</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">address</span>
+<span class="n">experience</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">experience</span>
+<span class="n">education</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">education</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="pattern-matching-pipeline">
+<h2>Pattern Matching Pipeline<a class="headerlink" href="#pattern-matching-pipeline" title="Permalink to this headline">¶</a></h2>
+<p>The information which follows a specific pattern or is contained with
+finite pool have been extracted using Spacy Matcher. The information
+extracted using this pipelines are as follows:</p>
+<ul class="simple">
+<li>technical skills</li>
+<li>soft skills</li>
+<li>nationality</li>
+<li>languages</li>
+<li>date</li>
+<li>phone number</li>
+<li>gender</li>
+<li>email</li>
+</ul>
+<div class="section" id="id3">
+<h3>Usage<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pipeline</span> <span class="kn">import</span> <span class="n">nlp</span>
+<span class="n">doc</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="n">textual_content_of_file</span><span class="p">)</span>
+
+<span class="n">nationality</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">nationality</span>
+<span class="n">language</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">language</span>
+<span class="n">email</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">email</span>
+<span class="n">phone_number</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">phone</span>
+<span class="n">technical_skills</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">technical_skills</span>
+<span class="n">soft_skills</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">soft_skills</span>
+<span class="n">date</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">date</span>
+<span class="n">gender</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">gender</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="modules-used">
+<h1>Modules Used<a class="headerlink" href="#modules-used" title="Permalink to this headline">¶</a></h1>
+<ul>
+<li><p class="first">PyMuPDF</p>
+</li>
+<li><p class="first">texteract</p>
+</li>
+<li><p class="first">datefinder</p>
+</li>
+<li><p class="first">docx2xt</p>
+</li>
+<li><p class="first">gensim</p>
+</li>
+<li><p class="first">nltk</p>
+</li>
+<li><p class="first">spacy</p>
+</li>
+<li><p class="first">pytesseract</p>
+</li>
+<li><p class="first">sklearn</p>
+<blockquote>
+<div><p>Other requirement —&gt; Downloading en_core_web_sm modle from
+spacy —-&gt; python -m spacy download en_core_web_sm</p>
+</div></blockquote>
+</li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">dolphin</a></li>
+<li><a class="reference internal" href="#directory-structure">Directory Structure</a></li>
+<li><a class="reference internal" href="#pipelines">Pipelines</a><ul>
+<li><a class="reference internal" href="#document-categorization-pipeline">Document Categorization pipeline</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#segmentation-pipeline">Segmentation pipeline</a><ul>
+<li><a class="reference internal" href="#id1">Usage</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ner-parser-pipeline">NER Parser pipeline</a><ul>
+<li><a class="reference internal" href="#id2">Usage</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pattern-matching-pipeline">Pattern Matching Pipeline</a><ul>
+<li><a class="reference internal" href="#id3">Usage</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#modules-used">Modules Used</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to Dolphin’s documentation!</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/README.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to Dolphin’s documentation!"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Dolphin 0.0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, Infodevelopers Pvt Ltd.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
+    </div>
+  </body>
+</html>
