@@ -1,14 +1,21 @@
-import os
+import requests
+import time
+server_url_endpoint = "http://139.5.71.109:8002/parse"
+local_url_endpoint = "http://0.0.0.0:8002/newparse"
 
-import json
+resume_file = open(
+    "/home/shushant/Desktop/data_resume/VARUN MURDULA_.Net Developer.docx", "rb")
 
-from cvparser.newParse import Parser
+start_time1 = time.time()
+response = requests.post(local_url_endpoint, files={'resume': resume_file})
+print("New API results")
+print(response)
+print(response.json())
+print("Time taken: {} ".format(time.time() - start_time1))
 
-java_path = r"C:\Program Files\Java\jdk-12.0.1\bin\java.exe"
-os.environ['JAVAHOME'] = java_path
-
-parser = Parser()
-result = parser.identifyResume(r"C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphin2\seven\dolphin\cvparser\datasets\resumes\Ananya Jain BA Pharma2.docx")
-assert(json.dumps(result))
-j_result = json.dumps(result)
-assert(json.loads(j_result))
+# start_time2 = time.time()
+# response2 = requests.post(server_url_endpoint, files={'resume': resume_file})
+# print("Server API results")
+# print(response2)
+# print(response2.json())
+# print("Time taken: {} ".format(time.time() - start_time2))
