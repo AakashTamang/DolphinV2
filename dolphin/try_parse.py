@@ -1,4 +1,3 @@
-import pdb
 import requests
 import json
 import time
@@ -25,16 +24,23 @@ print("Time taken: {} ".format(time.time() - start_time1))
 # print(response2.json())
 # print("Time taken: {} ".format(time.time() - start_time2))
 """
-# scoring api for multiple user profiles test
-scoring_multiple_user_profile_endpoint = "http://0.0.0.0:8002/scorejobdes"
 
-with open("multiple_user_profile.json", 'r') as f:
+# scoring api for multiple job descriptions
+scoring_multiple_jd_endpoint = "http://0.0.0.0:8002/scoreresume"
+
+with open("multiple_jd.json", 'r') as f:
     data = json.load(f)
 
 
-pdb.set_trace()
+# # scoring api for multiple user profiles test
+# scoring_multiple_user_profile_endpoint = "http://0.0.0.0:8002/scorejobdes"
+
+# with open("multiple_user_profile.json", 'r') as f:
+#     data = json.load(f)
+
+
 start_time = time.time()
-response = requests.post(scoring_multiple_user_profile_endpoint, json=data)
+response = requests.post(scoring_multiple_jd_endpoint, json=data)
 print("--- %s seconds ---" % (time.time() - start_time))
 print(response.status_code)
 print(response.json())

@@ -2,7 +2,7 @@
   "user_profile": {
     "user_id": 123,
     "profile": "{\"full_name\": \"RajanSapkota\", \"email\": \"puzan2072@gmail.com\", \"phone\": \"9852100001\", \"gender\": 1, \"address\": {\"id\": 7, \"country\": \"Nepal\", \"state\": \"Bagmati\", \"zip_code\": \"44600\", \"city\": \"Kathmandu\"}}",
-    "twchical_skils": ["Javascript", "Python", "Django", "Docker", "HTML"],
+    "technical_skills": ["Javascript", "Python", "Django", "Docker", "HTML"],
     "soft_skills": ["Design", "Management"],
     "exps": "[{\"id\": 22, \"designation\": \"Junior React Developer\", \"company\": \"Infodev Pvt. Ltd\", \"entry_date\": \"2018-09-08\", \"exit_date\": null, \"roles\": null}, {\"id\": 23, \"designation\": \"Python Developer\", \"company\": \"Google Inc.\", \"entry_date\": \"2015-01-08\", \"exit_date\": \"2019-01-09\", \"roles\": null}, {\"id\": 66, \"designation\": \"React Developer Intern\", \"company\": \"NewTech Pvt Ltd\", \"entry_date\": \"2016-09-08\", \"exit_date\": \"2017-01-09\", \"roles\": null}, {\"id\": 67, \"designation\": \"Junior Python Developer\", \"company\": \"Google Inc.\", \"entry_date\": \"2012-01-08\", \"exit_date\": \"2013-01-09\", \"roles\": null}, {\"id\": 68, \"designation\": \"React Developer Intern\", \"company\": \"NewTech Pvt Ltd\", \"entry_date\": \"2016-09-08\", \"exit_date\": \"2017-01-09\", \"roles\": null}, {\"id\": 69, \"designation\": \"Junior Python Developer\", \"company\": \"Google Inc.\", \"entry_date\": \"2012-01-08\", \"exit_date\": \"2013-01-09\", \"roles\": null}]"
   },
