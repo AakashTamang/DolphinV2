@@ -1,0 +1,12 @@
+{
+  "user_profiles": [
+    {
+      "user_id": 152,
+      "exps": "[]",
+      "technical_skills": [],
+      "soft_skills": [],
+      "profile": "{\"full_name\": \"Sujan Maharjan\", \"first_name\": \"Sujan\", \"last_name\": \"Maharjan\", \"job_group\": 1, \"email\": \"hellopujan@yopmail.com\", \"phone\": \"9843815209\", \"gender\": 1, \"address\": {\"id\": 27, \"country\": \"Nepal\", \"state\": \"Bagmati\", \"zip_code\": \"44700\", \"city\": \"YALA\"}}"
+    }
+  ],
+  "job": "{\"id\": 42, \"job_title\": \"Senior Python Engineer\", \"job_description\": \"Experience in Python , Postgresql , XML , HTML , CSS , JavaScript , JQuery. Experience with common python libraries / frameworks like Django, Flask, Pyramid, Werkzeug Solid understanding of object-oriented programming Familiarity with concepts of MVT, ORM RESTful Knowledge in React JS/Angular JS will be an added advantage Proficient understanding of GIT Able to implement automated testing platforms and unit tests Good Communication in the English language is a must. Knowlege of docker, pandas, pytorch, scikitlearn, numpy, deep learning etc.\", \"location\": {\"id\": 28, \"country\": \"Nepal\", \"state\": \"Bagmati\", \"zip_code\": \"44600\", \"city\": \"Sanepa\"}}"
+}

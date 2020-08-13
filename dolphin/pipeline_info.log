@@ -48,3 +48,7 @@ KeyError: 'Predefined_soft_skills'
 2020-08-12 18:29:59,451 | pipeline_preparation | INFO: Pattern matching pipeline added
 2020-08-12 18:30:06,911 | pipeline_preparation | INFO: NER pipeline added
 2020-08-12 18:30:06,911 | pipeline_preparation | INFO: Pattern matching pipeline added
+2020-08-13 10:31:24,900 | pipeline_preparation | INFO: NER pipeline added
+2020-08-13 10:31:24,911 | pipeline_preparation | INFO: Pattern matching pipeline added
+2020-08-13 10:31:28,656 | pipeline_preparation | INFO: NER pipeline added
+2020-08-13 10:31:28,656 | pipeline_preparation | INFO: Pattern matching pipeline added
