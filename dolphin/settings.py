@@ -13,7 +13,7 @@ CommonDir = os.path.join(RootDir,'common')
 
 '''<----------NER Model Files --------->'''
 jarPath = os.path.join(CommonDir,'stanfordNER/stanford-ner.jar')
-NerModelPath = os.path.join(CommonDir,'stanfordNER/NER_model.ser.gz')
+NerModelPath = os.path.join(CommonDir,'stanfordNER/final_ner_model.ser.gz')
 
 '''<--------- Document Classification Model------>'''
 tfidf_vec_path = os.path.join(ParserDir, 'models/tfidf1.pkl')
