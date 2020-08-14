@@ -22,8 +22,14 @@ class Parser:
         self.spacy_pipeline = NlpPipeline()
         self.spacy_pipeline.add_category_component()
         self.spacy_pipeline.add_segmentation_component()
-        self.spacy_pipeline.add_ner_parsing()
-        self.spacy_pipeline.add_pattern_matching()
+        # self.spacy_pipeline.add_ner_parsing()
+        self.spacy_pipeline.add_profile_ner_parsing()
+        # self.spacy_pipeline.add_academics_ner_parsing()
+        # self.spacy_pipeline.add_experience_ner_parsing()
+        self.spacy_pipeline.add_experience_academics_ner_parsing_component()
+        # self.spacy_pipeline.add_pattern_matching()
+        self.spacy_pipeline.add_profile_pattern_matching()
+        self.spacy_pipeline.add_skills_pattern_matching()
         self.spacy_pipeline.add_embedding_component()
 
     def identifyResume(self,resume_path):
@@ -35,7 +41,8 @@ class Parser:
         :return: Executes the respective method as per document is classified
         '''
         self.cleaned_resume = prepare_text(resume_path,dolower=False)
-        with self.spacy_pipeline.nlp.disable_pipes("segmentation_component","ner_parsing_component","pattern_matching_component","embedding_component"):
+        # with self.spacy_pipeline.nlp.disable_pipes("segmentation_component","profile_ner_parsing_component","academics_ner_parsing_component","experience_ner_parsing_component","profile_pattern_matching_component","skills_pattern_matching_component","embedding_component"):
+        with self.spacy_pipeline.nlp.disable_pipes("segmentation_component","profile_ner_parsing_component","experience_academics_ner_parsing_component","profile_pattern_matching_component","skills_pattern_matching_component","embedding_component"):
             self.classify_doc = self.spacy_pipeline.process_text(self.cleaned_resume)
         document_classified = {
             'resume': self.parseCV,
@@ -52,126 +59,168 @@ class Parser:
 
         :return: A structured data in the required JSON format
         '''
-        with self.spacy_pipeline.nlp.disable_pipes("category_component","ner_parsing_component","pattern_matching_component","embedding_component"):
+        # with self.spacy_pipeline.nlp.disable_pipes("category_component","profile_ner_parsing_component","academics_ner_parsing_component","experience_ner_parsing_component","profile_pattern_matching_component","skills_pattern_matching_component","embedding_component"):
+        with self.spacy_pipeline.nlp.disable_pipes("category_component","profile_ner_parsing_component","experience_academics_ner_parsing_component","profile_pattern_matching_component","skills_pattern_matching_component","embedding_component"):
             self.segmented_resume = self.spacy_pipeline.process_text(self.cleaned_resume)
         final_data = self.getStructuredData()
         return final_data
 
-    def personal_information_parser(self, profile_segment):
-        '''
-        This method will extract the available personal information for the profile segment or the whole resume.
-        Here, only "ner_parsing_component" and "pattern_matching_component" are enabled.
+    # def personal_information_parser(self, profile_segment):
+    #     '''
+    #     This method will extract the available personal information for the profile segment or the whole resume.
+    #     Here, only "ner_parsing_component" and "pattern_matching_component" are enabled.
 
-        :param profile_segment: The profile segment from a resume
-        :type profile_segment: str
-        :return: Required information from the profile
-        '''
-        profile_text = profile_segment
-        with self.spacy_pipeline.nlp.disable_pipes("category_component","segmentation_component","embedding_component"):
-            if profile_text:
-                self.resume_profile = self.spacy_pipeline.process_text(profile_text)
-                name,address = self.resume_profile._.name, self.resume_profile._.address
-                emails = self.resume_profile._.emails
-                phone = self.resume_profile._.phone
-                birthdate = self.resume_profile._.date
-                gender = self.resume_profile._.gender
-                nationality = self.resume_profile._.nationality
-                github = self.resume_profile._.github
-                linkedin = self.resume_profile._.linkedin
-                zipcode = self.resume_profile._.zipcode
+    #     :param profile_segment: The profile segment from a resume
+    #     :type profile_segment: str
+    #     :return: Required information from the profile
+    #     '''
+    #     profile_text = profile_segment
+    #     with self.spacy_pipeline.nlp.disable_pipes("category_component","segmentation_component","embedding_component"):
+    #         if profile_text:
+    #             self.resume_profile = self.spacy_pipeline.process_text(profile_text)
+    #             name,address = self.resume_profile._.name, self.resume_profile._.address
+    #             emails = self.resume_profile._.emails
+    #             phone = self.resume_profile._.phone
+    #             birthdate = self.resume_profile._.date
+    #             gender = self.resume_profile._.gender
+    #             nationality = self.resume_profile._.nationality
+    #             github = self.resume_profile._.github
+    #             linkedin = self.resume_profile._.linkedin
+    #             zipcode = self.resume_profile._.zipcode
+    #         else:
+    #             self.resume_profile = self.spacy_pipeline.process_text(self.cleaned_resume)
+    #             name,address = self.resume_profile._.name, self.resume_profile._.address
+    #             emails = self.resume_profile._.emails
+    #             phone = self.resume_profile._.phone
+    #             birthdate = self.resume_profile._.date
+    #             gender = self.resume_profile._.gender
+    #             nationality = self.resume_profile._.nationality
+    #             github = self.resume_profile._.github
+    #             linkedin = self.resume_profile._.linkedin
+    #             zipcode = self.resume_profile._.zipcode
+    #     return name,address,list(emails),list(phone),list(zipcode),list(nationality),list(github),list(linkedin),list(birthdate),list(gender)
+
+    def profile_information_parser(self,profile_segment):
+        # with self.spacy_pipeline.nlp.disable_pipes("category_component","segmentation_component","academics_ner_parsing_component","experience_ner_parsing_component","skills_pattern_matching_component","embedding_component"):
+        with self.spacy_pipeline.nlp.disable_pipes("category_component","segmentation_component","experience_academics_ner_parsing_component","skills_pattern_matching_component","embedding_component"):
+            if profile_segment:
+                # self.resume_profile = self.spacy_pipeline.process_text(profile_segment)
+                self.resume_profile = self.spacy_pipeline.process_text("".join([profile_segment,self.segmented_resume._.skills_segment,self.segmented_resume._.language_segment]))
             else:
                 self.resume_profile = self.spacy_pipeline.process_text(self.cleaned_resume)
-                name,address = self.resume_profile._.name, self.resume_profile._.address
-                emails = self.resume_profile._.emails
-                phone = self.resume_profile._.phone
-                birthdate = self.resume_profile._.date
-                gender = self.resume_profile._.gender
-                nationality = self.resume_profile._.nationality
-                github = self.resume_profile._.github
-                linkedin = self.resume_profile._.linkedin
-                zipcode = self.resume_profile._.zipcode
+        name,address = self.resume_profile._.name, self.segmented_resume._.address
+        emails = self.resume_profile._.emails
+        phone = self.resume_profile._.phone
+        birthdate = self.resume_profile._.date
+        gender = self.resume_profile._.gender
+        nationality = self.resume_profile._.nationality
+        github = self.resume_profile._.github
+        linkedin = self.resume_profile._.linkedin
+        zipcode = self.resume_profile._.zipcode
         return name,address,list(emails),list(phone),list(zipcode),list(nationality),list(github),list(linkedin),list(birthdate),list(gender)
+    
+    # def education_information_parser(self,academics_segment):
+    #     with self.spacy_pipeline.nlp.disable_pipes("category_component","segmentation_component","profile_ner_parsing_component","experience_ner_parsing_component","profile_pattern_matching_component","skills_pattern_matching_component","embedding_component"):
+    #             if academics_segment:
+    #                 self.resume_education = self.spacy_pipeline.process_text(academics_segment)
+    #             else:
+    #                 self.resume_education = self.spacy_pipeline.process_text(self.cleaned_resume)
+
+    # def experience_information_parser(self,experience_segment):
+    #     with self.spacy_pipeline.nlp.disable_pipes("category_component","segmentation_component","profile_ner_parsing_component","academics_ner_parsing_component","profile_pattern_matching_component","skills_pattern_matching_component","embedding_component"):
+    #         if experience_segment:
+    #             self.resume_experience = self.spacy_pipeline.process_text(experience_segment)
+    #         else:
+    #             self.resume_experience = self.spacy_pipeline.process_text(self.cleaned_resume)
+
+    def experience_academics_parser(self,experience_academics_segment):
+        with self.spacy_pipeline.nlp.disable_pipes("category_component","segmentation_component","profile_ner_parsing_component","profile_pattern_matching_component","skills_pattern_matching_component","embedding_component"):
+            self.resume_experience_academics = self.spacy_pipeline.process_text(experience_academics_segment)
+
+    def skills_language_parser(self):
+        # with self.spacy_pipeline.nlp.disable_pipes("category_component","segmentation_component","profile_ner_parsing_component","academics_ner_parsing_component","experience_ner_parsing_component","profile_pattern_matching_component","embedding_component"):
+        with self.spacy_pipeline.nlp.disable_pipes("category_component","segmentation_component","profile_ner_parsing_component","experience_academics_ner_parsing_component","profile_pattern_matching_component","embedding_component"):
+            self.resume_skills_language = self.spacy_pipeline.process_text(self.cleaned_resume)
+
+    # def skills_parser(self,skill_segment):
+    #     '''
+    #     This method will extract the technical skills and the soft skills from the skills segment or the whole resume.
+    #     Here, only "pattern_matching_component" is enabled.
+
+    #     :param skill_segment: The skill segment from a resume
+    #     :type skill_segment: str
+    #     :return: A set of technical skills and soft skills
+    #     '''
+    #     skill_text = skill_segment
+    #     with self.spacy_pipeline.nlp.disable_pipes("category_component","segmentation_component","ner_parsing_component","embedding_component"):
+    #         if skill_text:
+    #             self.resume_skills = self.spacy_pipeline.process_text(skill_text)
+    #             technical_skills = self.resume_skills._.technical_skills
+    #             soft_skills = self.resume_skills._.soft_skills
+    #         else:
+    #             self.resume_skills = self.spacy_pipeline.process_text(self.cleaned_resume)
+    #             technical_skills = self.resume_skills._.technical_skills
+    #             soft_skills = self.resume_skills._.soft_skills
+    #     return list(technical_skills),list(soft_skills)
 
 
-    def skills_parser(self,skill_segment):
-        '''
-        This method will extract the technical skills and the soft skills from the skills segment or the whole resume.
-        Here, only "pattern_matching_component" is enabled.
+    # def education_parser(self,edu_segment):
+    #     '''
+    #     This method will extract the education information from the education segment or from the whole resume.
+    #     Here, only "ner_parsing_component" is enabled.
 
-        :param skill_segment: The skill segment from a resume
-        :type skill_segment: str
-        :return: A set of technical skills and soft skills
-        '''
-        skill_text = skill_segment
-        with self.spacy_pipeline.nlp.disable_pipes("category_component","segmentation_component","ner_parsing_component","embedding_component"):
-            if skill_text:
-                self.resume_skills = self.spacy_pipeline.process_text(skill_text)
-                technical_skills = self.resume_skills._.technical_skills
-                soft_skills = self.resume_skills._.soft_skills
-            else:
-                self.resume_skills = self.spacy_pipeline.process_text(self.cleaned_resume)
-                technical_skills = self.resume_skills._.technical_skills
-                soft_skills = self.resume_skills._.soft_skills
-        return list(technical_skills),list(soft_skills)
-
-
-    def education_parser(self,edu_segment):
-        '''
-        This method will extract the education information from the education segment or from the whole resume.
-        Here, only "ner_parsing_component" is enabled.
-
-        :param edu_segment: The education segment from a resume
-        :type edu_segment: str
-        :return: A list of academics degree from a resume
-        '''
-        education_text = edu_segment
-        with self.spacy_pipeline.nlp.disable_pipes("category_component","segmentation_component","pattern_matching_component","embedding_component"):
-            if education_text:
-                self.resume_education = self.spacy_pipeline.process_text(education_text)
-                academics = self.resume_education._.education
-            else:
-                self.resume_education = self.spacy_pipeline.process_text(self.cleaned_resume)
-                academics = self.resume_education._.education
-        return academics
+    #     :param edu_segment: The education segment from a resume
+    #     :type edu_segment: str
+    #     :return: A list of academics degree from a resume
+    #     '''
+    #     education_text = edu_segment
+    #     with self.spacy_pipeline.nlp.disable_pipes("category_component","segmentation_component","pattern_matching_component","embedding_component"):
+    #         if education_text:
+    #             self.resume_education = self.spacy_pipeline.process_text(education_text)
+    #             academics = self.resume_education._.education
+    #         else:
+    #             self.resume_education = self.spacy_pipeline.process_text(self.cleaned_resume)
+    #             academics = self.resume_education._.education
+    #     return academics
 
     
-    def experience_parser(self,exp_segment):
-        '''
-        This method will extract the experiences from the experience segment or from the whole resume.
-        Here, only "ner_parsing_component" is enabled.
+    # def experience_parser(self,exp_segment):
+    #     '''
+    #     This method will extract the experiences from the experience segment or from the whole resume.
+    #     Here, only "ner_parsing_component" is enabled.
 
-        :param exp_segment: The experience segment from a resume
-        :type exp_segment: str
-        :return: A list of experiences from a resume
-        '''
-        experience_text = exp_segment
-        with self.spacy_pipeline.nlp.disable_pipes("category_component","segmentation_component","pattern_matching_component","embedding_component"):
-            if experience_text:
-                self.resume_experience = self.spacy_pipeline.process_text(experience_text)
-                experience = self.resume_experience._.experiences
-            else:
-                self.resume_experience = self.spacy_pipeline.process_text(self.cleaned_resume)
-                experience = self.resume_experience._.experiences
-        return experience
+    #     :param exp_segment: The experience segment from a resume
+    #     :type exp_segment: str
+    #     :return: A list of experiences from a resume
+    #     '''
+    #     experience_text = exp_segment
+    #     with self.spacy_pipeline.nlp.disable_pipes("category_component","segmentation_component","pattern_matching_component","embedding_component"):
+    #         if experience_text:
+    #             self.resume_experience = self.spacy_pipeline.process_text(experience_text)
+    #             experience = self.resume_experience._.experiences
+    #         else:
+    #             self.resume_experience = self.spacy_pipeline.process_text(self.cleaned_resume)
+    #             experience = self.resume_experience._.experiences
+    #     return experience
 
-    def language_parser(self,lang_segment):
-        '''
-        This method will extract the language language segment or from the whole resume.
-        Here, only "pattern_matching_component" is enabled.
+    # def language_parser(self,lang_segment):
+    #     '''
+    #     This method will extract the language language segment or from the whole resume.
+    #     Here, only "pattern_matching_component" is enabled.
 
-        :param lang_segment: The language segment from a resume
-        :type lang_segment: str
-        :return: A list of languages from a resume
-        '''
-        language_text = lang_segment
-        with self.spacy_pipeline.nlp.disable_pipes("category_component","segmentation_component","ner_parsing_component","embedding_component"):
-            if language_text:
-                self.resume_language = self.spacy_pipeline.process_text(language_text)
-                language = self.resume_language._.language
-            else:
-                self.resume_language = self.spacy_pipeline.process_text(self.cleaned_resume)
-                language = self.resume_language._.language
-        return list(language)
+    #     :param lang_segment: The language segment from a resume
+    #     :type lang_segment: str
+    #     :return: A list of languages from a resume
+    #     '''
+    #     language_text = lang_segment
+    #     with self.spacy_pipeline.nlp.disable_pipes("category_component","segmentation_component","ner_parsing_component","embedding_component"):
+    #         if language_text:
+    #             self.resume_language = self.spacy_pipeline.process_text(language_text)
+    #             language = self.resume_language._.language
+    #         else:
+    #             self.resume_language = self.spacy_pipeline.process_text(self.cleaned_resume)
+    #             language = self.resume_language._.language
+    #     return list(language)
     
 
     def returnjson(self,personal_information):
@@ -183,27 +232,27 @@ class Parser:
         personalInfo = formatdata.formatPersonalinfo(personal_information)
         # json_data = {
         #     "PERSONAL_INFORMATION": personalInfo,
-        #     "OBJECTIVE": objectives,
+        #     "OBJECTIVE": self.segmented_resume._.objective_segment,
         #     "SKILLS":{
-        #         'Skills': list(tech_skills),
-        #         'Soft_skills': list(sof_skills),
+        #         'Skills': list(self.resume_skills_language._.technical_skills),
+        #         'Soft_skills': list(self.resume_skills_language._.soft_skills),
         #     },
-        #     "EDUCATION": academics,
-        #     "EXPERIENCE": experiences,
-        #     "LANGUAGES": language,
-        #     "PROJECTS": projects,
-        #     "REWARDS": rewards,
-        #     "REFERENCES": references,
+        #     "EDUCATION": self.resume_education._.education,
+        #     "EXPERIENCE": self.resume_experience._.experiences,
+        #     "LANGUAGES": list(self.resume_profile._.language),
+        #     "PROJECTS": self.segmented_resume._.projects_segment,
+        #     "REWARDS": self.segmented_resume._.rewards_segment,
+        #     "REFERENCES": self.segmented_resume._.references_segment,
         # }
         json_data = {
             "PERSONAL_INFORMATION": personalInfo,
             "OBJECTIVE": self.segmented_resume._.objective_segment,
             "SKILLS":{
-                'Skills': list(self.resume_profile._.technical_skills),
-                'Soft_skills': list(self.resume_profile._.soft_skills),
+                'Skills': list(self.resume_skills_language._.technical_skills),
+                'Soft_skills': list(self.resume_skills_language._.soft_skills),
             },
-            "EDUCATION": self.resume_profile._.education,
-            "EXPERIENCE": self.resume_profile._.experiences,
+            "EDUCATION": self.resume_experience_academics._.experience_academics[1],
+            "EXPERIENCE": self.resume_experience_academics._.experience_academics[0],
             "LANGUAGES": list(self.resume_profile._.language),
             "PROJECTS": self.segmented_resume._.projects_segment,
             "REWARDS": self.segmented_resume._.rewards_segment,
@@ -218,7 +267,12 @@ class Parser:
 
         :return: A JSON formatted data
         '''
-        personal_information = self.personal_information_parser(self.cleaned_resume)
+        personal_information = self.profile_information_parser(self.segmented_resume._.profile_segment)
+        # self.education_information_parser(self.segmented_resume._.academics_segment)
+        # self.experience_information_parser(self.cleaned_resume)
+        self.experience_academics_parser(self.cleaned_resume)
+        self.skills_language_parser()
+
         # personal_information = self.personal_information_parser(self.segmented_resume._.profile_segment)        
         # objectives = self.segmented_resume._.objective_segment        
         # skills = self.skills_parser(self.segmented_resume._.skills_segment)        
@@ -251,7 +305,8 @@ class Parser:
         '''
         scorer = Word2VecScorer(cfg.word2vec_model)
         cleaned_jd = prepare_text(jd_path,dolower=False)
-        with self.spacy_pipeline.nlp.disable_pipes("category_component","segmentation_component","ner_parsing_component","pattern_matching_component"):
+        # with self.spacy_pipeline.nlp.disable_pipes("category_component","segmentation_component","profile_ner_parsing_component","academics_ner_parsing_component","experience_ner_parsing_component","profile_pattern_matching_component","skills_pattern_matching_component"):
+        with self.spacy_pipeline.nlp.disable_pipes("category_component","segmentation_component","profile_ner_parsing_component","experience_academics_ner_parsing_component","profile_pattern_matching_component","skills_pattern_matching_component"):
             resume_embedding = self.spacy_pipeline.process_text(self.cleaned_resume)
             jd_embedding = self.spacy_pipeline.process_text(cleaned_jd)
         similarity_score = scorer.calculate_similarity(resume_embedding, jd_embedding)
