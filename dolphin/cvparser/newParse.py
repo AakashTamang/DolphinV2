@@ -101,11 +101,19 @@ class Parser:
     #     return name,address,list(emails),list(phone),list(zipcode),list(nationality),list(github),list(linkedin),list(birthdate),list(gender)
 
     def profile_information_parser(self,profile_segment):
+        '''
+        This method will extract the available personal information for the profile segment or the whole resume.
+        Here, only "profile_ner_parsing_component" and "profile_pattern_matching_component" are enabled.
+
+        :param profile_segment: The profile segment from a resume
+        :type profile_segment: str
+        :return: Required informations from the profile
+        '''
         # with self.spacy_pipeline.nlp.disable_pipes("category_component","segmentation_component","academics_ner_parsing_component","experience_ner_parsing_component","skills_pattern_matching_component","embedding_component"):
         with self.spacy_pipeline.nlp.disable_pipes("category_component","segmentation_component","experience_academics_ner_parsing_component","skills_pattern_matching_component","embedding_component"):
             if profile_segment:
                 # self.resume_profile = self.spacy_pipeline.process_text(profile_segment)
-                self.resume_profile = self.spacy_pipeline.process_text("".join([profile_segment,self.segmented_resume._.skills_segment,self.segmented_resume._.language_segment]))
+                self.resume_profile = self.spacy_pipeline.process_text("".join([profile_segment,self.segmented_resume._.language_segment]))
             else:
                 self.resume_profile = self.spacy_pipeline.process_text(self.cleaned_resume)
         name,address = self.resume_profile._.name, self.segmented_resume._.address
@@ -134,10 +142,22 @@ class Parser:
     #             self.resume_experience = self.spacy_pipeline.process_text(self.cleaned_resume)
 
     def experience_academics_parser(self,experience_academics_segment):
+        '''
+        This method will extract the available experience and academics from the resume.
+        Here, only "experience_academics_ner_parsing_component" is enabled.
+
+        :param experience_academics_segment: The experience and education segment from a resume. Here we are using the whole resume. So that we do not miss any experiences.
+        :type experience_academics_segment: str
+        '''
         with self.spacy_pipeline.nlp.disable_pipes("category_component","segmentation_component","profile_ner_parsing_component","profile_pattern_matching_component","skills_pattern_matching_component","embedding_component"):
             self.resume_experience_academics = self.spacy_pipeline.process_text(experience_academics_segment)
 
     def skills_language_parser(self):
+        '''
+        This method will extract the available skills from the resume.
+        Here, only "skills_pattern_matching_component" is enabled.
+        As the skills can be in many parts of resume, we have passed the whole resume so that we can extract all the possible skills.
+        '''
         # with self.spacy_pipeline.nlp.disable_pipes("category_component","segmentation_component","profile_ner_parsing_component","academics_ner_parsing_component","experience_ner_parsing_component","profile_pattern_matching_component","embedding_component"):
         with self.spacy_pipeline.nlp.disable_pipes("category_component","segmentation_component","profile_ner_parsing_component","experience_academics_ner_parsing_component","profile_pattern_matching_component","embedding_component"):
             self.resume_skills_language = self.spacy_pipeline.process_text(self.cleaned_resume)
@@ -227,7 +247,9 @@ class Parser:
         '''
         This method will arrange all the informations in the required JSON format.
         
-        :return: Information in the JSON format
+        :param personal_information: Personal information of a resume
+        :type personal_information: tuple
+        :return: All required information in the JSON format
         '''
         personalInfo = formatdata.formatPersonalinfo(personal_information)
         # json_data = {
@@ -301,7 +323,8 @@ class Parser:
         Here, only "embedding_component" is enabled.
 
         :param jd_path: Path of the job description file
-        :return: A similarity score between 0 and 1
+        :type jd_path: str
+        :return: A similarity score which is between 0 and 1
         '''
         scorer = Word2VecScorer(cfg.word2vec_model)
         cleaned_jd = prepare_text(jd_path,dolower=False)

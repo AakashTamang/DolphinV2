@@ -18,6 +18,10 @@ connect(db="resume_db", host='127.0.0.1', port=27017)
 
 parser_save = ParsedCollection()
 scorer_save = ScoredDocuments()
+
+# java_path = r"C:\Program Files\Java\jdk-12.0.1\bin\java.exe"
+# os.environ['JAVAHOME'] = java_path
+
 app = Flask(__name__)
 CORS(app, headers="X-CSRFToken, Content-Type")
 

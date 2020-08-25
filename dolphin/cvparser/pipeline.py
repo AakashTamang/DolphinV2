@@ -54,9 +54,9 @@ class NlpPipeline():
 
     def embedding_component(self,doc):
         '''
-        **Gets textual content and returns respective embedding of the document**
-        :param: spacy Doc of textual data
-        :return: Doc object with embedding
+        Gets textual content and returns respective embedding of the document
+        :param doc: spacy Doc of textual data
+        :return: Doc object with word embedding attribute
         '''
         doc._.embedding = self.scorer.get_word_embeddings(str(doc))
         # doc2._.embedding = self.scorer.get_word_embeddings(str(doc2))
@@ -64,18 +64,18 @@ class NlpPipeline():
 
     def category_component(self,doc):
         '''
-        **Custom function to add resume identification component to the pipeline**
-        params: spacy Doc of textual data
-        return : Doc object with category embedded
+        Method to add resume identification component to the pipeline
+        :param doc: spacy Doc of textual data
+        :return: Doc object with doc category attribute
         '''
         doc._.category = categorize_document(str(doc))
         return doc
 
     def segmentation_component(self,doc):
         '''
-        **Custom function to add resume identification component to the pipeline**
-        params: spacy Doc of textual data
-        return : Doc object with category embedded
+        Method to add resume identification component to the pipeline
+        :param doc: spacy Doc of textual data
+        :return: Doc object with different segmented attributes
         '''
         resume_segment = self.segmentation_obj.format_segment(str(doc))
         doc._.profile_segment = resume_segment.get('profile')
@@ -106,29 +106,39 @@ class NlpPipeline():
     #     return doc
 
     def profile_ner_parsing_component(self,doc):
+        '''
+        Method for performing Stanford NER tagging in profile in spacy
+        :param doc: spacy Doc of textual data
+        :return: Doc object with name and address attribute
+        '''
         name,address = StanfordNER.ner_parser(self.ner_tagger,str(doc),"profile")
         doc._.name = name
         doc._.address = address
         return doc
 
-    def academics_ner_parsing_component(self,doc):
-        education = StanfordNER.ner_parser(self.ner_tagger,str(doc),"academics")
-        doc._.education = education
-        return doc
+    # def academics_ner_parsing_component(self,doc):
+    #     education = StanfordNER.ner_parser(self.ner_tagger,str(doc),"academics")
+    #     doc._.education = education
+    #     return doc
 
-    def experience_ner_parsing_component(self,doc):
-        experiences = StanfordNER.ner_parser(self.ner_tagger,str(doc),"experience")
-        doc._.experiences = experiences
-        return doc
+    # def experience_ner_parsing_component(self,doc):
+    #     experiences = StanfordNER.ner_parser(self.ner_tagger,str(doc),"experience")
+    #     doc._.experiences = experiences
+    #     return doc
 
     def experience_academics_ner_parsing_component(self,doc):
+        '''
+        Method for peforming Stanford NER tagging of experience and academics
+        :param doc: spacy Doc of textual data
+        :return: Doc object with academics and experience attribute
+        '''
         experience_academics = StanfordNER.ner_parser(self.ner_tagger,str(doc),"experience_academics")
         doc._.experience_academics = experience_academics
         return doc
 
     # def add_ner_parsing(self):
     #     '''
-    #     **Function for adding custom NER pipeline in nlp model**
+    #     **Method for adding custom NER pipeline in nlp model**
     #     '''
     #     self.nlp.add_pipe(self.ner_parsing_component,after="segmentation_component")
     #     Doc.set_extension('name' , default=None)
@@ -138,34 +148,49 @@ class NlpPipeline():
     #     self.logger.info("NER pipeline added")
 
     def add_profile_ner_parsing(self):
+        '''
+        Method for adding profile NER parsing component to the spacy custom pipeline
+        '''
         self.nlp.add_pipe(self.profile_ner_parsing_component)
         Doc.set_extension('name',default=None)
         Doc.set_extension("address",default=None)
         self.logger.info("Profile NER pipeline added")
 
-    def add_academics_ner_parsing(self):
-        self.nlp.add_pipe(self.academics_ner_parsing_component)
-        Doc.set_extension('education',default=None)
-        self.logger.info("Academics NER pipeline added")
+    # def add_academics_ner_parsing(self):
+    #     self.nlp.add_pipe(self.academics_ner_parsing_component)
+    #     Doc.set_extension('education',default=None)
+    #     self.logger.info("Academics NER pipeline added")
 
-    def add_experience_ner_parsing(self):
-        self.nlp.add_pipe(self.experience_ner_parsing_component)
-        Doc.set_extension('experiences',default=None)
-        self.logger.info("Experience NER pipeline added")
+    # def add_experience_ner_parsing(self):
+    #     self.nlp.add_pipe(self.experience_ner_parsing_component)
+    #     Doc.set_extension('experiences',default=None)
+    #     self.logger.info("Experience NER pipeline added")
 
     def add_experience_academics_ner_parsing_component(self):
+        '''
+        Method for adding experience and academics NER parsing component to the spacy custom pipeline
+        '''
         self.nlp.add_pipe(self.experience_academics_ner_parsing_component)
         Doc.set_extension('experience_academics',default=None)
         self.logger.info("Experience Academics NER pipeline added")
         
     def profile_pattern_matching_component(self,doc):
+        '''
+        Method for peforming pattern matching in for profile related information
+        :param doc: spacy Doc of textual data
+        :return: Doc object with different profile attribute
+        '''
         phone_patterns = r'([\+\-()\d]{1,8})?\s?([(]?\d{3}[)]?[\s-]?\d{3}[\s-]?\d{3,4})'
         zip_code_patterns = r'(\b\d{5}-\d{4}\b|\b\d{5}\b\s)'
         github_patterns = r'github.com/[^ |^\n]+'
         linkedin_patterns = r"linkedin.com/[^ |^\n]+"
 
         emails_pattern = [{"TEXT": {"REGEX":"[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+"}}]
-        date_patterns = [{"IS_DIGIT":True, "LENGTH":{"IN":[2,4]}}, {"TEXT":{"IN":['-']}},{"IS_DIGIT":True, "LENGTH":2,},{"TEXT":{"IN":['-']}},{"IS_DIGIT":True,"LENGTH":{"IN":[2,4]}}]
+        # date_patterns = [{"IS_DIGIT":True, "LENGTH":{"IN":[2,4]}}, {"TEXT":{"IN":['-']}},{"IS_DIGIT":True, "LENGTH":2},{"TEXT":{"IN":['-']}},{"IS_DIGIT":True,"LENGTH":{"IN":[2,4]}}]
+        date_pattern_1 = [{"IS_DIGIT":True, "LENGTH":4},{"TEXT":{"IN":['-']}},{"IS_DIGIT":True, "LENGTH":{"IN":[1,2]}},{"TEXT":{"IN":['-']}},{"IS_DIGIT":True,"LENGTH":{"IN":[1,2]}}]
+        date_pattern_2 = [{"IS_DIGIT":True, "LENGTH":{"IN":[1,2]}},{"TEXT":{"IN":["-"]}},{"IS_DIGIT":True, "LENGTH":{"IN":[1,2]}},{"TEXT":{"IN":["-"]}},{"IS_DIGIT":True,"LENGTH":{"IN":[4]}}]
+        date_pattern_3 = [{"TEXT":{"REGEX":"\d{4}[-/]\d{1,2}[-/]\d{1,2}"}}]
+        date_pattern_4 = [{"TEXT":{"REGEX":"\d{1,2}[-/]\d{1,2}[-/]\d{4}"}}]
         gender_patterns = [{"TEXT":{"REGEX":"^(?:m|M|male|Male|f|F|female|Female)$"}}]
 
         language_matcher = PhraseMatcher(self.nlp.vocab)
@@ -175,8 +200,13 @@ class NlpPipeline():
         gender_matcher = Matcher(self.nlp.vocab)
 
         emails_matcher.add("email",None,emails_pattern)
-        date_matcher.add("date",None,date_patterns)
+        date_matcher.add("date",None,date_pattern_1)
+        date_matcher.add("date",None,date_pattern_2)
+        date_matcher.add("date",None,date_pattern_3)
+        date_matcher.add("date",None,date_pattern_4)
         gender_matcher.add("gender",None,gender_patterns)
+        nationality_matcher.add("nationality",None, *self.nationality_pattern)
+        language_matcher.add("languages",None, *self.languages_pattern)
 
         emails_matches = emails_matcher(doc)
         date_matches = date_matcher(doc)
@@ -187,15 +217,18 @@ class NlpPipeline():
         date = [Span(doc, start, end, label="dates") for match_id, start, end in date_matches]
         gender = [Span(doc, start, end, label="gender") for match_id, start, end in gender_matches]
         emails = [Span(doc, start, end, label="emails") for match_id, start, end in emails_matches]
+        if not emails:
+            emails = [token.text for token in doc if token.like_email == True]
         
         # If our matcher and regex fails to extract the date or email, this condition will extract them
-        if not date or emails:
-            if not date:
-                nlp2 = spacy.load("en_core_web_sm")
-                doc2 = nlp2(doc.text)
-                date = [ent.text for ent in doc2.ents if ent.label_ == "DATE"]
-            if not emails:
-                emails = [token.text for token in doc2 if token.like_email == True]
+        # if not date or emails:
+        #     if not date:
+        #         nlp2 = spacy.load("en_core_web_sm")
+        #         doc2 = nlp2(doc.text)
+        #         date = [ent.text for ent in doc2.ents if ent.label_ == "DATE"]
+        #     if not emails:
+        #         emails = [token.text for token in doc2 if token.like_email == True]
+
 
         nationality = [Span(doc, start, end, label="nationality") for match_id, start, end in nationality_matches]
         language = [Span(doc, start, end, label="languages") for match_id, start, end in language_matches]
@@ -213,6 +246,11 @@ class NlpPipeline():
         return doc
 
     def skills_pattern_matching_component(self,doc):
+        '''
+        Method for peforming pattern matching of soft skills and technical skills in a document
+        :param doc: spacy Doc of textual data
+        :return: Doc object with soft skillls and technical skills attribute
+        '''
         technical_skills_matcher = PhraseMatcher(self.nlp.vocab)
         soft_skills_matcher = PhraseMatcher(self.nlp.vocab)
 
@@ -231,7 +269,7 @@ class NlpPipeline():
 
     # def pattern_matching_component(self,doc):
     #     '''
-    #     **Function for preparing pattern matching component in spacy**
+    #     **Method for preparing pattern matching component in spacy**
     #     params: doc from document
     #     return : doc containing matched keywords
     #     '''        
@@ -319,7 +357,7 @@ class NlpPipeline():
 
     # def add_pattern_matching(self):
     #     '''
-    #     **Function for adding pattern matching component in pipeline**
+    #     **Method for adding pattern matching component in pipeline**
     #     '''
     #     self.nlp.add_pipe(self.pattern_matching_component)
     #     Doc.set_extension('technical_skills', default=None, force=True)
@@ -338,7 +376,7 @@ class NlpPipeline():
     
     def add_profile_pattern_matching(self):
         '''
-        **Function for adding pattern matching component in pipeline**
+        Method for adding profile pattern matching component to the spacy custom pipeline
         '''
         self.nlp.add_pipe(self.profile_pattern_matching_component)
         Doc.set_extension("nationality", default = None, force=True)
@@ -355,7 +393,7 @@ class NlpPipeline():
 
     def add_skills_pattern_matching(self):
         '''
-        **Function for adding pattern matching component in pipeline**
+        Method for adding skills pattern matching component to the spacy custom pipeline
         '''
         self.nlp.add_pipe(self.skills_pattern_matching_component)
         Doc.set_extension('technical_skills', default=None, force=True)
@@ -365,21 +403,21 @@ class NlpPipeline():
 
     def add_embedding_component(self):
         '''
-        **Function to add embedding component in pipeline**
+        Method to add embedding component in pipeline
         '''
         self.nlp.add_pipe(self.embedding_component)
         Doc.set_extension("embedding", default=None)
 
     def add_category_component(self):
         """
-        **Function to add document categorization component to the spacy custom pipeline**
+        Method to add document categorization component to the spacy custom pipeline
         """
         self.nlp.add_pipe(self.category_component,first=True)
         Doc.set_extension('category', default = None)	
 
     def add_segmentation_component(self):
         """
-        **Function to add resume segmentation component to the spacy custom pipeline**
+        Method to add resume segmentation component to the spacy custom pipeline
         """
         self.nlp.add_pipe(self.segmentation_component)
         Doc.set_extension('profile_segment', default = None)
@@ -396,7 +434,7 @@ class NlpPipeline():
 
     def process_text(self,content):
         """
-        **Function to process as spacy doc**
+        Method to process as spacy doc
         """
         self.doc = self.nlp(content)
         return self.doc
