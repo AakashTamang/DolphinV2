@@ -3,13 +3,14 @@ sys.path.append("..")
 from datareader import prepare_text
 import spacy
 import nltk
+from settings import jd_parse_ner_model
 from nltk.tokenize import sent_tokenize
 
 
 
 class SpacyNer():
     def __init__(self):
-        self.spacy_ner_model_path = "/home/shushant/Desktop/dolphin_repos/DolphinV2/dolphin/job_parsing/JobParsingSpacyNer"
+        self.spacy_ner_model_path = jd_parse_ner_model
 
     def parse(self, jd_content):
         '''
@@ -27,9 +28,6 @@ class SpacyNer():
         all_locations = []
 
         for sent in tokenized_sentences:
-            # preprocessed_sentence = clean_text(sent)
-            # preprocessed_sent = "".join(preprocessed_sentence)
-            # print(preprocessed_sent)
             doc = nlp(sent)
 
             organizations = []
@@ -39,9 +37,6 @@ class SpacyNer():
             locations = []
 
             for ent in doc.ents:
-                # predictions.update({ent.text: ent.label_})
-                # predictions['predictions'] = ent.label_
-                # print(ent.label_, ent.text)
                 if ent.label_ == "DESIG":
                     designations.append(ent.text)
                 elif ent.label_ == "ORG":
@@ -72,14 +67,14 @@ class SpacyNer():
         all_locations = [
             x for x in all_locations if x]
 
-        return all_organizations, all_designations, all_experiences, all_educations, all_locations
+        return all_designations, all_organizations, all_experiences, all_educations, all_locations
 
 
 if __name__ == "__main__":
-    jd_path = "/home/shushant/Desktop/Job Description Collection/QA 17.docx"
+    jd_path = "/home/shushant/Desktop/data_resume/Abinash Bhattarai_QA_Srimatrix.docx"
     jd_content = prepare_text(jd_path, dolower=False)
     spacy_obj = SpacyNer()
-    organization, designations, experience, education, location = spacy_obj.parse(
+    designations, organization, experience, education, location = spacy_obj.parse(
         jd_content)
     print("Organizations -->", organization)
     print("Locations --->", location)

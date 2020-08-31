@@ -1,10 +1,9 @@
+from nltk.tokenize import word_tokenize
+from nltk.tag.stanford import StanfordNERTagger
+import nltk
+from datareader import prepare_text
 import sys
 sys.path.append("..")
-from datareader import prepare_text
-import nltk
-from nltk.tag.stanford import StanfordNERTagger
-from nltk.tokenize import word_tokenize
-
 
 
 class Stanford_NER():

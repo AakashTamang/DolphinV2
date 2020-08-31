@@ -1,9 +1,9 @@
+import sys
+sys.path.append("..")
 from os import walk
 import os
 from find_job_titles import FinderAcora
 from datareader import prepare_text
-import sys
-sys.path.append("..")
 
 
 finder = FinderAcora()

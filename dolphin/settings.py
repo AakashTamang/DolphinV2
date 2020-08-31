@@ -34,22 +34,5 @@ nationality_pool = os.path.join(ParserDir,'data/nationality_data.csv')
 "<---------------------Write to file ----------------------------------->"
 Write2file = True
 
-
-
-# path = r"C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphin2\seven\dolphin\settings.json"
-
-# path = r"C:\Users\zerad\Desktop\git_repo\dolphin2\seven\dolphin\settings.json"
-
-
-# setting = json.load(open(path, "r"))
-
-
-# if __name__ == "__main__":
-
-#     # print(f'Dataset exists!' if os.path.isdir(
-#     #     setting['dataset']['path']) else 'Dataset does not exists!')
-
-#     # print(setting['spacy']['size'])
-#     # print('Data Path: ', setting['dataset']['path'])
-#     # print("Resume: ", setting['resume']['.docx'])
-#     # print('Supported formats: ', setting['valid_extensions'].keys())
+'''<-------Job Parsig NER model--------->'''
+jd_parse_ner_model = os.path.join(RootDir,'job_parsing/JobParsingSpacyNERFinal')
