@@ -1,7 +1,7 @@
 import pickle
-import sys
-sys.path.append("..")
-from dolphin.settings import ResumeSegmentationModelPath
+# import sys
+# sys.path.append("..")
+from settings import ResumeSegmentationModelPath
 
 class ResumeSegmentCreator:
 

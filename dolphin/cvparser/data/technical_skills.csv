@@ -1,4 +1,4 @@
-Predefined_skills
+﻿Predefined_skills
 ajenti
 django-suit
 django-xadmin
@@ -154,7 +154,70 @@ android
 react native
 react-native
 reactjs
-neo4j
+Neo4j
+Salesforce CRM
+Salesforce SFA
+Apex Language
+SOQL
+SOSL
+Visualforce Pages/Components
+Apex Web Services
+Apex Data Loader
+Visualforce
+PL-SQL
+GitHub
+Eclipse 
+MS SQL Server 2000/2005
+Oracle 8i/9i/10g
+MS Access
+DB2
+Objective-C
+PhoneGap
+Appcelerator
+J2ME
+Android Studio
+Titanium Studio 3.2
+Dreamweaver CC
+Visual Studio
+Xamarin
+Eclipse4.3
+C++
+C
+C#
+SCM
+UCM 
+Multisite
+SVN
+TFS/VSTS
+GIT
+git
+Visual C++
+Oracle 9i/8i/10g
+IBM DB2/UDB
+SQL
+UML
+XML
+Jasmine
+jQuery
+Bootstrap
+AngularJS
+JSF
+webpack
+ReactJS
+NodeJS
+Spring
+Struts 2
+Hibernate
+Mockito
+TestNG
+Junit
+Patterns
+WebLogic Server
+JBoss
+WebSphere
+Jenkins
+Docker
+Rally
 routing
 switching
 wireless communication
@@ -165,8 +228,536 @@ MS SQL
 Data Analysis
 Object Oriented Programming
 AGILE
-UML
+uml
 Waterfall
 Spiral
 Rapid Application Development
 Scrum
+Tableau
+tableau
+MS access
+json
+CISCO
+Networking
+Hadoop
+RDBMS
+Testing
+Powe BI
+Business Intelligence
+business intelligence
+SDLC
+AWS
+SAS
+JavaScript
+Java
+Python
+Business Analysis
+Git
+Github
+Gitlab
+CSS
+AJAX
+JSP
+XML
+HTML
+HTML5
+Adobe Photoshop
+MS Office
+Angular
+Angular.JS
+JQuery
+jquery
+Apex
+Cyber Security
+PL/SQL
+JDBC
+SQL Server
+User Acceptance Testing 
+Regression testing
+regression testing
+user acceptance testing 
+J2EE
+PHP
+PL SQL
+Data Mining
+Data Warehousing
+MS Visio
+Quality Assurance
+QA
+Quality Control
+QC
+ASP.NET
+MVC
+OOP
+OOAD
+Object Oriented Analysis and Design
+REST
+SOAP
+SOA
+Service Oriented Architecture
+Knockout.JS
+Ember.JS
+Simplified Wrapper and Interface Generator
+Black-box testing
+ORM
+Object Relational Mapping
+Unit Testing
+Load Testing
+unit testing
+load testing
+cyber security
+load testing
+JSON
+.NET
+REST framework
+ADO.NET
+Agile
+Ajenti
+Django-suit
+Django-xadmin
+Flask-admin
+Flower
+Grappelli
+Wooey
+Pypattyrn
+python-patterns
+sorted-containers
+Django
+Fanstatic
+Jinja-assets-compressor
+Pyjwt
+python-patterns
+Dogpile.cache
+Hermescache
+Johnny-cache
+Spark
+Virtualenv
+Pytorch
+Keras
+Tensorflow
+Theano
+Docker
+Cuisine
+Fabric
+Fabtools
+Openstack
+Haystack
+Pexpect
+xml
+R
+object relational mapping
+orm
+Sphinx
+Sphinxdoc
+MkDocs
+Pdoc
+Pycco
+S3cmd
+S4cmd
+youtube-dl
+agile
+ember.js
+Bigdata
+Data mining
+Django Oscar
+Django SHOP
+React
+Nodejs
+Node.js
+cisco
+ado.net
+html5
+ember.JS
+knockout.JS
+Cartridge
+Matplotlib
+Shoop
+Emacs
+Elpy
+Sublime
+Anaconda
+Vim
+jedi-vim
+PTVS
+Visual
+Blender
+Maya
+Maya3d
+Spyder
+Flanker
+Flutter
+MongoDB
+service oriented architecture
+SWIG
+Bootstrap3
+TkInter
+Pattern
+Celery
+Ajax
+Tastypie
+Devpi
+Photoshop
+knockout.js
+SqlAlchemy
+Oracle
+Stream-Framework
+Stream Framework
+Orator
+Conda
+Curdling
+Wheel
+Warehouse
+Bandersnatch
+Sarge
+CPython
+Grumpy
+Cython
+IronPython
+Jython
+Jupyter
+Jupyter Notebook
+Microsoft Word
+NUPIC
+Scikit learn
+Scikit-learn
+Sklearn
+Pillow
+OpenCV
+rest framework
+.net
+PyNorm
+Pee Wee
+Hmap
+PyOCR
+OCR
+PyCallGraph
+GraphQL
+Graph-QL
+Docopt
+Gooey
+Cement
+Mezzanine
+OOP
+Plone
+Black Box Testing
+Blockchain
+Colorama
+Six
+Pgcli
+Cryptography
+Data Analytics
+My-SQL
+Data-mining
+Analytical-skills
+Debugging
+Linux
+gitlab
+Testing
+HDL
+soa
+jsp
+Perl
+Ruby
+Ruby on Rails
+CMS
+CRM
+CAD
+WordPress
+Android
+React Native
+React-Native
+rest
+object oriented analysis and design
+salesforce crm
+salesforce sfa
+apex language
+soql
+sosl
+visualforce pages/components
+apex web services
+apex data loader
+visualforce
+pl-sql
+github
+eclipse 
+ms sql server 2000/2005
+oracle 8i/9i/10g
+ms access
+db2
+objective-c
+phonegap
+appcelerator
+j2me
+android studio
+titanium studio 3.2
+dreamweaver CC
+visual studio
+xamarin
+eclipse4.3
+ms sql
+C
+tfs
+scm
+ucm
+multisite
+svn
+vsts
+Visual c++
+visual c++
+visual C++
+oracle 9i/8i/10g
+ibm db2/udb
+sql
+Uml
+XML
+jasmine
+oop
+asp.net
+angularjs
+jsf
+Webpack
+Reactjs
+weblogic server
+spring
+struts 2
+hibernate
+mockito
+testng
+junit
+patterns
+Weblogic server
+jboss
+websphere
+jenkins
+docker
+rally
+Routing
+Switching
+Wireless Communication
+Monitoring
+Security Policies
+oracle
+MS sql
+data analysis
+object oriented programming
+RAD
+mvc
+waterfall
+spiral
+rapid application development
+scrum
+quality control
+qc
+regression testing
+ooad
+j2ee
+networking
+sql Server
+rdbms
+testing
+powe bi
+Business Intelligence
+business intelligence
+sdlc
+aws
+sas
+Javascript
+SQL server
+pl/sql
+business analysis
+pl sql
+data mining
+data warehousing
+ms visio
+Quality Assurance
+QA
+Regression testing
+jdbc
+apex
+adobe photoshop
+ms office
+angular.js
+Perl scripting
+perl scripting
+ Shell scripting
+ shell scripting
+Java/J2EE
+ MYSQL
+ mysql
+SQL Server 2008
+Web Logic
+web logic
+ Web Sphere
+ web sphere
+Apache Tomcat
+apache tomcat
+JBOSS
+jboss
+Subversion
+subversion
+SVN
+svn
+Clearcase
+clearcase
+Harvest
+harvest
+JIRA
+jira
+Confluence
+confluence
+ServiceNow
+BugZilla
+bugzilla
+struts
+Struts
+ Angular JS
+Angular 2
+React JS
+Redux
+redux
+RequireJS
+requirejs
+Typescript
+Backbone
+typescript
+backbone
+Apache CXF
+apache cxf
+IntelliJ
+Rational Rose
+rational rose
+ TOAD
+Clear Case
+Web-storm
+Gulp
+gulp
+Web-storm
+clear case
+JBOSS
+Oracle 9i
+ Oracle 10g
+XHTML
+JSP 2.0/2.1
+ JSTL
+Log4j
+DHTML
+XSLT
+GWT
+RIA framework
+Restful web service
+Yeoman
+Grunt
+Firebug
+J Unit v 4.12
+Firebug
+grunt
+yeoman
+restful web service
+gwt
+xslt
+dhtml
+CA siteminder
+CA SiteMinder
+CA siteminder
+Sun one directory server
+sun one directory server
+Ping Federate
+ping federate
+VB.Net
+C#.Net
+WCF
+wcf
+WPF
+wpf
+Visual Studio Online
+ Visual Studio Team Suite/Foundation
+ visual studio team suite/foundation
+visual studio online
+Terraform
+terraform
+Microsoft Azure
+microsoft azure
+SQL Azure
+ASP
+LAN/WAN Architecture
+lan/wan architecture
+TCP/IP
+tcp/ip
+Frame Relay
+frame relay
+VPN
+vpn
+VLAN
+vlan
+VTP
+vtp
+NAT
+nat
+PAT
+pat
+STP
+stp
+RSTP
+rstp
+PVST
+pvst
+MSTP
+mstp
+Cisco Switches
+cisco switches
+Cisco Routers
+cisco routers
+ASA/Pix firewalls
+VMware
+VMware
+Ironport
+PAP
+pap
+CHAP
+chap
+Cisco PIX
+cisco PIX
+Blue Coat
+blue coat
+OSPF
+ospf
+IGRP
+igrp
+EIGRP
+eigrp
+Routing Information Protocol
+RIP
+rip
+MPLS
+mpls
+IS-IS
+is-is
+BGP
+bgp
+Multicasting
+multicasting
+Cisco Works 2000
+cisco works 2000
+Wire Shark
+wire shark
+HRPing
+hrping
+J-developer
+j-developer
+Java 1.5
+Servlet 2.4
+JSP 2.0
+Ant 1.7
+JUnit 4
+Hibernate 3.1
+Eclipse 3.x
+Oracle SQL Developer
+SVN
+VSS
+AllFusion Harvest Change Manager 7.1
+RUP. Clarity
+HealthRules
+Mainframe(CICS)
+Facets
+NaVinet
+SaaS
