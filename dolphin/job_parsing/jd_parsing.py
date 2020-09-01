@@ -5,12 +5,14 @@ import spacy
 import nltk
 from settings import jd_parse_ner_model
 from nltk.tokenize import sent_tokenize
-
+from cvparser.pipeline import NlpPipeline
 
 
 class SpacyNer():
     def __init__(self):
         self.spacy_ner_model_path = jd_parse_ner_model
+        self.spacy_pipeline = NlpPipeline()
+        self.spacy_pipeline.add_skills_pattern_matching()
 
     def parse(self, jd_content):
         '''
@@ -69,9 +71,21 @@ class SpacyNer():
 
         return all_designations, all_organizations, all_experiences, all_educations, all_locations
 
+    def get_skills(self,jd_content):
+        '''
+        This method extracts the technical skills and the soft skills from the given job description document
+        :param jd_content: A cleaned text of the job description
+        :type jd_content: str
+        :return: A set of technical skills and soft skills
+        '''
+        self.jd_skills = self.spacy_pipeline.process_text(jd_content)
+        # print (self.spacy_pipeline.nlp.pipe_names)
+        technical_skills = list(self.jd_skills._.technical_skills)
+        soft_skills = list(self.jd_skills._.soft_skills)
+        return technical_skills,soft_skills
 
 if __name__ == "__main__":
-    jd_path = "/home/shushant/Desktop/data_resume/Abinash Bhattarai_QA_Srimatrix.docx"
+    jd_path = r"C:\Users\Aakash\Desktop\Python\Scraping\Projects\jd_files\backend.txt"
     jd_content = prepare_text(jd_path, dolower=False)
     spacy_obj = SpacyNer()
     designations, organization, experience, education, location = spacy_obj.parse(
@@ -81,3 +95,7 @@ if __name__ == "__main__":
     print("Designation ---->", designations)
     print("Education --->", education)
     print("Experience ---> ", experience)
+    
+    technical_skills, soft_skills = spacy_obj.get_skills(jd_content)
+    print (f"Technical Skills: {technical_skills}")
+    print (f"Soft Skills: {soft_skills}")
