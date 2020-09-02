@@ -1,5 +1,5 @@
 import sys
-sys.path.append("..")
+# sys.path.append("..")
 from datareader import prepare_text
 import spacy
 import nltk
@@ -13,6 +13,14 @@ class SpacyNer():
         self.spacy_ner_model_path = jd_parse_ner_model
         self.spacy_pipeline = NlpPipeline()
         self.spacy_pipeline.add_skills_pattern_matching()
+
+    def clean_parse_jd(self,file_path):
+        cleaned_text = prepare_text(file_path,dolower=False)
+        desig, org, exp, edu, loc = self.parse(cleaned_text)
+        technical_skills,soft_skills = self.get_skills(cleaned_text)
+        result = self.formatted_data(desig, org, exp, edu, loc, technical_skills,soft_skills)
+        return result
+
 
     def parse(self, jd_content):
         '''
@@ -84,18 +92,32 @@ class SpacyNer():
         soft_skills = list(self.jd_skills._.soft_skills)
         return technical_skills,soft_skills
 
-if __name__ == "__main__":
-    jd_path = r"C:\Users\Aakash\Desktop\Python\Scraping\Projects\jd_files\backend.txt"
-    jd_content = prepare_text(jd_path, dolower=False)
-    spacy_obj = SpacyNer()
-    designations, organization, experience, education, location = spacy_obj.parse(
-        jd_content)
-    print("Organizations -->", organization)
-    print("Locations --->", location)
-    print("Designation ---->", designations)
-    print("Education --->", education)
-    print("Experience ---> ", experience)
+    def formatted_data(self,desig, org, exp, edu, loc,technical_skills,soft_skills):
+        json_data = {
+            "DESIGNATION": desig,
+            "ORGANIZATION": org,
+            "EXPERIENCE": exp,
+            "EDUCATION": edu,
+            "LOCATION": loc,
+            "SKILLS":{
+                "TECHNICAL_SKILLS": list(technical_skills),
+                "SOFT_SKILLS": list(soft_skills),
+            }
+        }
+        return json_data
+
+# if __name__ == "__main__":
+#     jd_path = r"C:\Users\Aakash\Desktop\Python\Scraping\Projects\jd_files\backend.txt"
+#     jd_content = prepare_text(jd_path, dolower=False)
+#     spacy_obj = SpacyNer()
+#     designations, organization, experience, education, location = spacy_obj.parse(
+#         jd_content)
+#     print("Organizations -->", organization)
+#     print("Locations --->", location)
+#     print("Designation ---->", designations)
+#     print("Education --->", education)
+#     print("Experience ---> ", experience)
     
-    technical_skills, soft_skills = spacy_obj.get_skills(jd_content)
-    print (f"Technical Skills: {technical_skills}")
-    print (f"Soft Skills: {soft_skills}")
+#     technical_skills, soft_skills = spacy_obj.get_skills(jd_content)
+#     print (f"Technical Skills: {technical_skills}")
+#     print (f"Soft Skills: {soft_skills}")

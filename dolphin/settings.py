@@ -31,6 +31,9 @@ soft_skills_pool = os.path.join(ParserDir,'data/soft_skills_resume.csv')
 languages_pool = os.path.join(ParserDir,'data/languages.csv')
 nationality_pool = os.path.join(ParserDir,'data/nationality_data.csv')
 
+'''<------Domain Classification Data------>'''
+domain_class_data = os.path.join(RootDir,'domain_classification/domain_class_data.tsv')
+
 "<---------------------Write to file ----------------------------------->"
 Write2file = True
 
