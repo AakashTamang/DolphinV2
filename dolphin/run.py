@@ -10,6 +10,8 @@ from datareader import prepare_text, prepare_text_from_string
 from cvparser.newParse import Parser as newParser
 from settings import tempStorage
 from scorer.resume_scorer import prepare_profile, one_resume_multiple_jd_scorer, prepare_job_description, one_JD_multiple_resume_scorer
+from domain_classification.domain_classification import DomainClassification
+from job_parsing.jd_parsing import SpacyNer
 
 from mongoengine import connect
 from mongo_orm.parsed_information import ParsedCollection
@@ -26,6 +28,8 @@ app = Flask(__name__)
 CORS(app, headers="X-CSRFToken, Content-Type")
 
 new_resume_parser_obj = newParser()
+domain_classification_obj = DomainClassification()
+parse_jd = SpacyNer()
 
 
 @app.route("/newparse", methods=["POST"])
@@ -107,6 +111,30 @@ def oneJDMultipleRes():
         id, total_score = f.result()
         my_score[id] = total_score
     return my_score
+
+
+@app.route('/domainclassification',methods=['POST'])
+def classify_domain():
+    document = request.files.get('job_description')
+    if document:
+        filename = document.filename
+        file = tempStorage + '/' + filename
+        document.save(file)
+        most_common_domain = domain_classification_obj.clean_classify_document(file)
+        most_common_domain = json.dumps(most_common_domain)
+        return jsonify(most_common_domain)
+
+@app.route('/parsejd',methods=['POST'])
+def parsing_jd():
+    document = request.files.get('job_description')
+    if document:
+        filename = document.filename
+        file = tempStorage + '/' + filename
+        document.save(file)
+        jd_parsed_result = parse_jd.clean_parse_jd(file)
+        jd_parsed_result = json.dumps(jd_parsed_result)
+        return jsonify(jd_parsed_result)
+
 
 
 if __name__ == "__main__":

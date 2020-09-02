@@ -535,3 +535,163 @@ FileNotFoundError: [Errno 2] File C:\Users\Aakash\Desktop\Python\Scraping\Projec
 2020-08-25 14:43:09,495 | pipeline_preparation | INFO: Experience Academics NER pipeline added
 2020-08-25 14:43:09,495 | pipeline_preparation | INFO: Profile Pattern matching pipeline added
 2020-08-25 14:43:09,495 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:35:42,910 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:35:43,705 | pipeline_preparation | INFO: Profile NER pipeline added
+2020-09-02 12:35:43,705 | pipeline_preparation | INFO: Profile NER pipeline added
+2020-09-02 12:35:43,705 | pipeline_preparation | INFO: Experience Academics NER pipeline added
+2020-09-02 12:35:43,705 | pipeline_preparation | INFO: Experience Academics NER pipeline added
+2020-09-02 12:35:43,705 | pipeline_preparation | INFO: Profile Pattern matching pipeline added
+2020-09-02 12:35:43,705 | pipeline_preparation | INFO: Profile Pattern matching pipeline added
+2020-09-02 12:35:43,705 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:35:43,705 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:38:11,845 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:38:12,604 | pipeline_preparation | INFO: Profile NER pipeline added
+2020-09-02 12:38:12,604 | pipeline_preparation | INFO: Profile NER pipeline added
+2020-09-02 12:38:12,604 | pipeline_preparation | INFO: Experience Academics NER pipeline added
+2020-09-02 12:38:12,604 | pipeline_preparation | INFO: Experience Academics NER pipeline added
+2020-09-02 12:38:12,604 | pipeline_preparation | INFO: Profile Pattern matching pipeline added
+2020-09-02 12:38:12,604 | pipeline_preparation | INFO: Profile Pattern matching pipeline added
+2020-09-02 12:38:12,604 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:38:12,604 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:38:27,693 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:38:28,442 | pipeline_preparation | INFO: Profile NER pipeline added
+2020-09-02 12:38:28,442 | pipeline_preparation | INFO: Profile NER pipeline added
+2020-09-02 12:38:28,567 | pipeline_preparation | INFO: Experience Academics NER pipeline added
+2020-09-02 12:38:28,567 | pipeline_preparation | INFO: Experience Academics NER pipeline added
+2020-09-02 12:38:28,567 | pipeline_preparation | INFO: Profile Pattern matching pipeline added
+2020-09-02 12:38:28,567 | pipeline_preparation | INFO: Profile Pattern matching pipeline added
+2020-09-02 12:38:28,567 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:38:28,567 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:38:34,326 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:38:35,102 | pipeline_preparation | INFO: Profile NER pipeline added
+2020-09-02 12:38:35,102 | pipeline_preparation | INFO: Profile NER pipeline added
+2020-09-02 12:38:35,102 | pipeline_preparation | INFO: Experience Academics NER pipeline added
+2020-09-02 12:38:35,102 | pipeline_preparation | INFO: Experience Academics NER pipeline added
+2020-09-02 12:38:35,102 | pipeline_preparation | INFO: Profile Pattern matching pipeline added
+2020-09-02 12:38:35,102 | pipeline_preparation | INFO: Profile Pattern matching pipeline added
+2020-09-02 12:38:35,102 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:38:35,102 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:38:53,238 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:38:54,130 | pipeline_preparation | INFO: Profile NER pipeline added
+2020-09-02 12:38:54,130 | pipeline_preparation | INFO: Profile NER pipeline added
+2020-09-02 12:38:54,130 | pipeline_preparation | INFO: Experience Academics NER pipeline added
+2020-09-02 12:38:54,130 | pipeline_preparation | INFO: Experience Academics NER pipeline added
+2020-09-02 12:38:54,130 | pipeline_preparation | INFO: Profile Pattern matching pipeline added
+2020-09-02 12:38:54,130 | pipeline_preparation | INFO: Profile Pattern matching pipeline added
+2020-09-02 12:38:54,130 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:38:54,130 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:38:54,974 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:38:54,974 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:38:54,974 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:38:59,596 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:39:00,422 | pipeline_preparation | INFO: Profile NER pipeline added
+2020-09-02 12:39:00,422 | pipeline_preparation | INFO: Profile NER pipeline added
+2020-09-02 12:39:00,422 | pipeline_preparation | INFO: Experience Academics NER pipeline added
+2020-09-02 12:39:00,422 | pipeline_preparation | INFO: Experience Academics NER pipeline added
+2020-09-02 12:39:00,422 | pipeline_preparation | INFO: Profile Pattern matching pipeline added
+2020-09-02 12:39:00,422 | pipeline_preparation | INFO: Profile Pattern matching pipeline added
+2020-09-02 12:39:00,422 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:39:00,422 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:39:01,207 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:39:01,207 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:39:01,207 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:43:56,663 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:43:57,406 | pipeline_preparation | INFO: Profile NER pipeline added
+2020-09-02 12:43:57,406 | pipeline_preparation | INFO: Profile NER pipeline added
+2020-09-02 12:43:57,406 | pipeline_preparation | INFO: Experience Academics NER pipeline added
+2020-09-02 12:43:57,406 | pipeline_preparation | INFO: Experience Academics NER pipeline added
+2020-09-02 12:43:57,406 | pipeline_preparation | INFO: Profile Pattern matching pipeline added
+2020-09-02 12:43:57,406 | pipeline_preparation | INFO: Profile Pattern matching pipeline added
+2020-09-02 12:43:57,406 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:43:57,406 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:45:07,963 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:45:31,376 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:45:32,185 | pipeline_preparation | INFO: Profile NER pipeline added
+2020-09-02 12:45:32,185 | pipeline_preparation | INFO: Profile NER pipeline added
+2020-09-02 12:45:32,185 | pipeline_preparation | INFO: Experience Academics NER pipeline added
+2020-09-02 12:45:32,185 | pipeline_preparation | INFO: Experience Academics NER pipeline added
+2020-09-02 12:45:32,185 | pipeline_preparation | INFO: Profile Pattern matching pipeline added
+2020-09-02 12:45:32,185 | pipeline_preparation | INFO: Profile Pattern matching pipeline added
+2020-09-02 12:45:32,185 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:45:32,185 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:47:43,000 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:47:43,774 | pipeline_preparation | INFO: Profile NER pipeline added
+2020-09-02 12:47:43,774 | pipeline_preparation | INFO: Profile NER pipeline added
+2020-09-02 12:47:43,774 | pipeline_preparation | INFO: Experience Academics NER pipeline added
+2020-09-02 12:47:43,774 | pipeline_preparation | INFO: Experience Academics NER pipeline added
+2020-09-02 12:47:43,775 | pipeline_preparation | INFO: Profile Pattern matching pipeline added
+2020-09-02 12:47:43,775 | pipeline_preparation | INFO: Profile Pattern matching pipeline added
+2020-09-02 12:47:43,775 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:47:43,775 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:56:06,288 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:56:07,038 | pipeline_preparation | INFO: Profile NER pipeline added
+2020-09-02 12:56:07,038 | pipeline_preparation | INFO: Profile NER pipeline added
+2020-09-02 12:56:07,038 | pipeline_preparation | INFO: Experience Academics NER pipeline added
+2020-09-02 12:56:07,038 | pipeline_preparation | INFO: Experience Academics NER pipeline added
+2020-09-02 12:56:07,038 | pipeline_preparation | INFO: Profile Pattern matching pipeline added
+2020-09-02 12:56:07,038 | pipeline_preparation | INFO: Profile Pattern matching pipeline added
+2020-09-02 12:56:07,038 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:56:07,038 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:56:07,784 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:56:07,784 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:56:07,784 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:56:12,126 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:56:12,896 | pipeline_preparation | INFO: Profile NER pipeline added
+2020-09-02 12:56:12,896 | pipeline_preparation | INFO: Profile NER pipeline added
+2020-09-02 12:56:12,897 | pipeline_preparation | INFO: Experience Academics NER pipeline added
+2020-09-02 12:56:12,897 | pipeline_preparation | INFO: Experience Academics NER pipeline added
+2020-09-02 12:56:12,897 | pipeline_preparation | INFO: Profile Pattern matching pipeline added
+2020-09-02 12:56:12,897 | pipeline_preparation | INFO: Profile Pattern matching pipeline added
+2020-09-02 12:56:12,897 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:56:12,897 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:56:13,680 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:56:13,680 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:56:13,680 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:59:25,975 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:59:26,726 | pipeline_preparation | INFO: Profile NER pipeline added
+2020-09-02 12:59:26,726 | pipeline_preparation | INFO: Profile NER pipeline added
+2020-09-02 12:59:26,726 | pipeline_preparation | INFO: Experience Academics NER pipeline added
+2020-09-02 12:59:26,726 | pipeline_preparation | INFO: Experience Academics NER pipeline added
+2020-09-02 12:59:26,726 | pipeline_preparation | INFO: Profile Pattern matching pipeline added
+2020-09-02 12:59:26,726 | pipeline_preparation | INFO: Profile Pattern matching pipeline added
+2020-09-02 12:59:26,726 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:59:26,726 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:59:27,489 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:59:27,489 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:59:27,489 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:59:32,327 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:59:33,057 | pipeline_preparation | INFO: Profile NER pipeline added
+2020-09-02 12:59:33,057 | pipeline_preparation | INFO: Profile NER pipeline added
+2020-09-02 12:59:33,057 | pipeline_preparation | INFO: Experience Academics NER pipeline added
+2020-09-02 12:59:33,057 | pipeline_preparation | INFO: Experience Academics NER pipeline added
+2020-09-02 12:59:33,057 | pipeline_preparation | INFO: Profile Pattern matching pipeline added
+2020-09-02 12:59:33,057 | pipeline_preparation | INFO: Profile Pattern matching pipeline added
+2020-09-02 12:59:33,057 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:59:33,057 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:59:33,812 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:59:33,812 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 12:59:33,812 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 13:01:01,650 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 13:01:02,421 | pipeline_preparation | INFO: Profile NER pipeline added
+2020-09-02 13:01:02,421 | pipeline_preparation | INFO: Profile NER pipeline added
+2020-09-02 13:01:02,421 | pipeline_preparation | INFO: Experience Academics NER pipeline added
+2020-09-02 13:01:02,421 | pipeline_preparation | INFO: Experience Academics NER pipeline added
+2020-09-02 13:01:02,421 | pipeline_preparation | INFO: Profile Pattern matching pipeline added
+2020-09-02 13:01:02,421 | pipeline_preparation | INFO: Profile Pattern matching pipeline added
+2020-09-02 13:01:02,421 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 13:01:02,421 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 13:01:03,177 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 13:01:03,177 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 13:01:03,177 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 13:01:07,233 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 13:01:07,959 | pipeline_preparation | INFO: Profile NER pipeline added
+2020-09-02 13:01:07,959 | pipeline_preparation | INFO: Profile NER pipeline added
+2020-09-02 13:01:07,959 | pipeline_preparation | INFO: Experience Academics NER pipeline added
+2020-09-02 13:01:07,959 | pipeline_preparation | INFO: Experience Academics NER pipeline added
+2020-09-02 13:01:07,959 | pipeline_preparation | INFO: Profile Pattern matching pipeline added
+2020-09-02 13:01:07,959 | pipeline_preparation | INFO: Profile Pattern matching pipeline added
+2020-09-02 13:01:07,959 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 13:01:07,959 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 13:01:08,709 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 13:01:08,709 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
+2020-09-02 13:01:08,709 | pipeline_preparation | INFO: Skills Pattern matching pipeline added
