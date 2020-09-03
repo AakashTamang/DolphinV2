@@ -12,7 +12,8 @@ from settings import tempStorage
 from scorer.resume_scorer import prepare_profile, one_resume_multiple_jd_scorer, prepare_job_description, one_JD_multiple_resume_scorer
 from domain_classification.domain_classification import DomainClassification
 from job_parsing.jd_parsing import SpacyNer
-
+from word2vec import Word2VecScorer
+from settings import word2vec_model
 from mongoengine import connect
 from mongo_orm.parsed_information import ParsedCollection
 from mongo_orm.scored_information import ScoredDocuments
@@ -30,6 +31,7 @@ CORS(app, headers="X-CSRFToken, Content-Type")
 new_resume_parser_obj = newParser()
 domain_classification_obj = DomainClassification()
 parse_jd = SpacyNer()
+word2vec_obj = Word2VecScorer(word2vec_model)
 
 
 @app.route("/newparse", methods=["POST"])
@@ -54,7 +56,7 @@ def new_parse_cv():
         return jsonify(parsed_user_data)
 
 
-@app.route("/scoreresume", methods=["POST", "GET"])
+@app.route("/generatescoreprofile", methods=["POST", "GET"])
 def oneResMultipleJD():
     form_data_ = request.get_json()
     user_profile = form_data_.get('user_profile')
@@ -81,7 +83,7 @@ def oneResMultipleJD():
     return my_score
 
 
-@app.route("/scorejobdes", methods=["POST", "GET"])
+@app.route("/generatescorejobdescription", methods=["POST", "GET"])
 def oneJDMultipleRes():
     form_data_ = request.get_json()
     job = ast.literal_eval(form_data_.get('job'))
@@ -113,18 +115,20 @@ def oneJDMultipleRes():
     return my_score
 
 
-@app.route('/domainclassification',methods=['POST'])
+@app.route('/domainclassification', methods=['POST'])
 def classify_domain():
     document = request.files.get('job_description')
     if document:
         filename = document.filename
         file = tempStorage + '/' + filename
         document.save(file)
-        most_common_domain = domain_classification_obj.clean_classify_document(file)
+        most_common_domain = domain_classification_obj.clean_classify_document(
+            file)
         most_common_domain = json.dumps(most_common_domain)
         return jsonify(most_common_domain)
 
-@app.route('/parsejd',methods=['POST'])
+
+@app.route('/parsejd', methods=['POST'])
 def parsing_jd():
     document = request.files.get('job_description')
     if document:
@@ -135,6 +139,25 @@ def parsing_jd():
         jd_parsed_result = json.dumps(jd_parsed_result)
         return jsonify(jd_parsed_result)
 
+
+@app.route("/generatescore", methods=["POST", "GET"])
+def get_score_for_resume_and_jd():
+    """
+    Function for generating score of job descriptions from file content
+    """
+    resume = request.files.get('resume')
+    if resume:
+        filename = resume.filename
+        file = tempStorage + '/' + filename
+        resume.save(file)
+        # job_description = request.form.get('jobs')#from django
+        job_descriptions = (request.form.get('jobs'))
+        if type(job_descriptions) == str:
+            job_descriptions = ast.literal_eval(job_descriptions)
+        else:
+            pass
+        response = word2vec_obj.calculate_score(file, job_descriptions)
+        return jsonify(response)
 
 
 if __name__ == "__main__":

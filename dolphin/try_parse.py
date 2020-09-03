@@ -3,19 +3,19 @@ import json
 import time
 
 # parsing api test
-"""
-server_url_endpoint = "http://139.5.71.109:8002/parse"
-local_url_endpoint = "http://0.0.0.0:8002/newparse"
 
-resume_file = open(
-    "/home/shushant/Desktop/data_resume/VARUN MURDULA_.Net Developer.docx", "rb")
+# server_url_endpoint = "http://139.5.71.109:8002/parse"
+# local_url_endpoint = "http://0.0.0.0:8002/newparse"
 
-start_time1 = time.time()
-response = requests.post(local_url_endpoint, files={'resume': resume_file})
-print("New API results")
-print(response)
-print(response.json())
-print("Time taken: {} ".format(time.time() - start_time1))
+# resume_file = open(
+#     "/home/shushant/Desktop/Data_dump/data_resume/Akhil_Devops.docx", "rb")
+
+# start_time1 = time.time()
+# response = requests.post(local_url_endpoint, files={'resume': resume_file})
+# print("New API results")
+# print(response)
+# print(response.json())
+# print("Time taken: {} ".format(time.time() - start_time1))
 
 # start_time2 = time.time()
 # response2 = requests.post(server_url_endpoint, files={'resume': resume_file})
@@ -45,3 +45,46 @@ print("--- %s seconds ---" % (time.time() - start_time))
 print(response.status_code)
 print(response.json())
 print(type(response.json()))
+"""
+
+# parsing job description test
+# local_url_endpoint = "http://0.0.0.0:8002/parsejd"
+
+# jd_file = open(
+#     "/home/shushant/Desktop/Data_dump/Job Description Collection/Python Developer 10.docx", "rb")
+
+# start_time1 = time.time()
+# response = requests.post(local_url_endpoint, files={'job_description': jd_file})
+# print("New API results")
+# print(response)
+# print(response.json())
+# print("Time taken: {} seconds".format(time.time() - start_time1))
+
+# domain classification test
+
+# local_url_endpoint = "http://0.0.0.0:8002/domainclassification"
+
+# jd_file = open(
+#     "/home/shushant/Desktop/Data_dump/Job Description Collection/Python Developer 10.docx", "rb")
+
+# start_time1 = time.time()
+# response = requests.post(local_url_endpoint, files={'job_description': jd_file})
+# print("New API results")
+# print(response)
+# print(response.json())
+# print("Time taken: {} seconds".format(time.time() - start_time1))
+
+# scoring from jd and resume content word2vec test
+local_url_endpoint = "http://0.0.0.0:8002/generatescore"
+
+resume_file = open(
+    "/home/shushant/Desktop/Data_dump/data_resume/Akhil_Devops.docx", "rb")
+
+jobs = [{'pk':2, 'job_description': 'we are looking for python dev'}, {'pk':3, 'job_description':'looking for java dev'}]
+
+start_time1 = time.time()
+response = requests.post(local_url_endpoint, files={'resume': resume_file} , data = {'jobs':jobs})
+print("New API results")
+print(response)
+print(response.json())
+print("Time taken: {} seconds".format(time.time() - start_time1))
