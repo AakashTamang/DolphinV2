@@ -23,7 +23,7 @@ SVC_classifier = os.path.join(ParserDir,"models/new_model_svc.pkl")
 ResumeSegmentationModelPath = os.path.join(ParserDir,'models/segment_identifier.pkl')
 
 '''<-----Custom Word2vec model --->'''
-word2vec_model = os.path.join(ScorerDir, "models/word2vec_model")
+word2vec_model = os.path.join(ScorerDir, "models/word2Vec_11000_data")
 
 '''<-------Pool Parser files--------->'''
 technical_skills_pool = os.path.join(ParserDir,'data/technical_skills.csv')
