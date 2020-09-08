@@ -45,4 +45,6 @@ class PreprocessData:
                             if word not in self.stopwords]
         else:
             final_tokens = [word for word, pos in self.tagged_tokens]
+
+        final_tokens = list({tok.lower() for tok in final_tokens})
         return final_tokens
