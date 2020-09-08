@@ -8,3 +8,6 @@ __pycache__/
 
 #log file
 *.log
+
+#Word2VecModel
+word2Vec_11000_data
