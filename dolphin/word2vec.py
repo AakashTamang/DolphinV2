@@ -74,12 +74,19 @@ class Word2VecScorer():
             resume_content)
         resume_vector = self.get_word_embeddings(preprocessed_resume_content)
         score = {}
-
-        for job_id, job_description in job_descriptions.items():
+        for jd in job_descriptions:
+            job_description = jd['job_description']
             job_text = preprocessor_obj.preprocess_text(job_description)
             job_vector = self.get_word_embeddings(job_text)
             similarity = self.calculate_similarity(job_vector, resume_vector)
-            score[job_id] = int(similarity * 100)
+            print (similarity)
+            score[jd['pk']] = int(similarity*100)
+            print (score)
+            # for job_id, job_description in jd.items():
+            #     job_text = preprocessor_obj.preprocess_text(job_description)
+            #     job_vector = self.get_word_embeddings(job_text)
+            #     similarity = self.calculate_similarity(job_vector, resume_vector)
+            #     score[job_id] = int(similarity * 100)
         return score
 
 
