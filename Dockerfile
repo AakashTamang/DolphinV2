@@ -11,4 +11,4 @@ RUN python -m spacy download en_core_web_sm
 RUN python -m spacy download en_core_web_md
 COPY nltk_download.py ./
 RUN python3 nltk_download.py
-CMD python ./run.py --port 8002
+CMD python ./dolphin/run.py --port 8002
