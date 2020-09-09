@@ -65,7 +65,6 @@ def oneResMultipleJD():
     user_skills, user_exp, designations, user_location, designation_dates = prepare_profile(
         user_profile)
     # user_id = user_profile.get('user_id')
-    my_score = {}
     job_descriptions = list(json.loads(form_data_.get('jobs')))
 
     for jd in job_descriptions:
