@@ -13,6 +13,7 @@ from scorer.resume_scorer import prepare_profile, one_resume_multiple_jd_scorer,
 from domain_classification.domain_classification import DomainClassification
 from job_parsing.jd_parsing import SpacyNer
 from word2vec import Word2VecScorer
+from matcher.match import matcher
 from settings import word2vec_model
 from mongoengine import connect
 from mongo_orm.parsed_information import ParsedCollection
@@ -172,6 +173,16 @@ def get_score_for_resume_and_jd():
         response = word2vec_obj.calculate_score(file, job_descriptions)
         return jsonify(response)
 
+@app.route("/matcher",methods = ["POST","GET"])
+def galeShapelyAlgo():
+    form_data_ = request.get_json()
+    oneJD_MultipleRes_Score = form_data_.get('oneJD_MultipleRes_Score')
+    oneRes_MultipleJD_Score = form_data_.get('oneRes_MultipleJD_Score')
+
+    hiredobj = matcher(oneJD_MultipleRes_Score, oneRes_MultipleJD_Score)
+    hired = hiredobj.matchmaker()
+    result = {"results":['  ' + ',\n  '.join('%s is hired by %s' % match for match in sorted(hired.items()))]}
+    return result
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=8002, debug=True)

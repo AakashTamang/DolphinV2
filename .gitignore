@@ -8,3 +8,9 @@ __pycache__/
 
 #log file
 *.log
+
+#Word2VecModel
+dolphin/cvscorer/models/
+
+#StanfordNER
+dolphin/common/stanfordNER/

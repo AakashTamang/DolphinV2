@@ -27,26 +27,29 @@ class DomainClassification:
     def classify(self, file_content):
         self.domain_comparision_df['designations'] = self.domain_comparision_df['designations'].str.lower(
         )
-        print(self.domain_comparision_df.head(n=5))
+        # print(self.domain_comparision_df.head(n=5))
         designations, organization, experience, education, location_ = jd_parsing_obj.parse(file_content)
-        print("Alll--->",designations)
+        print("All--->",designations)
         designations = [item for sublist in designations for item in sublist]
-        desig = [desig.lower() for desig in designations]
-        print("Designation extracted -->", desig)
-        required_df = self.domain_comparision_df.loc[self.domain_comparision_df['designations'].isin(
-            desig)]
-        print(required_df.head())
-        domains = required_df['domain'].tolist()
-        print("Domans",domains)
-        most_common_domain = [word for word,
-                              word_count in Counter(domains).most_common(1)]
+        # desig = [desig.lower() for desig in designations]
+        print("Designation extracted -->", designations)
+        if designations:
+            required_df = self.domain_comparision_df.loc[self.domain_comparision_df['designations'].isin(
+                designations)]
+            print(required_df.head())
+            domains = required_df['domain'].tolist()
+            print("Domans",domains)
+            most_common_domain = [word for word,
+                                word_count in Counter(domains).most_common(1)]
+        else:
+            return "No Designation Found"
 
         return most_common_domain
 
 
 # if __name__ == "__main__":
 #     sample_jd_text = prepare_text(
-#         "/home/shushant/Desktop/Job Description Collection/Network Engineer Job Description 15.docx", dolower=False)
+#         r"C:\Users\Aakash\Desktop\Python\Scraping\Projects\job_descriptions\Data Scientist.docx", dolower=False)
 #     domain_classification_obj = DomainClassification()
 #     most_common_domain = domain_classification_obj.classify(sample_jd_text)
 #     print("Domain_classified-->", most_common_domain)
