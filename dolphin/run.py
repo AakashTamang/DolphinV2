@@ -75,17 +75,12 @@ def oneResMultipleJD():
         result = [executor.submit(one_resume_multiple_jd_scorer, job_description, designations, user_exp,
                                   user_skills, user_location, designation_dates) for job_description in job_descriptions]
     my_score = {}
-    imp_words = {}
-    final_result = {}
 
     for f in concurrent.futures.as_completed(result):
-        id, total_score,job_title,req_soft_skills,req_technical_skills,req_experience,employer_city,employer_state,employer_country = f.result()
+        id, total_score = f.result()
         my_score[id] = total_score
-        words = [job_title,req_soft_skills,req_technical_skills,req_experience,employer_city,employer_state,employer_country]
-        imp_words[id] = words
-    final_result["scores"] = my_score
-    final_result["imp_words"] = imp_words 
-    return final_result
+
+    return my_score
 
 
 @app.route("/generatescorejobdescription", methods=["POST", "GET"])
@@ -116,12 +111,12 @@ def oneJDMultipleRes():
                                    req_soft_skills, req_technical_skills, employer_city) for profile in user_profiles]
     my_score = {}
     final_result = {}
-    imp_words = {}
+    imp_words = []
 
     for f in concurrent.futures.as_completed(results):
         id, total_score = f.result()
         my_score[id] = total_score
-    imp_words[job_id] = [job_title,req_soft_skills,req_technical_skills,req_experience,employer_city,employer_state,employer_country]
+    imp_words = [job_title,req_soft_skills,req_technical_skills,req_experience,employer_city,employer_state,employer_country]
     final_result["scores"] = my_score
     final_result["imp_words"] = imp_words
     
