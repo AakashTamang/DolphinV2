@@ -69,7 +69,7 @@ class SpacyNer():
         # Removing empty lists
         all_organizations = [
             x for x in all_organizations if x]
-        all_designations = list({x for x in all_designations if x})
+        all_designations = [list({desig.lower() for x in all_designations if x for desig in x})]
         all_experiences = [
             x for x in all_experiences if x]
         all_educations = [
