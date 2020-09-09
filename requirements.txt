@@ -21,7 +21,6 @@ decorator==4.4.2
 docutils==0.15.2
 docx2txt==0.8
 EbookLib==0.17.1
-en-core-web-sm==2.2.5
 extract-msg==0.23.1
 find-job-titles==0.7.0
 Flask==1.1.2
