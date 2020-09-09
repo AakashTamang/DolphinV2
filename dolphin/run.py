@@ -14,13 +14,13 @@ from domain_classification.domain_classification import DomainClassification
 from job_parsing.jd_parsing import SpacyNer
 from word2vec import Word2VecScorer
 from settings import word2vec_model
-from mongoengine import connect
-from mongo_orm.parsed_information import ParsedCollection
-from mongo_orm.scored_information import ScoredDocuments
-connect(db="resume_db", host='127.0.0.1', port=27017)
+# from mongoengine import connect
+# from mongo_orm.parsed_information import ParsedCollection
+# from mongo_orm.scored_information import ScoredDocuments
+# connect(db="resume_db", host='127.0.0.1', port=27017)
 
-parser_save = ParsedCollection()
-scorer_save = ScoredDocuments()
+# parser_save = ParsedCollection()
+# scorer_save = ScoredDocuments()
 
 # java_path = r"C:\Program Files\Java\jdk-12.0.1\bin\java.exe"
 # os.environ['JAVAHOME'] = java_path
@@ -60,16 +60,16 @@ def new_parse_cv():
 def oneResMultipleJD():
     form_data_ = request.get_json()
     user_profile = form_data_.get('user_profile')
-    scorer_save.user_profile = user_profile
+    # scorer_save.user_profile = user_profile
     user_skills, user_exp, designations, user_location, designation_dates = prepare_profile(
         user_profile)
     # user_id = user_profile.get('user_id')
     my_score = {}
     job_descriptions = list(json.loads(form_data_.get('jobs')))
 
-    for jd in job_descriptions:
-        scorer_save.job_description = jd
-        scorer_save.save()
+    # for jd in job_descriptions:
+    #     scorer_save.job_description = jd
+    #     scorer_save.save()
     # Multiprocessing because of heavy computational time
     with concurrent.futures.ProcessPoolExecutor() as executor:
         result = [executor.submit(one_resume_multiple_jd_scorer, job_description, designations, user_exp,
@@ -88,7 +88,7 @@ def oneJDMultipleRes():
     form_data_ = request.get_json()
     job = ast.literal_eval(form_data_.get('job'))
     # job_id = job.get('id')
-    scorer_save.job_description = job
+    # scorer_save.job_description = job
     job_title = job.get('job_title')
     job_description = job.get('job_description')
     employer_location = job['location']['city']
@@ -96,9 +96,9 @@ def oneJDMultipleRes():
     req_soft_skills, req_technical_skills, req_experience = prepare_job_description(
         job_description)
     user_profiles = form_data_.get('user_profiles')
-    for up in user_profiles:
-        scorer_save.user_profile = up
-        scorer_save.save()
+    # for up in user_profiles:
+    #     scorer_save.user_profile = up
+    #     scorer_save.save()
     # In case the chunking didn't extract any experience from job description
     if len(req_experience) == 0:
         req_experience = 'Experience in ' + job_title

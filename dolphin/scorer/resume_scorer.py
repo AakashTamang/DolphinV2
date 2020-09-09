@@ -14,13 +14,14 @@ from scipy import stats
 # from settings import technical_skills_pool, soft_skills_pool
 from scorer.helper import PreprocessData,NLTKHelper
 from word2vec import Word2VecScorer
+from job_parsing.jd_parsing import SpacyNer
 
 score_generator_obj= Word2VecScorer(cfg.word2vec_model)
 
 preprocessor_obj_for_score = PreprocessData()
 
-helper_obj = NLTKHelper({"experience_type_a:{<VB>?<CD>?<N.*>?<IN>?<N.*|VBN|JJ>+<IN|VB.*>+<DT>?<JJ|VBG|N.*>+<CC>?<N.*>?}"})
-
+# helper_obj = NLTKHelper({"experience_type_a:{<VB>?<CD>?<N.*>?<IN>?<N.*|VBN|JJ>+<IN|VB.*>+<DT>?<JJ|VBG|N.*>+<CC>?<N.*>?}"})
+NerObj = SpacyNer()
 
 # scorer = Word2VecScorer(cfg.word2vec_model)
 java_path = r"C:\Program Files\Java\jdk-12.0.1\bin\java.exe"
@@ -79,12 +80,17 @@ def prepare_job_description(job_description):
     :returns required_skills,required_experiences
     :type set ,list
     '''
-    _ = preprocessor_obj_for_score.preprocess_text(job_description)
-    n_grams = preprocessor_obj_for_score.n_grams
-    tagged_tokens = preprocessor_obj_for_score.tagged_tokens
-    required_technical_skills = helper_obj.skillsfinder(n_grams,cfg.technical_skills_pool)
-    required_soft_skills = helper_obj.skillsfinder(n_grams,cfg.soft_skills_pool)
-    required_experience = helper_obj.experiencefinder(tagged_tokens)
+    # _ = preprocessor_obj_for_score.preprocess_text(job_description)
+    # n_grams = preprocessor_obj_for_score.n_grams
+    # tagged_tokens = preprocessor_obj_for_score.tagged_tokens
+    # required_technical_skills = helper_obj.skillsfinder(n_grams,cfg.technical_skills_pool)
+    # required_soft_skills = helper_obj.skillsfinder(n_grams,cfg.soft_skills_pool)
+    # required_experience = helper_obj.experiencefinder(tagged_tokens)
+    
+    required_technical_skills, required_soft_skills = NerObj.get_skills(job_description)
+    all_designations, all_organizations, required_experience, all_educations, all_locations = NerObj.parse(job_description)
+
+
     return required_soft_skills,required_technical_skills,required_experience
 
 def calculate_distance(address1,address2):
@@ -247,8 +253,8 @@ def one_JD_multiple_resume_scorer(profile,job_title,req_exp,req_soft_skills,req_
     else:
         vector_score = []
         for desig in designations:
-            desig_vec = score_generator_obj.create_vector(desig)
-            job_title_vec = score_generator_obj.create_vector(job_title)
+            desig_vec = score_generator_obj.get_word_embeddings(desig)
+            job_title_vec = score_generator_obj.get_word_embeddings(job_title)
             desig_job_title_similarity_desig = score_generator_obj.calculate_similarity(desig_vec,[job_title_vec])
             vector_score.append(desig_job_title_similarity_desig)
         try:
@@ -263,8 +269,8 @@ def one_JD_multiple_resume_scorer(profile,job_title,req_exp,req_soft_skills,req_
     if len(req_exp) == 0 or len(user_exp) == 0:
         vec_sim = 0
     else:
-        req_exp_vector = score_generator_obj.create_vector(req_exp)
-        user_exp_vector = score_generator_obj.create_vector(user_exp)
+        req_exp_vector = score_generator_obj.get_word_embeddings(req_exp)
+        user_exp_vector = score_generator_obj.get_word_embeddings(user_exp)
 
         vec_sim = score_generator_obj.calculate_similarity(req_exp_vector,[user_exp_vector])
     
