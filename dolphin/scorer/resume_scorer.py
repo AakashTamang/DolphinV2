@@ -162,10 +162,11 @@ def one_resume_multiple_jd_scorer(job,designations,user_exp,user_skills,user_loc
     job_title = job.get('job_title')
     job_description = job.get('job_description')
     req_soft_skills,req_technical_skills,req_experience = prepare_job_description(job_description)
-    employer_location = job['location']['city']
-    
+    employer_city = job['location']['city']
+    employer_country = job['location']['country']
+    employer_state = job['location']['state']
     try:
-        distance = calculate_distance(employer_location,user_location)
+        distance = calculate_distance(employer_city,user_location)
         #Normalizing to a range from 0 to 10
         distance_score = 5 - ((distance/20000)*5)
     except:
@@ -217,9 +218,9 @@ def one_resume_multiple_jd_scorer(job,designations,user_exp,user_skills,user_loc
 
     total_score = experience_score + desig_score + skill_score + distance_score + progress_score
     
-    return job_id,total_score
+    return job_id,total_score,job_title,req_soft_skills,req_technical_skills,req_experience,employer_city,employer_state,employer_country
 
-def one_JD_multiple_resume_scorer(profile,job_title,req_exp,req_soft_skills,req_technical_skills,employer_location):
+def one_JD_multiple_resume_scorer(profile,job_title,req_exp,req_soft_skills,req_technical_skills,employer_city):
     user_id = profile.get('user_id')
     user_skills,user_exp,designations,user_location, designation_dates = prepare_profile(profile)
     user_skills = [x.lower() for x in user_skills]
@@ -230,7 +231,7 @@ def one_JD_multiple_resume_scorer(profile,job_title,req_exp,req_soft_skills,req_
 
     #calculating score for distance
     try:
-        distance = calculate_distance(employer_location,user_location)
+        distance = calculate_distance(employer_city,user_location)
         #Normalizing to a range from 0 to 10
         rounded_dist = round(distance)
         if(rounded_dist > 0):
@@ -297,7 +298,7 @@ def one_JD_multiple_resume_scorer(profile,job_title,req_exp,req_soft_skills,req_
     print("Required experiences :: {}".format(req_exp))
     print("User experiences :: {}".format(user_exp))
     print("Experience similarity : {}, Experience Score :: {}".format(vec_sim,experience_score))
-    print("Job Decription location :: {}  Job Seeker location :: {}  Distance score : {}".format(employer_location,user_location, distance_score))
+    print("Job Decription location :: {}  Job Seeker location :: {}  Distance score : {}".format(employer_city,user_location, distance_score))
     print("Job titles {}".format(job_title))
     print("Designations:  {}".format(designations))
     print("Desig Score {}".format(desig_score))
