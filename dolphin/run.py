@@ -87,7 +87,7 @@ def oneResMultipleJD():
 def oneJDMultipleRes():
     form_data_ = request.get_json()
     job = ast.literal_eval(form_data_.get('job'))
-    job_id = job.get('id')
+    # job_id = job.get('id')
     scorer_save.job_description = job
     job_title = job.get('job_title')
     job_description = job.get('job_description')
@@ -116,7 +116,10 @@ def oneJDMultipleRes():
     for f in concurrent.futures.as_completed(results):
         id, total_score = f.result()
         my_score[id] = total_score
-    imp_words = [job_title,req_soft_skills,req_technical_skills,req_experience,employer_city,employer_state,employer_country]
+    
+    imp_words = [job_title,req_experience,employer_city,employer_state,employer_country]
+    [imp_words.append(i) for i in req_soft_skills]
+    [imp_words.append(i) for i in req_technical_skills]
     final_result["scores"] = my_score
     final_result["imp_words"] = imp_words
     
