@@ -5,13 +5,13 @@ import time
 # parsing api test
 
 # server_url_endpoint = "http://139.5.71.109:8002/parse"
-# local_url_endpoint = "http://0.0.0.0:8002/newparse"
+# local_url_endpoint = "http://0.0.0.0:8002/parse"
 
 # resume_file = open(
 #     "/home/shushant/Desktop/Data_dump/data_resume/Akhil_Devops.docx", "rb")
 
 # start_time1 = time.time()
-# response = requests.post(local_url_endpoint, files={'resume': resume_file})
+# response = requests.post(server_url_endpoint, files={'resume': resume_file})
 # print("New API results")
 # print(response)
 # print(response.json())
@@ -23,7 +23,7 @@ import time
 # print(response2)
 # print(response2.json())
 # print("Time taken: {} ".format(time.time() - start_time2))
-"""
+
 
 # scoring api for multiple job descriptions
 scoring_multiple_jd_endpoint = "http://0.0.0.0:8002/scoreresume"
@@ -31,13 +31,13 @@ scoring_multiple_jd_endpoint = "http://0.0.0.0:8002/scoreresume"
 with open("multiple_jd.json", 'r') as f:
     data = json.load(f)
 
-
+"""
 # # scoring api for multiple user profiles test
-# scoring_multiple_user_profile_endpoint = "http://0.0.0.0:8002/scorejobdes"
+# scoring_multiple_user_profile_endpoint = "http://0.0.0.0:8002/generatescorejobdescription"
 
 # with open("multiple_user_profile.json", 'r') as f:
 #     data = json.load(f)
-
+"""
 
 start_time = time.time()
 response = requests.post(scoring_multiple_jd_endpoint, json=data)
@@ -88,3 +88,4 @@ print("New API results")
 print(response)
 print(response.json())
 print("Time taken: {} seconds".format(time.time() - start_time1))
+"""

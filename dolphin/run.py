@@ -15,13 +15,13 @@ from job_parsing.jd_parsing import SpacyNer
 from word2vec import Word2VecScorer
 from matcher.match import matcher
 from settings import word2vec_model
-from mongoengine import connect
-from mongo_orm.parsed_information import ParsedCollection
-from mongo_orm.scored_information import ScoredDocuments
-connect(db="resume_db", host='127.0.0.1', port=27017)
+# from mongoengine import connect
+# from mongo_orm.parsed_information import ParsedCollection
+# from mongo_orm.scored_information import ScoredDocuments
+# connect(db="resume_db", host='127.0.0.1', port=27017)
 
-parser_save = ParsedCollection()
-scorer_save = ScoredDocuments()
+# parser_save = ParsedCollection()
+# scorer_save = ScoredDocuments()
 
 # java_path = r"C:\Program Files\Java\jdk-12.0.1\bin\java.exe"
 # os.environ['JAVAHOME'] = java_path
@@ -35,7 +35,7 @@ parse_jd = SpacyNer()
 word2vec_obj = Word2VecScorer(word2vec_model)
 
 
-@app.route("/newparse", methods=["POST"])
+@app.route("/parse", methods=["POST"])
 def new_parse_cv():
     resume = request.files.get('resume')
     if resume:
@@ -43,16 +43,16 @@ def new_parse_cv():
         file = tempStorage + '/' + filename
         resume.save(file)
         parsed_user_data = new_resume_parser_obj.identifyResume(file)
-        parser_save.education = parsed_user_data["EDUCATION"]
-        parser_save.experience = parsed_user_data["EXPERIENCE"]
-        parser_save.languages = parsed_user_data["LANGUAGES"]
-        parser_save.objectives = parsed_user_data["OBJECTIVE"]
-        parser_save.projects = parsed_user_data["PROJECTS"]
-        parser_save.skills = parsed_user_data["SKILLS"]
-        parser_save.rewards = parsed_user_data["REWARDS"]
-        parser_save.references = parsed_user_data["REFERENCES"]
-        parser_save.personal_information = parsed_user_data["PERSONAL_INFORMATION"]
-        parser_save.save()
+        # parser_save.education = parsed_user_data["EDUCATION"]
+        # parser_save.experience = parsed_user_data["EXPERIENCE"]
+        # parser_save.languages = parsed_user_data["LANGUAGES"]
+        # parser_save.objectives = parsed_user_data["OBJECTIVE"]
+        # parser_save.projects = parsed_user_data["PROJECTS"]
+        # parser_save.skills = parsed_user_data["SKILLS"]
+        # parser_save.rewards = parsed_user_data["REWARDS"]
+        # parser_save.references = parsed_user_data["REFERENCES"]
+        # parser_save.personal_information = parsed_user_data["PERSONAL_INFORMATION"]
+        # parser_save.save()
         parsed_user_data = json.dumps(parsed_user_data)
         return jsonify(parsed_user_data)
 
@@ -61,15 +61,15 @@ def new_parse_cv():
 def oneResMultipleJD():
     form_data_ = request.get_json()
     user_profile = form_data_.get('user_profile')
-    scorer_save.user_profile = user_profile
+    # scorer_save.user_profile = user_profile
     user_skills, user_exp, designations, user_location, designation_dates = prepare_profile(
         user_profile)
     # user_id = user_profile.get('user_id')
     job_descriptions = list(json.loads(form_data_.get('jobs')))
 
-    for jd in job_descriptions:
-        scorer_save.job_description = jd
-        scorer_save.save()
+    # for jd in job_descriptions:
+    #     scorer_save.job_description = jd
+    #     scorer_save.save()
     # Multiprocessing because of heavy computational time
     with concurrent.futures.ProcessPoolExecutor() as executor:
         result = [executor.submit(one_resume_multiple_jd_scorer, job_description, designations, user_exp,
@@ -88,7 +88,7 @@ def oneJDMultipleRes():
     form_data_ = request.get_json()
     job = ast.literal_eval(form_data_.get('job'))
     job_id = job.get('id')
-    scorer_save.job_description = job
+    # scorer_save.job_description = job
     job_title = job.get('job_title')
     job_description = job.get('job_description')
     employer_city = job['location']['city']
@@ -98,9 +98,9 @@ def oneJDMultipleRes():
     req_soft_skills, req_technical_skills, req_experience = prepare_job_description(
         job_description)
     user_profiles = form_data_.get('user_profiles')
-    for up in user_profiles:
-        scorer_save.user_profile = up
-        scorer_save.save()
+    # for up in user_profiles:
+    #     scorer_save.user_profile = up
+    #     scorer_save.save()
     # In case the job_parsing module didn't extract any experience from job description
     if len(req_experience) == 0:
         req_experience = 'Experience in ' + job_title
@@ -116,10 +116,27 @@ def oneJDMultipleRes():
     for f in concurrent.futures.as_completed(results):
         id, total_score = f.result()
         my_score[id] = total_score
-    imp_words = [job_title,req_soft_skills,req_technical_skills,req_experience,employer_city,employer_state,employer_country]
+    imp_words = [job_title,
+                 req_experience, employer_city, employer_state, employer_country]
+    for skills in req_technical_skills:
+        imp_words.append(skills)
+
+    for skills in req_soft_skills:
+        imp_words.append(skills)
+
+    # print("Job Title --{} ---> {}".format(job_title, type(job_title)))
+    # print("Job Soft Skills --{} ---> {}".format(req_soft_skills, type(req_soft_skills)))
+    # print("Job Technical Skills --{} ---> {}".format(req_technical_skills,
+    #                                                  type(req_technical_skills)))
+    # print("Job Experience --{} ---> {}".format(req_experience, type(req_experience)))
+    # print("Job city --{} ---> {}".format(employer_city, type(employer_city)))
+    # print("Job state --{} ---> {}".format(employer_country, type(employer_country)))
+    # print("Job country --{} ---> {}".format(employer_state, type(employer_state)))
     final_result["scores"] = my_score
     final_result["imp_words"] = imp_words
-    
+    # print("Important words --> ", imp_words)
+    # print(type(imp_words))
+
     return final_result
 
 
@@ -167,7 +184,8 @@ def get_score_for_resume_and_jd():
         response = word2vec_obj.calculate_score(file, job_descriptions)
         return jsonify(response)
 
-@app.route("/matcher",methods = ["POST","GET"])
+
+@app.route("/matcher", methods=["POST", "GET"])
 def galeShapelyAlgo():
     form_data_ = request.get_json()
     oneJD_MultipleRes_Score = form_data_.get('oneJD_MultipleRes_Score')
@@ -175,8 +193,10 @@ def galeShapelyAlgo():
 
     hiredobj = matcher(oneJD_MultipleRes_Score, oneRes_MultipleJD_Score)
     hired = hiredobj.matchmaker()
-    result = {"results":['  ' + ',\n  '.join('%s is hired by %s' % match for match in sorted(hired.items()))]}
+    result = {"results": [
+        '  ' + ',\n  '.join('%s is hired by %s' % match for match in sorted(hired.items()))]}
     return result
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=8002, debug=True)
