@@ -53,7 +53,6 @@ def new_parse_cv():
         # parser_save.references = parsed_user_data["REFERENCES"]
         # parser_save.personal_information = parsed_user_data["PERSONAL_INFORMATION"]
         # parser_save.save()
-        parsed_user_data = json.dumps(parsed_user_data)
         return jsonify(parsed_user_data)
 
 
@@ -149,7 +148,6 @@ def classify_domain():
         document.save(file)
         most_common_domain = domain_classification_obj.clean_classify_document(
             file)
-        most_common_domain = json.dumps(most_common_domain)
         return jsonify(most_common_domain)
 
 
@@ -161,7 +159,6 @@ def parsing_jd():
         file = tempStorage + '/' + filename
         document.save(file)
         jd_parsed_result = parse_jd.clean_parse_jd(file)
-        jd_parsed_result = json.dumps(jd_parsed_result)
         return jsonify(jd_parsed_result)
 
 
