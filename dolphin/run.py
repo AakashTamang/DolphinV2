@@ -42,7 +42,7 @@ def new_parse_cv():
         filename = resume.filename
         file = tempStorage + '/' + filename
         resume.save(file)
-        # parsed_user_data = new_resume_parser_obj.identifyResume(file)
+        parsed_user_data = new_resume_parser_obj.identifyResume(file)
         # parser_save.education = parsed_user_data["EDUCATION"]
         # parser_save.experience = parsed_user_data["EXPERIENCE"]
         # parser_save.languages = parsed_user_data["LANGUAGES"]
