@@ -44,7 +44,7 @@ def prepare_profile(profile):
     '''
     technical_skills = set(profile.get('technical_skills'))
     soft_skills = set(profile.get('soft_skills'))
-    skills = technical_skills.union(soft_skills)
+    # skills = technical_skills.union(soft_skills)
     # technical_skills = set(profile.get('skills'))
     designations = []
     try:
@@ -69,7 +69,7 @@ def prepare_profile(profile):
                                 ' experience as '+designation))
         designation_dates.append((entry_date, designation))
         set(designations)
-    return skills, all_experiences, designations, job_seeker_location, designation_dates
+    return soft_skills, technical_skills, all_experiences, designations, job_seeker_location, designation_dates
 
 
 def prepare_job_description(job_description):
@@ -160,7 +160,7 @@ def calculate_progress(designation_dates):
     return progress_score
 
 
-def one_resume_multiple_jd_scorer(job, designations, user_exp, user_skills, user_location, designation_dates):
+def one_resume_multiple_jd_scorer(job, designations, user_exp, user_soft_skills, user_technical_skills, user_location, designation_dates):
     job_id = job.get('id')
     job_title = job.get('job_title')
     job_description = job.get('job_description')
@@ -178,8 +178,8 @@ def one_resume_multiple_jd_scorer(job, designations, user_exp, user_skills, user
     except:
         distance_score = 5
 
-    matched_soft_skills = user_skills.intersection(req_soft_skills)
-    matched_technical_skills = user_skills.intersection(req_technical_skills)
+    matched_soft_skills = user_soft_skills.intersection(req_soft_skills)
+    matched_technical_skills = user_technical_skills.intersection(req_technical_skills)
     try:
         skill_score = (len(matched_soft_skills)+(len(matched_technical_skills))
                        )/(len(req_technical_skills)+len(req_soft_skills)) * 25
@@ -232,14 +232,25 @@ def one_resume_multiple_jd_scorer(job, designations, user_exp, user_skills, user
 
 def one_JD_multiple_resume_scorer(profile, job_title, req_exp, req_soft_skills, req_technical_skills, employer_city):
     user_id = profile.get('user_id')
-    user_skills, user_exp, designations, user_location, designation_dates = prepare_profile(
+    user_soft_skills, user_technical_skills, user_exp, designations, user_location, designation_dates = prepare_profile(
         profile)
-    user_skills = [x.lower() for x in user_skills]
+    user_soft_skills = [x.lower() for x in user_soft_skills]
+    user_technical_skills = [x.lower() for x in user_technical_skills]
     req_soft_skills = [x.lower() for x in req_soft_skills]
     req_technical_skills = [x.lower() for x in req_technical_skills]
-    matched_soft_skills = set(user_skills).intersection(set(req_soft_skills))
+    matched_soft_skills = set(user_soft_skills).intersection(set(req_soft_skills))
     matched_technical_skills = set(
-        user_skills).intersection(set(req_technical_skills))
+        user_technical_skills).intersection(set(req_technical_skills))
+
+    ##For testing skills score relevance
+    print("\n\n")
+    print("Job Soft Skills --{} ---> {}".format(req_soft_skills, type(req_soft_skills)))
+    print("\n")
+    print("Job Technical Skills --{} ---> {}".format(req_technical_skills,
+                                                     type(req_technical_skills)))
+    skills_set = {user_id:{"user_soft_skills":user_soft_skills,"user_technical_skills":user_technical_skills,"matched_soft_skills":matched_soft_skills,"matched_technical_skills":matched_technical_skills}}
+    print("\n\n")
+    print(skills_set)
 
     # calculating score for distance
     try:

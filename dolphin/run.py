@@ -61,7 +61,7 @@ def oneResMultipleJD():
     form_data_ = request.get_json()
     user_profile = form_data_.get('user_profile')
     # scorer_save.user_profile = user_profile
-    user_skills, user_exp, designations, user_location, designation_dates = prepare_profile(
+    user_soft_skills, user_technical_skills, user_exp, designations, user_location, designation_dates = prepare_profile(
         user_profile)
     # user_id = user_profile.get('user_id')
     job_descriptions = list(json.loads(form_data_.get('jobs')))
@@ -72,7 +72,7 @@ def oneResMultipleJD():
     # Multiprocessing because of heavy computational time
     with concurrent.futures.ProcessPoolExecutor() as executor:
         result = [executor.submit(one_resume_multiple_jd_scorer, job_description, designations, user_exp,
-                                  user_skills, user_location, designation_dates) for job_description in job_descriptions]
+                                  user_soft_skills, user_technical_skills, user_location, designation_dates) for job_description in job_descriptions]
     my_score = {}
 
     for f in concurrent.futures.as_completed(result):
@@ -92,8 +92,8 @@ def oneJDMultipleRes():
     job_title = job.get('job_title')
     job_description = job.get('job_description')
     employer_city = job['location']['city']
-    employer_country = job['location']['country']
-    employer_state = job['location']['state']
+    # employer_country = job['location']['country']
+    # employer_state = job['location']['state']
 
     req_soft_skills, req_technical_skills, required_experience, all_designations, all_organizations, all_educations, all_locations = prepare_job_description(
         job_description)
