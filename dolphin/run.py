@@ -187,6 +187,23 @@ def get_score_for_resume_and_jd():
         return jsonify(response)
 
 
+@app.route("/getjobscore", methods=["POST", "GET"])
+def get_score_forjobs():
+    """
+    Function for generating score of job descriptions from file content
+    """
+    job_1 = request.form.get('job_1')
+    if job_1:
+        job_descriptions = (request.form.get('other_jobs'))
+        if type(job_descriptions) == str:
+            job_descriptions = ast.literal_eval(job_descriptions)
+        else:
+            pass
+        # response = word2vec_obj.calculate_score(file, job_descriptions)
+        response = word2vec_obj.score_jobs(job_1, job_descriptions)
+        return jsonify(response)
+
+
 @app.route("/matcher", methods=["POST", "GET"])
 def galeShapelyAlgo():
     form_data_ = request.get_json()
