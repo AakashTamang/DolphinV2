@@ -94,15 +94,19 @@ def oneJDMultipleRes():
     employer_city = job['location']['city']
     employer_country = job['location']['country']
     employer_state = job['location']['state']
-    # print(job_description)
-    req_soft_skills, req_technical_skills, req_experience = prepare_job_description(
+
+    req_soft_skills, req_technical_skills, required_experience, all_designations, all_organizations, all_educations, all_locations = prepare_job_description(
         job_description)
+
+    all_designations = [
+        item for sublist in all_designations for item in sublist]
+
     user_profiles = form_data_.get('user_profiles')
     # for up in user_profiles:
     #     scorer_save.user_profile = up
     #     scorer_save.save()
     # In case the job_parsing module didn't extract any experience from job description
-    if len(req_experience) == 0:
+    if len(required_experience) == 0:
         req_experience = 'Experience in ' + job_title
 
     # Multiprocessing because of heavy computational time
@@ -111,17 +115,19 @@ def oneJDMultipleRes():
                                    req_soft_skills, req_technical_skills, employer_city) for profile in user_profiles]
     my_score = {}
     final_result = {}
-    imp_words = []
 
     for f in concurrent.futures.as_completed(results):
         id, total_score = f.result()
         my_score[id] = total_score
 
-    imp_words = [job_title, req_experience,
-                 employer_city, employer_state, employer_country]
+    imp_words = []
     [imp_words.append(i) for i in req_soft_skills]
     [imp_words.append(i) for i in req_technical_skills]
-
+    [imp_words.append(i) for i in all_educations]
+    [imp_words.append(i) for i in all_locations]
+    [imp_words.append(i) for i in all_designations]
+    [imp_words.append(i) for i in all_organizations]
+    [imp_words.append(i) for i in required_experience]
     # print("Job Title --{} ---> {}".format(job_title, type(job_title)))
     # print("Job Soft Skills --{} ---> {}".format(req_soft_skills, type(req_soft_skills)))
     # print("Job Technical Skills --{} ---> {}".format(req_technical_skills,
@@ -130,7 +136,6 @@ def oneJDMultipleRes():
     # print("Job city --{} ---> {}".format(employer_city, type(employer_city)))
     # print("Job state --{} ---> {}".format(employer_country, type(employer_country)))
     # print("Job country --{} ---> {}".format(employer_state, type(employer_state)))
-
     final_result["scores"] = my_score
     final_result["imp_words"] = imp_words
     # print("Important words --> ", imp_words)
