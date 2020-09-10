@@ -43,17 +43,16 @@ def new_parse_cv():
         file = tempStorage + '/' + filename
         resume.save(file)
         parsed_user_data = new_resume_parser_obj.identifyResume(file)
-        parser_save.education = parsed_user_data["EDUCATION"]
-        parser_save.experience = parsed_user_data["EXPERIENCE"]
-        parser_save.languages = parsed_user_data["LANGUAGES"]
-        parser_save.objectives = parsed_user_data["OBJECTIVE"]
-        parser_save.projects = parsed_user_data["PROJECTS"]
-        parser_save.skills = parsed_user_data["SKILLS"]
-        parser_save.rewards = parsed_user_data["REWARDS"]
-        parser_save.references = parsed_user_data["REFERENCES"]
-        parser_save.personal_information = parsed_user_data["PERSONAL_INFORMATION"]
-        parser_save.save()
-        parsed_user_data = json.dumps(parsed_user_data)
+        # parser_save.education = parsed_user_data["EDUCATION"]
+        # parser_save.experience = parsed_user_data["EXPERIENCE"]
+        # parser_save.languages = parsed_user_data["LANGUAGES"]
+        # parser_save.objectives = parsed_user_data["OBJECTIVE"]
+        # parser_save.projects = parsed_user_data["PROJECTS"]
+        # parser_save.skills = parsed_user_data["SKILLS"]
+        # parser_save.rewards = parsed_user_data["REWARDS"]
+        # parser_save.references = parsed_user_data["REFERENCES"]
+        # parser_save.personal_information = parsed_user_data["PERSONAL_INFORMATION"]
+        # parser_save.save()
         return jsonify(parsed_user_data)
 
 
@@ -95,15 +94,19 @@ def oneJDMultipleRes():
     employer_city = job['location']['city']
     employer_country = job['location']['country']
     employer_state = job['location']['state']
-    # print(job_description)
-    req_soft_skills, req_technical_skills, req_experience = prepare_job_description(
+
+    req_soft_skills, req_technical_skills, required_experience, all_designations, all_organizations, all_educations, all_locations = prepare_job_description(
         job_description)
+
+    all_designations = [
+        item for sublist in all_designations for item in sublist]
+
     user_profiles = form_data_.get('user_profiles')
     # for up in user_profiles:
     #     scorer_save.user_profile = up
     #     scorer_save.save()
     # In case the job_parsing module didn't extract any experience from job description
-    if len(req_experience) == 0:
+    if len(required_experience) == 0:
         req_experience = 'Experience in ' + job_title
 
     # Multiprocessing because of heavy computational time
@@ -112,16 +115,19 @@ def oneJDMultipleRes():
                                    req_soft_skills, req_technical_skills, employer_city) for profile in user_profiles]
     my_score = {}
     final_result = {}
-    imp_words = []
 
     for f in concurrent.futures.as_completed(results):
         id, total_score = f.result()
         my_score[id] = total_score
-    
-    imp_words = [job_title,req_experience,employer_city,employer_state,employer_country]
+
+    imp_words = []
     [imp_words.append(i) for i in req_soft_skills]
     [imp_words.append(i) for i in req_technical_skills]
-
+    [imp_words.append(i) for i in all_educations]
+    [imp_words.append(i) for i in all_locations]
+    [imp_words.append(i) for i in all_designations]
+    [imp_words.append(i) for i in all_organizations]
+    [imp_words.append(i) for i in required_experience]
     # print("Job Title --{} ---> {}".format(job_title, type(job_title)))
     # print("Job Soft Skills --{} ---> {}".format(req_soft_skills, type(req_soft_skills)))
     # print("Job Technical Skills --{} ---> {}".format(req_technical_skills,
@@ -130,7 +136,6 @@ def oneJDMultipleRes():
     # print("Job city --{} ---> {}".format(employer_city, type(employer_city)))
     # print("Job state --{} ---> {}".format(employer_country, type(employer_country)))
     # print("Job country --{} ---> {}".format(employer_state, type(employer_state)))
-
     final_result["scores"] = my_score
     final_result["imp_words"] = imp_words
     # print("Important words --> ", imp_words)
@@ -148,7 +153,6 @@ def classify_domain():
         document.save(file)
         most_common_domain = domain_classification_obj.clean_classify_document(
             file)
-        most_common_domain = json.dumps(most_common_domain)
         return jsonify(most_common_domain)
 
 
@@ -160,7 +164,6 @@ def parsing_jd():
         file = tempStorage + '/' + filename
         document.save(file)
         jd_parsed_result = parse_jd.clean_parse_jd(file)
-        jd_parsed_result = json.dumps(jd_parsed_result)
         return jsonify(jd_parsed_result)
 
 
@@ -181,6 +184,23 @@ def get_score_for_resume_and_jd():
         else:
             pass
         response = word2vec_obj.calculate_score(file, job_descriptions)
+        return jsonify(response)
+
+
+@app.route("/getjobscore", methods=["POST", "GET"])
+def get_score_forjobs():
+    """
+    Function for generating score of job descriptions from file content
+    """
+    job_1 = request.form.get('job_1')
+    if job_1:
+        job_descriptions = (request.form.get('other_jobs'))
+        if type(job_descriptions) == str:
+            job_descriptions = ast.literal_eval(job_descriptions)
+        else:
+            pass
+        # response = word2vec_obj.calculate_score(file, job_descriptions)
+        response = word2vec_obj.score_jobs(job_1, job_descriptions)
         return jsonify(response)
 
 

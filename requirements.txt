@@ -88,7 +88,6 @@ snowballstemmer==2.0.0
 sortedcontainers==2.2.2
 soupsieve==2.0.1
 spacy==2.2.4
-spaczz==0.1.1
 SpeechRecognition==3.8.1
 Sphinx==1.7.5
 sphinxcontrib-websupport==1.1.0
