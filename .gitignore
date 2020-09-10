@@ -10,7 +10,7 @@ __pycache__/
 *.log
 
 #Word2VecModel
-dolphin/cvscorer/models/
+# dolphin/cvscorer/models/
 
 #StanfordNER
 dolphin/common/stanfordNER/
