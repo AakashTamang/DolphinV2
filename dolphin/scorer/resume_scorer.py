@@ -243,14 +243,14 @@ def one_JD_multiple_resume_scorer(profile, job_title, req_exp, req_soft_skills, 
         user_technical_skills).intersection(set(req_technical_skills))
 
     ##For testing skills score relevance
-    print("\n\n")
-    print("Job Soft Skills --{} ---> {}".format(req_soft_skills, type(req_soft_skills)))
-    print("\n")
-    print("Job Technical Skills --{} ---> {}".format(req_technical_skills,
-                                                     type(req_technical_skills)))
+    # print("\n\n")
+    # print("Job Soft Skills --{} ---> {}".format(req_soft_skills, type(req_soft_skills)))
+    # print("\n")
+    # print("Job Technical Skills --{} ---> {}".format(req_technical_skills,
+                                                     # type(req_technical_skills)))
     skills_set = {user_id:{"user_soft_skills":user_soft_skills,"user_technical_skills":user_technical_skills,"matched_soft_skills":matched_soft_skills,"matched_technical_skills":matched_technical_skills}}
-    print("\n\n")
-    print(skills_set)
+    # print("\n\n")
+    # print(skills_set)
 
     # calculating score for distance
     try:
@@ -322,15 +322,15 @@ def one_JD_multiple_resume_scorer(profile, job_title, req_exp, req_soft_skills, 
     total_score = experience_score + desig_score + \
         skill_score + distance_score + progress_score
 
-    print("Required experiences :: {}".format(req_exp))
-    print("User experiences :: {}".format(user_exp))
-    print("Experience similarity : {}, Experience Score :: {}".format(
-        vec_sim, experience_score))
-    print("Job Decription location :: {}  Job Seeker location :: {}  Distance score : {}".format(
-        employer_city, user_location, distance_score))
-    print("Job titles {}".format(job_title))
-    print("Designations:  {}".format(designations))
-    print("Desig Score {}".format(desig_score))
-    print("Designation dates {}".format(designation_dates))
-    print("progress score {}".format(progress_score))
+    # print("Required experiences :: {}".format(req_exp))
+    # print("User experiences :: {}".format(user_exp))
+    # print("Experience similarity : {}, Experience Score :: {}".format(
+    #     vec_sim, experience_score))
+    # print("Job Decription location :: {}  Job Seeker location :: {}  Distance score : {}".format(
+    #     employer_city, user_location, distance_score))
+    # print("Job titles {}".format(job_title))
+    # print("Designations:  {}".format(designations))
+    # print("Desig Score {}".format(desig_score))
+    # print("Designation dates {}".format(designation_dates))
+    # print("progress score {}".format(progress_score))
     return user_id, total_score

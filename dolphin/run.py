@@ -108,6 +108,8 @@ def oneJDMultipleRes():
     # In case the job_parsing module didn't extract any experience from job description
     if len(required_experience) == 0:
         req_experience = 'Experience in ' + job_title
+    else:
+        req_experience = required_experience
 
     # Multiprocessing because of heavy computational time
     with concurrent.futures.ProcessPoolExecutor() as executor:

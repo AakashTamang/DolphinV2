@@ -35,9 +35,16 @@ class Word2VecScorer():
         :return:cv_word2vec :type list of list
         '''
         doc_word2vec = list()
-
-        tokenized = [word_tokenize(token.lower()) for token in token_list]
-        flat_list = [item for sublist in tokenized for item in sublist]
+        if type(token_list) == str:
+            token_list = token_list.lower()
+            flat_list = word_tokenize(token_list)
+        else:
+            # print("Samasyaaa yaha xa {} ani type {}".format(token_list,type(token_list)))
+            token_list = token_list[0][0].lower()
+            flat_list = word_tokenize(token_list)
+            # tokenized = [word_tokenize(token.lower()) for token in token_list]
+            # flat_list = [item for sublist in tokenized for item in sublist]
+        # print("Flat list vanya yehi ho la boro {}".format(flat_list))
         for token in flat_list:
             try:
                 doc_word2vec.append(self.word2vec[token])
@@ -103,11 +110,11 @@ class Word2VecScorer():
         return job_score
 
 
-if __name__ == "__main__":
-    scorer_obj = Word2VecScorer(cfg.word2vec_model)
-    test1 = "I want a job in python"
-    test2 = "We need a django developer"
-    test1_embedding = scorer_obj.get_word_embeddings(test1)
-    test2_embedding = scorer_obj.get_word_embeddings(test2)
-    similarity = scorer_obj.calculate_similarity(
-        test1_embedding, test2_embedding)
+# if __name__ == "__main__":
+#     scorer_obj = Word2VecScorer(cfg.word2vec_model)
+#     test1 = "I want a job in python"
+#     test2 = "We need a django developer"
+#     test1_embedding = scorer_obj.get_word_embeddings(test1)
+#     test2_embedding = scorer_obj.get_word_embeddings(test2)
+#     similarity = scorer_obj.calculate_similarity(
+#         test1_embedding, test2_embedding)
