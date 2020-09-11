@@ -1,0 +1,903 @@
+{
+    "user_profiles": [
+        {
+            "user_id": 122,
+            "profile": "{\"user_pk\": 304, \"profile_id\": 122, \"full_name\": \"Ashish Basnet\", \"first_name\": \"Ashish\", \"last_name\": \"Basnet\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/utsavAcharya/Ashish_Basnet_Salesforce_BA.pdf\", \"job_group\": {\"id\": 5, \"name\": \"Python\"}, \"email\": \"utsav@yopmail.com\", \"phone\": \"240-883-6478\", \"gender\": 1, \"address\": {\"id\": 154, \"country\": \"US\", \"state\": \"kathmandu\", \"zip_code\": \"26789\", \"city\": \"kathmandu\"}}",
+            "technical_skills": [
+                "Ajax",
+                "Html",
+                "C++",
+                "Javascript",
+                "Sql",
+                "Java",
+                "C"
+            ],
+            "soft_skills": [
+                "Analysis",
+                "Analyzing",
+                "Management",
+                "Integration",
+                "Communication",
+                "Closing",
+                "Project Management",
+                "Focus",
+                "Design",
+                "Organization",
+                "Troubleshooting",
+                "Integrity",
+                "Training"
+            ],
+            "exps": "[{\"id\": 152, \"designation\": \"React\", \"company\": \"info dev\", \"entry_date\": \"2020-08-25\", \"exit_date\": \"2020-08-26\", \"roles\": null}]"
+        },
+        {
+            "user_id": 57,
+            "profile": "{\"user_pk\": 111, \"profile_id\": 57, \"full_name\": \"Michal Clark\", \"first_name\": \"Michal\", \"last_name\": \"Clark\", \"profile_photo\": null, \"resume\": null, \"job_group\": {\"id\": 6, \"name\": \"UI/UX group\"}, \"email\": \"michal@yopmail.com\", \"phone\": \"181029\", \"gender\": 1, \"address\": {\"id\": 23, \"country\": \"US\", \"state\": \"Texas\", \"zip_code\": \"5526\", \"city\": \"LA\"}}",
+            "technical_skills": [
+                "Html",
+                "Css",
+                "Visual",
+                "Photoshop"
+            ],
+            "soft_skills": [],
+            "exps": "[{\"id\": 58, \"designation\": \"Animator\", \"company\": \"Infodevelopers\", \"entry_date\": \"2020-05-05\", \"exit_date\": \"2020-05-21\", \"roles\": null}, {\"id\": 59, \"designation\": \"Sales Associate\", \"company\": \"Infodeveloper\", \"entry_date\": \"2020-05-01\", \"exit_date\": \"2020-05-25\", \"roles\": null}]"
+        },
+        {
+            "user_id": 101,
+            "profile": "{\"user_pk\": 230, \"profile_id\": 101, \"full_name\": \"Nick Smith\", \"first_name\": \"Nick\", \"last_name\": \"Smith\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/nick_001%40yopmail.com/Bob-Bao.pdf\", \"job_group\": null, \"email\": \"nick_001@yopmail.com\", \"phone\": \"9876373673\", \"gender\": 1, \"address\": {\"id\": 57, \"country\": \"Nepal\", \"state\": \"Bagmati\", \"zip_code\": \"44700\", \"city\": \"Patan\"}}",
+            "technical_skills": [
+                "Mysql",
+                "Ajax",
+                "Html",
+                "Css",
+                "C++",
+                "Javascript",
+                "Visual",
+                "React",
+                "Oracle",
+                "Bootstrap",
+                "Html5",
+                "Mongodb",
+                "Sql",
+                "Angular",
+                "Node.Js",
+                "C",
+                "python",
+                "django",
+                "django rest framework",
+                "docker",
+                "nginx"
+            ],
+            "soft_skills": [
+                "Management",
+                "Leadership",
+                "punctual",
+                "fluent communication"
+            ],
+            "exps": "[{\"id\": 132, \"designation\": \"Python Developer\", \"company\": \"NewTech Private Ltd\", \"entry_date\": \"2016-02-02\", \"exit_date\": \"2019-03-07\", \"roles\": null}]"
+        },
+        {
+            "user_id": 58,
+            "profile": "{\"user_pk\": 112, \"profile_id\": 58, \"full_name\": \"David Skyler\", \"first_name\": \"David\", \"last_name\": \"Skyler\", \"profile_photo\": null, \"resume\": null, \"job_group\": {\"id\": 1, \"name\": \"Java\"}, \"email\": \"jobseeker101@yopmail.com\", \"phone\": \"9843726396\", \"gender\": 1, \"address\": {\"id\": 8, \"country\": \"Nepal\", \"state\": \"Bagmati\", \"zip_code\": \"44600\", \"city\": \"Kathmandu\"}}",
+            "technical_skills": [
+                "Python",
+                "Django",
+                "Flask",
+                "Docker",
+                "Numpy",
+                "scipy",
+                "pandas",
+                "Scikit Learn",
+                "Deep Learning",
+                "Neural Networks"
+            ],
+            "soft_skills": [],
+            "exps": "[{\"id\": 62, \"designation\": \"Data Mining Engineer\", \"company\": \"NewTech Pvt Ltd\", \"entry_date\": \"2016-09-08\", \"exit_date\": \"2017-01-09\", \"roles\": null}, {\"id\": 63, \"designation\": \"Vue Developer\", \"company\": \"Google Inc.\", \"entry_date\": \"2012-01-08\", \"exit_date\": \"2013-01-09\", \"roles\": null}]"
+        },
+        {
+            "user_id": 60,
+            "profile": "{\"user_pk\": 114, \"profile_id\": 60, \"full_name\": \"Michael Ryan\", \"first_name\": \"Michael\", \"last_name\": \"Ryan\", \"profile_photo\": null, \"resume\": null, \"job_group\": {\"id\": 4, \"name\": \"Django\"}, \"email\": \"rabin.shrestha@infodevelopers.com.np\", \"phone\": \"9845817402\", \"gender\": 1, \"address\": {\"id\": 40, \"country\": \"Nepal\", \"state\": \"Tamil Nadu\", \"zip_code\": \"600034\", \"city\": \"Chennai\"}}",
+            "technical_skills": [],
+            "soft_skills": [],
+            "exps": "[]"
+        },
+        {
+            "user_id": 61,
+            "profile": "{\"user_pk\": 115, \"profile_id\": 61, \"full_name\": \"Hikmat Thapa\", \"first_name\": \"Hikmat\", \"last_name\": \"Thapa\", \"profile_photo\": null, \"resume\": null, \"job_group\": {\"id\": 4, \"name\": \"Django\"}, \"email\": \"hikmat@yopmail.com\", \"phone\": \"9846896598\", \"gender\": 1, \"address\": {\"id\": 30, \"country\": \"Nepal\", \"state\": \"State 3\", \"zip_code\": \"505\", \"city\": \"Patan\"}}",
+            "technical_skills": [],
+            "soft_skills": [],
+            "exps": "[]"
+        },
+        {
+            "user_id": 123,
+            "profile": "{\"user_pk\": 305, \"profile_id\": 123, \"full_name\": \"Santosh Paudel\", \"first_name\": \"Santosh\", \"last_name\": \"Paudel\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/santoshp/Aditya-Python.pdf\", \"job_group\": {\"id\": 5, \"name\": \"Python\"}, \"email\": \"sx.p@outlook.com\", \"phone\": \"9876543210\", \"gender\": 1, \"address\": {\"id\": 155, \"country\": \"US\", \"state\": \"Texas\", \"zip_code\": \"75075\", \"city\": \"Plano\"}}",
+            "technical_skills": [
+                "Html",
+                "Css",
+                "C++",
+                "Javascript",
+                "React",
+                "Bootstrap",
+                "Sql",
+                "Node.Js",
+                "C",
+                "Python",
+                "Django",
+                "R",
+                "Wordpress",
+                "Matplotlib"
+            ],
+            "soft_skills": [
+                "Management",
+                "Project Management"
+            ],
+            "exps": "[{\"id\": 153, \"designation\": \"Python Developer\", \"company\": \"Razoyo, LLC\", \"entry_date\": \"2010-01-01\", \"exit_date\": \"2020-08-13\", \"roles\": null}]"
+        },
+        {
+            "user_id": 102,
+            "profile": "{\"user_pk\": 234, \"profile_id\": 102, \"full_name\": \"Alexius Burris\", \"first_name\": \"Alexius\", \"last_name\": \"Burris\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/umang%40yopmail.com/Alexius-Burris.pdf\", \"job_group\": null, \"email\": \"umang@yopmail.com\", \"phone\": \"4263545\", \"gender\": 1, \"address\": {\"id\": 107, \"country\": \"Houston , TX\", \"state\": \"State 2\", \"zip_code\": \"505\", \"city\": \"Patan\"}}",
+            "technical_skills": [
+                "Html",
+                "Javascript",
+                "Java",
+                "css"
+            ],
+            "soft_skills": [
+                "Training"
+            ],
+            "exps": "[{\"id\": 133, \"designation\": \"ANIMATOR\", \"company\": \"IMMIX PRODUCTIONS\", \"entry_date\": \"2010-01-01\", \"exit_date\": \"2010-01-01\", \"roles\": null}]"
+        },
+        {
+            "user_id": 117,
+            "profile": "{\"user_pk\": 297, \"profile_id\": 117, \"full_name\": \"Anonymous Anonymous\", \"first_name\": \"Anonymous\", \"last_name\": \"Anonymous\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/Nemo1234/Anand_Networking_Resume_v1.pdf\", \"job_group\": {\"id\": 5, \"name\": \"Python\"}, \"email\": \"job2016@yopmail.com\", \"phone\": \"267-799-9401\", \"gender\": 0, \"address\": {\"id\": 149, \"country\": \"Nepal\", \"state\": \"kathmandu\", \"zip_code\": \"266666\", \"city\": \"kathmandu\"}}",
+            "technical_skills": [],
+            "soft_skills": [],
+            "exps": "[]"
+        },
+        {
+            "user_id": 103,
+            "profile": "{\"user_pk\": 237, \"profile_id\": 103, \"full_name\": \"Durlav Durlavsharma\", \"first_name\": \"Durlav\", \"last_name\": \"Durlavsharma\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/Shankesh%40srimatrix.com/Durlavsharma.docx\", \"job_group\": {\"id\": 6, \"name\": \"UI/UX group\"}, \"email\": \"Shankesh@srimatrix.com\", \"phone\": \"6828082996\", \"gender\": 1, \"address\": {\"id\": 109, \"country\": \"USA\", \"state\": \"Texas\", \"zip_code\": \"76092\", \"city\": \"Southlake\"}}",
+            "technical_skills": [
+                "Linux"
+            ],
+            "soft_skills": [
+                "Design",
+                "Organization",
+                "Planning",
+                "Decision Making",
+                "Communication",
+                "Integration",
+                "Management",
+                "Analyzing",
+                "Collaboration",
+                "Coordination",
+                "Troubleshooting",
+                "Project Management",
+                "Mentoring",
+                "Analysis",
+                "Responsibility",
+                "Presentation"
+            ],
+            "exps": "[{\"id\": 134, \"designation\": \"Ux/UI\", \"company\": \"Fb\", \"entry_date\": \"2017-02-19\", \"exit_date\": \"2019-05-19\", \"roles\": null}, {\"id\": 135, \"designation\": \"Ux/UI\", \"company\": \"Fb\", \"entry_date\": \"2017-02-19\", \"exit_date\": \"2019-05-19\", \"roles\": null}]"
+        },
+        {
+            "user_id": 55,
+            "profile": "{\"user_pk\": 108, \"profile_id\": 55, \"full_name\": \"Ema Watson\", \"first_name\": \"Ema\", \"last_name\": \"Watson\", \"profile_photo\": \"/media/jobseeker_images/Emawatson/user1.jpg\", \"resume\": \"/media/jobseeker_documents/Emawatson/Bob-Bao.pdf\", \"job_group\": {\"id\": 4, \"name\": \"Django\"}, \"email\": \"ema@yopmail.com\", \"phone\": \"9846896598\", \"gender\": 0, \"address\": {\"id\": 38, \"country\": \"US\", \"state\": \"Texas\", \"zip_code\": \"123\", \"city\": \"LA\"}}",
+            "technical_skills": [
+                "Php",
+                "Linux",
+                "Cms",
+                "Html",
+                "Css"
+            ],
+            "soft_skills": [
+                "Design",
+                "Team Player",
+                "communication",
+                "Organization",
+                "Planning"
+            ],
+            "exps": "[]"
+        },
+        {
+            "user_id": 76,
+            "profile": "{\"user_pk\": 157, \"profile_id\": 76, \"full_name\": \"Dany Wilson\", \"first_name\": \"Dany\", \"last_name\": \"Wilson\", \"profile_photo\": null, \"resume\": null, \"job_group\": {\"id\": 4, \"name\": \"Django\"}, \"email\": \"danywilson@yopmail.com\", \"phone\": \"02382  6\", \"gender\": 0, \"address\": {\"id\": 64, \"country\": \"US\", \"state\": \"Newyork\", \"zip_code\": \"56754\", \"city\": \"Manhattan\"}}",
+            "technical_skills": [],
+            "soft_skills": [],
+            "exps": "[]"
+        },
+        {
+            "user_id": 118,
+            "profile": "{\"user_pk\": 299, \"profile_id\": 118, \"full_name\": \"Rabin Shrestha\", \"first_name\": \"Rabin\", \"last_name\": \"Shrestha\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/Rabin123/Anand_Networking_Resume_v1.pdf\", \"job_group\": {\"id\": 5, \"name\": \"Python\"}, \"email\": \"rabin@yopmail.com\", \"phone\": \"267-799-9401\", \"gender\": 1, \"address\": {\"id\": 140, \"country\": \"Nepal\", \"state\": \"kathmandu\", \"zip_code\": \"26789\", \"city\": \"kathmandu\"}}",
+            "technical_skills": [
+                "Linux"
+            ],
+            "soft_skills": [
+                "Communication"
+            ],
+            "exps": "[{\"id\": 148, \"designation\": \"React\", \"company\": \"info dev\", \"entry_date\": \"2020-08-11\", \"exit_date\": \"2020-08-29\", \"roles\": null}]"
+        },
+        {
+            "user_id": 79,
+            "profile": "{\"user_pk\": 164, \"profile_id\": 79, \"full_name\": \"Sajjan Sharma\", \"first_name\": \"Sajjan\", \"last_name\": \"Sharma\", \"profile_photo\": null, \"resume\": null, \"job_group\": {\"id\": 4, \"name\": \"Django\"}, \"email\": \"sajjan@yopmail.com\", \"phone\": \"440066\", \"gender\": 1, \"address\": {\"id\": 66, \"country\": \"nepal\", \"state\": \"Texas\", \"zip_code\": \"20015\", \"city\": \"LA\"}}",
+            "technical_skills": [
+                "Linux",
+                "Python"
+            ],
+            "soft_skills": [],
+            "exps": "[{\"id\": 79, \"designation\": \"UI/UX designer\", \"company\": \"Infodevelopers Pvt. Ltd.\", \"entry_date\": \"2013-02-26\", \"exit_date\": \"2020-05-31\", \"roles\": null}]"
+        },
+        {
+            "user_id": 80,
+            "profile": "{\"user_pk\": 165, \"profile_id\": 80, \"full_name\": \"Surya Maharjan\", \"first_name\": \"Surya\", \"last_name\": \"Maharjan\", \"profile_photo\": null, \"resume\": null, \"job_group\": {\"id\": 4, \"name\": \"Django\"}, \"email\": \"suryamaharjan@yopmail.com\", \"phone\": \"023826\", \"gender\": 1, \"address\": {\"id\": 67, \"country\": \"US\", \"state\": \"Texas\", \"zip_code\": \"505\", \"city\": \"Lalitpur\"}}",
+            "technical_skills": [],
+            "soft_skills": [],
+            "exps": "[]"
+        },
+        {
+            "user_id": 81,
+            "profile": "{\"user_pk\": 166, \"profile_id\": 81, \"full_name\": \"Shyam Karki\", \"first_name\": \"Shyam\", \"last_name\": \"Karki\", \"profile_photo\": null, \"resume\": null, \"job_group\": {\"id\": 4, \"name\": \"Django\"}, \"email\": \"karki_321@yopmail.com\", \"phone\": \"9843568696\", \"gender\": 1, \"address\": {\"id\": 8, \"country\": \"Nepal\", \"state\": \"Bagmati\", \"zip_code\": \"44600\", \"city\": \"Kathmandu\"}}",
+            "technical_skills": [],
+            "soft_skills": [],
+            "exps": "[]"
+        },
+        {
+            "user_id": 119,
+            "profile": "{\"user_pk\": 300, \"profile_id\": 119, \"full_name\": \"Unisha React\", \"first_name\": \"Unisha\", \"last_name\": \"React\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/anitaAcharya/Resume-of-Unisha-Acharya.pdf\", \"job_group\": {\"id\": 5, \"name\": \"Python\"}, \"email\": \"anita@yopmail.com\", \"phone\": \"0369852147\", \"gender\": 0, \"address\": {\"id\": 145, \"country\": \"Nepal\", \"state\": \"kathmandu\", \"zip_code\": \"26789\", \"city\": \"naxal\"}}",
+            "technical_skills": [
+                "Mysql",
+                "Html",
+                "Css",
+                "Javascript",
+                "React",
+                "Mongodb",
+                "Java"
+            ],
+            "soft_skills": [
+                "Design",
+                "Organization",
+                "Problem Solving",
+                "Communication",
+                "Management",
+                "Patience",
+                "Innovation",
+                "Logical Thinking"
+            ],
+            "exps": "[{\"id\": 149, \"designation\": \"React\", \"company\": \"info dev\", \"entry_date\": \"2020-08-04\", \"exit_date\": \"2020-11-20\", \"roles\": null}]"
+        },
+        {
+            "user_id": 48,
+            "profile": "{\"user_pk\": 83, \"profile_id\": 48, \"full_name\": \"Jon Smith\", \"first_name\": \"Jon\", \"last_name\": \"Smith\", \"profile_photo\": null, \"resume\": null, \"job_group\": {\"id\": 1, \"name\": \"Java\"}, \"email\": \"jobseeker1@yopmail.com\", \"phone\": \"9843726396\", \"gender\": 1, \"address\": {\"id\": 8, \"country\": \"Nepal\", \"state\": \"Bagmati\", \"zip_code\": \"44600\", \"city\": \"Kathmandu\"}}",
+            "technical_skills": [
+                "Javascript",
+                "laravel",
+                "React",
+                "Oracle",
+                "Bootstrap",
+                "Java",
+                "Python",
+                "Django",
+                "Flask",
+                "Docker",
+                "HTML",
+                "Ruby",
+                "Perl"
+            ],
+            "soft_skills": [],
+            "exps": "[{\"id\": 46, \"designation\": \"NLP Engineer\", \"company\": \"Google Inc.\", \"entry_date\": \"2012-01-08\", \"exit_date\": \"2013-01-09\", \"roles\": \"\"}, {\"id\": 45, \"designation\": \"Javascript Engineer\", \"company\": \"NewTech Pvt Ltd\", \"entry_date\": \"2016-09-08\", \"exit_date\": \"2017-01-09\", \"roles\": \"\"}]"
+        },
+        {
+            "user_id": 52,
+            "profile": "{\"user_pk\": 93, \"profile_id\": 52, \"full_name\": \"Rohini Shrestha\", \"first_name\": \"Rohini\", \"last_name\": \"Shrestha\", \"profile_photo\": \"/media/jobseeker_images/Rohinihere/user5.png\", \"resume\": null, \"job_group\": {\"id\": 5, \"name\": \"Python\"}, \"email\": \"rohini@yopmail.com\", \"phone\": \"9846896598\", \"gender\": 0, \"address\": {\"id\": 30, \"country\": \"Nepal\", \"state\": \"State 3\", \"zip_code\": \"505\", \"city\": \"Patan\"}}",
+            "technical_skills": [
+                "django",
+                "numpy",
+                "tensorflow",
+                "css",
+                "html",
+                "django rest framework"
+            ],
+            "soft_skills": [
+                "communication",
+                "Organization",
+                "Planning"
+            ],
+            "exps": "[]"
+        },
+        {
+            "user_id": 106,
+            "profile": "{\"user_pk\": 218, \"profile_id\": 106, \"full_name\": \"Sandesh Pandey\", \"first_name\": \"Sandesh\", \"last_name\": \"Pandey\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/sandeshpandey%40gmail.com/Nash_Ville.docx\", \"job_group\": null, \"email\": \"sandeshpandey@gmail.com\", \"phone\": \"4693494433\", \"gender\": 1, \"address\": {\"id\": 110, \"country\": \"USA\", \"state\": \"Texas\", \"zip_code\": \"75028\", \"city\": \"Flower Mound\"}}",
+            "technical_skills": [
+                "Linux",
+                "Html",
+                "Javascript",
+                "Oracle",
+                "Java",
+                "Testing",
+                "Pattern",
+                "AI",
+                "Machine Learning"
+            ],
+            "soft_skills": [
+                "Design",
+                "Communication",
+                "Integration"
+            ],
+            "exps": "[{\"id\": 136, \"designation\": \"VP\", \"company\": \"SES\", \"entry_date\": \"2011-11-11\", \"exit_date\": \"2020-05-21\", \"roles\": null}]"
+        },
+        {
+            "user_id": 108,
+            "profile": "{\"user_pk\": 251, \"profile_id\": 108, \"full_name\": \"Anish Thakur\", \"first_name\": \"Anish\", \"last_name\": \"Thakur\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/anishthakur/Alexandria-Brown.pdf\", \"job_group\": {\"id\": 5, \"name\": \"Python\"}, \"email\": \"anish@yopmail.com\", \"phone\": \"9846896598\", \"gender\": 1, \"address\": {\"id\": 37, \"country\": \"US\", \"state\": \"State 3\", \"zip_code\": \"505\", \"city\": \"LA\"}}",
+            "technical_skills": [],
+            "soft_skills": [],
+            "exps": "[]"
+        },
+        {
+            "user_id": 120,
+            "profile": "{\"user_pk\": 301, \"profile_id\": 120, \"full_name\": \"Ashish Basnet\", \"first_name\": \"Ashish\", \"last_name\": \"Basnet\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/AshishBasnet/Ashish_Basnet_Salesforce_BA.pdf\", \"job_group\": {\"id\": 6, \"name\": \"UI/UX group\"}, \"email\": \"viran@yopmail.com\", \"phone\": \"240-883-6478\", \"gender\": 1, \"address\": {\"id\": 142, \"country\": \"Nepal\", \"state\": \"kathmandu\", \"zip_code\": \"26789\", \"city\": \"bhat-bhateni\"}}",
+            "technical_skills": [
+                "Ajax",
+                "Html",
+                "C++",
+                "Javascript",
+                "Sql",
+                "Java",
+                "C"
+            ],
+            "soft_skills": [
+                "Design",
+                "Organization",
+                "Communication",
+                "Integration",
+                "Management",
+                "Training",
+                "Analyzing",
+                "Troubleshooting",
+                "Project Management",
+                "Analysis",
+                "Closing",
+                "Focus",
+                "Integrity"
+            ],
+            "exps": "[{\"id\": 150, \"designation\": \"React\", \"company\": \"info dev\", \"entry_date\": \"2020-08-02\", \"exit_date\": \"2020-08-27\", \"roles\": null}]"
+        },
+        {
+            "user_id": 86,
+            "profile": "{\"user_pk\": 184, \"profile_id\": 86, \"full_name\": \"Alex Smith\", \"first_name\": \"Alex\", \"last_name\": \"Smith\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/alexius%40yopmail.com/Alexius-Burris.pdf\", \"job_group\": null, \"email\": \"alexius@yopmail.com\", \"phone\": \"9846896598\", \"gender\": 1, \"address\": {\"id\": 74, \"country\": \"USA\", \"state\": \"State 2\", \"zip_code\": \"505\", \"city\": \"Sankhu\"}}",
+            "technical_skills": [
+                "java"
+            ],
+            "soft_skills": [
+                "communication"
+            ],
+            "exps": "[{\"id\": 91, \"designation\": \"Backend developer\", \"company\": \"Infodevelopers\", \"entry_date\": \"2020-04-29\", \"exit_date\": \"2020-05-25\", \"roles\": null}]"
+        },
+        {
+            "user_id": 87,
+            "profile": "{\"user_pk\": 187, \"profile_id\": 87, \"full_name\": \"Brandon Jonhson\", \"first_name\": \"Brandon\", \"last_name\": \"Jonhson\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/brandon%40yopmail.com/Brandon-Burroughs.pdf\", \"job_group\": null, \"email\": \"brandon@yopmail.com\", \"phone\": \"9846896598\", \"gender\": 1, \"address\": {\"id\": 75, \"country\": \"Las Vegas , NV\", \"state\": \"State 2\", \"zip_code\": \"505\", \"city\": \"Sankhu\"}}",
+            "technical_skills": [
+                "Maya"
+            ],
+            "soft_skills": [
+                "Organization",
+                "Planning",
+                "Prioritizing",
+                "Problem Solving",
+                "Decision Making"
+            ],
+            "exps": "[{\"id\": 92, \"designation\": \"Animator\", \"company\": \"Razor Edge Games\", \"entry_date\": \"2017-04-01\", \"exit_date\": \"2020-05-27\", \"roles\": null}, {\"id\": 93, \"designation\": \"3D Modeler\", \"company\": \"BB Innovative Concepts LLC\", \"entry_date\": \"2015-11-01\", \"exit_date\": \"2020-05-29\", \"roles\": null}]"
+        },
+        {
+            "user_id": 88,
+            "profile": "{\"user_pk\": 188, \"profile_id\": 88, \"full_name\": \"Rober Stak\", \"first_name\": \"Rober\", \"last_name\": \"Stak\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/robert%40yopmail.com/Robert-Hanna.pdf\", \"job_group\": null, \"email\": \"robert@yopmail.com\", \"phone\": \"9736073\", \"gender\": 0, \"address\": {\"id\": 76, \"country\": \"Las Vegas , NV\", \"state\": \"Texas\", \"zip_code\": \"505\", \"city\": \"Patan\"}}",
+            "technical_skills": [
+                "Maya",
+                "Photoshop"
+            ],
+            "soft_skills": [
+                "Design",
+                "Networking"
+            ],
+            "exps": "[{\"id\": 94, \"designation\": \"3D Artist\", \"company\": \"DK Global , Inc.\", \"entry_date\": \"2015-06-02\", \"exit_date\": \"2020-05-27\", \"roles\": null}, {\"id\": 95, \"designation\": \"3D Artist\", \"company\": \"Global , Inc.\", \"entry_date\": \"2020-01-13\", \"exit_date\": \"2020-05-25\", \"roles\": null}, {\"id\": 96, \"designation\": \"Project Manager\", \"company\": \"Walt Disney Studios\", \"entry_date\": \"2006-01-01\", \"exit_date\": \"2006-01-01\", \"roles\": null}, {\"id\": 97, \"designation\": \"Project Manager\", \"company\": \"New Jersy\", \"entry_date\": \"1986-12-29\", \"exit_date\": \"1987-01-01\", \"roles\": null}, {\"id\": 98, \"designation\": \"3D visual content creator\", \"company\": \"Facebook\", \"entry_date\": \"2015-02-03\", \"exit_date\": \"2020-05-27\", \"roles\": null}]"
+        },
+        {
+            "user_id": 89,
+            "profile": "{\"user_pk\": 190, \"profile_id\": 89, \"full_name\": \"Ajmal hasan\", \"first_name\": \"Ajmal\", \"last_name\": \"hasan\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/ajmalhasan%40yopmail.com/Amber-George.pdf\", \"job_group\": null, \"email\": \"ajmalhasan@yopmail.com\", \"phone\": \"9372046573\", \"gender\": 1, \"address\": {\"id\": 77, \"country\": \"Franklin , GA\", \"state\": \"Texas\", \"zip_code\": \"505\", \"city\": \"Sankhu\"}}",
+            "technical_skills": [
+                "Visual",
+                "Photoshop"
+            ],
+            "soft_skills": [
+                "Design",
+                "Planning"
+            ],
+            "exps": "[{\"id\": 99, \"designation\": \"Backend developer\", \"company\": \"Infodevelopers\", \"entry_date\": \"2017-02-02\", \"exit_date\": \"2020-05-12\", \"roles\": null}]"
+        },
+        {
+            "user_id": 90,
+            "profile": "{\"user_pk\": 194, \"profile_id\": 90, \"full_name\": \"samjhana \", \"first_name\": \"samjhana\", \"last_name\": \"\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/samjhana%40yopmail.com/Wes-Bernick.pdf\", \"job_group\": null, \"email\": \"samjhana@yopmail.com\", \"phone\": \"9846896598\", \"gender\": 1, \"address\": {\"id\": 81, \"country\": \"USA\", \"state\": \"State 2\", \"zip_code\": \"5526\", \"city\": \"Patan\"}}",
+            "technical_skills": [
+                "Html",
+                "Css",
+                "Java"
+            ],
+            "soft_skills": [
+                "Communication"
+            ],
+            "exps": "[{\"id\": 100, \"designation\": \"Backend developer\", \"company\": \"Infodevelopers\", \"entry_date\": \"2016-06-14\", \"exit_date\": \"2020-05-25\", \"roles\": null}]"
+        },
+        {
+            "user_id": 121,
+            "profile": "{\"user_pk\": 302, \"profile_id\": 121, \"full_name\": \"Arjun Khanala007\", \"first_name\": \"Arjun\", \"last_name\": \"Khanala007\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/ArjunKhanala/Arjun_Khanal_Salesforce_BA-converted.pdf\", \"job_group\": {\"id\": 4, \"name\": \"Django\"}, \"email\": \"arjunkhanal@yopmail.com\", \"phone\": \"804-742-2117\", \"gender\": 1, \"address\": {\"id\": 150, \"country\": \"Nepal\", \"state\": \"baluwater\", \"zip_code\": \"256789\", \"city\": \"Patan\"}}",
+            "technical_skills": [
+                "Ajax",
+                "Html",
+                "C++",
+                "Javascript",
+                "Sql",
+                "Java",
+                "C"
+            ],
+            "soft_skills": [
+                "Design",
+                "Organization",
+                "Communication",
+                "Customer Service",
+                "Integration",
+                "Management",
+                "Analyzing",
+                "Project Management",
+                "Analysis",
+                "Closing",
+                "Focus",
+                "Integrity"
+            ],
+            "exps": "[{\"id\": 151, \"designation\": \".Net\", \"company\": \"tekkon\", \"entry_date\": \"2020-08-03\", \"exit_date\": \"2020-10-31\", \"roles\": null}]"
+        },
+        {
+            "user_id": 93,
+            "profile": "{\"user_pk\": 219, \"profile_id\": 93, \"full_name\": \"Sandesh Pandey\", \"first_name\": \"Sandesh\", \"last_name\": \"Pandey\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/sandesh%40srimatrix.com/Nash_Ville.docx\", \"job_group\": null, \"email\": \"sandesh@srimatrix.com\", \"phone\": \"4693494433\", \"gender\": 2, \"address\": {\"id\": 94, \"country\": \"USA\", \"state\": \"Texas\", \"zip_code\": \"75075\", \"city\": \"Plano\"}}",
+            "technical_skills": [
+                "Linux",
+                "Html",
+                "Javascript",
+                "Oracle",
+                "Java",
+                "Python",
+                "Testing",
+                "Pattern",
+                "AI"
+            ],
+            "soft_skills": [
+                "Design",
+                "Communication",
+                "Integration"
+            ],
+            "exps": "[{\"id\": 112, \"designation\": \"Sr. Python Developer\", \"company\": \"HP\", \"entry_date\": \"2015-09-01\", \"exit_date\": \"2020-05-15\", \"roles\": null}]"
+        },
+        {
+            "user_id": 94,
+            "profile": "{\"user_pk\": 220, \"profile_id\": 94, \"full_name\": \"Abin Khatiwada\", \"first_name\": \"Abin\", \"last_name\": \"Khatiwada\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/abin.khatiwada%40infodevelopers.com.np/Benjamin-Ramey.pdf\", \"job_group\": null, \"email\": \"abin.khatiwada@infodevelopers.com.np\", \"phone\": \"984111322\", \"gender\": 1, \"address\": {\"id\": 96, \"country\": \"Franklin , VA\", \"state\": \"Nepal\", \"zip_code\": \"4400\", \"city\": \"Kathmandu\"}}",
+            "technical_skills": [
+                "Maya",
+                "Photoshop"
+            ],
+            "soft_skills": [
+                "Design",
+                "Team Player"
+            ],
+            "exps": "[{\"id\": 113, \"designation\": \"Designer\", \"company\": \"InfoDev\", \"entry_date\": \"2020-05-05\", \"exit_date\": \"2020-05-22\", \"roles\": null}, {\"id\": 114, \"designation\": \"Designer\", \"company\": \"InfoDev\", \"entry_date\": \"2020-05-01\", \"exit_date\": \"2020-05-30\", \"roles\": null}]"
+        },
+        {
+            "user_id": 95,
+            "profile": "{\"user_pk\": 222, \"profile_id\": 95, \"full_name\": \"Sajan Timilsina\", \"first_name\": \"Sajan\", \"last_name\": \"Timilsina\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/sajantim123%40yopmail.com/Bob-Bao.pdf\", \"job_group\": null, \"email\": \"sajantim123@yopmail.com\", \"phone\": \"9808767876\", \"gender\": 1, \"address\": {\"id\": 1, \"country\": \"Nepal\", \"state\": \"Bagmati\", \"zip_code\": \"44700\", \"city\": \"Lalitpur\"}}",
+            "technical_skills": [
+                "Mysql",
+                "Ajax",
+                "Html",
+                "Css",
+                "C++",
+                "Javascript",
+                "Visual",
+                "React",
+                "Oracle",
+                "Bootstrap",
+                "Html5",
+                "Mongodb",
+                "Sql",
+                "Angular",
+                "Node.Js",
+                "C"
+            ],
+            "soft_skills": [
+                "Communication",
+                "Management",
+                "Leadership"
+            ],
+            "exps": "[{\"id\": 115, \"designation\": \"Python Developer\", \"company\": \"Facebook\", \"entry_date\": \"2014-06-17\", \"exit_date\": \"2016-04-19\", \"roles\": null}, {\"id\": 116, \"designation\": \"Dot Net Developer\", \"company\": \"PytechInc Nepal\", \"entry_date\": \"2018-04-12\", \"exit_date\": \"2020-05-17\", \"roles\": \"To Develop web application based on dot net framework\"}]"
+        },
+        {
+            "user_id": 97,
+            "profile": "{\"user_pk\": 223, \"profile_id\": 97, \"full_name\": \"Xander Hampton\", \"first_name\": \"Xander\", \"last_name\": \"Hampton\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/alexand123%40yopmail.com/Abu-Bah.pdf\", \"job_group\": null, \"email\": \"alexand123@yopmail.com\", \"phone\": \"436444444\", \"gender\": 1, \"address\": {\"id\": 104, \"country\": \"NJ\", \"state\": \"Newyork\", \"zip_code\": \"84995\", \"city\": \"Newyork\"}}",
+            "technical_skills": [
+                "Mysql",
+                "Ajax",
+                "Php",
+                "Linux",
+                "Cms",
+                "Html",
+                "Vim",
+                "Css",
+                "C++",
+                "Javascript",
+                "pandas",
+                "python",
+                "django",
+                "numpy",
+                "tensorflow"
+            ],
+            "soft_skills": [
+                "Design",
+                "Communication",
+                "leadership"
+            ],
+            "exps": "[{\"id\": 120, \"designation\": \"Software Developer\", \"company\": \"Diversified Media Group\", \"entry_date\": \"2017-02-02\", \"exit_date\": \"2019-03-09\", \"roles\": null}, {\"id\": 121, \"designation\": \"Lead Web Developer\", \"company\": \"Brimar Industries , Inc.\", \"entry_date\": \"2018-11-11\", \"exit_date\": \"2019-12-12\", \"roles\": null}]"
+        },
+        {
+            "user_id": 98,
+            "profile": "{\"user_pk\": 227, \"profile_id\": 98, \"full_name\": \"puskar Joshi\", \"first_name\": \"puskar\", \"last_name\": \"Joshi\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/puskar%40yopmail.com/Abu-Bah.pdf\", \"job_group\": null, \"email\": \"puskar@yopmail.com\", \"phone\": \"9846896598\", \"gender\": 1, \"address\": {\"id\": 105, \"country\": \"NJ\", \"state\": \"State 3\", \"zip_code\": \"505\", \"city\": \"LA\"}}",
+            "technical_skills": [
+                "Mysql",
+                "Ajax",
+                "Php",
+                "Linux",
+                "Cms",
+                "Html",
+                "Vim",
+                "Css",
+                "C++",
+                "Javascript"
+            ],
+            "soft_skills": [
+                "Design"
+            ],
+            "exps": "[{\"id\": 122, \"designation\": \"Software Developer\", \"company\": \"Diversified Media Group\", \"entry_date\": \"2017-05-01\", \"exit_date\": \"2020-05-25\", \"roles\": null}, {\"id\": 123, \"designation\": \"Lead Web Developer\", \"company\": \"Brimar Industries , Inc.\", \"entry_date\": \"2015-02-01\", \"exit_date\": \"2017-05-01\", \"roles\": null}, {\"id\": 124, \"designation\": \"Lead Web Developer\", \"company\": \"Brimar\", \"entry_date\": \"2018-05-06\", \"exit_date\": \"2020-05-31\", \"roles\": null}, {\"id\": 125, \"designation\": \"Web & Mobile App Developer\", \"company\": \"Yapster\", \"entry_date\": \"2014-06-01\", \"exit_date\": \"2015-02-22\", \"roles\": null}, {\"id\": 126, \"designation\": \"Web Manager\", \"company\": \"Tradical 360\", \"entry_date\": \"2013-10-01\", \"exit_date\": \"2014-06-01\", \"roles\": null}, {\"id\": 127, \"designation\": \"Web Developer\", \"company\": \"GAL-Inc.\", \"entry_date\": \"2020-05-04\", \"exit_date\": \"2020-05-31\", \"roles\": null}]"
+        },
+        {
+            "user_id": 100,
+            "profile": "{\"user_pk\": 229, \"profile_id\": 100, \"full_name\": \"Samir Gautam\", \"first_name\": \"Samir\", \"last_name\": \"Gautam\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/anjalipradhan%40yopmail.com/Amber-George.pdf\", \"job_group\": null, \"email\": \"anjalipradhan@yopmail.com\", \"phone\": \"9846896598\", \"gender\": 0, \"address\": {\"id\": 49, \"country\": \"Nepal\", \"state\": \"State 3\", \"zip_code\": \"5526\", \"city\": \"LA\"}}",
+            "technical_skills": [
+                "java",
+                "css",
+                "html"
+            ],
+            "soft_skills": [
+                "communicatio"
+            ],
+            "exps": "[{\"id\": 131, \"designation\": \"Backend developer\", \"company\": \"Infodevelopers\", \"entry_date\": \"2020-05-04\", \"exit_date\": \"2020-06-03\", \"roles\": null}]"
+        },
+        {
+            "user_id": 110,
+            "profile": "{\"user_pk\": 253, \"profile_id\": 110, \"full_name\": \"Rock Johnson\", \"first_name\": \"Rock\", \"last_name\": \"Johnson\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/rock_jon/Bob-Bao.pdf\", \"job_group\": {\"id\": 4, \"name\": \"Django\"}, \"email\": \"rock_jon@yopmail.com\", \"phone\": \"9869098945\", \"gender\": 1, \"address\": {\"id\": 112, \"country\": \"US\", \"state\": \"75063\", \"zip_code\": \"89989\", \"city\": \"Texas\"}}",
+            "technical_skills": [
+                "Mysql",
+                "Ajax",
+                "Html",
+                "Css",
+                "C++",
+                "Javascript",
+                "Visual",
+                "React",
+                "Oracle",
+                "Bootstrap",
+                "Html5",
+                "Mongodb",
+                "Sql",
+                "Angular",
+                "Node.Js",
+                "C"
+            ],
+            "soft_skills": [
+                "communication",
+                "Management",
+                "leadership"
+            ],
+            "exps": "[{\"id\": 140, \"designation\": \"Java Developer\", \"company\": \"Google Inc\", \"entry_date\": \"2016-05-06\", \"exit_date\": \"2018-05-06\", \"roles\": null}]"
+        },
+        {
+            "user_id": 112,
+            "profile": "{\"user_pk\": 270, \"profile_id\": 112, \"full_name\": \"Abu Bah\", \"first_name\": \"Abu\", \"last_name\": \"Bah\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/i406069%40gmail.com/Abu-Bah.pdf\", \"job_group\": null, \"email\": \"i406069@gmail.com\", \"phone\": \"6254848\", \"gender\": 1, \"address\": {\"id\": 124, \"country\": \"NJ\", \"state\": \"California\", \"zip_code\": \"5521\", \"city\": \"Las Vegas\"}}",
+            "technical_skills": [
+                "Mysql",
+                "Ajax",
+                "Php",
+                "Linux",
+                "Cms",
+                "Html",
+                "Vim",
+                "Css",
+                "C++",
+                "Javascript"
+            ],
+            "soft_skills": [
+                "Design"
+            ],
+            "exps": "[{\"id\": 141, \"designation\": \"Web & Mobile App Developer\", \"company\": \"Yapster\", \"entry_date\": \"2014-06-01\", \"exit_date\": \"2015-02-01\", \"roles\": null}, {\"id\": 142, \"designation\": \"Web Manager\", \"company\": \"Tradical 360\", \"entry_date\": \"2013-10-01\", \"exit_date\": \"2014-06-01\", \"roles\": null}, {\"id\": 143, \"designation\": \"Web Developer\", \"company\": \"GAL-Inc.\", \"entry_date\": \"2020-06-15\", \"exit_date\": \"2020-06-30\", \"roles\": null}]"
+        },
+        {
+            "user_id": 113,
+            "profile": "{\"user_pk\": 278, \"profile_id\": 113, \"full_name\": \"Ramesh Timalsina\", \"first_name\": \"Ramesh\", \"last_name\": \"Timalsina\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/tim_ramesh/Bob-Bao.pdf\", \"job_group\": {\"id\": 5, \"name\": \"Python\"}, \"email\": \"tim_ram@yopmail.com\", \"phone\": \"9875343313\", \"gender\": 1, \"address\": {\"id\": 8, \"country\": \"Nepal\", \"state\": \"Bagmati\", \"zip_code\": \"44600\", \"city\": \"Kathmandu\"}}",
+            "technical_skills": [
+                "Mysql",
+                "Ajax",
+                "Html",
+                "Css",
+                "C++",
+                "Javascript",
+                "Visual",
+                "React",
+                "Oracle",
+                "Bootstrap",
+                "Html5",
+                "Mongodb",
+                "Sql",
+                "Angular",
+                "Node.Js",
+                "C"
+            ],
+            "soft_skills": [
+                "Management",
+                "Leadership",
+                "Communication Skills",
+                "Time management"
+            ],
+            "exps": "[{\"id\": 144, \"designation\": \"Senior Python Developer\", \"company\": \"InfoDevelopers Private Limited\", \"entry_date\": \"2019-01-21\", \"exit_date\": \"2020-07-14\", \"roles\": null}]"
+        },
+        {
+            "user_id": 114,
+            "profile": "{\"user_pk\": 281, \"profile_id\": 114, \"full_name\": \"Aadarsha Shrestha\", \"first_name\": \"Aadarsha\", \"last_name\": \"Shrestha\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/jobseeker1/myCV.pdf\", \"job_group\": {\"id\": 5, \"name\": \"Python\"}, \"email\": \"jsk1@yopmail.com\", \"phone\": \"9842084131\", \"gender\": 0, \"address\": {\"id\": 134, \"country\": \"Nepali\", \"state\": \"Gandaki\", \"zip_code\": \"977\", \"city\": \"Patan\"}}",
+            "technical_skills": [
+                "Linux",
+                "Html",
+                "Css",
+                "C++",
+                "Javascript",
+                "Bootstrap",
+                "C",
+                "Python",
+                "Django",
+                "Docker"
+            ],
+            "soft_skills": [
+                "Management",
+                "Project Management"
+            ],
+            "exps": "[{\"id\": 145, \"designation\": \"UI/UX\", \"company\": \"East West Institute of Technology\", \"entry_date\": \"2013-01-01\", \"exit_date\": \"2018-01-01\", \"roles\": null}, {\"id\": 146, \"designation\": \"Odoo module developer\", \"company\": \"Nepal April\", \"entry_date\": \"2016-01-01\", \"exit_date\": \"2019-01-01\", \"roles\": null}]"
+        },
+        {
+            "user_id": 115,
+            "profile": "{\"user_pk\": 282, \"profile_id\": 115, \"full_name\": \"Usha Khadka\", \"first_name\": \"Usha\", \"last_name\": \"Khadka\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/usha_khadka/Bob-Bao.pdf\", \"job_group\": {\"id\": 5, \"name\": \"Python\"}, \"email\": \"usha_123@yopmail.com\", \"phone\": \"7895553459\", \"gender\": 0, \"address\": {\"id\": 57, \"country\": \"Nepal\", \"state\": \"Bagmati\", \"zip_code\": \"44700\", \"city\": \"Patan\"}}",
+            "technical_skills": [
+                "Mysql",
+                "Ajax",
+                "Html",
+                "Css",
+                "C++",
+                "Javascript",
+                "Visual",
+                "React",
+                "Oracle",
+                "Bootstrap",
+                "Html5",
+                "Mongodb",
+                "Sql",
+                "Angular",
+                "Node.Js",
+                "C"
+            ],
+            "soft_skills": [
+                "Management"
+            ],
+            "exps": "[{\"id\": 147, \"designation\": \"React Developer\", \"company\": \"Facebook\", \"entry_date\": \"2016-06-14\", \"exit_date\": \"2020-01-15\", \"roles\": null}]"
+        },
+        {
+            "user_id": 96,
+            "profile": "{\"user_pk\": 224, \"profile_id\": 96, \"full_name\": \"Abu Bah\", \"first_name\": \"Abu\", \"last_name\": \"Bah\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/abrahamlincon%40yopmail.com/Abu-Bah.pdf\", \"job_group\": null, \"email\": \"abrahamlincon@yopmail.com\", \"phone\": \"9846236598\", \"gender\": 1, \"address\": {\"id\": 103, \"country\": \"NJ\", \"state\": \"State 2\", \"zip_code\": \"505\", \"city\": \"Patan\"}}",
+            "technical_skills": [
+                "Mysql",
+                "Ajax",
+                "Php",
+                "Linux",
+                "Cms",
+                "Html",
+                "Vim",
+                "Css",
+                "C++",
+                "Javascript",
+                "Numpy",
+                "scipy",
+                "pandas"
+            ],
+            "soft_skills": [
+                "Design",
+                "Project Management",
+                "Mentoring",
+                "Presentation",
+                "Communication Skills",
+                "Time management"
+            ],
+            "exps": "[{\"id\": 117, \"designation\": \"Web Developer\", \"company\": \"Infodevelopers\", \"entry_date\": \"2020-05-04\", \"exit_date\": \"2020-05-25\", \"roles\": null}, {\"id\": 118, \"designation\": \"Web & Mobile App Developer\", \"company\": \"Yapster\", \"entry_date\": \"2014-06-01\", \"exit_date\": \"2015-02-01\", \"roles\": null}, {\"id\": 119, \"designation\": \"Web Manager\", \"company\": \"Tradical 360\", \"entry_date\": \"2013-10-01\", \"exit_date\": \"2014-06-01\", \"roles\": null}]"
+        },
+        {
+            "user_id": 46,
+            "profile": "{\"user_pk\": 76, \"profile_id\": 46, \"full_name\": \"Pujan Maharjan\", \"first_name\": \"Pujan\", \"last_name\": \"Maharjan\", \"profile_photo\": null, \"resume\": null, \"job_group\": null, \"email\": \"pujan@yopmail.com\", \"phone\": \"9846896598\", \"gender\": 1, \"address\": {\"id\": 23, \"country\": \"US\", \"state\": \"Texas\", \"zip_code\": \"5526\", \"city\": \"LA\"}}",
+            "technical_skills": [
+                "C++",
+                "Javascript",
+                "typescript",
+                "laravel",
+                "React",
+                "Sql",
+                "Angular",
+                "Node.Js",
+                "PHP",
+                "Laravel",
+                "Python",
+                "Django",
+                "Flask",
+                "Docker"
+            ],
+            "soft_skills": [
+                "Team Player",
+                "communication",
+                "Planning",
+                "Problem Solving",
+                "Leadership",
+                "punctual",
+                "fluent communication",
+                "Collaboration"
+            ],
+            "exps": "[{\"id\": 49, \"designation\": \"Python Django Developer\", \"company\": \"Infodev Private Ltd\", \"entry_date\": \"2018-04-30\", \"exit_date\": null, \"roles\": \"\"}, {\"id\": 50, \"designation\": \"Ruby on Rails Developer\", \"company\": \"Softech Technology\", \"entry_date\": \"2010-04-30\", \"exit_date\": \"2015-04-30\", \"roles\": \"\"}]"
+        },
+        {
+            "user_id": 116,
+            "profile": "{\"user_pk\": 289, \"profile_id\": 116, \"full_name\": \"Aileen Thomas\", \"first_name\": \"Aileen\", \"last_name\": \"Thomas\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/AileenThomas/Aileen-Thomas.pdf\", \"job_group\": {\"id\": 4, \"name\": \"Django\"}, \"email\": \"howard_001@yopmail.com\", \"phone\": \"9846896598\", \"gender\": 1, \"address\": {\"id\": 37, \"country\": \"US\", \"state\": \"State 3\", \"zip_code\": \"505\", \"city\": \"LA\"}}",
+            "technical_skills": [],
+            "soft_skills": [],
+            "exps": "[]"
+        },
+        {
+            "user_id": 47,
+            "profile": "{\"user_pk\": 82, \"profile_id\": 47, \"full_name\": \"Ram Sharma\", \"first_name\": \"Ram\", \"last_name\": \"Sharma\", \"profile_photo\": \"/media/jobseeker_images/ramthapa/user3.jpg\", \"resume\": null, \"job_group\": {\"id\": 1, \"name\": \"Java\"}, \"email\": \"jobseeker7@yopmail.com\", \"phone\": \"9843815440\", \"gender\": 1, \"address\": {\"id\": 211, \"country\": \"Nepal\", \"state\": \"Colorado\", \"zip_code\": \"80205\", \"city\": \"Denver\"}}",
+            "technical_skills": [
+                "Ajax",
+                "Php",
+                "Javascript",
+                "React",
+                "Mongodb",
+                "Flask",
+                "Docker",
+                "Ruby"
+            ],
+            "soft_skills": [
+                "Design",
+                "Decision Making",
+                "Organization",
+                "Team Player"
+            ],
+            "exps": "[{\"id\": 44, \"designation\": \"Angular Js lead developer\", \"company\": \"Google Incorporation\", \"entry_date\": \"2012-01-05\", \"exit_date\": \"2013-01-10\", \"roles\": \"\"}, {\"id\": 174, \"designation\": \"Python Flask\", \"company\": \"infoDeveloper\", \"entry_date\": \"2020-09-14\", \"exit_date\": null, \"roles\": null}, {\"id\": 170, \"designation\": \"Senior Team lead\", \"company\": \"Deerwalk Services\", \"entry_date\": \"2020-07-15\", \"exit_date\": \"2020-09-29\", \"roles\": null}, {\"id\": 173, \"designation\": \"react\", \"company\": \"NewSunTech\", \"entry_date\": \"2020-09-14\", \"exit_date\": null, \"roles\": null}]"
+        },
+        {
+            "user_id": 125,
+            "profile": "{\"user_pk\": 311, \"profile_id\": 125, \"full_name\": \"Anisha Sapkota\", \"first_name\": \"Anisha\", \"last_name\": \"Sapkota\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/aashish%40yopmail.com/AnishaSapkota_DataAnalyst.pdf\", \"job_group\": null, \"email\": \"aashish@yopmail.com\", \"phone\": \"713-493-9980\", \"gender\": 1, \"address\": {\"id\": 163, \"country\": \"USA\", \"state\": \"bagmati\", \"zip_code\": \"26789\", \"city\": \"Patan\"}}",
+            "technical_skills": [
+                "Oracle",
+                "Sql",
+                "R",
+                "Warehouse"
+            ],
+            "soft_skills": [
+                "Design"
+            ],
+            "exps": "[{\"id\": 154, \"designation\": \"React\", \"company\": \"info dev\", \"entry_date\": \"2020-08-11\", \"exit_date\": \"2020-08-17\", \"roles\": null}]"
+        },
+        {
+            "user_id": 124,
+            "profile": "{\"user_pk\": 310, \"profile_id\": 124, \"full_name\": \"John Kenedy\", \"first_name\": \"John\", \"last_name\": \"Kenedy\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/jon_ken%40123/Bob-Bao.pdf\", \"job_group\": {\"id\": 5, \"name\": \"Python\"}, \"email\": \"jon_ken@yopmail.com\", \"phone\": \"0238254949\", \"gender\": 1, \"address\": {\"id\": 57, \"country\": \"Nepal\", \"state\": \"Bagmati\", \"zip_code\": \"44700\", \"city\": \"Patan\"}}",
+            "technical_skills": [
+                "Mysql",
+                "Ajax",
+                "Html",
+                "Css",
+                "C++",
+                "Javascript",
+                "Visual",
+                "React",
+                "Oracle",
+                "Bootstrap",
+                "Html5",
+                "Mongodb",
+                "Sql",
+                "Angular",
+                "Node.Js",
+                "C"
+            ],
+            "soft_skills": [
+                "Management"
+            ],
+            "exps": "[{\"id\": 155, \"designation\": \"Backend developer\", \"company\": \"Infodevelopers\", \"entry_date\": \"2020-08-06\", \"exit_date\": \"2020-08-24\", \"roles\": null}]"
+        },
+        {
+            "user_id": 126,
+            "profile": "{\"user_pk\": 312, \"profile_id\": 126, \"full_name\": \"Anisha Sapkota\", \"first_name\": \"Anisha\", \"last_name\": \"Sapkota\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/lucasLuke/AnishaSapkota_DataAnalyst.pdf\", \"job_group\": {\"id\": 5, \"name\": \"Python\"}, \"email\": \"lucas@yopmail.com\", \"phone\": \"713-493-9980\", \"gender\": 1, \"address\": {\"id\": 154, \"country\": \"US\", \"state\": \"kathmandu\", \"zip_code\": \"26789\", \"city\": \"kathmandu\"}}",
+            "technical_skills": [
+                "Oracle",
+                "Sql",
+                "R",
+                "Warehouse"
+            ],
+            "soft_skills": [
+                "Design"
+            ],
+            "exps": "[{\"id\": 156, \"designation\": \".Net\", \"company\": \"info dev\", \"entry_date\": \"2020-08-03\", \"exit_date\": \"2020-08-10\", \"roles\": null}]"
+        },
+        {
+            "user_id": 49,
+            "profile": "{\"user_pk\": 84, \"profile_id\": 49, \"full_name\": \"Kevin Wilson\", \"first_name\": \"Kevin\", \"last_name\": \"Wilson\", \"profile_photo\": \"/media/jobseeker_images/kevinwil/user6.png\", \"resume\": null, \"job_group\": {\"id\": 1, \"name\": \"Java\"}, \"email\": \"jobseeker2@dolphwin.com\", \"phone\": \"9843726396\", \"gender\": 1, \"address\": {\"id\": 8, \"country\": \"Nepal\", \"state\": \"Bagmati\", \"zip_code\": \"44600\", \"city\": \"Kathmandu\"}}",
+            "technical_skills": [
+                "Javascript",
+                "Java",
+                "Python",
+                "Django",
+                "Flask",
+                "Docker",
+                "HTML",
+                "Ruby",
+                "Perl"
+            ],
+            "soft_skills": [
+                "communication",
+                "Organization",
+                "Planning",
+                "Problem Solving"
+            ],
+            "exps": "[{\"id\": 48, \"designation\": \"Python Django\", \"company\": \"Google Inc.\", \"entry_date\": \"2012-01-08\", \"exit_date\": \"2013-01-09\", \"roles\": \"\"}, {\"id\": 47, \"designation\": \"React Developer\", \"company\": \"NewTech Pvt Ltd\", \"entry_date\": \"2016-09-08\", \"exit_date\": \"2017-01-09\", \"roles\": \"\"}]"
+        },
+        {
+            "user_id": 127,
+            "profile": "{\"user_pk\": 331, \"profile_id\": 127, \"full_name\": \"Bhanu Nepal\", \"first_name\": \"Bhanu\", \"last_name\": \"Nepal\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/iambhanuaryal/Resume-Bhanu--Aryal.pdf\", \"job_group\": {\"id\": 11, \"name\": \"QA group\"}, \"email\": \"aryalbhanu5206@gmail.com\", \"phone\": \"9851243956\", \"gender\": 1, \"address\": {\"id\": 8, \"country\": \"Nepal\", \"state\": \"Bagmati\", \"zip_code\": \"44600\", \"city\": \"Kathmandu\"}}",
+            "technical_skills": [
+                "Linux",
+                "Sql",
+                "Java"
+            ],
+            "soft_skills": [
+                "Planning",
+                "Analysis",
+                "Strategic Planning"
+            ],
+            "exps": "[{\"id\": 157, \"designation\": \"Business Development Intern\", \"company\": \"Herald College Kathmandu\", \"entry_date\": \"2018-06-01\", \"exit_date\": \"2020-06-01\", \"roles\": null}]"
+        },
+        {
+            "user_id": 128,
+            "profile": "{\"user_pk\": 333, \"profile_id\": 128, \"full_name\": \"Sanjay Sharma\", \"first_name\": \"Sanjay\", \"last_name\": \"Sharma\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/sanjay_123/Bob-Bao.pdf\", \"job_group\": {\"id\": 11, \"name\": \"QA group\"}, \"email\": \"sanjay_321@yopmail.com\", \"phone\": \"0238269893\", \"gender\": 1, \"address\": {\"id\": 192, \"country\": \"US\", \"state\": \"Colorado\", \"zip_code\": \"80201\", \"city\": \"Denver \"}}",
+            "technical_skills": [],
+            "soft_skills": [],
+            "exps": "[]"
+        },
+        {
+            "user_id": 129,
+            "profile": "{\"user_pk\": 334, \"profile_id\": 129, \"full_name\": \"Bob Bao\", \"first_name\": \"Bob\", \"last_name\": \"Bao\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/Bobboa12/Bob-Bao.pdf\", \"job_group\": {\"id\": 5, \"name\": \"Python\"}, \"email\": \"deboraa@yopmail.com\", \"phone\": \"0238223\", \"gender\": 1, \"address\": {\"id\": 193, \"country\": \"US\", \"state\": \"LA\", \"zip_code\": \"2132\", \"city\": \"California\"}}",
+            "technical_skills": [],
+            "soft_skills": [],
+            "exps": "[]"
+        },
+        {
+            "user_id": 130,
+            "profile": "{\"user_pk\": 338, \"profile_id\": 130, \"full_name\": \"Bhanu Sharma\", \"first_name\": \"Bhanu\", \"last_name\": \"Sharma\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/sharmaji/Supreme_CV.pdf\", \"job_group\": {\"id\": 1, \"name\": \"Java\"}, \"email\": \"np03a170001@heraldcollege.edu.np\", \"phone\": \"9849043956\", \"gender\": 1, \"address\": {\"id\": 203, \"country\": \"Nepali\", \"state\": \"Florida\", \"zip_code\": \"44600\", \"city\": \"Kathmandu\"}}",
+            "technical_skills": [],
+            "soft_skills": [],
+            "exps": "[]"
+        }
+    ],
+    "job": "{\"id\": 156, \"job_title\": \"Lead Java Developer\", \"job_description\": \"<p style=\\\"text-align: justify; line-height: 1.618 !important; font-size: 0.833rem !important;\\\"><span style=\\\"font-weight: bolder; color: rgb(0, 0, 0); font-family: &quot;noto sans&quot;, &quot;helvetica neue&quot;, helvetica, arial, sans-serif; font-size: 13.3333px;\\\">Job Responsibilities:</span><br></p><ul style=\\\"font-size: 13.3333px; font-family: &quot;noto sans&quot;, &quot;helvetica neue&quot;, helvetica, arial, sans-serif; text-align: justify; line-height: 1.43; color: rgb(0, 0, 0);\\\"><li style=\\\"margin-bottom: 0.5rem; line-height: 1.618;\\\">Implements high priority application software and infrastructure covering database design, epic, feature and story development, re-usable code, components and application functionality.</li><li style=\\\"margin-bottom: 0.5rem; line-height: 1.618;\\\">Works with senior engineers and architects to define the application architecture and create software design for key elements of the application.</li><li style=\\\"margin-bottom: 0.5rem; line-height: 1.618;\\\">Evaluates performance of key elements of the application functionality and tunes the performance to cover the range of customer use.</li><li style=\\\"margin-bottom: 0.5rem; line-height: 1.618;\\\">Works with the scrum team to assist developers and monitor their progress against project milestones. Performs tech design reviews and code reviews for the scrum teams. Provides scheduling estimates and assists with the scheduling process.</li><li style=\\\"margin-bottom: 0.5rem; line-height: 1.618;\\\">Provides input to managers on the performance of team members for use in their reviews and participates in the interview process for new candidates.</li></ul><p style=\\\"line-height: 1.43; text-align: justify; font-size: 13.3333px; font-family: &quot;noto sans&quot;, &quot;helvetica neue&quot;, helvetica, arial, sans-serif; color: rgb(0, 0, 0);\\\"><br><span style=\\\"font-weight: bolder;\\\">Preferred Education, Experience, and Skills:</span></p><ul style=\\\"font-size: 13.3333px; font-family: &quot;noto sans&quot;, &quot;helvetica neue&quot;, helvetica, arial, sans-serif; text-align: justify; line-height: 1.43; color: rgb(0, 0, 0);\\\"><li style=\\\"margin-bottom: 0.5rem; line-height: 1.618;\\\">Education: Bachelor's degree or comparable work experience in software development.</li><li style=\\\"margin-bottom: 0.5rem; line-height: 1.618;\\\">Experience: at least 5-8 years of experience in software development in addition to education requirements</li><li style=\\\"margin-bottom: 0.5rem; line-height: 1.618;\\\">Must be proficient with: Java, .net, powershell, SQLServer, T-SQL, Javascript, CSS, JQuery, React.</li><li style=\\\"margin-bottom: 0.5rem; line-height: 1.618;\\\">Willing to experience building high throughput and scalable data pipelines using Hadoop/ Cloudera (HBase, Hive, Storm, Druid, Oozi)</li><li style=\\\"margin-bottom: 0.5rem; line-height: 1.618;\\\">Proven track record with planning and delivering coding assignments with high quality.</li><li style=\\\"margin-bottom: 0.5rem; line-height: 1.618;\\\">Motivated, self-starter results-oriented team player willing to do \\u201cwhatever it takes\\u201d in a dynamic and stimulating environment.</li><li style=\\\"margin-bottom: 0.5rem; line-height: 1.618;\\\">Great verbal and written communication skills</li></ul><ul style=\\\"font-size: 13px; font-family: -apple-system, blinkmacsystemfont, &quot;segoe ui&quot;, roboto, &quot;helvetica neue&quot;, arial, &quot;noto sans&quot;, sans-serif; text-align: justify; color: rgb(33, 37, 41);\\\"><li style=\\\"margin-bottom: 0.5rem; line-height: 1.618;\\\">Oversee and/or lead analysis, architecture design, development and maintenance of large scale and/or complex applications</li><li style=\\\"margin-bottom: 0.5rem; line-height: 1.618;\\\">Write modular, reusable and excellent quality code, code reviews, and implement best practices</li><li style=\\\"margin-bottom: 0.5rem; line-height: 1.618;\\\">Support the migration and redeployment of existing application (if any)</li><li style=\\\"margin-bottom: 0.5rem; line-height: 1.618;\\\">Take responsibility of project and ensure robust hosting, application stability, security and system integration</li></ul>\", \"location\": {\"id\": 175, \"country\": \"USA\", \"state\": \"Colorado\", \"zip_code\": \"80201\", \"city\": \"Denver\"}}"
+}

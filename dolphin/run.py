@@ -212,8 +212,7 @@ def galeShapelyAlgo():
 
     hiredobj = matcher(oneJD_MultipleRes_Score, oneRes_MultipleJD_Score)
     hired = hiredobj.matchmaker()
-    result = {"results": [
-        '  ' + ',\n  '.join('%s is hired by %s' % match for match in sorted(hired.items()))]}
+    result = {"matches":[[j,i] for i,j in sorted(hired.items())]}
     return result
 
 
