@@ -229,7 +229,7 @@ def one_resume_multiple_jd_scorer(job, designations, user_exp, user_soft_skills,
 
     # Normalizing to a range from 0 to 40
     experience_score = vec_sim * 15
-    
+
     if np.isnan(experience_score):
         experience_score = 0
     if np.isnan(desig_score):
