@@ -63,6 +63,14 @@ def oneResMultipleJD():
     # scorer_save.user_profile = user_profile
     user_soft_skills, user_technical_skills, user_exp, designations, user_location, designation_dates = prepare_profile(
         user_profile)
+    # print('--------------------------------------------------------------------')
+    # print(user_soft_skills)
+    # print(user_technical_skills)
+    # print(user_exp)
+    # print(designations)
+    # print(user_location)
+    # print(designation_dates)
+    # exit()
     # user_id = user_profile.get('user_id')
     job_descriptions = list(json.loads(form_data_.get('jobs')))
 
@@ -107,13 +115,11 @@ def oneJDMultipleRes():
     #     scorer_save.save()
     # In case the job_parsing module didn't extract any experience from job description
     if len(required_experience) == 0:
-        req_experience = 'Experience in ' + job_title
-    else:
-        req_experience = required_experience
+        required_experience = ['Experience in ' + job_title]
 
     # Multiprocessing because of heavy computational time
     with concurrent.futures.ProcessPoolExecutor() as executor:
-        results = [executor.submit(one_JD_multiple_resume_scorer, profile, job_title, req_experience,
+        results = [executor.submit(one_JD_multiple_resume_scorer, profile, job_title, required_experience,
                                    req_soft_skills, req_technical_skills, employer_city) for profile in user_profiles]
     my_score = {}
     final_result = {}
@@ -125,16 +131,27 @@ def oneJDMultipleRes():
     imp_words = []
     [imp_words.append(i) for i in req_soft_skills]
     [imp_words.append(i) for i in req_technical_skills]
-    [imp_words.append(i) for i in all_educations]
-    [imp_words.append(i) for i in all_locations]
-    [imp_words.append(i) for i in all_designations]
-    [imp_words.append(i) for i in all_organizations]
-    [imp_words.append(i) for i in required_experience]
+    
+    if(all_educations):
+        [imp_words.append(i) for i in all_educations[0]]
+    if(all_locations):
+        [imp_words.append(i) for i in all_locations[0]]
+    if(all_designations):
+        [imp_words.append(i) for i in all_designations[0]]
+    if(all_organizations):
+        [imp_words.append(i) for i in all_organizations[0]]
+    if(required_experience):
+        [imp_words.append(i) for i in required_experience[0]]
+
     # print("Job Title --{} ---> {}".format(job_title, type(job_title)))
     # print("Job Soft Skills --{} ---> {}".format(req_soft_skills, type(req_soft_skills)))
-    # print("Job Technical Skills --{} ---> {}".format(req_technical_skills,
-    #                                                  type(req_technical_skills)))
-    # print("Job Experience --{} ---> {}".format(req_experience, type(req_experience)))
+    # print("Job Technical Skills --{} ---> {}".format(req_technical_skills, type(req_technical_skills)))
+    # print("Job Experience --{} ---> {}".format(required_experience, type(required_experience)))
+    # print("Job Education --{} ---> {}".format(all_educations, type(all_educations)))
+    # print("Job location --{} ---> {}".format(all_locations, type(all_locations)))
+    # print("Job designation --{} ---> {}".format(all_designations, type(all_designations)))
+    # print("Job organization --{} ---> {}".format(all_organizations, type(all_organizations)))
+
     # print("Job city --{} ---> {}".format(employer_city, type(employer_city)))
     # print("Job state --{} ---> {}".format(employer_country, type(employer_country)))
     # print("Job country --{} ---> {}".format(employer_state, type(employer_state)))

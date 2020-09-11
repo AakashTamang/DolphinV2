@@ -206,15 +206,36 @@ def one_resume_multiple_jd_scorer(job, designations, user_exp, user_soft_skills,
     # In case the chunking didn't extract any experience from job description
     if len(req_experience) == 0:
         req_experience = ['Minimum 1 years of experience as ' + job_title]
+    
+    # print('+++++++++++++++++++++++++++++++++++++++++++++')
+    # print("req_exp :: ")
+    # print(req_experience,type(req_experience))
+    # print("user_exp :: ")
+    # print(user_exp,type(user_exp))
+    # print('+++++++++++++++++++++++++++++++++++++++++++++')
 
     req_exp_vector = score_generator_obj.get_word_embeddings(req_experience)
     user_exp_vector = score_generator_obj.get_word_embeddings(user_exp)
+
+    # print('+++++++++++++++++++++++++++++++++++++++++++++')
+    # print("req_exp_vec :: ")
+    # print(req_exp_vector)
+    # print("user_exp_vec :: ")
+    # print(user_exp_vector)
+    # print('+++++++++++++++++++++++++++++++++++++++++++++')
 
     vec_sim = score_generator_obj.calculate_similarity(
         req_exp_vector, [user_exp_vector])
 
     # Normalizing to a range from 0 to 40
     experience_score = vec_sim * 15
+    
+    if np.isnan(experience_score):
+        experience_score = 0
+    if np.isnan(desig_score):
+        desig_score = 0
+    if np.isnan(skill_score):
+        skill_score = 0
 
     try:
         if (not designation_dates):
@@ -224,9 +245,18 @@ def one_resume_multiple_jd_scorer(job, designations, user_exp, user_soft_skills,
     except:
         progress_score = 15
 
-    total_score = experience_score + desig_score + \
-        skill_score + distance_score + progress_score
-
+    total_score = experience_score + desig_score + skill_score + distance_score + progress_score
+    # print("\n")
+    # print("\n")
+    # print("----------------------"+str(job_id)+"-------------------------")
+    # print("exp"+str(experience_score))
+    # print("desig"+str(desig_score))
+    # print("skill"+str(skill_score))
+    # print("distance"+str(distance_score))
+    # print("progress"+str(progress_score))
+    # print('--------------------------------------------------------------')
+    # print("\n")
+    # print("\n")
     return job_id, total_score
 
 
@@ -248,7 +278,7 @@ def one_JD_multiple_resume_scorer(profile, job_title, req_exp, req_soft_skills, 
     # print("\n")
     # print("Job Technical Skills --{} ---> {}".format(req_technical_skills,
                                                      # type(req_technical_skills)))
-    skills_set = {user_id:{"user_soft_skills":user_soft_skills,"user_technical_skills":user_technical_skills,"matched_soft_skills":matched_soft_skills,"matched_technical_skills":matched_technical_skills}}
+    # skills_set = {user_id:{"user_soft_skills":user_soft_skills,"user_technical_skills":user_technical_skills,"matched_soft_skills":matched_soft_skills,"matched_technical_skills":matched_technical_skills}}
     # print("\n\n")
     # print(skills_set)
 
@@ -319,6 +349,7 @@ def one_JD_multiple_resume_scorer(profile, job_title, req_exp, req_soft_skills, 
     except:
         progress_score = 15
 
+    # print(str(user_id)+"-------------------------------"+str(progress_score))
     total_score = experience_score + desig_score + \
         skill_score + distance_score + progress_score
 
