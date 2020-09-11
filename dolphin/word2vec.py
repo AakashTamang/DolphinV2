@@ -97,6 +97,10 @@ class Word2VecScorer():
             if np.isnan(similarity):
                 similarity = 0
             score[jd['pk']] = int(similarity*100) + 20
+            if score[jd['pk']] > 100:
+                score[jd['pk']] -20
+            else:
+                pass
             # print(score)
         return score
 
