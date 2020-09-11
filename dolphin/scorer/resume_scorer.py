@@ -224,6 +224,13 @@ def one_resume_multiple_jd_scorer(job, designations, user_exp, user_soft_skills,
     except:
         progress_score = 15
 
+    if np.isnan(experience_score):
+        experience_score = 0
+    if np.isnan(desig_score):
+        desig_score = 0
+    if np.isnan(skill_score):
+        skill_score = 0
+
     total_score = experience_score + desig_score + \
         skill_score + distance_score + progress_score
 

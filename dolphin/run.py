@@ -78,7 +78,6 @@ def oneResMultipleJD():
     for f in concurrent.futures.as_completed(result):
         id, total_score = f.result()
         my_score[id] = total_score
-
     return my_score
 
 

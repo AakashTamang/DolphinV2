@@ -5,13 +5,13 @@ import time
 # parsing api test
 
 # server_url_endpoint = "http://139.5.71.109:8002/parse"
-# local_url_endpoint = "http://0.0.0.0:8004/parse"
+# # local_url_endpoint = "http://0.0.0.0:8004/parse"
 
 # resume_file = open(
 #     "/home/shushant/Desktop/Data_dump/data_resume/Akhil_Devops.docx", "rb")
 
 # start_time1 = time.time()
-# response = requests.post(local_url_endpoint, files={'resume': resume_file})
+# response = requests.post(server_url_endpoint, files={'resume': resume_file})
 # print("New API results")
 # print(response)
 # print(response.json())
@@ -26,32 +26,32 @@ import time
 
 
 # scoring api for multiple job descriptions
-# scoring_multiple_jd_endpoint = "http://0.0.0.0:8004/scoreresume"
+scoring_multiple_jd_endpoint = "http://0.0.0.0:8005/generatescoreprofile"
 
-# with open("multiple_jd.json", 'r') as f:
-#     data = json.load(f)
+with open("multiple_jd.json", 'r') as f:
+    data = json.load(f)
 
 """
 """
 # # scoring api for multiple user profiles test
-# scoring_multiple_user_profile_endpoint = "http://0.0.0.0:8004/generatescorejobdescription"
+# scoring_multiple_user_profile_endpoint = "http://139.5.71.109:8002/generatescorejobdescription"
 
 # with open("multiple_user_profile.json", 'r') as f:
 #     data = json.load(f)
 
 # start_time = time.time()
-# response = requests.post(scoring_multiple_jd_endpoint, json=data)
+response = requests.post(scoring_multiple_jd_endpoint, json=data)
 # print("--- %s seconds ---" % (time.time() - start_time))
-# print(response.status_code)
-# print(response.json())
+print(response.status_code)
+print(response.json())
 # print(type(response.json()))
 
 
 # parsing job description test
-# local_url_endpoint = "http://0.0.0.0:8002/parsejd"
+local_url_endpoint = "http://139.5.71.109:8002/parsejd"
 
 # jd_file = open(
-#     "/home/shushant/Desktop/Data_dump/Job Description Collection/Python Developer 10.docx", "rb")
+#     "/home/shushant/Desktop/Data_dump/jd2/Cyber Security 5.docx", "rb")
 
 # start_time1 = time.time()
 # response = requests.post(local_url_endpoint, files={'job_description': jd_file})
