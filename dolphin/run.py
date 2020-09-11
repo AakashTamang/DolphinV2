@@ -3,7 +3,7 @@ import json
 import ast
 import __init__
 import concurrent.futures
-
+from werkzeug.datastructures import ImmutableMultiDict
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from datareader import prepare_text, prepare_text_from_string
@@ -174,17 +174,19 @@ def get_score_for_resume_and_jd():
     Function for generating score of job descriptions from file content
     """
     resume = request.files.get('resume')
+    jobs = ImmutableMultiDict(request.form)
+    jobs = jobs.to_dict(flat=False)
+    job_descriptions = jobs.get('jobs')
     if resume:
         filename = resume.filename
         file = tempStorage + '/' + filename
         resume.save(file)
-        # job_description = request.form.get('jobs')#from django
-        job_descriptions = (request.form.get('jobs'))
         if type(job_descriptions) == str:
             job_descriptions = ast.literal_eval(job_descriptions)
         else:
             pass
-        response = word2vec_obj.calculate_score(file, job_descriptions)
+        # import pdb;pdb.set_trace()
+        response = word2vec_obj.calculate_score(file,job_descriptions)
         return jsonify(response)
 
 

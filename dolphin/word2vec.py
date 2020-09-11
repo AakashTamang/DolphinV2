@@ -1,6 +1,7 @@
 import settings as cfg
 from gensim.models import Word2Vec
 # from nltk.corpus import stopwords
+import ast
 from nltk.tokenize import word_tokenize
 from scipy import spatial
 import numpy as np
@@ -50,7 +51,8 @@ class Word2VecScorer():
                 doc_word2vec.append(self.word2vec[token])
             except KeyError as K:
                 # logger.exception(msg=K)
-                print("Keyerror here....:  ", K)
+                # print("Keyerror here....:  ", K)
+                pass
 
         doc_vectors = (np.mean(doc_word2vec, axis=0))
         return doc_vectors
@@ -79,27 +81,30 @@ class Word2VecScorer():
         resume_content = prepare_text(resume_file, dolower=False)
         preprocessed_resume_content = preprocessor_obj.preprocess_text(
             resume_content)
+        preprocessed_resume_content = " ".join(preprocessed_resume_content)
         resume_vector = self.get_word_embeddings(preprocessed_resume_content)
         score = {}
         for jd in job_descriptions:
+            if type(jd) == str:
+                jd = ast.literal_eval(jd)
+            else:
+                pass
             job_description = jd['job_description']
             job_text = preprocessor_obj.preprocess_text(job_description)
+            job_text = " ".join(job_text)
             job_vector = self.get_word_embeddings(job_text)
             similarity = self.calculate_similarity(job_vector, resume_vector)
-            print(similarity)
-            score[jd['pk']] = int(similarity*100)
-            print(score)
-            # for job_id, job_description in jd.items():
-            #     job_text = preprocessor_obj.preprocess_text(job_description)
-            #     job_vector = self.get_word_embeddings(job_text)
-            #     similarity = self.calculate_similarity(job_vector, resume_vector)
-            #     score[job_id] = int(similarity * 100)
+            if np.isnan(similarity):
+                similarity = 0
+            score[jd['pk']] = int(similarity*100) + 20
+            # print(score)
         return score
 
     def score_jobs(self, job_1, other_jobs):
         preprocessed_job_1 = preprocessor_obj.preprocess_text(job_1)
         job_vector_1 = self.get_word_embeddings(preprocessed_job_1)
         job_score = {}
+        import pdb;pdb.set_trace()
         for job in other_jobs:
             job_text = job['job_description']
             job_text_preprocessed = preprocessor_obj.preprocess_text(job_text)
