@@ -24,9 +24,9 @@ class SpacyNer():
 
     def parse(self, jd_content):
         '''
-        Function for parsing using Stanford Ner
-        params: jar engine path, trained model path, tokens from the file
-        return : stanford ner prediction results
+        Function for parsing usiing custom Spacy NER
+        params: job content in text
+        return : list of strings of predictions
         '''
         tokenized_sentences = sent_tokenize(jd_content)
         nlp = spacy.load(self.spacy_ner_model_path)
@@ -65,19 +65,24 @@ class SpacyNer():
             all_experiences.append(experiences)
             all_educations.append(educations)
             all_locations.append(locations)
-
         # Removing empty lists
         all_organizations = [
             x for x in all_organizations if x]
-        all_designations = [list({desig.lower() for x in all_designations if x for desig in x})]
+        all_designations = [x for x in all_designations if x]
         all_experiences = [
             x for x in all_experiences if x]
         all_educations = [
             x for x in all_educations if x]
         all_locations = [
             x for x in all_locations if x]
-
-        return all_designations, all_organizations, all_experiences, all_educations, all_locations
+        #converting to flat list or list of strings
+        organizations = [item for sublist in all_organizations for item in sublist]
+        designations = [item for sublist in all_designations for item in sublist]
+        educations = [item for sublist in all_experiences for item in sublist]
+        experiences = [item for sublist in all_educations for item in sublist]
+        locations = [item for sublist in all_locations for item in sublist]
+        # ---Always return list of strings from here----
+        return designations, organizations, educations, experiences, locations
 
     def get_skills(self,jd_content):
         '''
