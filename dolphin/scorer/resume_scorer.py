@@ -186,13 +186,29 @@ def one_resume_multiple_jd_scorer(job, designations, user_exp, user_soft_skills,
     # print("Matched soft skills {}".format(matched_soft_skills))
     # print("Matched technical Skills {}".format(matched_technical_skills))
 
-    try:
-        skill_score = (len(matched_soft_skills)+(len(matched_technical_skills))
-                       )/(len(req_technical_skills)+len(req_soft_skills)) * 25
-    except:
-        skill_score = 25
+    if matched_technical_skills != 0:
+        try:
+            technical_skill_score = len(matched_technical_skills) / len(req_technical_skills) * 35
+        except:
+            technical_skill_score = 35
+    else:
+        technical_skill_score = 0
+    
+        # skills score on basis of soft skills
+    if matched_soft_skills != 0:
+        try:
+            soft_skills_score = len(matched_soft_skills) / len(req_soft_skills) * 5
+        except:
+            soft_skills_score = 5
+    else:
+        soft_skills_score = 0
 
-    # print("Skilsss Score -- {}".format(skill_score))
+    skill_score = technical_skill_score + soft_skills_score
+
+    job_title = job_title.lower()
+    designations = [desig.lower() for desig in designations]
+
+    # print("Skills Score -- {}".format(skill_score))
     if job_title in designations:
         desig_score = 40
     else:
@@ -204,16 +220,24 @@ def one_resume_multiple_jd_scorer(job, designations, user_exp, user_soft_skills,
                 desig_vec, [job_title_vec])
             vector_score.append(desig_job_title_similarity_desig)
 
-        # Calculating average score for every designations
-        desig_job_title_similarity_designations = sum(
-            vector_score)/len(designations)
+        try:
+            # Calculating average score for every designations
+            desig_job_title_similarity_designations = sum(
+                vector_score)/len(designations)
+        except:
+            desig_job_title_similarity_designations = 0
         # Normalizing to range 0 to 40
         desig_score = desig_job_title_similarity_designations * 40
 
     # In case the chunking didn't extract any experience from job description
-    if len(req_experience) == 0:
-        req_experience = ['Minimum 1 years of experience as ' + job_title]
-    
+    if len(req_experience) or len(user_exp) == 0:
+        vec_sim = 0
+    else:
+        req_exp_vector = score_generator_obj.get_word_embeddings(req_exp)
+        user_exp_vector = score_generator_obj.get_word_embeddings(user_exp)
+
+        vec_sim = score_generator_obj.calculate_similarity(
+            req_exp_vector, [user_exp_vector])
     # print('+++++++++++++++++++++++++++++++++++++++++++++')
     # print("req_exp :: ")
     # print(req_experience,type(req_experience))
@@ -222,9 +246,7 @@ def one_resume_multiple_jd_scorer(job, designations, user_exp, user_soft_skills,
     # print('+++++++++++++++++++++++++++++++++++++++++++++')
     # print("Required experience -- {} type -- {}".format(req_experience,type(req_experience)))
     # print("User experience  -- {} type -- {}".format(user_exp,type(user_exp)))
-    req_exp_vector = score_generator_obj.get_word_embeddings(req_experience)
-    user_exp_vector = score_generator_obj.get_word_embeddings(user_exp)
-
+ 
     # print('+++++++++++++++++++++++++++++++++++++++++++++')
     # print("req_exp_vec :: ")
     # print(req_exp_vector)
@@ -232,18 +254,8 @@ def one_resume_multiple_jd_scorer(job, designations, user_exp, user_soft_skills,
     # print(user_exp_vector)
     # print('+++++++++++++++++++++++++++++++++++++++++++++')
 
-    vec_sim = score_generator_obj.calculate_similarity(
-        req_exp_vector, [user_exp_vector])
-
     # Normalizing to a range from 0 to 40
-    experience_score = vec_sim * 15
-
-    if np.isnan(experience_score):
-        experience_score = 0
-    if np.isnan(desig_score):
-        desig_score = 0
-    if np.isnan(skill_score):
-        skill_score = 0
+    experience_score = vec_sim * 10
 
     try:
         if (not designation_dates):
@@ -252,6 +264,17 @@ def one_resume_multiple_jd_scorer(job, designations, user_exp, user_soft_skills,
             progress_score = calculate_progress(designation_dates)
     except:
         progress_score = 15
+
+    if np.isnan(experience_score):
+        experience_score = 0
+    if np.isnan(desig_score):
+        desig_score = 0
+    if np.isnan(skill_score):
+        skill_score = 0
+    if np.isnan(progress_score):
+        progress_score = 0
+    if np.isnan(distance_score):
+        distance_score = 0
 
     total_score = experience_score + desig_score + skill_score + distance_score + progress_score
     # print("\n")
@@ -398,16 +421,15 @@ def one_JD_multiple_resume_scorer(profile, job_title, req_exp, req_soft_skills, 
     if np.isnan(skill_score):
         skill_score = 0
     if np.isnan(progress_score):
-        skill_score = 0
+        progress_score = 0
     if np.isnan(distance_score):
-        skill_score = 0
+        distance_score = 0
 
     # print(str(user_id)+"--------------Progress-----------------"+str(progress_score))
     # print(str(user_id)+"--------------Experience-----------------"+str(experience_score))
     # print(str(user_id)+"-----------------Distance--------------"+str(distance_score))
 
-    total_score = experience_score + desig_score + \
-        skill_score + distance_score + progress_score
+    total_score = experience_score + desig_score + skill_score + distance_score + progress_score
 
     # print("Required experiences :: {}".format(req_exp))
     # print("User experiences :: {}".format(user_exp))
