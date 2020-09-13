@@ -105,8 +105,6 @@ def oneJDMultipleRes():
     req_soft_skills, req_technical_skills, required_experience, all_designations, all_organizations, all_educations, all_locations = prepare_job_description(
         job_description)
 
-    all_designations = [
-        item for sublist in all_designations for item in sublist]
 
     user_profiles = form_data_.get('user_profiles')
     # for up in user_profiles:
@@ -116,6 +114,7 @@ def oneJDMultipleRes():
     if len(required_experience) == 0:
         required_experience = ['Experience in ' + job_title]
 
+    # job_title = [job_title] + all_designations
     # Multiprocessing because of heavy computational time
     with concurrent.futures.ProcessPoolExecutor() as executor:
         results = [executor.submit(one_JD_multiple_resume_scorer, profile, job_title, required_experience,
@@ -132,16 +131,15 @@ def oneJDMultipleRes():
     [imp_words.append(i) for i in req_technical_skills]
     
     if(all_educations):
-        [imp_words.append(i) for i in all_educations[0]]
+        [imp_words.append(i) for i in all_educations]
     if(all_locations):
-        [imp_words.append(i) for i in all_locations[0]]
+        [imp_words.append(i) for i in all_locations]
     if(all_designations):
-        [imp_words.append(i) for i in all_designations[0]]
+        [imp_words.append(i) for i in all_designations]
     if(all_organizations):
-        [imp_words.append(i) for i in all_organizations[0]]
+        [imp_words.append(i) for i in all_organizations]
     if(required_experience):
-        [imp_words.append(i) for i in required_experience[0]]
-
+        [imp_words.append(i) for i in required_experience]
     # print("Job Title --{} ---> {}".format(job_title, type(job_title)))
     # print("Job Soft Skills --{} ---> {}".format(req_soft_skills, type(req_soft_skills)))
     # print("Job Technical Skills --{} ---> {}".format(req_technical_skills, type(req_technical_skills)))
@@ -150,15 +148,9 @@ def oneJDMultipleRes():
     # print("Job location --{} ---> {}".format(all_locations, type(all_locations)))
     # print("Job designation --{} ---> {}".format(all_designations, type(all_designations)))
     # print("Job organization --{} ---> {}".format(all_organizations, type(all_organizations)))
-
-    # print("Job city --{} ---> {}".format(employer_city, type(employer_city)))
-    # print("Job state --{} ---> {}".format(employer_country, type(employer_country)))
-    # print("Job country --{} ---> {}".format(employer_state, type(employer_state)))
     final_result["scores"] = my_score
     final_result["imp_words"] = imp_words
-    # print("Important words --> ", imp_words)
-    # print(type(imp_words))
-
+    # print(imp_words)
     return final_result
 
 
@@ -202,7 +194,6 @@ def get_score_for_resume_and_jd():
             job_descriptions = ast.literal_eval(job_descriptions)
         else:
             pass
-        # import pdb;pdb.set_trace()
         response = word2vec_obj.calculate_score(file,job_descriptions)
         return jsonify(response)
 
