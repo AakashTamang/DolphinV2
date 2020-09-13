@@ -150,6 +150,7 @@ def oneJDMultipleRes():
     # print("Job organization --{} ---> {}".format(all_organizations, type(all_organizations)))
     final_result["scores"] = my_score
     final_result["imp_words"] = imp_words
+    import pdb;pdb.set_trace()
     # print(imp_words)
     return final_result
 

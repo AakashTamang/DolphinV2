@@ -2,7 +2,7 @@ import requests
 import json
 import time
 
-desired_endpoint = "http://0.0.0.0:8002"
+desired_endpoint = "http://139.5.71.109:8002"
 
 # # parsing api test
 # url_endpoint = desired_endpoint+"/parse"
@@ -76,7 +76,8 @@ desired_endpoint = "http://0.0.0.0:8002"
 #scoring from jd and resume content word2vec test
 url_endpoint = desired_endpoint + "/generatescore"
 resume_file = open(
-    "/home/shushant/Desktop/Data_dump/data_resume/Ahmad Mohammad_Information Security Analyst.doc", "rb")
+    "/home/shushant/Desktop/Data_dump/data_resume/Abhinay_Resume.docx", "rb")
+
 
 job_data = [
     {
