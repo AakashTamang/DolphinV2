@@ -385,9 +385,6 @@ class StanfordNER:
                                           sent_tokens, sent2indx, alldegree,
                                           alluniversity, alldate, alllocations
                                           )
-        import pdb
-        pdb.set_trace()
-
         return academics
 
 
