@@ -74,10 +74,10 @@ class Word2VecScorer():
 
     def calculate_score(self, resume_file, job_descriptions):
         resume_content = prepare_text(resume_file, dolower=False)
-        # preprocessed_resume_content = preprocessor_obj.preprocess_text(
-        #     resume_content)
-        # preprocessed_resume_content = " ".join(preprocessed_resume_content)
-        preprocessed_resume_content = resume_content
+        preprocessed_resume_content = preprocessor_obj.preprocess_text(
+            resume_content)
+        preprocessed_resume_content = " ".join(preprocessed_resume_content)
+        # preprocessed_resume_content = resume_content
         resume_vector = self.get_word_embeddings(preprocessed_resume_content)
         score = {}
         for jd in job_descriptions:
@@ -86,9 +86,9 @@ class Word2VecScorer():
             else:
                 pass
             job_description = jd['job_description']
-            # job_text = preprocessor_obj.preprocess_text(job_description)
-            # job_text = " ".join(job_text)
-            job_text = job_description
+            job_text = preprocessor_obj.preprocess_text(job_description)
+            job_text = " ".join(job_text)
+            # job_text = job_description
             job_vector = self.get_word_embeddings(job_text)
             similarity = self.calculate_similarity(job_vector, resume_vector)
             if np.isnan(similarity):
