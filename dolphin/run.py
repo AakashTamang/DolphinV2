@@ -114,10 +114,9 @@ def oneJDMultipleRes():
     if len(required_experience) == 0:
         required_experience = ['Experience in ' + job_title]
 
-    # job_title = [job_title] + all_designations
     # Multiprocessing because of heavy computational time
     with concurrent.futures.ProcessPoolExecutor() as executor:
-        results = [executor.submit(one_JD_multiple_resume_scorer, profile, job_title, required_experience,
+        results = [executor.submit(one_JD_multiple_resume_scorer, profile, job_title,all_designations, required_experience,
                                    req_soft_skills, req_technical_skills, employer_city) for profile in user_profiles]
     my_score = {}
     final_result = {}
@@ -150,8 +149,6 @@ def oneJDMultipleRes():
     # print("Job organization --{} ---> {}".format(all_organizations, type(all_organizations)))
     final_result["scores"] = my_score
     final_result["imp_words"] = imp_words
-    import pdb;pdb.set_trace()
-    # print(imp_words)
     return final_result
 
 

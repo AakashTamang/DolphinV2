@@ -1,0 +1,44 @@
+*Organization and Job ID**
+Job ID: 310709
+
+Directorate: Earth & Biological Sciences
+
+Division: Biological Sciences
+
+Group: Exposure Science Team
+*Job Description**
+The Biological System Science (BSS) Group in the Biological Sciences Division of the Pacific Northwest National Laboratory (PNNL) is seeking a staff scientist with multidisciplinary experience in computational chemistry, cheminformatics, advanced statistics and/or machine learning/deep learning/AI. Preferred candidates will have a broad understanding of the state of computational metabolomics and experience in designing and implementing novel deep learning networks for chemistry applications. Research experience in drug design, cheminformatics, deep learning, machine learning and/or small molecule identification is also highly valued. Successful candidates will join a large, uniquely collaborative, collegial group of innovators driving the integration of data science, computational science and analytical chemistry to solve the nations most challenging problems in human health, chemical forensics, and national security. The BSS Group is diverse and inclusive, working closely with colleagues across the laboratory with expertise in computational biology, integrative omics, applied mathematics, computer science, and statistics.
+
++ Apply knowledge of statistics, machine learning, advanced mathematics, simulation, software development, and data modeling to to design, development and implement methods that integrate, clean and analyze data, recognize patterns, address uncertainty, pose questions, and make discoveries from structured and/or unstructured data.
+
++ Produce solutions driven by exploratory data analysis from complex and high-dimensional datasets.
+
++ Design, develop, and evaluate predictive models and advanced algorithms that lead to optimal value extraction from data.
+
++ Develop and maintain existing deep learning networks that generate novel molecules for drug discovery applications
+
++ Contribue or author proposals, peer-reviewed papers, and other technical products.
+*Minimum Qualifications**
+BS/BA with 0-1 years of experience or MS/MA with 0-1 years of experience
+*Preferred Qualifications**
++ MS in chemical engineering, computer science, or related field with a GPA of 3.5+ 5+ years of research experience
+
++ Intermediate level programming experience (preferably Python) and high-performance computing experience
+
++ At least one first author published, or proof of submitted, paper applying deep learning for use in novel compound generation
+
++ Understanding of the NMDA receptor and potential drug targets
+
++ Research experience in drug design, cheminformatics, deep learning, machine learning and/or small molecule identification
+*Equal Employment Opportunity**
+Battelle Memorial Institute (BMI) at Pacific Northwest National Laboratory (PNNL) is an Affirmative Action/Equal Opportunity Employer and supports diversity in the workplace. All employment decisions are made without regard to race, color, religion, sex, national origin, age, disability, veteran status, marital or family status, sexual orientation, gender identity, or genetic information. All BMI staff must be able to demonstrate the legal right to work in the United States. BMI is an E-Verify employer. Learn more at jobs.pnnl.gov.
+*_Please be aware that the Department of Energy (DOE) prohibits DOE employees and contractors from participation in certain foreign government talent recruitment programs. If you are offered a position at PNNL and are currently a participant in a foreign government talent recruitment program you will be required to disclose this information before your first day of employment._**
+_Directorate:_ _Earth & Biological Sciences_
+
+_Job Category:_ _Scientists/Scientific Support_
+
+_Group:_ _Biological Systems Science_
+
+_Opening Date:_ _2020-03-26_
+
+_Closing Date:_ _2020-04-05_

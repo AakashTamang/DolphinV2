@@ -57,11 +57,11 @@ class DomainClassification:
 
 
 
-# if __name__ == "__main__":
-#     # sample_jd_text = prepare_text(
-#     #     r"C:\Users\Aakash\Desktop\Python\Scraping\Projects\job_descriptions\Data Scientist.docx", dolower=False)
-#     domain_classification_obj = DomainClassification()
-#     sample_designations = ['Python Developer','Machine Learning Engineer','AI Developer','Data Scientist']
-#     sample_designations = [x.lower() for x in sample_designations]
-#     most_common_domain = domain_classification_obj.classify_domain_from_designation(sample_designations)
-#     print("Domain_classified-->", most_common_domain)
+if __name__ == "__main__":
+    # sample_jd_text = prepare_text(
+    #     r"C:\Users\Aakash\Desktop\Python\Scraping\Projects\job_descriptions\Data Scientist.docx", dolower=False)
+    domain_classification_obj = DomainClassification()
+    sample_designations = ['Software Test Engineer']
+    sample_designations = [x.lower() for x in sample_designations]
+    most_common_domain = domain_classification_obj.classify_domain_from_designation(sample_designations)
+    print("Domain_classified-->", most_common_domain)

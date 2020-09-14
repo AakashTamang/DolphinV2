@@ -123,7 +123,10 @@ def formatEducationalinfo(sent_tokens, sent2idx, alldegree,
                 elif cleaned_university in item_tracker:
 
                     key = cleaned_sentence+'{}'.format(item_tracker[cleaned_university])
-                    university_index.append((university,sent2idx[key]))
+                    try:
+                        university_index.append((university,sent2idx[key]))
+                    except:
+                        pass
                 alluniversity.remove(university)
                 break
 
