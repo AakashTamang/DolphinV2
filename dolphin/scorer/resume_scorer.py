@@ -87,6 +87,8 @@ def prepare_job_description(job_description):
 
     required_technical_skills, required_soft_skills = NerObj.get_skills(
         job_description)
+    required_soft_skills = set(required_soft_skills)
+    required_technical_skills = set(required_technical_skills)
     all_designations, all_organizations, required_experience, all_educations, all_locations = NerObj.parse(
         job_description)
 

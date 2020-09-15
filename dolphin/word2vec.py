@@ -9,12 +9,20 @@ import nltk
 import string
 from datareader import prepare_text
 from data_preprocessing import PreprocessData
+# from job_parsing.jd_parsing import SpacyNer
+# from settings import technical_skills_pool, soft_skills_pool
+# from cvparser.pipeline import NlpPipeline
+
 
 # nltk.download('stopwords')
 
 # stop_words = set(stopwords.words('english'))
 
 preprocessor_obj = PreprocessData()
+
+# NerObj = SpacyNer()
+# spacy_pipeline = NlpPipeline()
+# spacy_pipeline.add_skills_pattern_matching()
 
 
 class Word2VecScorer():
@@ -73,10 +81,16 @@ class Word2VecScorer():
         return similarity
 
     def calculate_score(self, resume_file, job_descriptions):
+        
         resume_content = prepare_text(resume_file, dolower=False)
         preprocessed_resume_content = preprocessor_obj.preprocess_text(
             resume_content)
         preprocessed_resume_content = " ".join(preprocessed_resume_content)
+        # res_technical_skills, res_soft_skills = NerObj.get_skills(preprocessed_resume_content)
+        # jd_skills = spacy_pipeline.process_text(preprocessed_resume_content)
+        # res_technical_skills = jd_skills._.technical_skills
+        # res_soft_skills = jd_skills._.soft_skills
+
         # preprocessed_resume_content = resume_content
         resume_vector = self.get_word_embeddings(preprocessed_resume_content)
         score = {}
@@ -88,14 +102,39 @@ class Word2VecScorer():
             job_description = jd['job_description']
             job_text = preprocessor_obj.preprocess_text(job_description)
             job_text = " ".join(job_text)
+            # jd_technical_skills, jd_soft_skills = NerObj.get_skills(job_text)
+            # jd_skills = spacy_pipeline.process_text(job_text)
+            # jd_technical_skills = jd_skills._.technical_skills
+            # jd_soft_skills = jd_skills._.soft_skills
+            # matched_soft_skills = res_soft_skills.intersection(jd_soft_skills)
+            # matched_technical_skills = res_technical_skills.intersection(jd_technical_skills)
+
+            # if matched_technical_skills != 0:
+            #     try:
+            #         technical_skill_score = len(matched_technical_skills) / len(jd_technical_skills) * 35
+            #     except:
+            #         technical_skill_score = 35
+            # else:
+            #     technical_skill_score = 0
+            
+            # if matched_soft_skills != 0:
+            #     try:
+            #         soft_skills_score = len(matched_soft_skills) / len(jd_soft_skills) * 5
+            #     except:
+            #         soft_skills_score = 5
+            # else:
+            #     soft_skills_score = 0
+            
+            # skill_score = technical_skill_score + soft_skills_score
+
             # job_text = job_description
             job_vector = self.get_word_embeddings(job_text)
             similarity = self.calculate_similarity(job_vector, resume_vector)
             if np.isnan(similarity):
                 similarity = 0
-            score[jd['pk']] = int(similarity*100) + 15
-            if score[jd['pk']] > 100:
-                score[jd['pk']] - 15
+            word2vecscore = int(similarity*100)
+            # score[jd['pk']] = word2vecscore + skill_score
+            score[jd['pk']] = word2vecscore
             # print(score)
         return score
 

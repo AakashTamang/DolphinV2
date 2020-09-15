@@ -47,11 +47,11 @@ desired_endpoint = "http://0.0.0.0:8002"
 # print(type(response.json()))
 
 
-#parsing job description test
+# # parsing job description test
 # url_endpoint =  desired_endpoint+"/parsejd"
 
 # jd_file = open(
-#     "/home/shushant/Desktop/Data_dump/jd2/Cyber Security 5.docx", "rb")
+#     "cvparser/datasets/resumes/Ashish Suwal_Sr. Data Analyst.docx", "rb")
 
 # start_time1 = time.time()
 # response = requests.post(url_endpoint, files={'job_description': jd_file})
@@ -78,7 +78,7 @@ desired_endpoint = "http://0.0.0.0:8002"
 # scoring from jd and resume content word2vec test
 url_endpoint = desired_endpoint + "/generatescore"
 resume_file = open(
-    "/home/shushant/Desktop/Data_dump/data_resume/ADITHYA_OIM.doc", "rb")
+    "cvparser/datasets/resumes/Ashish Suwal_Sr. Data Analyst.docx", "rb")
 
 
 job_data = [
