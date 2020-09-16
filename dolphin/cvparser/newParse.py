@@ -2,6 +2,7 @@ import time
 import glob
 import cProfile, pstats, io
 import os
+import re
 
 from datareader import prepare_text
 from cvparser.stanfordNER import formatdata
@@ -119,6 +120,7 @@ class Parser:
         name,address = self.resume_profile._.name, self.segmented_resume._.address
         emails = self.resume_profile._.emails
         phone = self.resume_profile._.phone
+        phone = [re.sub(r'\s+','',i) for i in phone]
         birthdate = self.resume_profile._.date
         gender = self.resume_profile._.gender
         nationality = self.resume_profile._.nationality
