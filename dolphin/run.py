@@ -253,9 +253,11 @@ def get_score_for_jobs():
     """
     Function for generating score of job descriptions from file content
     """
-    data = ImmutableMultiDict(request.form)
-    data = data.to_dict(flat=False)
-    primary_job = data.get('primary_job')[0]
+    # import pdb;pdb.set_trace()
+    # data = ImmutableMultiDict(request.form)
+    # data = data.to_dict(flat=False)
+    # primary_job = data.get('primary_job')[0]
+    primary_job = request.json.get('primary_job')
     if type(primary_job) == str:
         primary_job = ast.literal_eval(primary_job)
     else:
@@ -263,7 +265,8 @@ def get_score_for_jobs():
     primary_job_title = primary_job['job_title']
     primary_job_description = primary_job['job_description']
     if primary_job:
-        other_jobs = data.get('other_jobs')[0]
+        # other_jobs = data.get('other_jobs')[0]
+        other_jobs = request.json.get('other_jobs')
         if type(other_jobs) == str:
             other_jobs = ast.literal_eval(other_jobs)
         else:
