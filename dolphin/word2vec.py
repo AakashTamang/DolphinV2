@@ -51,11 +51,11 @@ class Word2VecScorer():
             token_list = token_list[0].lower()
             flat_list = word_tokenize(token_list)
         
-        print("Flat list is this -- {}  type --{}".format(flat_list,type(flat_list)))
+        # print("Flat list is this -- {}  type --{}".format(flat_list,type(flat_list)))
         for token in flat_list:
             try:
                 doc_word2vec.append(self.word2vec[token])
-                print("Now Token",token)
+                # print("Now Token",token)
             except KeyError as K:
                 # logger.exception(msg=K)
                 print("Keyerror here....:  ", K)
@@ -142,7 +142,7 @@ class Word2VecScorer():
     def score_jobs(self, job_1,job_1_title,other_jobs):
         preprocessed_job_1 = preprocessor_obj.preprocess_text(job_1)
         preprocessed_job_1_formatted = " ".join(preprocessed_job_1)
-        job_vector_1 = self.get_word_embeddings(preprocessed_job_1)
+        job_vector_1 = self.get_word_embeddings(preprocessed_job_1_formatted)
         job_title_1 = job_1_title
         job_score = {}
         for job in other_jobs:
@@ -150,6 +150,8 @@ class Word2VecScorer():
             job_title = job['job_title']
             job_text_preprocessed = preprocessor_obj.preprocess_text(job_text)
             job_text_preprocessed_formatted= ' '.join(job_text_preprocessed)
+            print("Other job ",job_text_preprocessed_formatted)
+            print("The job",preprocessed_job_1_formatted)
             job_text_vector = self.get_word_embeddings(job_text_preprocessed_formatted)
             simialrity = self.calculate_similarity(
                 job_vector_1, job_text_vector)
@@ -160,7 +162,10 @@ class Word2VecScorer():
             content_score = int(simialrity * 80)
             job_score[job['pk']] = desig_score + content_score
             print("Desig score ---{} Content score -- {}".format(desig_score,content_score))
-        return job_score
+        
+        sorted_job_score = {k: v for k, v in sorted(job_score.items(), key=lambda item: item[1],reverse = True)}
+        top_four_job_score = {k: sorted_job_score[k] for k in list(sorted_job_score)[:4]}
+        return top_four_job_score
 
 
 # if __name__ == "__main__":

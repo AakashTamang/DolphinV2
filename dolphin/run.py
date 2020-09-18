@@ -249,20 +249,27 @@ def get_score_for_resume_and_jd():
 
 
 @app.route("/getjobscore", methods=["POST", "GET"])
-def get_score_forjobs():
+def get_score_for_jobs():
     """
     Function for generating score of job descriptions from file content
     """
-    job_1 = request.form.get('job_1')
-    job_1_title = request.form.get('job_1_title')
-    if job_1:
-        job_descriptions = (request.form.get('other_jobs'))
-        if type(job_descriptions) == str:
-            job_descriptions = ast.literal_eval(job_descriptions)
+    data = ImmutableMultiDict(request.form)
+    data = data.to_dict(flat=False)
+    primary_job = data.get('primary_job')[0]
+    if type(primary_job) == str:
+        primary_job = ast.literal_eval(primary_job)
+    else:
+        pass
+    primary_job_title = primary_job['job_title']
+    primary_job_description = primary_job['job_description']
+    if primary_job:
+        other_jobs = data.get('other_jobs')[0]
+        if type(other_jobs) == str:
+            other_jobs = ast.literal_eval(other_jobs)
         else:
             pass
         # response = word2vec_obj.calculate_score(file, job_descriptions)
-        response = word2vec_obj.score_jobs(job_1,job_1_title,job_descriptions)
+        response = word2vec_obj.score_jobs(primary_job_description,primary_job_title,other_jobs)
         return jsonify(response)
 
 
