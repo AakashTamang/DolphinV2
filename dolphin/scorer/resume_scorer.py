@@ -222,6 +222,8 @@ def one_resume_multiple_jd_scorer(job, designations, user_exp, user_soft_skills,
             try:
                 most_common_domain_user = domain_classification_obj.classify_domain_from_designation(user_designations)[0]
                 most_common_domain_job = domain_classification_obj.classify_domain_from_designation(job_designations)[0]
+                most_common_domain_user = ''.join(most_common_domain_user)
+                most_common_domain_job = ''.join(most_common_domain_job)
                 if most_common_domain_user == most_common_domain_job:
                     desig_score = 30
                 else:
@@ -363,8 +365,12 @@ def one_JD_multiple_resume_scorer(profile, job_title,all_designations, req_exp, 
             desig_score = 40
         else:
             try:
-                most_common_domain_user = domain_classification_obj.classify_domain_from_designation(user_designations)[0]
-                most_common_domain_job = domain_classification_obj.classify_domain_from_designation(job_designations)[0]
+                most_common_domain_user = domain_classification_obj.classify_domain_from_designation(user_designations)
+                # print("******************most common domain****** {} --type {}".format(most_common_domain_user,type(most_common_domain_user)))
+                most_common_domain_job = domain_classification_obj.classify_domain_from_designation(job_designations)
+                most_common_domain_user = ''.join(most_common_domain_user)
+                most_common_domain_job = ''.join(most_common_domain_job)
+
                 if most_common_domain_user == most_common_domain_job:
                     desig_score = 30
                 else:

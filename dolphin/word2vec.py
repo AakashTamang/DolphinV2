@@ -48,15 +48,17 @@ class Word2VecScorer():
             token_list = token_list.lower()
             flat_list = word_tokenize(token_list)
         else:
-            token_list = token_list[0][0].lower()
+            token_list = token_list[0].lower()
             flat_list = word_tokenize(token_list)
+        
+        print("Flat list is this -- {}  type --{}".format(flat_list,type(flat_list)))
         for token in flat_list:
             try:
                 doc_word2vec.append(self.word2vec[token])
+                print("Now Token",token)
             except KeyError as K:
                 # logger.exception(msg=K)
-                # print("Keyerror here....:  ", K)
-                pass
+                print("Keyerror here....:  ", K)
 
         doc_vectors = (np.mean(doc_word2vec, axis=0))
         return doc_vectors
@@ -73,7 +75,6 @@ class Word2VecScorer():
         """
         similarity = (
             (1 - spatial.distance.cosine(first_vector, second_vector)))
-
         if similarity < 0:
             similarity = 0
         elif similarity > 100:
@@ -138,17 +139,27 @@ class Word2VecScorer():
             # print(score)
         return score
 
-    def score_jobs(self, job_1, other_jobs):
+    def score_jobs(self, job_1,job_1_title,other_jobs):
         preprocessed_job_1 = preprocessor_obj.preprocess_text(job_1)
+        preprocessed_job_1_formatted = " ".join(preprocessed_job_1)
         job_vector_1 = self.get_word_embeddings(preprocessed_job_1)
+        job_title_1 = job_1_title
         job_score = {}
         for job in other_jobs:
             job_text = job['job_description']
+            job_title = job['job_title']
             job_text_preprocessed = preprocessor_obj.preprocess_text(job_text)
-            job_text_vector = self.get_word_embeddings(job_text_preprocessed)
+            job_text_preprocessed_formatted= ' '.join(job_text_preprocessed)
+            job_text_vector = self.get_word_embeddings(job_text_preprocessed_formatted)
             simialrity = self.calculate_similarity(
                 job_vector_1, job_text_vector)
-            job_score[job['pk']] = int(simialrity * 100)
+            if job_title.lower() == job_title_1.lower():
+                desig_score = 20
+            else:
+                desig_score = 0
+            content_score = int(simialrity * 80)
+            job_score[job['pk']] = desig_score + content_score
+            print("Desig score ---{} Content score -- {}".format(desig_score,content_score))
         return job_score
 
 

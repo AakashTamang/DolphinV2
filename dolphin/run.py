@@ -254,6 +254,7 @@ def get_score_forjobs():
     Function for generating score of job descriptions from file content
     """
     job_1 = request.form.get('job_1')
+    job_1_title = request.form.get('job_1_title')
     if job_1:
         job_descriptions = (request.form.get('other_jobs'))
         if type(job_descriptions) == str:
@@ -261,7 +262,7 @@ def get_score_forjobs():
         else:
             pass
         # response = word2vec_obj.calculate_score(file, job_descriptions)
-        response = word2vec_obj.score_jobs(job_1, job_descriptions)
+        response = word2vec_obj.score_jobs(job_1,job_1_title,job_descriptions)
         return jsonify(response)
 
 
