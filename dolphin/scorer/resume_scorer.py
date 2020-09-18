@@ -58,9 +58,9 @@ def prepare_profile(profile):
         entry_date = xp.get('entry_date')
         exit_date = xp.get('exit_date')
         if not entry_date:
-            entry_date = date.today()
+            entry_date = str(date.today())
         if not exit_date:
-            exit_date = date.today()
+            exit_date = str(date.today())
         total_exp_days = abs(datetime.strptime(exit_date, "%Y-%m-%d")-datetime.strptime(entry_date, "%Y-%m-%d")).days
         date_list = []
         for i in [entry_date,exit_date]:
@@ -113,7 +113,7 @@ def calculate_distance(address1, address2):
     return distance
 
 
-def calculate_progress(designation_dates):
+def calculate_progress(designation_dates, junior_pool_list, intermediate_pool_list, senior_pool_list, manager_pool_list):
     unique_data = sorted(list(set(designation_dates)))
     uni_designations = []
     uni_dates = []
@@ -121,27 +121,7 @@ def calculate_progress(designation_dates):
     for i in range(len(unique_data)):
         uni_dates.append(unique_data[i][0])
         uni_designations.append(unique_data[i][1].lower())
-        uni_days.append(unique_data[i][2])
-
-    progress_pool = pd.read_csv(cfg.progress_pool, sep=",")
-    
-    ##Don't forget to changes values to lowercase
-    senior_pool_list = []
-    junior_pool_list = []
-    intermediate_pool_list = []
-    manager_pool_list = []
-
-    for i in range(len(progress_pool["Designations"])):
-        val = progress_pool["Label"][i]
-        desig = progress_pool["Designations"][i].lower().strip()
-        if(val=="Junior"):
-            junior_pool_list.append(desig)
-        elif(val=="Senior"):
-            senior_pool_list.append(desig)
-        elif(val=="Intermediate"):
-            intermediate_pool_list.append(desig) 
-        elif(val=="Manager"):
-            manager_pool_list.append(desig)  
+        uni_days.append(unique_data[i][2]) 
 
     # print(uni_designations)
 
@@ -209,7 +189,8 @@ def calculate_progress(designation_dates):
 
     return progress_score
 
-def one_resume_multiple_jd_scorer(job, designations, user_exp, user_soft_skills, user_technical_skills, user_location, designation_dates):
+def one_resume_multiple_jd_scorer(job, designations, user_exp, user_soft_skills, user_technical_skills, user_location, designation_dates, junior_pool_list, 
+                                  intermediate_pool_list, senior_pool_list, manager_pool_list):
     job_id = job.get('id')
     job_title = job.get('job_title')
     job_description = job.get('job_description')
@@ -331,8 +312,9 @@ def one_resume_multiple_jd_scorer(job, designations, user_exp, user_soft_skills,
     try:
         if (not designation_dates):
             progress_score = 0
-        else:
-            progress_score = calculate_progress(designation_dates)
+        else: 
+            progress_score = calculate_progress(designation_dates, junior_pool_list, 
+                                  intermediate_pool_list, senior_pool_list, manager_pool_list)
     except:
         progress_score = 10
 
@@ -352,7 +334,8 @@ def one_resume_multiple_jd_scorer(job, designations, user_exp, user_soft_skills,
     return job_id, total_score
 
 
-def one_JD_multiple_resume_scorer(profile, job_title,all_designations, req_exp, req_soft_skills, req_technical_skills, employer_city):
+def one_JD_multiple_resume_scorer(profile, job_title,all_designations, req_exp, req_soft_skills, req_technical_skills, employer_city, junior_pool_list, 
+                                  intermediate_pool_list, senior_pool_list, manager_pool_list):
     user_id = profile.get('user_id')
     user_soft_skills, user_technical_skills, user_exp, designations, user_location, designation_dates = prepare_profile(
         profile)
@@ -478,7 +461,8 @@ def one_JD_multiple_resume_scorer(profile, job_title,all_designations, req_exp, 
         if (not designation_dates):
             progress_score = 0
         else:
-            progress_score = calculate_progress(designation_dates)
+            progress_score = calculate_progress(designation_dates, junior_pool_list, 
+                                  intermediate_pool_list, senior_pool_list, manager_pool_list)
     except:
         progress_score = 10
 

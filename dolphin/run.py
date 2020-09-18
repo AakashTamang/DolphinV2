@@ -14,9 +14,10 @@ from domain_classification.domain_classification import DomainClassification
 from job_parsing.jd_parsing import SpacyNer
 from word2vec import Word2VecScorer
 from matcher.match import matcher
-from settings import word2vec_model
+import settings as cfg
 from data_preprocessing import PreprocessData
 import numpy as np
+import pandas as pd
 # from mongoengine import connect
 # from mongo_orm.parsed_information import ParsedCollection
 # from mongo_orm.scored_information import ScoredDocuments
@@ -34,7 +35,7 @@ CORS(app, headers="X-CSRFToken, Content-Type")
 new_resume_parser_obj = newParser()
 domain_classification_obj = DomainClassification()
 parse_jd = SpacyNer()
-word2vec_obj = Word2VecScorer(word2vec_model)
+word2vec_obj = Word2VecScorer(cfg.word2vec_model)
 preprocessor_obj = PreprocessData()
 
 @app.route("/parse", methods=["POST"])
@@ -80,9 +81,30 @@ def oneResMultipleJD():
     #     scorer_save.job_description = jd
     #     scorer_save.save()
     # Multiprocessing because of heavy computational time
+
+    progress_pool = pd.read_csv(cfg.progress_pool, sep=",")
+            
+    senior_pool_list = []
+    junior_pool_list = []
+    intermediate_pool_list = []
+    manager_pool_list = []
+
+    for i in range(len(progress_pool["Designations"])):
+        val = progress_pool["Label"][i]
+        desig = progress_pool["Designations"][i].lower().strip()
+        if(val=="Junior"):
+            junior_pool_list.append(desig)
+        elif(val=="Senior"):
+            senior_pool_list.append(desig)
+        elif(val=="Intermediate"):
+            intermediate_pool_list.append(desig) 
+        elif(val=="Manager"):
+            manager_pool_list.append(desig)
+
     with concurrent.futures.ProcessPoolExecutor() as executor:
         result = [executor.submit(one_resume_multiple_jd_scorer, job_description, designations, user_exp,
-                                  user_soft_skills, user_technical_skills, user_location, designation_dates) for job_description in job_descriptions]
+                                  user_soft_skills, user_technical_skills, user_location, designation_dates, junior_pool_list, 
+                                  intermediate_pool_list, senior_pool_list, manager_pool_list) for job_description in job_descriptions]
     my_score = {}
 
     for f in concurrent.futures.as_completed(result):
@@ -116,10 +138,30 @@ def oneJDMultipleRes():
     if len(required_experience) == 0:
         required_experience = ['Experience in ' + job_title]
 
+    progress_pool = pd.read_csv(cfg.progress_pool, sep=",")
+            
+    senior_pool_list = []
+    junior_pool_list = []
+    intermediate_pool_list = []
+    manager_pool_list = []
+
+    for i in range(len(progress_pool["Designations"])):
+        val = progress_pool["Label"][i]
+        desig = progress_pool["Designations"][i].lower().strip()
+        if(val=="Junior"):
+            junior_pool_list.append(desig)
+        elif(val=="Senior"):
+            senior_pool_list.append(desig)
+        elif(val=="Intermediate"):
+            intermediate_pool_list.append(desig) 
+        elif(val=="Manager"):
+            manager_pool_list.append(desig)
+
     # Multiprocessing because of heavy computational time
     with concurrent.futures.ProcessPoolExecutor() as executor:
         results = [executor.submit(one_JD_multiple_resume_scorer, profile, job_title,all_designations, required_experience,
-                                   req_soft_skills, req_technical_skills, employer_city) for profile in user_profiles]
+                                   req_soft_skills, req_technical_skills, employer_city, junior_pool_list, 
+                                  intermediate_pool_list, senior_pool_list, manager_pool_list) for profile in user_profiles]
     my_score = {}
     final_result = {}
 
