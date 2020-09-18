@@ -30,6 +30,7 @@ technical_skills_pool = os.path.join(ParserDir,'data/technical_skills.csv')
 soft_skills_pool = os.path.join(ParserDir,'data/soft_skills_resume.csv')
 languages_pool = os.path.join(ParserDir,'data/languages.csv')
 nationality_pool = os.path.join(ParserDir,'data/nationality_data.csv')
+progress_pool = os.path.join(ScorerDir, "models/progress_pool_parser.csv")
 
 '''<------Domain Classification Data------>'''
 domain_class_data = os.path.join(RootDir,'domain_classification/domain_class_data.tsv')

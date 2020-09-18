@@ -2,16 +2,14 @@ import os
 import json
 import pandas as pd
 import numpy as np
-from datetime import datetime
-# from pipeline import NlpPipeline
-# from word2vec import Word2VecScorer
+from datetime import datetime, date
+from dateutil.relativedelta import relativedelta
 import settings as cfg
 from datareader import prepare_text
 from geopy.geocoders import Nominatim
 from geopy.distance import geodesic
 from sklearn.preprocessing import MinMaxScaler
 from scipy import stats
-# from settings import technical_skills_pool, soft_skills_pool
 from scorer.helper import PreprocessData, NLTKHelper
 from word2vec import Word2VecScorer
 from job_parsing.jd_parsing import SpacyNer
@@ -60,16 +58,22 @@ def prepare_profile(profile):
         entry_date = xp.get('entry_date')
         exit_date = xp.get('exit_date')
         if not entry_date:
-            entry_date = datetime.today().strftime('%Y-%m-%d')
+            entry_date = date.today()
         if not exit_date:
-            exit_date = datetime.today().strftime('%Y-%m-%d')
-        entry_year = entry_date.split("-")[0]
-        exit_year = exit_date.split("-")[0]
-        years_of_exp = int(exit_year) - int(entry_year)
+            exit_date = date.today()
+        total_exp_days = abs(datetime.strptime(exit_date, "%Y-%m-%d")-datetime.strptime(entry_date, "%Y-%m-%d")).days
+        date_list = []
+        for i in [entry_date,exit_date]:
+            year = i.split('-')[0]
+            month = i.split('-')[1]
+            day = i.split('-')[2]
+            date_list.append(date(int(year),int(month),int(day)))
+
+        rdelta = relativedelta(date_list[1], date_list[0])
+
         designations.append(designation)
-        all_experiences.append((str(years_of_exp) + ' years of' +
-                                ' experience as '+designation))
-        designation_dates.append((entry_date, designation))
+        all_experiences.append((str(rdelta.years) + ' years,' +str(rdelta.months)+' months and '+str(rdelta.days)+' days of'+' experience as '+designation))
+        designation_dates.append((entry_date, designation,total_exp_days))
         set(designations)
     return soft_skills, technical_skills, all_experiences, designations, job_seeker_location, designation_dates
 
@@ -110,31 +114,74 @@ def calculate_distance(address1, address2):
 
 
 def calculate_progress(designation_dates):
-    unique_data = list(set(designation_dates))
+    unique_data = sorted(list(set(designation_dates)))
     uni_designations = []
     uni_dates = []
+    uni_days = []
     for i in range(len(unique_data)):
         uni_dates.append(unique_data[i][0])
-        uni_designations.append(unique_data[i][1])
+        uni_designations.append(unique_data[i][1].lower())
+        uni_days.append(unique_data[i][2])
 
-    # add classifier here to normalize designation
-    normailized_design = ['Junior Employee',
-                          'Intermediate Employee', 'Employee', 'Senior Employee']
+    progress_pool = pd.read_csv(cfg.progress_pool, sep=",")
+    
+    ##Don't forget to changes values to lowercase
+    senior_pool_list = []
+    junior_pool_list = []
+    intermediate_pool_list = []
+    manager_pool_list = []
+
+    for i in range(len(progress_pool["Designations"])):
+        val = progress_pool["Label"][i]
+        desig = progress_pool["Designations"][i].lower().strip()
+        if(val=="Junior"):
+            junior_pool_list.append(desig)
+        elif(val=="Senior"):
+            senior_pool_list.append(desig)
+        elif(val=="Intermediate"):
+            intermediate_pool_list.append(desig) 
+        elif(val=="Manager"):
+            manager_pool_list.append(desig)  
+
+    # print(uni_designations)
+
+    for i in range(len(uni_designations)):
+        if(uni_days[i]>730):
+            uni_designations[i] = "Senior Employee"
+        else:
+            if(uni_designations[i] in senior_pool_list):
+                uni_designations[i] = "Senior Employee"
+            elif(uni_designations[i] in junior_pool_list):
+                uni_designations[i] = "Junior Employee"
+            elif(uni_designations[i] in manager_pool_list):
+                uni_designations[i] = "Manager"
+            elif(uni_designations[i] in intermediate_pool_list):
+                uni_designations[i] = "Intermediate Employee"
+            else:
+                uni_designations[i] = "Intern"
+
+    # print("\n")
+    # print(uni_designations)  
 
     corres_num = []
-    for i in normailized_design:
+    for i in uni_designations:
         if(i == 'Intern'):
             corres_num.append(0)
         elif(i == 'Junior Employee'):
             corres_num.append(1)
-        elif(i == 'Employee'):
+        elif(i == 'Intermediate Employee'):
             corres_num.append(2)
         elif(i == 'Senior Employee'):
             corres_num.append(3)
+        elif(i == 'Manager'):
+            corres_num.append(4)
 
     list_data = []
     for i in range(len(uni_dates)):
         list_data.append((uni_dates[i], corres_num[i]))
+
+    # print("\n")
+    # print(list_data)
 
     df = pd.DataFrame(list_data, columns=['Column1', 'Column2'])
 
@@ -148,21 +195,19 @@ def calculate_progress(designation_dates):
     norm_data = min_max_scaler.fit_transform(together_conv)
     final_norm = pd.DataFrame(norm_data, columns=['value', 'normalized_date'])
 
-    slope, intercept, r_value, p_value, std_err = stats.linregress(
-        final_norm['normalized_date'], final_norm['value'])
-    slope = slope - 0.0089661424386942
+    slope, intercept, r_value, p_value, std_err = stats.linregress(final_norm['normalized_date'], final_norm['value'])
+    # slope = slope - 0.0089661424386942
     # print(std_err)
     # slope ranges from (+1.0089661424386942 to -1.0089661424386942)
 
     if(slope > 0):
-        progress_score = slope * 10
+        progress_score = slope * 10 - 0.89661424386942
         # print('Progress Score :', progress_score)
     else:
         progress_score = 0
         # print("Since your progress isn't promising your Progress Score is ", progress_score)
 
     return progress_score
-
 
 def one_resume_multiple_jd_scorer(job, designations, user_exp, user_soft_skills, user_technical_skills, user_location, designation_dates):
     job_id = job.get('id')
