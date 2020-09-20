@@ -164,8 +164,8 @@ class Word2VecScorer():
             print("Desig score ---{} Content score -- {}".format(desig_score,content_score))
         
         sorted_job_score = {k: v for k, v in sorted(job_score.items(), key=lambda item: item[1],reverse = True)}
-        top_four_job_score = {k: sorted_job_score[k] for k in list(sorted_job_score)[:4]}
-        return top_four_job_score
+        # top_four_job_score = {k: sorted_job_score[k] for k in list(sorted_job_score)[:4]}
+        return sorted_job_score
 
 
 # if __name__ == "__main__":
