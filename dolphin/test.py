@@ -31,10 +31,13 @@ docs = nlp.pipe(sentences)
 
 for doc in docs:
     # assert doc.is_parsed
+    # tests = [(w.text.encode('utf-8'), w.pos_.encode('utf-8')) for w in doc]
     tests = [(w.text, w.pos_) for w in doc]
 
 print(tests)
-with open("testing.txt", 'w', encoding="utf-8") as f:
-    for word in tests:
-        f.write(str(word))
-    f.close()
+print("\n")
+print(sentences)
+# with open("testing.txt", 'w', encoding="utf-8") as f:
+#     for word in tests:
+#         f.write(str(word))
+#     f.close()
