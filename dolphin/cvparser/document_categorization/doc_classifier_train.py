@@ -13,6 +13,16 @@ import pickle
 
 # df = pd.read_excel("../datasets/data_version_3.xlsx")
 df = pd.read_excel("../datasets/train_data.xlsx")
+# df[~df.Text.str.contains("")]
+df = df[df.Text != '[]']
+
+df['Text'].replace('', np.nan, inplace=True)
+
+df.dropna(subset=['Text'], inplace=True)
+
+df['category'].replace('', np.nan, inplace=True)
+
+df.dropna(subset=['category'], inplace=True)
 
 #Creating the dependent variable class
 factor = pd.factorize(df['category'])
@@ -42,7 +52,7 @@ pickle.dump(X_vector, open("../models/tfidf1.pkl", "wb"))
 # pickle.dump(X_vector, open("../models/bow.pkl", "wb"))
 
 #  Build your classifier
-classifier = SVC(verbose=1)
+classifier = SVC()
 
 # Train it on the entire training data set
 classifier.fit(X, y_train)
@@ -60,12 +70,12 @@ y_pred = np.vectorize(reversefactor.get)(y_pred)
 # Making the Confusion Matrix
 print(pd.crosstab(y_test, y_pred, rownames=['Actual Class'], colnames=['Predicted Class']))
 
-# Save to file in the current working directory
+# # Save to file in the current working directory
 pkl_filename = "../models/new_model_svc.pkl"
-# pkl_filename = "../models/bow_model_svc.pkl"
+# # pkl_filename = "../models/bow_model_svc.pkl"
 with open(pkl_filename, 'wb') as file:
     pickle.dump(classifier, file)
 
-# # Load from file
+# Load from file
 # with open(pkl_filename, 'rb') as file:
 #     pickle_model = pickle.load(file)
