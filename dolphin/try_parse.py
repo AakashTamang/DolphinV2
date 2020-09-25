@@ -6,7 +6,7 @@ import time
 # Info server endpoint = http://139.5.71.109:8002
 desired_endpoint = "http://0.0.0.0:8002"
 
-# # # # # # # parsing api test
+# # # # # # # # parsing api test
 # url_endpoint = desired_endpoint+"/parse"
 
 # resume_file = open(
@@ -20,17 +20,17 @@ desired_endpoint = "http://0.0.0.0:8002"
 # print("Time taken: {} ".format(time.time() - start_time1))
 
 #scoring api for multiple job descriptions
-# url_endpoint = desired_endpoint+"/generatescoreprofile"
+url_endpoint = desired_endpoint+"/generatescoreprofile"
 
-# with open("multiple_jd.json", 'r') as f:
-#     data = json.load(f)
+with open("multiple_jd.json", 'r') as f:
+    data = json.load(f)
 
-# start_time = time.time()
-# response = requests.post(url_endpoint, json=data)
-# print("--- %s seconds ---" % (time.time() - start_time))
-# print(response.status_code)
-# print(response.json())
-# print(type(response.json()))
+start_time = time.time()
+response = requests.post(url_endpoint, json=data)
+print("--- %s seconds ---" % (time.time() - start_time))
+print(response.status_code)
+print(response.json())
+print(type(response.json()))
 
 
 #scoring api for multiple user profiles test
@@ -45,6 +45,7 @@ desired_endpoint = "http://0.0.0.0:8002"
 # print(response.status_code)
 # print(response.json())
 # print(type(response.json()))
+# print("Time taken: {} seconds".format(time.time() - start_time))
 
 
 # # parsing job description test
@@ -104,12 +105,12 @@ desired_endpoint = "http://0.0.0.0:8002"
 
 
 #testing similar job scoring endpoint
-url_endpoint = desired_endpoint + "/getjobscore"
-primary_job = {'pk':2, 'job_title':'Python Developer','job_description': 'we are looking for python dev'}
-other_jobs = [{'pk':2, 'job_title':'Python Developer','job_description': 'we are looking for python dev'}, {'pk':3,'job_title':'Java Developer', 'job_description':'We need java expert'},{'pk':9, 'job_title':'Python Developer','job_description': 'we are looking for java developers'},{'pk':8, 'job_title':'Python Developer','job_description': 'we are looking for python developerss'},{'pk':22, 'job_title':'Python Developer','job_description': 'we are looking for data scientist'}]
-data_to_send = {"primary_job":primary_job,"other_jobs":other_jobs}
-start_time1 = time.time()
-response = requests.post(url_endpoint,json =data_to_send)
-print(response.json())
-print(response)
-print("Time taken: {} seconds".format(time.time() - start_time1))
+# url_endpoint = desired_endpoint + "/getjobscore"
+# primary_job = {'pk':2, 'job_title':'Python Developer','job_description': 'we are looking for python dev'}
+# other_jobs = [{'pk':2, 'job_title':'Python Developer','job_description': 'we are looking for python dev'}, {'pk':3,'job_title':'Java Developer', 'job_description':'We need java expert'},{'pk':9, 'job_title':'Python Developer','job_description': 'we are looking for java developers'},{'pk':8, 'job_title':'Python Developer','job_description': 'we are looking for python developerss'},{'pk':22, 'job_title':'Python Developer','job_description': 'we are looking for data scientist'}]
+# data_to_send = {"primary_job":primary_job,"other_jobs":other_jobs}
+# start_time1 = time.time()
+# response = requests.post(url_endpoint,json =data_to_send)
+# print(response.json())
+# print(response)
+# print("Time taken: {} seconds".format(time.time() - start_time1))
