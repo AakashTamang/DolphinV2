@@ -66,15 +66,6 @@ def oneResMultipleJD():
     # scorer_save.user_profile = user_profile
     user_soft_skills, user_technical_skills, user_exp, designations, user_location, designation_dates = prepare_profile(
         user_profile)
-    # print('--------------------------------------------------------------------')
-    # print(user_soft_skills)
-    # print(user_technical_skills)
-    # print(user_exp)
-    # print(designations)
-    # print(user_location)
-    # print(designation_dates)
-    # exit()
-    # user_id = user_profile.get('user_id')
     job_descriptions = list(json.loads(form_data_.get('jobs')))
 
     # for jd in job_descriptions:
@@ -106,11 +97,18 @@ def oneResMultipleJD():
                                   user_soft_skills, user_technical_skills, user_location, designation_dates, junior_pool_list, 
                                   intermediate_pool_list, senior_pool_list, manager_pool_list) for job_description in job_descriptions]
     my_score = {}
+    missing_words_dict = {}
+    final_result = {}
 
     for f in concurrent.futures.as_completed(result):
-        id, total_score = f.result()
+        id, total_score, missing_words = f.result()
         my_score[id] = total_score
-    return my_score
+        missing_words_dict[id] = missing_words
+
+    final_result["scores"] = my_score
+    final_result["missing_words"] = missing_words_dict
+
+    return final_result
 
 
 @app.route("/generatescorejobdescription", methods=["POST", "GET"])
@@ -163,11 +161,13 @@ def oneJDMultipleRes():
                                    req_soft_skills, req_technical_skills, employer_city, junior_pool_list, 
                                   intermediate_pool_list, senior_pool_list, manager_pool_list) for profile in user_profiles]
     my_score = {}
+    missing_words_dict = {}
     final_result = {}
 
     for f in concurrent.futures.as_completed(results):
-        id, total_score = f.result()
+        id, total_score, missing_words = f.result()
         my_score[id] = total_score
+        missing_words_dict[id] = missing_words
 
     imp_words = []
     [imp_words.append(i) for i in req_soft_skills]
@@ -193,6 +193,7 @@ def oneJDMultipleRes():
     # print("Job organization --{} ---> {}".format(all_organizations, type(all_organizations)))
     final_result["scores"] = my_score
     final_result["imp_words"] = imp_words
+    final_result["missing_words"] = missing_words_dict
     return final_result
 
 

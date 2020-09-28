@@ -212,7 +212,10 @@ def one_resume_multiple_jd_scorer(job, designations, user_exp, user_soft_skills,
     #Scoring on the basis of matching skills of user profile and jobs
     matched_soft_skills = user_soft_skills.intersection(req_soft_skills)
     matched_technical_skills = user_technical_skills.intersection(req_technical_skills)
- 
+
+    missed_technical_skills = [skill for skill in req_technical_skills if skill not in user_technical_skills]
+    missed_soft_skills = [skill for skill in req_soft_skills if skill not in user_soft_skills]
+    missed_skills = missed_technical_skills + missed_soft_skills 
 
     if matched_technical_skills != 0:
         try:
@@ -238,6 +241,7 @@ def one_resume_multiple_jd_scorer(job, designations, user_exp, user_soft_skills,
     designations = [desig.lower() for desig in designations]
     job_designations = [job_title] + all_designations
     user_designations = designations
+    missing_designation = [desig for desig in job_designations if desig not in user_designations]
 
     if len(job_designations) == 0 or len(user_designations) == 0:
         desig_score = 0
@@ -330,8 +334,11 @@ def one_resume_multiple_jd_scorer(job, designations, user_exp, user_soft_skills,
     if np.isnan(distance_score):
         distance_score = 0
 
+
+    missing_words = missed_skills + missing_designation
+
     total_score = experience_score + desig_score + skill_score + distance_score + progress_score
-    return job_id, total_score
+    return job_id, total_score, missing_words
 
 
 def one_JD_multiple_resume_scorer(profile, job_title,all_designations, req_exp, req_soft_skills, req_technical_skills, employer_city, junior_pool_list, 
@@ -347,6 +354,9 @@ def one_JD_multiple_resume_scorer(profile, job_title,all_designations, req_exp, 
     matched_technical_skills = set(
         user_technical_skills).intersection(set(req_technical_skills))
 
+    missed_technical_skills = [skill for skill in req_technical_skills if skill not in user_technical_skills]
+    missed_soft_skills = [skill for skill in req_soft_skills if skill not in user_soft_skills]
+    missed_skills = missed_technical_skills + missed_soft_skills
     # calculating score for distance
     try:
         distance = calculate_distance(employer_city, user_location)
@@ -385,7 +395,7 @@ def one_JD_multiple_resume_scorer(profile, job_title,all_designations, req_exp, 
     designations = [desig.lower() for desig in designations]
     job_designations = [job_title] + all_designations
     user_designations = designations
-
+    missing_designation = [desig for desig in job_designations if desig not in user_designations]
     if len(job_designations) == 0 or len(user_designations) == 0:
         desig_score = 0
     else:
@@ -478,12 +488,13 @@ def one_JD_multiple_resume_scorer(profile, job_title,all_designations, req_exp, 
     if np.isnan(distance_score):
         distance_score = 0
 
+    missing_words = missed_skills + missing_designation
     total_score = experience_score + desig_score + skill_score + distance_score + progress_score
-    print(str(user_id)+"--------------Designation score-----------------"+str(desig_score))
-    print(str(user_id)+"--------------Progress-----------------"+str(progress_score))
-    print(str(user_id)+"--------------Experience-----------------"+str(experience_score))
-    print(str(user_id)+"-----------------Distance--------------"+str(distance_score))
-    print(str(user_id)+"-----------------Designation--------------"+str(desig_score))
-    print(str(user_id)+"-----------------Skills--------------"+str(skill_score))
-    print(str(user_id)+"-----------------Total--------------"+str(total_score))
-    return user_id, total_score
+    # print(str(user_id)+"--------------Designation score-----------------"+str(desig_score))
+    # print(str(user_id)+"--------------Progress-----------------"+str(progress_score))
+    # print(str(user_id)+"--------------Experience-----------------"+str(experience_score))
+    # print(str(user_id)+"-----------------Distance--------------"+str(distance_score))
+    # print(str(user_id)+"-----------------Designation--------------"+str(desig_score))
+    # print(str(user_id)+"-----------------Skills--------------"+str(skill_score))
+    # print(str(user_id)+"-----------------Total--------------"+str(total_score))
+    return user_id, total_score, missing_words
