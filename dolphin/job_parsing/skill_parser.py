@@ -1,5 +1,5 @@
 import pandas as pd
-from createngrams import get_ngrams
+from job_parsing.createngrams import get_ngrams
 from settings import technical_skills_pool, soft_skills_pool
 
 def capitalizeinput(inputparameter):

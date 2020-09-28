@@ -4,14 +4,15 @@ from datareader import prepare_text
 import spacy
 import nltk
 from settings import jd_parse_ner_model
-from nltk.tokenize import sent_tokenize
-from skill_parser import technical_skills_parser,soft_skills_parser
+from nltk.tokenize import sent_tokenize, word_tokenize
+from job_parsing.skill_parser import technical_skills_parser,soft_skills_parser
 # from cvparser.pipeline import nlpPipeline
 
 
 class SpacyNer():
     def __init__(self):
         self.spacy_ner_model_path = jd_parse_ner_model
+        self.nlp = spacy.load(self.spacy_ner_model_path)
         # self.spacy_pipeline = self.nlpPipeline()
         # self.spacy_pipeline.add_skills_pattern_matching()
 
@@ -145,5 +146,15 @@ if __name__ == "__main__":
     print("Experience ---> ", experience)
     
     technical_skills, soft_skills = spacy_obj.get_skills_from_pool(jd_content)
+    for i in soft_skills:
+        words = word_tokenize(i)
+        for j in words:
+            if j in soft_skills:
+                soft_skills.remove(i)
+    for i in technical_skills:
+        words = word_tokenize(i)
+        for j in words:
+            if j in technical_skills:
+                technical_skills.remove(i)
     print (f"Technical Skills: {technical_skills}")
     print (f"Soft Skills: {soft_skills}")

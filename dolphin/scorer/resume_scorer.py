@@ -89,7 +89,7 @@ def prepare_job_description(job_description):
     :type set ,list
     '''
 
-    required_technical_skills, required_soft_skills = NerObj.get_skills(
+    required_technical_skills, required_soft_skills = NerObj.get_skills_from_pool(
         job_description)
     required_soft_skills = set(required_soft_skills)
     required_technical_skills = set(required_technical_skills)

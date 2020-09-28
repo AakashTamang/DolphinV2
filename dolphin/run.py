@@ -18,6 +18,7 @@ import settings as cfg
 from data_preprocessing import PreprocessData
 import numpy as np
 import pandas as pd
+from nltk.tokenize import word_tokenize
 # from mongoengine import connect
 # from mongo_orm.parsed_information import ParsedCollection
 # from mongo_orm.scored_information import ScoredDocuments
@@ -168,6 +169,20 @@ def oneJDMultipleRes():
         id, total_score, missing_words = f.result()
         my_score[id] = total_score
         missing_words_dict[id] = missing_words
+
+    soft_skills = list(req_soft_skills)
+    technical_skills = list(req_technical_skills)
+
+    for i in soft_skills:
+        words = word_tokenize(i)
+        for j in words:
+            if j in soft_skills:
+                soft_skills.remove(i)
+    for i in technical_skills:
+        words = word_tokenize(i)
+        for j in words:
+            if j in technical_skills:
+                technical_skills.remove(i)
 
     imp_words = []
     [imp_words.append(i) for i in req_soft_skills]
