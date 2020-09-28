@@ -8,7 +8,7 @@ from gensim.models import Phrases
 from gensim.models.phrases import Phraser
 
 class DocClassifier:
-    def __init__(self, tfidfmodelpath, classifiermodelpath, nlp):
+    def __init__(self, tfidfmodelpath, classifiermodelpath, x):
         # self.processed_text = processed_text
         self.tfidfmodelpath = tfidfmodelpath
         self.classifiermodelpath = classifiermodelpath

@@ -1,5 +1,5 @@
 import time
-import datareader
+
 from doc_classifier_test import DocClassifier
 # spacy for lemmatization
 import spacy
@@ -14,7 +14,6 @@ tfidfModelPath = "../models/tfidf1.pkl"
 nlp = spacy.load('en_core_web_sm', disable=['parser', 'ner'])
 
 start_time = time.time()
-
 
 df = pd.read_excel("../datasets/test_data.xlsx")
 
@@ -34,8 +33,8 @@ for token in keywords:
 
 result = []
 for processed_text in keywords_list:
-    docObj = DocClassifier(processed_text, tfidfModelPath, classifierModelPath, nlp)
-    result.append(docObj.classify())
+    docObj = DocClassifier(tfidfModelPath, classifierModelPath, nlp)
+    result.append(docObj.classify(processed_text))
 
 data = {"Actual":factor,"predicted":result}
 df2 = pd.DataFrame(data)
