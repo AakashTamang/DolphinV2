@@ -185,8 +185,8 @@ def oneJDMultipleRes():
                 technical_skills.remove(i)
 
     imp_words = []
-    [imp_words.append(i) for i in req_soft_skills]
-    [imp_words.append(i) for i in req_technical_skills]
+    [imp_words.append(i) for i in soft_skills]
+    [imp_words.append(i) for i in technical_skills]
     
     if(all_educations):
         [imp_words.append(i) for i in all_educations]
@@ -199,8 +199,8 @@ def oneJDMultipleRes():
     if(required_experience):
         [imp_words.append(i) for i in required_experience]
     # print("Job Title --{} ---> {}".format(job_title, type(job_title)))
-    # print("Job Soft Skills --{} ---> {}".format(req_soft_skills, type(req_soft_skills)))
-    # print("Job Technical Skills --{} ---> {}".format(req_technical_skills, type(req_technical_skills)))
+    # print("Job Soft Skills --{} ---> {}".format(soft_skills, type(soft_skills)))
+    # print("Job Technical Skills --{} ---> {}".format(technical_skills, type(technical_skills)))
     # print("Job Experience --{} ---> {}".format(required_experience, type(required_experience)))
     # print("Job Education --{} ---> {}".format(all_educations, type(all_educations)))
     # print("Job location --{} ---> {}".format(all_locations, type(all_locations)))
