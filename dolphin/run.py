@@ -170,37 +170,51 @@ def oneJDMultipleRes():
         my_score[id] = total_score
         missing_words_dict[id] = missing_words
 
-    soft_skills = list(req_soft_skills)
-    technical_skills = list(req_technical_skills)
+    soft_monograms = []
+    soft_ngrams = []
+    tech_monograms = []
+    tech_ngrams = []
 
-    for i in soft_skills:
-        words = word_tokenize(i)
-        for j in words:
-            if j in soft_skills:
-                soft_skills.remove(i)
-    for i in technical_skills:
-        words = word_tokenize(i)
-        for j in words:
-            if j in technical_skills:
-                technical_skills.remove(i)
+    for i in req_soft_skills:
+        if(len(word_tokenize(i))>1):
+            soft_ngrams.append(i)
+        else:
+            soft_monograms.append(i)
+
+    for j in soft_ngrams:
+        words = word_tokenize(j)
+        for k in words:
+            if k in soft_monograms:
+                soft_monograms.remove(k)
+
+    for i in req_technical_skills:
+        if(len(word_tokenize(i))>1):
+            tech_ngrams.append(i)
+        else:
+            tech_monograms.append(i)
+
+    for j in tech_ngrams:
+        words = word_tokenize(j)
+        for k in words:
+            if k in tech_monograms:
+                tech_monograms.remove(k)
 
     imp_words = []
-    [imp_words.append(i) for i in soft_skills]
-    [imp_words.append(i) for i in technical_skills]
+    imp_words = soft_monograms+soft_ngrams+tech_monograms+tech_ngrams
     
     if(all_educations):
-        [imp_words.append(i) for i in all_educations]
+        imp_words = imp_words+all_educations
     if(all_locations):
-        [imp_words.append(i) for i in all_locations]
+        imp_words = imp_words+all_locations
     if(all_designations):
-        [imp_words.append(i) for i in all_designations]
+        imp_words = imp_words+ all_designations
     if(all_organizations):
-        [imp_words.append(i) for i in all_organizations]
+        imp_words = imp_words+all_organizations
     if(required_experience):
-        [imp_words.append(i) for i in required_experience]
+        imp_words = imp_words+required_experience
     # print("Job Title --{} ---> {}".format(job_title, type(job_title)))
-    # print("Job Soft Skills --{} ---> {}".format(soft_skills, type(soft_skills)))
-    # print("Job Technical Skills --{} ---> {}".format(technical_skills, type(technical_skills)))
+    # print("Job Soft Skills --{} ---> {}".format(req_soft_skills, type(req_soft_skills)))
+    # print("Job Technical Skills --{} ---> {}".format(req_technical_skills, type(req_technical_skills)))
     # print("Job Experience --{} ---> {}".format(required_experience, type(required_experience)))
     # print("Job Education --{} ---> {}".format(all_educations, type(all_educations)))
     # print("Job location --{} ---> {}".format(all_locations, type(all_locations)))

@@ -7,17 +7,17 @@ import time
 desired_endpoint = "http://139.5.71.109:8002"
 
 # # # # # # # # parsing api test
-url_endpoint = desired_endpoint+"/parse"
+# url_endpoint = desired_endpoint+"/parse"
 
-resume_file = open(
-    "/home/shushant/Downloads/Ashish Suwal.docx", "rb")
+# resume_file = open(
+#     "/home/shushant/Downloads/Ashish Suwal.docx", "rb")
 
-start_time1 = time.time()
-response = requests.post(url_endpoint, files={'resume': resume_file})
-print("New API results")
-print(response)
-print(response.json())
-print("Time taken: {} ".format(time.time() - start_time1))
+# start_time1 = time.time()
+# response = requests.post(url_endpoint, files={'resume': resume_file})
+# print("New API results")
+# print(response)
+# print(response.json())
+# print("Time taken: {} ".format(time.time() - start_time1))
 
 #scoring api for multiple job descriptions
 # url_endpoint = desired_endpoint+"/generatescoreprofile"
@@ -34,18 +34,18 @@ print("Time taken: {} ".format(time.time() - start_time1))
 
 
 #scoring api for multiple user profiles test
-# url_endpoint = desired_endpoint+"/generatescorejobdescription"
+url_endpoint = desired_endpoint+"/generatescorejobdescription"
 
-# with open("multiple_user_profile.json", 'r') as f:
-#     data = json.load(f)
+with open("multiple_user_profile.json", 'r') as f:
+    data = json.load(f)
 
-# start_time = time.time()
-# response = requests.post(url_endpoint, json=data)
-# print("--- %s seconds ---" % (time.time() - start_time))
-# print(response.status_code)
-# print(response.json())
-# print(type(response.json()))
-# print("Time taken: {} seconds".format(time.time() - start_time))
+start_time = time.time()
+response = requests.post(url_endpoint, json=data)
+print("--- %s seconds ---" % (time.time() - start_time))
+print(response.status_code)
+print(response.json())
+print(type(response.json()))
+print("Time taken: {} seconds".format(time.time() - start_time))
 
 
 # # parsing job description test
