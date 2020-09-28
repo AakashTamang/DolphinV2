@@ -4,33 +4,33 @@ import time
 
 # Azure Endpoint == http://40.122.71.113:8002
 # Info server endpoint = http://139.5.71.109:8002
-desired_endpoint = "http://0.0.0.0:8002"
+desired_endpoint = "http://139.5.71.109:8002"
 
 # # # # # # # # parsing api test
-# url_endpoint = desired_endpoint+"/parse"
+url_endpoint = desired_endpoint+"/parse"
 
-# resume_file = open(
-#     "/home/shushant/Downloads/Ashish Suwal.docx", "rb")
+resume_file = open(
+    "/home/shushant/Downloads/Ashish Suwal.docx", "rb")
 
-# start_time1 = time.time()
-# response = requests.post(url_endpoint, files={'resume': resume_file})
-# print("New API results")
-# print(response)
-# print(response.json())
-# print("Time taken: {} ".format(time.time() - start_time1))
+start_time1 = time.time()
+response = requests.post(url_endpoint, files={'resume': resume_file})
+print("New API results")
+print(response)
+print(response.json())
+print("Time taken: {} ".format(time.time() - start_time1))
 
 #scoring api for multiple job descriptions
-url_endpoint = desired_endpoint+"/generatescoreprofile"
+# url_endpoint = desired_endpoint+"/generatescoreprofile"
 
-with open("multiple_jd.json", 'r') as f:
-    data = json.load(f)
+# with open("multiple_jd.json", 'r') as f:
+#     data = json.load(f)
 
-start_time = time.time()
-response = requests.post(url_endpoint, json=data)
-print("--- %s seconds ---" % (time.time() - start_time))
-print(response.status_code)
-print(response.json())
-print(type(response.json()))
+# start_time = time.time()
+# response = requests.post(url_endpoint, json=data)
+# print("--- %s seconds ---" % (time.time() - start_time))
+# print(response.status_code)
+# print(response.json())
+# print(type(response.json()))
 
 
 #scoring api for multiple user profiles test
