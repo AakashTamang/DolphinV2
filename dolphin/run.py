@@ -273,7 +273,7 @@ def get_score_for_resume_and_jd():
         preprocessed_resume_content = preprocessor_obj.preprocess_text(
             resume_content)
         preprocessed_resume_content = " ".join(preprocessed_resume_content)
-        res_technical_skills, res_soft_skills = parse_jd.get_skills(preprocessed_resume_content)
+        res_technical_skills, res_soft_skills = parse_jd.get_skills_from_pool(preprocessed_resume_content)
         res_technical_skills = set(res_technical_skills)
         res_soft_skills = set(res_soft_skills)
         resume_vector = word2vec_obj.get_word_embeddings(preprocessed_resume_content)
@@ -286,7 +286,7 @@ def get_score_for_resume_and_jd():
             job_description = jd['job_description']
             job_text = preprocessor_obj.preprocess_text(job_description)
             job_text = " ".join(job_text)
-            jd_technical_skills, jd_soft_skills = parse_jd.get_skills(job_text)
+            jd_technical_skills, jd_soft_skills = parse_jd.get_skills_from_pool(job_text)
             jd_technical_skills = set(jd_technical_skills)
             jd_soft_skills = set(jd_soft_skills)
 
