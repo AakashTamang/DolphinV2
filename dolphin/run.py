@@ -170,37 +170,12 @@ def oneJDMultipleRes():
         my_score[id] = total_score
         missing_words_dict[id] = missing_words
 
-    soft_monograms = []
-    soft_ngrams = []
-    tech_monograms = []
-    tech_ngrams = []
-
-    for i in req_soft_skills:
-        if(len(word_tokenize(i))>1):
-            soft_ngrams.append(i)
-        else:
-            soft_monograms.append(i)
-
-    for j in soft_ngrams:
-        words = word_tokenize(j)
-        for k in words:
-            if k in soft_monograms:
-                soft_monograms.remove(k)
-
-    for i in req_technical_skills:
-        if(len(word_tokenize(i))>1):
-            tech_ngrams.append(i)
-        else:
-            tech_monograms.append(i)
-
-    for j in tech_ngrams:
-        words = word_tokenize(j)
-        for k in words:
-            if k in tech_monograms:
-                tech_monograms.remove(k)
-
     imp_words = []
-    imp_words = soft_monograms+soft_ngrams+tech_monograms+tech_ngrams
+
+    imp_soft_words = parse_jd.get_unique_skills(req_soft_skills)
+    imp_tech_words = parse_jd.get_unique_skills(req_technical_skills)
+
+    imp_words = imp_soft_words+imp_tech_words
     
     if(all_educations):
         imp_words = imp_words+all_educations
