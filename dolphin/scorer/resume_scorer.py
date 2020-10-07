@@ -213,9 +213,15 @@ def one_resume_multiple_jd_scorer(job, designations, user_exp, user_soft_skills,
     matched_soft_skills = user_soft_skills.intersection(req_soft_skills)
     matched_technical_skills = user_technical_skills.intersection(req_technical_skills)
 
-    missed_technical_skills = [skill for skill in req_technical_skills if skill.lower() not in user_technical_skills]
+    missed_technical_skills = [skill for skill in req_technical_skills if skill.lower() not in [x.lower() for x in user_technical_skills]]
     
-    missed_soft_skills = [skill for skill in req_soft_skills if skill.lower() not in user_soft_skills]
+    print('====================================================')
+    print('job_id', job_id)
+    print('req_technical_skills',req_technical_skills)
+    print('user_technical_skills',user_technical_skills)
+    print('====================================================')
+    
+    missed_soft_skills = [skill for skill in req_soft_skills if skill.lower() not in [x.lower() for x in user_soft_skills]]
     missed_skills = missed_technical_skills + missed_soft_skills 
 
     if matched_technical_skills != 0:
@@ -242,7 +248,7 @@ def one_resume_multiple_jd_scorer(job, designations, user_exp, user_soft_skills,
     designations = [desig.lower() for desig in designations]
     job_designations = [job_title] + all_designations
     user_designations = designations
-    missing_designation = [desig for desig in job_designations if desig.lower() not in user_designations]
+    missing_designation = [desig for desig in job_designations if desig.lower() not in [x.lower() for x in user_designations]]
     # missing_designation = [i.lower() for i in job_designations] ^ [j.lower() for j in user_designations]
 
     if len(job_designations) == 0 or len(user_designations) == 0:
@@ -356,8 +362,8 @@ def one_JD_multiple_resume_scorer(profile, job_title,all_designations, req_exp, 
     matched_technical_skills = set(
         user_technical_skills).intersection(set(req_technical_skills))
 
-    missed_technical_skills = [skill for skill in req_technical_skills if skill.lower() not in user_technical_skills]
-    missed_soft_skills = [skill for skill in req_soft_skills if skill.lower() not in user_soft_skills]
+    missed_technical_skills = [skill for skill in req_technical_skills if skill.lower() not in [x.lower() for x in user_technical_skills]]
+    missed_soft_skills = [skill for skill in req_soft_skills if skill.lower() not in [x.lower() for x in user_soft_skills]]
     missed_skills = missed_technical_skills + missed_soft_skills
     # calculating score for distance
     try:
@@ -397,7 +403,7 @@ def one_JD_multiple_resume_scorer(profile, job_title,all_designations, req_exp, 
     designations = [desig.lower() for desig in designations]
     job_designations = [job_title] + all_designations
     user_designations = designations
-    missing_designation = [desig for desig in job_designations if desig.lower() not in user_designations]
+    missing_designation = [desig for desig in job_designations if desig.lower() not in [x.lower() for x in user_designations]]
     if len(job_designations) == 0 or len(user_designations) == 0:
         desig_score = 0
     else:
