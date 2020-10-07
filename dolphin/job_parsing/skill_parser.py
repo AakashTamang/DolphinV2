@@ -28,12 +28,13 @@ def technical_skills_parser(jd_doc):
     skill_tokens = [token.text for token in jd_doc]
     skills = pd.read_csv(technical_skills_pool)
     skillbigrams.extend(skill_tokens)
-    total_skills = [skill.lower() for skill in skillbigrams]
-    skills['matched'] = skills['Predefined_skills'].apply(lambda x: 1 if x.lower() in total_skills else 0)
+    total_skills = [skill for skill in skillbigrams]
+    skills['matched'] = skills['Predefined_skills'].apply(lambda x: 1 if x in total_skills else 0)
     matched_skills = skills.Predefined_skills.loc[skills['matched'] == 1].values
     matched_skills = matched_skills.tolist()
-    formatted_skills = map(capitalizeinput, matched_skills)
-    return [skill for skill in formatted_skills]
+    # formatted_skills = map(capitalizeinput, matched_skills)
+    # return [skill for skill in formatted_skills]
+    return matched_skills
 
 def soft_skills_parser(jd_doc):
     '''
@@ -50,10 +51,11 @@ def soft_skills_parser(jd_doc):
     soft_skill_tokens = [token.text for token in jd_doc]
     soft_skill_bigrams.extend(soft_skill_trigrams)
     soft_skill_tokens.extend(soft_skill_bigrams)
-    total_skills = [skill.lower() for skill in soft_skill_tokens]
+    total_skills = [skill for skill in soft_skill_tokens]
     predefined_skills_df = pd.read_csv(soft_skills_pool)
-    predefined_skills_df['matched'] = predefined_skills_df['Predefined_skills'].apply(lambda x: 1 if x.lower() in total_skills else 0)
+    predefined_skills_df['matched'] = predefined_skills_df['Predefined_skills'].apply(lambda x: 1 if x in total_skills else 0)
     matched_soft_skills = predefined_skills_df.Predefined_skills.loc[predefined_skills_df['matched']==1].values
     matched_soft_skills = matched_soft_skills.tolist()
-    formatted_soft_skills = map(capitalizeinput, matched_soft_skills)
-    return [skill for skill in formatted_soft_skills]
+    # formatted_soft_skills = map(capitalizeinput, matched_soft_skills)
+    # return [skill for skill in formatted_soft_skills]
+    return matched_soft_skills

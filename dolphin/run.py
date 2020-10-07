@@ -125,9 +125,7 @@ def oneJDMultipleRes():
     # employer_country = job['location']['country']
     # employer_state = job['location']['state']
 
-    req_soft_skills, req_technical_skills, required_experience, all_designations, all_organizations, all_educations, all_locations = prepare_job_description(
-        job_description)
-
+    req_soft_skills, req_technical_skills, required_experience, all_designations, all_organizations, all_educations, all_locations = prepare_job_description(job_description)
 
     user_profiles = form_data_.get('user_profiles')
     # for up in user_profiles:
@@ -187,6 +185,8 @@ def oneJDMultipleRes():
         imp_words = imp_words+all_organizations
     if(required_experience):
         imp_words = imp_words+required_experience
+    if(job_title):
+        imp_words = imp_words+job_title
     # print("Job Title --{} ---> {}".format(job_title, type(job_title)))
     # print("Job Soft Skills --{} ---> {}".format(req_soft_skills, type(req_soft_skills)))
     # print("Job Technical Skills --{} ---> {}".format(req_technical_skills, type(req_technical_skills)))

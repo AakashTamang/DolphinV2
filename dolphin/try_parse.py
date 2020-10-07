@@ -20,24 +20,10 @@ desired_endpoint = "http://139.5.71.109:8002"
 # print(response.json())
 # print("Time taken: {} ".format(time.time() - start_time1))
 
-#scoring api for multiple job descriptions
-url_endpoint = desired_endpoint+"/generatescoreprofile"
+# #scoring api for multiple job descriptions
+# url_endpoint = desired_endpoint+"/generatescoreprofile"
 
-with open("multiple_job_v_single_user_profile.json", 'r') as f:
-    data = json.load(f)
-
-start_time = time.time()
-response = requests.post(url_endpoint, json=data)
-print("--- %s seconds ---" % (time.time() - start_time))
-print(response.status_code)
-print(response.json())
-print(type(response.json()))
-
-
-#scoring api for multiple user profiles test
-# url_endpoint = desired_endpoint+"/generatescorejobdescription"
-
-# with open("multiple_user_profile.json", 'r') as f:
+# with open("multiple_job_v_single_user_profile.json", 'r') as f:
 #     data = json.load(f)
 
 # start_time = time.time()
@@ -46,7 +32,21 @@ print(type(response.json()))
 # print(response.status_code)
 # print(response.json())
 # print(type(response.json()))
-# print("Time taken: {} seconds".format(time.time() - start_time))
+
+
+# # scoring api for multiple user profiles test
+url_endpoint = desired_endpoint+"/generatescorejobdescription"
+
+with open("multiple_user_profile.json", 'r') as f:
+    data = json.load(f)
+
+start_time = time.time()
+response = requests.post(url_endpoint, json=data)
+print("--- %s seconds ---" % (time.time() - start_time))
+print(response.status_code)
+print(response.json())
+print(type(response.json()))
+print("Time taken: {} seconds".format(time.time() - start_time))
 
 
 # # parsing job description test

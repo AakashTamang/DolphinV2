@@ -1,4 +1,1528 @@
 Predefined_skills
+ajenti
+django-suit
+django-xadmin
+flask-admin
+flower
+grappelli
+wooey
+pypattyrn
+python-patterns
+sorted-containers
+django
+fanstatic
+jinja-assets-compressor
+pyjwt
+python
+dogpile.cache
+hermescache
+johnny-cache
+spark
+virtualenv
+pytorch
+keras
+tensorflow
+theano
+docker
+cuisine
+fabric
+fabtools
+openstack
+haystack
+pexpect
+java
+r
+c++
+c#
+sphinx
+sphinxdoc
+mkdocs
+pdoc
+pycco
+s3cmd
+s4cmd
+youtube-dl
+c
+hadoop
+bigdata
+datamining
+django oscar
+django shop
+react
+nodejs
+node.js
+angular
+html
+html5
+css
+bootstrap
+cartridge
+matplotlib
+shoop
+emacs
+elpy
+sublime
+anaconda
+vim
+jedi-vim
+ptvs
+visual
+blender
+maya
+maya3d
+spyder
+flanker
+flutter
+mongodb
+neo4j
+swig
+bootstrap3
+tkinter
+pattern
+celery
+ajax
+tastypie
+devpi
+photoshop
+sql
+sqlalchemy
+oracle
+stream-framework
+stream-framework
+orator
+conda
+curdling
+wheel
+warehouse
+bandersnatch
+sarge
+cpython
+grumpy
+cython
+ironpython
+jython
+jupyter
+jupyter-notebook
+microsoft-word
+ptpython
+nupic
+scikit-learn
+sklearn
+pillow
+open-cv
+opencv
+opencv
+pynorm
+peewee
+hmap
+pyocr
+ocr
+pycallgraph
+graphql
+graph-ql
+docopt
+gooey
+cement
+mezzanine
+oop
+plone
+blackbox-testing
+blockchain
+colorama
+six
+pgcli
+cryptography
+data-analytics
+mysql
+data-mining
+analytical-skills
+debugging
+linux
+unit-testing
+testing
+hdl
+php
+javascript
+perl
+ruby
+ruby-on-rails
+cms
+crm
+cad
+wordpress
+android
+react native
+react-native
+reactjs
+neo4j
+salesforce crm
+salesforce sfa
+apex language
+soql
+sosl
+visualforce pages/components
+apex web services
+apex data loader
+visualforce
+pl-sql
+github
+eclipse 
+ms sql server 2000/2005
+oracle 8i/9i/10g
+ms access
+db2
+objective-c
+phonegap
+appcelerator
+j2me
+android studio
+titanium studio 3.2
+dreamweaver cc
+visual studio
+xamarin
+eclipse4.3
+c++
+c
+c#
+scm
+ucm 
+multisite
+svn
+tfs/vsts
+git
+git
+visual c++
+oracle 9i/8i/10g
+ibm db2/udb
+sql
+uml
+xml
+jasmine
+jquery
+bootstrap
+angularjs
+jsf
+webpack
+reactjs
+nodejs
+spring
+struts 2
+hibernate
+mockito
+testng
+junit
+patterns
+weblogic server
+jboss
+websphere
+jenkins
+docker
+rally
+routing
+switching
+wireless communication
+monitoring
+security policies
+oracle
+ms sql
+data analysis
+object oriented programming
+agile
+uml
+waterfall
+spiral
+rapid application development
+scrum
+tableau
+tableau
+ms access
+json
+cisco
+networking
+hadoop
+rdbms
+testing
+powe bi
+business intelligence
+business intelligence
+sdlc
+aws
+sas
+javascript
+java
+python
+business analysis
+git
+github
+gitlab
+css
+ajax
+jsp
+xml
+html
+html5
+adobe photoshop
+ms office
+angular
+angular.js
+jquery
+jquery
+apex
+cyber security
+pl/sql
+jdbc
+sql server
+user acceptance testing 
+regression testing
+regression testing
+user acceptance testing 
+j2ee
+php
+pl sql
+data mining
+data warehousing
+ms visio
+quality assurance
+qa
+quality control
+qc
+asp.net
+mvc
+oop
+ooad
+object oriented analysis and design
+rest
+soap
+soa
+service oriented architecture
+knockout.js
+ember.js
+simplified wrapper and interface generator
+black-box testing
+orm
+object relational mapping
+unit testing
+load testing
+unit testing
+load testing
+cyber security
+load testing
+json
+.net
+rest framework
+ado.net
+agile
+ajenti
+django-suit
+django-xadmin
+flask-admin
+flower
+grappelli
+wooey
+pypattyrn
+python-patterns
+sorted-containers
+django
+fanstatic
+jinja-assets-compressor
+pyjwt
+python-patterns
+dogpile.cache
+hermescache
+johnny-cache
+spark
+virtualenv
+pytorch
+keras
+tensorflow
+theano
+docker
+cuisine
+fabric
+fabtools
+openstack
+haystack
+pexpect
+xml
+r
+object relational mapping
+orm
+sphinx
+sphinxdoc
+mkdocs
+pdoc
+pycco
+s3cmd
+s4cmd
+youtube-dl
+agile
+ember.js
+bigdata
+data mining
+django oscar
+django shop
+react
+nodejs
+node.js
+cisco
+ado.net
+html5
+ember.js
+knockout.js
+cartridge
+matplotlib
+shoop
+emacs
+elpy
+sublime
+anaconda
+vim
+jedi-vim
+ptvs
+visual
+blender
+maya
+maya3d
+spyder
+flanker
+flutter
+mongodb
+service oriented architecture
+swig
+bootstrap3
+tkinter
+pattern
+celery
+ajax
+tastypie
+devpi
+photoshop
+knockout.js
+sqlalchemy
+oracle
+stream-framework
+stream framework
+orator
+conda
+curdling
+wheel
+warehouse
+bandersnatch
+sarge
+cpython
+grumpy
+cython
+ironpython
+jython
+jupyter
+jupyter notebook
+microsoft word
+nupic
+scikit learn
+scikit-learn
+sklearn
+pillow
+opencv
+rest framework
+.net
+pynorm
+pee wee
+hmap
+pyocr
+ocr
+pycallgraph
+graphql
+graph-ql
+docopt
+gooey
+cement
+mezzanine
+oop
+plone
+black box testing
+blockchain
+colorama
+six
+pgcli
+cryptography
+data analytics
+my-sql
+data-mining
+analytical-skills
+debugging
+linux
+gitlab
+testing
+hdl
+soa
+jsp
+perl
+ruby
+ruby on rails
+cms
+crm
+cad
+wordpress
+android
+react native
+react-native
+rest
+object oriented analysis and design
+salesforce crm
+salesforce sfa
+apex language
+soql
+sosl
+visualforce pages/components
+apex web services
+apex data loader
+visualforce
+pl-sql
+github
+eclipse 
+ms sql server 2000/2005
+oracle 8i/9i/10g
+ms access
+db2
+objective-c
+phonegap
+appcelerator
+j2me
+android studio
+titanium studio 3.2
+dreamweaver cc
+visual studio
+xamarin
+eclipse4.3
+ms sql
+c
+tfs
+scm
+ucm
+multisite
+svn
+vsts
+visual c++
+visual c++
+visual c++
+oracle 9i/8i/10g
+ibm db2/udb
+sql
+uml
+xml
+jasmine
+oop
+asp.net
+angularjs
+jsf
+webpack
+reactjs
+weblogic server
+spring
+struts 2
+hibernate
+mockito
+testng
+junit
+patterns
+weblogic server
+jboss
+websphere
+jenkins
+docker
+rally
+routing
+switching
+wireless communication
+monitoring
+security policies
+oracle
+ms sql
+data analysis
+object oriented programming
+rad
+mvc
+waterfall
+spiral
+rapid application development
+scrum
+quality control
+qc
+regression testing
+ooad
+j2ee
+networking
+sql server
+rdbms
+testing
+powe bi
+business intelligence
+business intelligence
+sdlc
+aws
+sas
+javascript
+sql server
+pl/sql
+business analysis
+pl sql
+data mining
+data warehousing
+ms visio
+quality assurance
+qa
+regression testing
+jdbc
+apex
+adobe photoshop
+ms office
+angular.js
+perl scripting
+perl scripting
+shell scripting
+shell scripting
+java/j2ee
+mysql
+mysql
+sql server 2008
+web logic
+web logic
+web sphere
+web sphere
+apache tomcat
+apache tomcat
+jboss
+jboss
+subversion
+subversion
+svn
+svn
+clearcase
+clearcase
+harvest
+harvest
+jira
+jira
+confluence
+confluence
+servicenow
+bugzilla
+bugzilla
+struts
+struts
+angular js
+angular 2
+react js
+redux
+redux
+requirejs
+requirejs
+typescript
+backbone
+typescript
+backbone
+apache cxf
+apache cxf
+intellij
+rational rose
+rational rose
+toad
+clear case
+web-storm
+gulp
+gulp
+web-storm
+clear case
+jboss
+oracle 9i
+oracle 10g
+xhtml
+jsp 2.0/2.1
+jstl
+log4j
+dhtml
+xslt
+gwt
+ria framework
+restful web service
+yeoman
+grunt
+firebug
+j unit v 4.12
+firebug
+grunt
+yeoman
+restful web service
+gwt
+xslt
+dhtml
+ca siteminder
+ca siteminder
+ca siteminder
+sun one directory server
+sun one directory server
+ping federate
+ping federate
+vb.net
+c#.net
+wcf
+wcf
+wpf
+wpf
+visual studio online
+visual studio team suite/foundation
+visual studio team suite/foundation
+visual studio online
+terraform
+terraform
+microsoft azure
+microsoft azure
+sql azure
+asp
+lan/wan architecture
+lan/wan architecture
+tcp/ip
+tcp/ip
+frame relay
+frame relay
+vpn
+vpn
+vlan
+vlan
+vtp
+vtp
+nat
+nat
+pat
+pat
+stp
+stp
+rstp
+rstp
+pvst
+pvst
+mstp
+mstp
+cisco switches
+cisco switches
+cisco routers
+cisco routers
+asa/pix firewalls
+vmware
+vmware
+ironport
+pap
+pap
+chap
+chap
+cisco pix
+cisco pix
+blue coat
+blue coat
+ospf
+ospf
+igrp
+igrp
+eigrp
+eigrp
+routing information protocol
+rip
+rip
+mpls
+mpls
+is-is
+is-is
+bgp
+bgp
+multicasting
+multicasting
+cisco works 2000
+cisco works 2000
+wire shark
+wire shark
+hrping
+hrping
+j-developer
+j-developer
+java 1.5
+servlet 2.4
+jsp 2.0
+ant 1.7
+junit 4
+hibernate 3.1
+eclipse 3.x
+oracle sql developer
+svn
+vss
+allfusion harvest change manager 7.1
+rup. clarity
+healthrules
+mainframe(cics)
+facets
+navinet
+saas
+AJENTI
+DJANGO-SUIT
+DJANGO-XADMIN
+FLASK-ADMIN
+FLOWER
+GRAPPELLI
+WOOEY
+PYPATTYRN
+PYTHON-PATTERNS
+SORTED-CONTAINERS
+DJANGO
+FANSTATIC
+JINJA-ASSETS-COMPRESSOR
+PYJWT
+PYTHON
+DOGPILE.CACHE
+HERMESCACHE
+JOHNNY-CACHE
+SPARK
+VIRTUALENV
+PYTORCH
+KERAS
+TENSORFLOW
+THEANO
+DOCKER
+CUISINE
+FABRIC
+FABTOOLS
+OPENSTACK
+HAYSTACK
+PEXPECT
+JAVA
+R
+C++
+C#
+SPHINX
+SPHINXDOC
+MKDOCS
+PDOC
+PYCCO
+S3CMD
+S4CMD
+YOUTUBE-DL
+C
+HADOOP
+BIGDATA
+DATAMINING
+DJANGO OSCAR
+DJANGO SHOP
+REACT
+NODEJS
+NODE.JS
+ANGULAR
+HTML
+HTML5
+CSS
+BOOTSTRAP
+CARTRIDGE
+MATPLOTLIB
+SHOOP
+EMACS
+ELPY
+SUBLIME
+ANACONDA
+VIM
+JEDI-VIM
+PTVS
+VISUAL
+BLENDER
+MAYA
+MAYA3D
+SPYDER
+FLANKER
+FLUTTER
+MONGODB
+NEO4J
+SWIG
+BOOTSTRAP3
+TKINTER
+PATTERN
+CELERY
+AJAX
+TASTYPIE
+DEVPI
+PHOTOSHOP
+SQL
+SQLALCHEMY
+ORACLE
+STREAM-FRAMEWORK
+STREAM-FRAMEWORK
+ORATOR
+CONDA
+CURDLING
+WHEEL
+WAREHOUSE
+BANDERSNATCH
+SARGE
+CPYTHON
+GRUMPY
+CYTHON
+IRONPYTHON
+JYTHON
+JUPYTER
+JUPYTER-NOTEBOOK
+MICROSOFT-WORD
+PTPYTHON
+NUPIC
+SCIKIT-LEARN
+SKLEARN
+PILLOW
+OPEN-CV
+OPENCV
+OPENCV
+PYNORM
+PEEWEE
+HMAP
+PYOCR
+OCR
+PYCALLGRAPH
+GRAPHQL
+GRAPH-QL
+DOCOPT
+GOOEY
+CEMENT
+MEZZANINE
+OOP
+PLONE
+BLACKBOX-TESTING
+BLOCKCHAIN
+COLORAMA
+SIX
+PGCLI
+CRYPTOGRAPHY
+DATA-ANALYTICS
+MYSQL
+DATA-MINING
+ANALYTICAL-SKILLS
+DEBUGGING
+LINUX
+UNIT-TESTING
+TESTING
+HDL
+PHP
+JAVASCRIPT
+PERL
+RUBY
+RUBY-ON-RAILS
+CMS
+CRM
+CAD
+WORDPRESS
+ANDROID
+REACT NATIVE
+REACT-NATIVE
+REACTJS
+NEO4J
+SALESFORCE CRM
+SALESFORCE SFA
+APEX LANGUAGE
+SOQL
+SOSL
+VISUALFORCE PAGES/COMPONENTS
+APEX WEB SERVICES
+APEX DATA LOADER
+VISUALFORCE
+PL-SQL
+GITHUB
+ECLIPSE 
+MS SQL SERVER 2000/2005
+ORACLE 8I/9I/10G
+MS ACCESS
+DB2
+OBJECTIVE-C
+PHONEGAP
+APPCELERATOR
+J2ME
+ANDROID STUDIO
+TITANIUM STUDIO 3.2
+DREAMWEAVER CC
+VISUAL STUDIO
+XAMARIN
+ECLIPSE4.3
+C++
+C
+C#
+SCM
+UCM 
+MULTISITE
+SVN
+TFS/VSTS
+GIT
+GIT
+VISUAL C++
+ORACLE 9I/8I/10G
+IBM DB2/UDB
+SQL
+UML
+XML
+JASMINE
+JQUERY
+BOOTSTRAP
+ANGULARJS
+JSF
+WEBPACK
+REACTJS
+NODEJS
+SPRING
+STRUTS 2
+HIBERNATE
+MOCKITO
+TESTNG
+JUNIT
+PATTERNS
+WEBLOGIC SERVER
+JBOSS
+WEBSPHERE
+JENKINS
+DOCKER
+RALLY
+ROUTING
+SWITCHING
+WIRELESS COMMUNICATION
+MONITORING
+SECURITY POLICIES
+ORACLE
+MS SQL
+DATA ANALYSIS
+OBJECT ORIENTED PROGRAMMING
+AGILE
+UML
+WATERFALL
+SPIRAL
+RAPID APPLICATION DEVELOPMENT
+SCRUM
+TABLEAU
+TABLEAU
+MS ACCESS
+JSON
+CISCO
+NETWORKING
+HADOOP
+RDBMS
+TESTING
+POWE BI
+BUSINESS INTELLIGENCE
+BUSINESS INTELLIGENCE
+SDLC
+AWS
+SAS
+JAVASCRIPT
+JAVA
+PYTHON
+BUSINESS ANALYSIS
+GIT
+GITHUB
+GITLAB
+CSS
+AJAX
+JSP
+XML
+HTML
+HTML5
+ADOBE PHOTOSHOP
+MS OFFICE
+ANGULAR
+ANGULAR.JS
+JQUERY
+JQUERY
+APEX
+CYBER SECURITY
+PL/SQL
+JDBC
+SQL SERVER
+USER ACCEPTANCE TESTING 
+REGRESSION TESTING
+REGRESSION TESTING
+USER ACCEPTANCE TESTING 
+J2EE
+PHP
+PL SQL
+DATA MINING
+DATA WAREHOUSING
+MS VISIO
+QUALITY ASSURANCE
+QA
+QUALITY CONTROL
+QC
+ASP.NET
+MVC
+OOP
+OOAD
+OBJECT ORIENTED ANALYSIS AND DESIGN
+REST
+SOAP
+SOA
+SERVICE ORIENTED ARCHITECTURE
+KNOCKOUT.JS
+EMBER.JS
+SIMPLIFIED WRAPPER AND INTERFACE GENERATOR
+BLACK-BOX TESTING
+ORM
+OBJECT RELATIONAL MAPPING
+UNIT TESTING
+LOAD TESTING
+UNIT TESTING
+LOAD TESTING
+CYBER SECURITY
+LOAD TESTING
+JSON
+.NET
+REST FRAMEWORK
+ADO.NET
+AGILE
+AJENTI
+DJANGO-SUIT
+DJANGO-XADMIN
+FLASK-ADMIN
+FLOWER
+GRAPPELLI
+WOOEY
+PYPATTYRN
+PYTHON-PATTERNS
+SORTED-CONTAINERS
+DJANGO
+FANSTATIC
+JINJA-ASSETS-COMPRESSOR
+PYJWT
+PYTHON-PATTERNS
+DOGPILE.CACHE
+HERMESCACHE
+JOHNNY-CACHE
+SPARK
+VIRTUALENV
+PYTORCH
+KERAS
+TENSORFLOW
+THEANO
+DOCKER
+CUISINE
+FABRIC
+FABTOOLS
+OPENSTACK
+HAYSTACK
+PEXPECT
+XML
+R
+OBJECT RELATIONAL MAPPING
+ORM
+SPHINX
+SPHINXDOC
+MKDOCS
+PDOC
+PYCCO
+S3CMD
+S4CMD
+YOUTUBE-DL
+AGILE
+EMBER.JS
+BIGDATA
+DATA MINING
+DJANGO OSCAR
+DJANGO SHOP
+REACT
+NODEJS
+NODE.JS
+CISCO
+ADO.NET
+HTML5
+EMBER.JS
+KNOCKOUT.JS
+CARTRIDGE
+MATPLOTLIB
+SHOOP
+EMACS
+ELPY
+SUBLIME
+ANACONDA
+VIM
+JEDI-VIM
+PTVS
+VISUAL
+BLENDER
+MAYA
+MAYA3D
+SPYDER
+FLANKER
+FLUTTER
+MONGODB
+SERVICE ORIENTED ARCHITECTURE
+SWIG
+BOOTSTRAP3
+TKINTER
+PATTERN
+CELERY
+AJAX
+TASTYPIE
+DEVPI
+PHOTOSHOP
+KNOCKOUT.JS
+SQLALCHEMY
+ORACLE
+STREAM-FRAMEWORK
+STREAM FRAMEWORK
+ORATOR
+CONDA
+CURDLING
+WHEEL
+WAREHOUSE
+BANDERSNATCH
+SARGE
+CPYTHON
+GRUMPY
+CYTHON
+IRONPYTHON
+JYTHON
+JUPYTER
+JUPYTER NOTEBOOK
+MICROSOFT WORD
+NUPIC
+SCIKIT LEARN
+SCIKIT-LEARN
+SKLEARN
+PILLOW
+OPENCV
+REST FRAMEWORK
+.NET
+PYNORM
+PEE WEE
+HMAP
+PYOCR
+OCR
+PYCALLGRAPH
+GRAPHQL
+GRAPH-QL
+DOCOPT
+GOOEY
+CEMENT
+MEZZANINE
+OOP
+PLONE
+BLACK BOX TESTING
+BLOCKCHAIN
+COLORAMA
+SIX
+PGCLI
+CRYPTOGRAPHY
+DATA ANALYTICS
+MY-SQL
+DATA-MINING
+ANALYTICAL-SKILLS
+DEBUGGING
+LINUX
+GITLAB
+TESTING
+HDL
+SOA
+JSP
+PERL
+RUBY
+RUBY ON RAILS
+CMS
+CRM
+CAD
+WORDPRESS
+ANDROID
+REACT NATIVE
+REACT-NATIVE
+REST
+OBJECT ORIENTED ANALYSIS AND DESIGN
+SALESFORCE CRM
+SALESFORCE SFA
+APEX LANGUAGE
+SOQL
+SOSL
+VISUALFORCE PAGES/COMPONENTS
+APEX WEB SERVICES
+APEX DATA LOADER
+VISUALFORCE
+PL-SQL
+GITHUB
+ECLIPSE 
+MS SQL SERVER 2000/2005
+ORACLE 8I/9I/10G
+MS ACCESS
+DB2
+OBJECTIVE-C
+PHONEGAP
+APPCELERATOR
+J2ME
+ANDROID STUDIO
+TITANIUM STUDIO 3.2
+DREAMWEAVER CC
+VISUAL STUDIO
+XAMARIN
+ECLIPSE4.3
+MS SQL
+C
+TFS
+SCM
+UCM
+MULTISITE
+SVN
+VSTS
+VISUAL C++
+VISUAL C++
+VISUAL C++
+ORACLE 9I/8I/10G
+IBM DB2/UDB
+SQL
+UML
+XML
+JASMINE
+OOP
+ASP.NET
+ANGULARJS
+JSF
+WEBPACK
+REACTJS
+WEBLOGIC SERVER
+SPRING
+STRUTS 2
+HIBERNATE
+MOCKITO
+TESTNG
+JUNIT
+PATTERNS
+WEBLOGIC SERVER
+JBOSS
+WEBSPHERE
+JENKINS
+DOCKER
+RALLY
+ROUTING
+SWITCHING
+WIRELESS COMMUNICATION
+MONITORING
+SECURITY POLICIES
+ORACLE
+MS SQL
+DATA ANALYSIS
+OBJECT ORIENTED PROGRAMMING
+RAD
+MVC
+WATERFALL
+SPIRAL
+RAPID APPLICATION DEVELOPMENT
+SCRUM
+QUALITY CONTROL
+QC
+REGRESSION TESTING
+OOAD
+J2EE
+NETWORKING
+SQL SERVER
+RDBMS
+TESTING
+POWE BI
+BUSINESS INTELLIGENCE
+BUSINESS INTELLIGENCE
+SDLC
+AWS
+SAS
+JAVASCRIPT
+SQL SERVER
+PL/SQL
+BUSINESS ANALYSIS
+PL SQL
+DATA MINING
+DATA WAREHOUSING
+MS VISIO
+QUALITY ASSURANCE
+QA
+REGRESSION TESTING
+JDBC
+APEX
+ADOBE PHOTOSHOP
+MS OFFICE
+ANGULAR.JS
+PERL SCRIPTING
+PERL SCRIPTING
+SHELL SCRIPTING
+SHELL SCRIPTING
+JAVA/J2EE
+MYSQL
+MYSQL
+SQL SERVER 2008
+WEB LOGIC
+WEB LOGIC
+WEB SPHERE
+WEB SPHERE
+APACHE TOMCAT
+APACHE TOMCAT
+JBOSS
+JBOSS
+SUBVERSION
+SUBVERSION
+SVN
+SVN
+CLEARCASE
+CLEARCASE
+HARVEST
+HARVEST
+JIRA
+JIRA
+CONFLUENCE
+CONFLUENCE
+SERVICENOW
+BUGZILLA
+BUGZILLA
+STRUTS
+STRUTS
+ANGULAR JS
+ANGULAR 2
+REACT JS
+REDUX
+REDUX
+REQUIREJS
+REQUIREJS
+TYPESCRIPT
+BACKBONE
+TYPESCRIPT
+BACKBONE
+APACHE CXF
+APACHE CXF
+INTELLIJ
+RATIONAL ROSE
+RATIONAL ROSE
+TOAD
+CLEAR CASE
+WEB-STORM
+GULP
+GULP
+WEB-STORM
+CLEAR CASE
+JBOSS
+ORACLE 9I
+ORACLE 10G
+XHTML
+JSP 2.0/2.1
+JSTL
+LOG4J
+DHTML
+XSLT
+GWT
+RIA FRAMEWORK
+RESTFUL WEB SERVICE
+YEOMAN
+GRUNT
+FIREBUG
+J UNIT V 4.12
+FIREBUG
+GRUNT
+YEOMAN
+RESTFUL WEB SERVICE
+GWT
+XSLT
+DHTML
+CA SITEMINDER
+CA SITEMINDER
+CA SITEMINDER
+SUN ONE DIRECTORY SERVER
+SUN ONE DIRECTORY SERVER
+PING FEDERATE
+PING FEDERATE
+VB.NET
+C#.NET
+WCF
+WCF
+WPF
+WPF
+VISUAL STUDIO ONLINE
+VISUAL STUDIO TEAM SUITE/FOUNDATION
+VISUAL STUDIO TEAM SUITE/FOUNDATION
+VISUAL STUDIO ONLINE
+TERRAFORM
+TERRAFORM
+MICROSOFT AZURE
+MICROSOFT AZURE
+SQL AZURE
+ASP
+LAN/WAN ARCHITECTURE
+LAN/WAN ARCHITECTURE
+TCP/IP
+TCP/IP
+FRAME RELAY
+FRAME RELAY
+VPN
+VPN
+VLAN
+VLAN
+VTP
+VTP
+NAT
+NAT
+PAT
+PAT
+STP
+STP
+RSTP
+RSTP
+PVST
+PVST
+MSTP
+MSTP
+CISCO SWITCHES
+CISCO SWITCHES
+CISCO ROUTERS
+CISCO ROUTERS
+ASA/PIX FIREWALLS
+VMWARE
+VMWARE
+IRONPORT
+PAP
+PAP
+CHAP
+CHAP
+CISCO PIX
+CISCO PIX
+BLUE COAT
+BLUE COAT
+OSPF
+OSPF
+IGRP
+IGRP
+EIGRP
+EIGRP
+ROUTING INFORMATION PROTOCOL
+RIP
+RIP
+MPLS
+MPLS
+IS-IS
+IS-IS
+BGP
+BGP
+MULTICASTING
+MULTICASTING
+CISCO WORKS 2000
+CISCO WORKS 2000
+WIRE SHARK
+WIRE SHARK
+HRPING
+HRPING
+J-DEVELOPER
+J-DEVELOPER
+JAVA 1.5
+SERVLET 2.4
+JSP 2.0
+ANT 1.7
+JUNIT 4
+HIBERNATE 3.1
+ECLIPSE 3.X
+ORACLE SQL DEVELOPER
+SVN
+VSS
+ALLFUSION HARVEST CHANGE MANAGER 7.1
+RUP. CLARITY
+HEALTHRULES
+MAINFRAME(CICS)
+FACETS
+NAVINET
+SAAS
 Ajenti
 Django-Suit
 Django-Xadmin

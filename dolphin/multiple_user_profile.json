@@ -62,6 +62,7 @@
                 "Node.Js",
                 "C",
                 "python",
+                "django",
                 "django rest framework",
                 "docker",
                 "nginx"
@@ -137,7 +138,8 @@
             "technical_skills": [
                 "Html",
                 "Javascript",
-                "Java"
+                "Java",
+                "css"
             ],
             "soft_skills": [
                 "Training"
@@ -287,8 +289,11 @@
             "user_id": 52,
             "profile": "{\"user_pk\": 93, \"profile_id\": 52, \"full_name\": \"Rohini Shrestha\", \"first_name\": \"Rohini\", \"last_name\": \"Shrestha\", \"profile_photo\": \"/media/jobseeker_images/Rohinihere/user5.png\", \"resume\": null, \"job_group\": {\"id\": 5, \"name\": \"Python\"}, \"email\": \"rohini@yopmail.com\", \"phone\": \"9846896598\", \"gender\": 0, \"address\": {\"id\": 30, \"country\": \"Nepal\", \"state\": \"State 3\", \"zip_code\": \"505\", \"city\": \"Patan\"}}",
             "technical_skills": [
+                "django",
                 "numpy",
                 "tensorflow",
+                "css",
+                "html",
                 "django rest framework"
             ],
             "soft_skills": [
@@ -307,6 +312,9 @@
                 "Javascript",
                 "Oracle",
                 "Java",
+                "Testing",
+                "Pattern",
+                "AI",
                 "Machine Learning"
             ],
             "soft_skills": [
@@ -379,6 +387,19 @@
             "exps": "[{\"id\": 92, \"designation\": \"Animator\", \"company\": \"Razor Edge Games\", \"entry_date\": \"2017-04-01\", \"exit_date\": \"2020-05-27\", \"roles\": null}, {\"id\": 93, \"designation\": \"3D Modeler\", \"company\": \"BB Innovative Concepts LLC\", \"entry_date\": \"2015-11-01\", \"exit_date\": \"2020-05-29\", \"roles\": null}]"
         },
         {
+            "user_id": 88,
+            "profile": "{\"user_pk\": 188, \"profile_id\": 88, \"full_name\": \"Rober Stak\", \"first_name\": \"Rober\", \"last_name\": \"Stak\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/robert%40yopmail.com/Robert-Hanna.pdf\", \"job_group\": null, \"email\": \"robert@yopmail.com\", \"phone\": \"9736073\", \"gender\": 0, \"address\": {\"id\": 76, \"country\": \"Las Vegas , NV\", \"state\": \"Texas\", \"zip_code\": \"505\", \"city\": \"Patan\"}}",
+            "technical_skills": [
+                "Maya",
+                "Photoshop"
+            ],
+            "soft_skills": [
+                "Design",
+                "Networking"
+            ],
+            "exps": "[{\"id\": 94, \"designation\": \"3D Artist\", \"company\": \"DK Global , Inc.\", \"entry_date\": \"2015-06-02\", \"exit_date\": \"2020-05-27\", \"roles\": null}, {\"id\": 95, \"designation\": \"3D Artist\", \"company\": \"Global , Inc.\", \"entry_date\": \"2020-01-13\", \"exit_date\": \"2020-05-25\", \"roles\": null}, {\"id\": 96, \"designation\": \"Project Manager\", \"company\": \"Walt Disney Studios\", \"entry_date\": \"2006-01-01\", \"exit_date\": \"2006-01-01\", \"roles\": null}, {\"id\": 97, \"designation\": \"Project Manager\", \"company\": \"New Jersy\", \"entry_date\": \"1986-12-29\", \"exit_date\": \"1987-01-01\", \"roles\": null}, {\"id\": 98, \"designation\": \"3D visual content creator\", \"company\": \"Facebook\", \"entry_date\": \"2015-02-03\", \"exit_date\": \"2020-05-27\", \"roles\": null}]"
+        },
+        {
             "user_id": 89,
             "profile": "{\"user_pk\": 190, \"profile_id\": 89, \"full_name\": \"Ajmal hasan\", \"first_name\": \"Ajmal\", \"last_name\": \"hasan\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/ajmalhasan%40yopmail.com/Amber-George.pdf\", \"job_group\": null, \"email\": \"ajmalhasan@yopmail.com\", \"phone\": \"9372046573\", \"gender\": 1, \"address\": {\"id\": 77, \"country\": \"Franklin , GA\", \"state\": \"Texas\", \"zip_code\": \"505\", \"city\": \"Sankhu\"}}",
             "technical_skills": [
@@ -441,7 +462,10 @@
                 "Javascript",
                 "Oracle",
                 "Java",
-                "Python"
+                "Python",
+                "Testing",
+                "Pattern",
+                "AI"
             ],
             "soft_skills": [
                 "Design",
@@ -492,6 +516,33 @@
             "exps": "[{\"id\": 115, \"designation\": \"Python Developer\", \"company\": \"Facebook\", \"entry_date\": \"2014-06-17\", \"exit_date\": \"2016-04-19\", \"roles\": null}, {\"id\": 116, \"designation\": \"Dot Net Developer\", \"company\": \"PytechInc Nepal\", \"entry_date\": \"2018-04-12\", \"exit_date\": \"2020-05-17\", \"roles\": \"To Develop web application based on dot net framework\"}]"
         },
         {
+            "user_id": 97,
+            "profile": "{\"user_pk\": 223, \"profile_id\": 97, \"full_name\": \"Xander Hampton\", \"first_name\": \"Xander\", \"last_name\": \"Hampton\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/alexand123%40yopmail.com/Abu-Bah.pdf\", \"job_group\": null, \"email\": \"alexand123@yopmail.com\", \"phone\": \"436444444\", \"gender\": 1, \"address\": {\"id\": 104, \"country\": \"NJ\", \"state\": \"Newyork\", \"zip_code\": \"84995\", \"city\": \"Newyork\"}}",
+            "technical_skills": [
+                "Mysql",
+                "Ajax",
+                "Php",
+                "Linux",
+                "Cms",
+                "Html",
+                "Vim",
+                "Css",
+                "C++",
+                "Javascript",
+                "pandas",
+                "python",
+                "django",
+                "numpy",
+                "tensorflow"
+            ],
+            "soft_skills": [
+                "Design",
+                "Communication",
+                "leadership"
+            ],
+            "exps": "[{\"id\": 120, \"designation\": \"Software Developer\", \"company\": \"Diversified Media Group\", \"entry_date\": \"2017-02-02\", \"exit_date\": \"2019-03-09\", \"roles\": null}, {\"id\": 121, \"designation\": \"Lead Web Developer\", \"company\": \"Brimar Industries , Inc.\", \"entry_date\": \"2018-11-11\", \"exit_date\": \"2019-12-12\", \"roles\": null}]"
+        },
+        {
             "user_id": 98,
             "profile": "{\"user_pk\": 227, \"profile_id\": 98, \"full_name\": \"puskar Joshi\", \"first_name\": \"puskar\", \"last_name\": \"Joshi\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/puskar%40yopmail.com/Abu-Bah.pdf\", \"job_group\": null, \"email\": \"puskar@yopmail.com\", \"phone\": \"9846896598\", \"gender\": 1, \"address\": {\"id\": 105, \"country\": \"NJ\", \"state\": \"State 3\", \"zip_code\": \"505\", \"city\": \"LA\"}}",
             "technical_skills": [
@@ -515,7 +566,9 @@
             "user_id": 100,
             "profile": "{\"user_pk\": 229, \"profile_id\": 100, \"full_name\": \"Samir Gautam\", \"first_name\": \"Samir\", \"last_name\": \"Gautam\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/anjalipradhan%40yopmail.com/Amber-George.pdf\", \"job_group\": null, \"email\": \"anjalipradhan@yopmail.com\", \"phone\": \"9846896598\", \"gender\": 0, \"address\": {\"id\": 49, \"country\": \"Nepal\", \"state\": \"State 3\", \"zip_code\": \"5526\", \"city\": \"LA\"}}",
             "technical_skills": [
-                "java"
+                "java",
+                "css",
+                "html"
             ],
             "soft_skills": [
                 "communicatio"
@@ -713,42 +766,25 @@
             "exps": "[]"
         },
         {
-            "user_id": 139,
-            "profile": "{\"user_pk\": 348, \"profile_id\": 139, \"full_name\": \"Abu Bah\", \"first_name\": \"Abu\", \"last_name\": \"Bah\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/Abubah2014/Abu-Bah.pdf\", \"job_group\": {\"id\": 6, \"name\": \"UI/UX group\"}, \"email\": \"abubah@yopmail.com\", \"phone\": \"9845632598\", \"gender\": 1, \"address\": {\"id\": 227, \"country\": \"Nepal\", \"state\": \"Bagmati\", \"zip_code\": \"44640\", \"city\": \"Kathmandu\"}}",
+            "user_id": 47,
+            "profile": "{\"user_pk\": 82, \"profile_id\": 47, \"full_name\": \"Ram Sharma\", \"first_name\": \"Ram\", \"last_name\": \"Sharma\", \"profile_photo\": \"/media/jobseeker_images/ramthapa/user3.jpg\", \"resume\": null, \"job_group\": {\"id\": 1, \"name\": \"Java\"}, \"email\": \"jobseeker7@yopmail.com\", \"phone\": \"9843815440\", \"gender\": 1, \"address\": {\"id\": 211, \"country\": \"Nepal\", \"state\": \"Colorado\", \"zip_code\": \"80205\", \"city\": \"Denver\"}}",
             "technical_skills": [
-                "Linux",
-                "Vim",
-                "C++",
+                "Ajax",
+                "Php",
                 "Javascript",
                 "React",
-                "PHP",
-                "C",
-                "Python",
-                "HTML",
-                "CSS",
-                "ASP",
-                "Objective-C",
-                "JIRA",
-                "JavaScript",
-                "Agile",
-                "AJAX",
-                "Git",
-                "JSON",
-                "HTML5",
-                "XHTML",
-                "CMS",
-                "Node.js",
-                "jQuery",
-                "MVC",
-                "WordPress"
+                "Mongodb",
+                "Flask",
+                "Docker",
+                "Ruby"
             ],
             "soft_skills": [
-                "confidence",
-                "tolerant",
-                "design",
-                "leadership"
+                "Design",
+                "Decision Making",
+                "Organization",
+                "Team Player"
             ],
-            "exps": "[{\"id\": 194, \"designation\": \"Full Stack Web Developer\", \"company\": \"Fair Lawn\", \"entry_date\": \"2020-09-01\", \"exit_date\": \"2020-09-02\", \"roles\": null}, {\"id\": 195, \"designation\": \"React Developer\", \"company\": \"GAL-Inc.\", \"entry_date\": \"2020-09-01\", \"exit_date\": \"2020-09-03\", \"roles\": null}, {\"id\": 196, \"designation\": \"Software Developer\", \"company\": \"Diversified Media Group\", \"entry_date\": \"2020-09-01\", \"exit_date\": \"2020-09-03\", \"roles\": null}, {\"id\": 197, \"designation\": \"Lead Web Developer\", \"company\": \"Brimar Industries , Inc.\", \"entry_date\": \"2020-09-02\", \"exit_date\": \"2020-09-04\", \"roles\": null}, {\"id\": 198, \"designation\": \"Designer\", \"company\": \"Brimar Industries\", \"entry_date\": \"2020-09-01\", \"exit_date\": \"2020-09-03\", \"roles\": null}, {\"id\": 199, \"designation\": \"Lead Web Developer\", \"company\": \"Brimar\", \"entry_date\": \"2020-09-02\", \"exit_date\": \"2020-09-04\", \"roles\": null}, {\"id\": 200, \"designation\": \"Web & Mobile App Developer\", \"company\": \"Yapster\", \"entry_date\": \"2020-09-01\", \"exit_date\": \"2020-09-03\", \"roles\": null}, {\"id\": 201, \"designation\": \"Web Manager\", \"company\": \"Yapster\", \"entry_date\": \"2020-09-01\", \"exit_date\": \"2020-09-03\", \"roles\": null}, {\"id\": 202, \"designation\": \"Developer\", \"company\": \"Tradical 360\", \"entry_date\": \"2020-09-02\", \"exit_date\": \"2020-09-04\", \"roles\": null}, {\"id\": 203, \"designation\": \"Web Developer\", \"company\": \"Tradical 360\", \"entry_date\": \"2020-09-01\", \"exit_date\": \"2020-09-03\", \"roles\": null}]"
+            "exps": "[{\"id\": 44, \"designation\": \"Angular Js lead developer\", \"company\": \"Google Incorporation\", \"entry_date\": \"2012-01-05\", \"exit_date\": \"2013-01-10\", \"roles\": \"\"}, {\"id\": 174, \"designation\": \"Python Flask\", \"company\": \"infoDeveloper\", \"entry_date\": \"2020-09-14\", \"exit_date\": null, \"roles\": null}, {\"id\": 170, \"designation\": \"Senior Team lead\", \"company\": \"Deerwalk Services\", \"entry_date\": \"2020-07-15\", \"exit_date\": \"2020-09-29\", \"roles\": null}, {\"id\": 173, \"designation\": \"react\", \"company\": \"NewSunTech\", \"entry_date\": \"2020-09-14\", \"exit_date\": null, \"roles\": null}]"
         },
         {
             "user_id": 125,
@@ -803,33 +839,6 @@
                 "Design"
             ],
             "exps": "[{\"id\": 156, \"designation\": \".Net\", \"company\": \"info dev\", \"entry_date\": \"2020-08-03\", \"exit_date\": \"2020-08-10\", \"roles\": null}]"
-        },
-        {
-            "user_id": 47,
-            "profile": "{\"user_pk\": 82, \"profile_id\": 47, \"full_name\": \"Ram Sharma\", \"first_name\": \"Ram\", \"last_name\": \"Sharma\", \"profile_photo\": \"/media/jobseeker_images/ramthapa/images.jpg\", \"resume\": null, \"job_group\": {\"id\": 1, \"name\": \"Java\"}, \"email\": \"jobseeker7@yopmail.com\", \"phone\": \"9843815440\", \"gender\": 1, \"address\": {\"id\": 211, \"country\": \"Nepal\", \"state\": \"Colorado\", \"zip_code\": \"80205\", \"city\": \"Denver\"}}",
-            "technical_skills": [
-                "Mysql",
-                "Mongodb",
-                "Sql",
-                "Python",
-                "Django",
-                "Flask",
-                "Docker",
-                "Numpy",
-                "scipy",
-                "pandas",
-                "Deep Learning",
-                "django rest framework",
-                "PostgreSQL"
-            ],
-            "soft_skills": [
-                "Design",
-                "Decision Making",
-                "Organization",
-                "Team Player",
-                "leadership"
-            ],
-            "exps": "[{\"id\": 44, \"designation\": \"Angular Js lead developer\", \"company\": \"Google Incorporation\", \"entry_date\": \"2012-01-05\", \"exit_date\": \"2013-01-10\", \"roles\": \"\"}, {\"id\": 174, \"designation\": \"Python Flask\", \"company\": \"infoDeveloper\", \"entry_date\": \"2020-09-14\", \"exit_date\": null, \"roles\": null}, {\"id\": 175, \"designation\": \"UI/UX Engineer\", \"company\": \"Facebook\", \"entry_date\": \"2014-01-01\", \"exit_date\": \"2018-01-01\", \"roles\": null}, {\"id\": 170, \"designation\": \"Senior Team lead\", \"company\": \"Deerwalk Services\", \"entry_date\": \"2020-07-15\", \"exit_date\": \"2020-09-29\", \"roles\": null}]"
         },
         {
             "user_id": 49,
@@ -888,213 +897,7 @@
             "technical_skills": [],
             "soft_skills": [],
             "exps": "[]"
-        },
-        {
-            "user_id": 131,
-            "profile": "{\"user_pk\": 340, \"profile_id\": 131, \"full_name\": \"Abirami Lane\", \"first_name\": \"Abirami\", \"last_name\": \"Lane\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/Huhhuhhshs/AbiramiR.pdf\", \"job_group\": {\"id\": 6, \"name\": \"UI/UX group\"}, \"email\": \"subas12@yopmail.com\", \"phone\": \"9860414256\", \"gender\": 1, \"address\": {\"id\": 219, \"country\": \"Nepal\", \"state\": \"Bagmati\", \"zip_code\": \"14625 \", \"city\": \"Birgunj\"}}",
-            "technical_skills": [],
-            "soft_skills": [],
-            "exps": "[]"
-        },
-        {
-            "user_id": 132,
-            "profile": "{\"user_pk\": 341, \"profile_id\": 132, \"full_name\": \"Madhav Sharma\", \"first_name\": \"Madhav\", \"last_name\": \"Sharma\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/Madhavvv/Steven-Bowman.pdf\", \"job_group\": {\"id\": 5, \"name\": \"Python\"}, \"email\": \"madhav12@yopmail.com\", \"phone\": \"9860413256\", \"gender\": 1, \"address\": {\"id\": 220, \"country\": \"Nepal\", \"state\": \"Non-US\", \"zip_code\": \"44600\", \"city\": \"Kathmandu\"}}",
-            "technical_skills": [],
-            "soft_skills": [],
-            "exps": "[]"
-        },
-        {
-            "user_id": 133,
-            "profile": "{\"user_pk\": 342, \"profile_id\": 133, \"full_name\": \"Prajit Shrestha\", \"first_name\": \"Prajit\", \"last_name\": \"Shrestha\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/Prajitttttt/Shinhye-Kim.pdf\", \"job_group\": {\"id\": 4, \"name\": \"Django\"}, \"email\": \"prajit12@yopmail.com\", \"phone\": \"98435689\", \"gender\": 1, \"address\": {\"id\": 220, \"country\": \"Nepal\", \"state\": \"Non-US\", \"zip_code\": \"44600\", \"city\": \"Kathmandu\"}}",
-            "technical_skills": [],
-            "soft_skills": [],
-            "exps": "[]"
-        },
-        {
-            "user_id": 88,
-            "profile": "{\"user_pk\": 188, \"profile_id\": 88, \"full_name\": \"Rober Stak\", \"first_name\": \"Rober\", \"last_name\": \"Stak\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/robert%40yopmail.com/Robert-Hanna.pdf\", \"job_group\": null, \"email\": \"robert@yopmail.com\", \"phone\": \"9736073\", \"gender\": 0, \"address\": {\"id\": 76, \"country\": \"Las Vegas , NV\", \"state\": \"Texas\", \"zip_code\": \"505\", \"city\": \"Patan\"}}",
-            "technical_skills": [
-                "typescript",
-                "Maya",
-                "Photoshop",
-                "PostgreSQL",
-                "Go Programming"
-            ],
-            "soft_skills": [
-                "Design",
-                "Networking"
-            ],
-            "exps": "[{\"id\": 94, \"designation\": \"3D Artist\", \"company\": \"DK Global , Inc.\", \"entry_date\": \"2015-06-02\", \"exit_date\": \"2020-05-27\", \"roles\": null}, {\"id\": 95, \"designation\": \"3D Artist\", \"company\": \"Global , Inc.\", \"entry_date\": \"2020-01-13\", \"exit_date\": \"2020-05-25\", \"roles\": null}, {\"id\": 96, \"designation\": \"Project Manager\", \"company\": \"Walt Disney Studios\", \"entry_date\": \"2006-01-01\", \"exit_date\": \"2006-01-01\", \"roles\": null}, {\"id\": 97, \"designation\": \"Project Manager\", \"company\": \"New Jersy\", \"entry_date\": \"1986-12-29\", \"exit_date\": \"1987-01-01\", \"roles\": null}, {\"id\": 98, \"designation\": \"3D visual content creator\", \"company\": \"Facebook\", \"entry_date\": \"2015-02-03\", \"exit_date\": \"2020-05-27\", \"roles\": null}]"
-        },
-        {
-            "user_id": 97,
-            "profile": "{\"user_pk\": 223, \"profile_id\": 97, \"full_name\": \"Xander Hampton\", \"first_name\": \"Xander\", \"last_name\": \"Hampton\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/alexand123%40yopmail.com/Abu-Bah.pdf\", \"job_group\": null, \"email\": \"alexand123@yopmail.com\", \"phone\": \"436444444\", \"gender\": 1, \"address\": {\"id\": 104, \"country\": \"NJ\", \"state\": \"Newyork\", \"zip_code\": \"84995\", \"city\": \"Newyork\"}}",
-            "technical_skills": [
-                "Mysql",
-                "Ajax",
-                "Linux",
-                "Cms",
-                "Html",
-                "Vim",
-                "Css",
-                "C++",
-                "Javascript",
-                "React",
-                "Bootstrap",
-                "Html5",
-                "Mongodb",
-                "python",
-                "numpy",
-                "tensorflow"
-            ],
-            "soft_skills": [
-                "Design",
-                "Communication",
-                "leadership"
-            ],
-            "exps": "[{\"id\": 120, \"designation\": \"Software Developer\", \"company\": \"Diversified Media Group\", \"entry_date\": \"2017-02-02\", \"exit_date\": \"2019-03-09\", \"roles\": null}, {\"id\": 121, \"designation\": \"Lead Web Developer\", \"company\": \"Brimar Industries , Inc.\", \"entry_date\": \"2018-11-11\", \"exit_date\": \"2019-12-12\", \"roles\": null}]"
-        },
-        {
-            "user_id": 134,
-            "profile": "{\"user_pk\": 343, \"profile_id\": 134, \"full_name\": \"Sarah Talbot\", \"first_name\": \"Sarah\", \"last_name\": \"Talbot\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/sarah_talbot/Sarah-Talbot.pdf\", \"job_group\": {\"id\": 6, \"name\": \"UI/UX group\"}, \"email\": \"akhil_321@yopmail.com\", \"phone\": \"9808393909\", \"gender\": 0, \"address\": {\"id\": 175, \"country\": \"USA\", \"state\": \"Colorado\", \"zip_code\": \"80201\", \"city\": \"Denver\"}}",
-            "technical_skills": [
-                "React",
-                "HTML",
-                "Maya",
-                "Photoshop",
-                "CSS",
-                "visual"
-            ],
-            "soft_skills": [
-                "design",
-                "management",
-                "leadership"
-            ],
-            "exps": "[{\"id\": 176, \"designation\": \"Teaching Assistant\", \"company\": \"Character Rigging Datto Inc\", \"entry_date\": \"2014-08-01\", \"exit_date\": \"2015-01-01\", \"roles\": null}, {\"id\": 177, \"designation\": \"Teaching Assistant\", \"company\": \"Character Rigging Datto Inc\", \"entry_date\": \"2014-08-01\", \"exit_date\": \"2015-01-01\", \"roles\": null}, {\"id\": 178, \"designation\": \"Teaching Assistant\", \"company\": \"Character Rigging Datto Inc\", \"entry_date\": \"2014-08-01\", \"exit_date\": \"2015-01-01\", \"roles\": null}]"
-        },
-        {
-            "user_id": 140,
-            "profile": "{\"user_pk\": 349, \"profile_id\": 140, \"full_name\": \"Robert Hanna\", \"first_name\": \"Robert\", \"last_name\": \"Hanna\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/roberthanna/Robert-Hanna.pdf\", \"job_group\": {\"id\": 6, \"name\": \"UI/UX group\"}, \"email\": \"robert12@yopmail.com\", \"phone\": \"9843578967\", \"gender\": 0, \"address\": {\"id\": 227, \"country\": \"Nepal\", \"state\": \"Bagmati\", \"zip_code\": \"44640\", \"city\": \"Kathmandu\"}}",
-            "technical_skills": [
-                "Linux",
-                "C++",
-                "Javascript",
-                "Visual",
-                "C",
-                "Python",
-                "Maya",
-                "Photoshop",
-                "CSS",
-                "visual",
-                "HTML5",
-                "Networking",
-                "C#"
-            ],
-            "soft_skills": [
-                "training",
-                "design",
-                "management"
-            ],
-            "exps": "[{\"id\": 204, \"designation\": \"3D Artist\", \"company\": \"Facebook\", \"entry_date\": \"2020-09-02\", \"exit_date\": \"2020-09-03\", \"roles\": null}, {\"id\": 205, \"designation\": \"Project Manager\", \"company\": \"Walt Disney Studios\", \"entry_date\": \"2006-01-01\", \"exit_date\": \"2006-01-01\", \"roles\": null}, {\"id\": 206, \"designation\": \"React Developer\", \"company\": \"Infodev\", \"entry_date\": \"1997-01-01\", \"exit_date\": \"2005-01-01\", \"roles\": null}, {\"id\": 207, \"designation\": \"Project Manager\", \"company\": \"Fusemachines\", \"entry_date\": \"1984-01-01\", \"exit_date\": \"1987-01-01\", \"roles\": null}, {\"id\": 208, \"designation\": \"UI Engineer\", \"company\": \"Google\", \"entry_date\": \"1997-01-01\", \"exit_date\": \"2002-01-01\", \"roles\": null}, {\"id\": 209, \"designation\": \"3D Artist\", \"company\": \"DK Global , Inc.\", \"entry_date\": \"2020-09-01\", \"exit_date\": \"2020-09-03\", \"roles\": null}, {\"id\": 210, \"designation\": \"3D Artist\", \"company\": \"DK Global , Inc.\", \"entry_date\": \"2020-09-01\", \"exit_date\": \"2020-09-03\", \"roles\": null}, {\"id\": 211, \"designation\": \"3D Artist\", \"company\": \"Global , Inc.\", \"entry_date\": \"2020-09-01\", \"exit_date\": \"2020-09-03\", \"roles\": null}]"
-        },
-        {
-            "user_id": 135,
-            "profile": "{\"user_pk\": 344, \"profile_id\": 135, \"full_name\": \"Ravi Sharma\", \"first_name\": \"Ravi\", \"last_name\": \"Sharma\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/Ravi_sharma/ravi_data_scientist.pdf\", \"job_group\": {\"id\": 8, \"name\": \"Data Science\"}, \"email\": \"ravi123@yopmail.com\", \"phone\": \"9860424365\", \"gender\": 1, \"address\": {\"id\": 226, \"country\": \"Nepal\", \"state\": \"Dharan\", \"zip_code\": \"44655\", \"city\": \"Kathmandu\"}}",
-            "technical_skills": [],
-            "soft_skills": [],
-            "exps": "[]"
-        },
-        {
-            "user_id": 136,
-            "profile": "{\"user_pk\": 345, \"profile_id\": 136, \"full_name\": \"Abu Bah\", \"first_name\": \"Abu\", \"last_name\": \"Bah\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/AbuBah12/Abu-Bah.pdf\", \"job_group\": {\"id\": 3, \"name\": \"UI/UX\"}, \"email\": \"abubah12@yopmail.com\", \"phone\": \"9846562356\", \"gender\": 1, \"address\": {\"id\": 227, \"country\": \"Nepal\", \"state\": \"Bagmati\", \"zip_code\": \"44640\", \"city\": \"Kathmandu\"}}",
-            "technical_skills": [
-                "Linux",
-                "Vim",
-                "C++",
-                "Javascript",
-                "PHP",
-                "C",
-                "Python",
-                "HTML",
-                "CSS",
-                "ASP",
-                "Objective-C",
-                "JIRA",
-                "JavaScript",
-                "Agile",
-                "AJAX",
-                "Git",
-                "JSON",
-                "HTML5",
-                "XHTML",
-                "CMS",
-                "Node.js",
-                "jQuery",
-                "MVC",
-                "WordPress"
-            ],
-            "soft_skills": [
-                "confidence",
-                "tolerant",
-                "design"
-            ],
-            "exps": "[{\"id\": 179, \"designation\": \"Full Stack Web Developer\", \"company\": \"Fair Lawn\", \"entry_date\": \"2020-02-11\", \"exit_date\": \"2020-09-08\", \"roles\": null}, {\"id\": 180, \"designation\": \"UI Engineer\", \"company\": \"GAL-Inc.\", \"entry_date\": \"2020-09-15\", \"exit_date\": \"2020-09-22\", \"roles\": null}, {\"id\": 181, \"designation\": \"Software Developer\", \"company\": \"Diversified Media Group\", \"entry_date\": \"2020-09-08\", \"exit_date\": \"2020-09-08\", \"roles\": null}, {\"id\": 182, \"designation\": \"Lead Web Developer\", \"company\": \"Brimar Industries , Inc.\", \"entry_date\": \"2020-08-31\", \"exit_date\": \"2020-09-15\", \"roles\": null}, {\"id\": 183, \"designation\": \"UI Developer\", \"company\": \"Brimar Industries\", \"entry_date\": \"2020-09-15\", \"exit_date\": \"2020-09-15\", \"roles\": null}, {\"id\": 184, \"designation\": \"Lead Web Developer\", \"company\": \"Brimar\", \"entry_date\": \"2020-09-08\", \"exit_date\": \"2020-09-08\", \"roles\": null}, {\"id\": 185, \"designation\": \"Web & Mobile App Developer\", \"company\": \"Yapster\", \"entry_date\": \"2020-09-01\", \"exit_date\": \"2020-09-02\", \"roles\": null}, {\"id\": 186, \"designation\": \"Web Manager\", \"company\": \"Yapster\", \"entry_date\": \"2020-09-07\", \"exit_date\": \"2020-09-08\", \"roles\": null}, {\"id\": 187, \"designation\": \"HTML Developer\", \"company\": \"Tradical 360\", \"entry_date\": \"2020-09-07\", \"exit_date\": \"2020-09-08\", \"roles\": null}, {\"id\": 188, \"designation\": \"Web Developer\", \"company\": \"Tradical 360\", \"entry_date\": \"2020-09-07\", \"exit_date\": \"2020-09-07\", \"roles\": null}]"
-        },
-        {
-            "user_id": 137,
-            "profile": "{\"user_pk\": 346, \"profile_id\": 137, \"full_name\": \"Ravi Sharma\", \"first_name\": \"Ravi\", \"last_name\": \"Sharma\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/RaviSharma/ravi_data_scientist.pdf\", \"job_group\": {\"id\": 8, \"name\": \"Data Science\"}, \"email\": \"ravisharma12@yopmail.com\", \"phone\": \"9843587698\", \"gender\": 1, \"address\": {\"id\": 227, \"country\": \"Nepal\", \"state\": \"Bagmati\", \"zip_code\": \"44640\", \"city\": \"Kathmandu\"}}",
-            "technical_skills": [
-                "Linux",
-                "Oracle",
-                "Python",
-                "R",
-                "MS SQL",
-                "RDBMS",
-                "Jupyter",
-                "SDLC",
-                "data mining",
-                "Tableau",
-                "warehouse",
-                "Data Analysis",
-                "Data Mining",
-                "matplotlib",
-                "Monitoring",
-                "Spark",
-                "SAS",
-                "Hadoop",
-                "Spyder",
-                "testing",
-                "Rational Rose",
-                "SQL Server 2008",
-                "AWS",
-                "Networking",
-                "data analysis",
-                "SQL",
-                "SQL Server",
-                "Testing",
-                "MongoDB"
-            ],
-            "soft_skills": [
-                "analysis",
-                "research",
-                "leadership",
-                "management",
-                "respect",
-                "memory",
-                "organization",
-                "training",
-                "integrity",
-                "design"
-            ],
-            "exps": "[{\"id\": 189, \"designation\": \"Machine Learning Engineer\", \"company\": \"Azure & Amazon Machine Learning\", \"entry_date\": \"2020-09-01\", \"exit_date\": \"2020-09-03\", \"roles\": null}, {\"id\": 190, \"designation\": \"Data Scientist\", \"company\": \"Oracle\", \"entry_date\": \"2020-09-01\", \"exit_date\": \"2020-09-03\", \"roles\": null}, {\"id\": 191, \"designation\": \"Sr Data Analyst\", \"company\": \"Bath & Beyond Inc\", \"entry_date\": \"2020-09-01\", \"exit_date\": \"2020-09-03\", \"roles\": null}, {\"id\": 192, \"designation\": \"Data Analyst\", \"company\": \"HSBC\", \"entry_date\": \"2020-09-01\", \"exit_date\": \"2020-09-03\", \"roles\": null}, {\"id\": 193, \"designation\": \"Data Scientist\", \"company\": \"Dr Reddys Lab\", \"entry_date\": \"2005-01-03\", \"exit_date\": \"2020-09-10\", \"roles\": null}]"
-        },
-        {
-            "user_id": 138,
-            "profile": "{\"user_pk\": 347, \"profile_id\": 138, \"full_name\": \"Troy Garden\", \"first_name\": \"Troy\", \"last_name\": \"Garden\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/TroyLai12/Troy-Lai.pdf\", \"job_group\": {\"id\": 6, \"name\": \"UI/UX group\"}, \"email\": \"troylai12@yopmail.com\", \"phone\": \"9845698536\", \"gender\": 1, \"address\": {\"id\": 227, \"country\": \"Nepal\", \"state\": \"Bagmati\", \"zip_code\": \"44640\", \"city\": \"Kathmandu\"}}",
-            "technical_skills": [],
-            "soft_skills": [],
-            "exps": "[]"
         }
     ],
-    "job": "{\"id\": 160, \"job_title\": \"Mid-level Java Developer\", \"job_description\": \"<div class=\\\"job-description job-info1\\\" style=\\\"box-sizing: border-box; color: rgb(33, 37, 41); font-family: Roboto, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;\\\"><p>Applicant must meet the&nbsp;criteria as:</p><ul style=\\\"box-sizing: border-box; list-style: disc; margin-top: 0px; margin-bottom: 1rem; padding-left: 15px;\\\"><li style=\\\"box-sizing: border-box;\\\">Must have Bachelors Degree in IT.</li><li style=\\\"box-sizing: border-box;\\\">Must have 3+ years experience.</li><li style=\\\"box-sizing: border-box;\\\">Exposure to all aspects of the software development life cycle.</li><li style=\\\"box-sizing: border-box;\\\">Must be able to work independently and in a team environment.</li><li style=\\\"box-sizing: border-box;\\\">Should have good communication and interpersonal skills.</li></ul><div class=\\\"job-specification job-info1\\\"><h5 style=\\\"margin-bottom: 0.5rem; font-family: inherit; font-weight: 500; color: inherit; font-size: 1rem; text-shadow: rgba(0, 0, 0, 0.25) 0px 3px 7px;\\\">Job Specification</h5><ul style=\\\"list-style-position: initial; list-style-image: initial; padding-left: 15px;\\\"><li>Utilize established development tools, guidelines and conventions.</li><li>Including HTML, CSS, JavaScript, and Angular JS</li><li>Develop and Angular&nbsp;web applications.</li><li>Manage Angular application maintenance and troubleshoot detected problems.</li><li>Develop&nbsp;Angular application codes according to technical and business requirements.</li><li>Manage project documentation for client approval.</li><li>Review codes and make recommendations for improvements.</li></ul></div><div class=\\\"job-option\\\"><br></div></div>\", \"location\": {\"id\": 218, \"country\": \"Nepal\", \"state\": \"Bagmati\", \"zip_code\": \"125\", \"city\": \"Naxal\"}}"
+    "job": "{\"id\": 156, \"job_title\": \"Lead Java Developer\", \"job_description\": \"<p style=\\\"text-align: justify; line-height: 1.618 !important; font-size: 0.833rem !important;\\\"><span style=\\\"font-weight: bolder; color: rgb(0, 0, 0); font-family: &quot;noto sans&quot;, &quot;helvetica neue&quot;, helvetica, arial, sans-serif; font-size: 13.3333px;\\\">Job Responsibilities:</span><br></p><ul style=\\\"font-size: 13.3333px; font-family: &quot;noto sans&quot;, &quot;helvetica neue&quot;, helvetica, arial, sans-serif; text-align: justify; line-height: 1.43; color: rgb(0, 0, 0);\\\"><li style=\\\"margin-bottom: 0.5rem; line-height: 1.618;\\\">Implements high priority application software and infrastructure covering database design, epic, feature and story development, re-usable code, components and application functionality.</li><li style=\\\"margin-bottom: 0.5rem; line-height: 1.618;\\\">Works with senior engineers and architects to define the application architecture and create software design for key elements of the application.</li><li style=\\\"margin-bottom: 0.5rem; line-height: 1.618;\\\">Evaluates performance of key elements of the application functionality and tunes the performance to cover the range of customer use.</li><li style=\\\"margin-bottom: 0.5rem; line-height: 1.618;\\\">Works with the scrum team to assist developers and monitor their progress against project milestones. Performs tech design reviews and code reviews for the scrum teams. Provides scheduling estimates and assists with the scheduling process.</li><li style=\\\"margin-bottom: 0.5rem; line-height: 1.618;\\\">Provides input to managers on the performance of team members for use in their reviews and participates in the interview process for new candidates.</li></ul><p style=\\\"line-height: 1.43; text-align: justify; font-size: 13.3333px; font-family: &quot;noto sans&quot;, &quot;helvetica neue&quot;, helvetica, arial, sans-serif; color: rgb(0, 0, 0);\\\"><br><span style=\\\"font-weight: bolder;\\\">Preferred Education, Experience, and Skills:</span></p><ul style=\\\"font-size: 13.3333px; font-family: &quot;noto sans&quot;, &quot;helvetica neue&quot;, helvetica, arial, sans-serif; text-align: justify; line-height: 1.43; color: rgb(0, 0, 0);\\\"><li style=\\\"margin-bottom: 0.5rem; line-height: 1.618;\\\">Education: Bachelor's degree or comparable work experience in software development.</li><li style=\\\"margin-bottom: 0.5rem; line-height: 1.618;\\\">Experience: at least 5-8 years of experience in software development in addition to education requirements</li><li style=\\\"margin-bottom: 0.5rem; line-height: 1.618;\\\">Must be proficient with: Java, .net, powershell, SQLServer, T-SQL, Javascript, CSS, JQuery, React.</li><li style=\\\"margin-bottom: 0.5rem; line-height: 1.618;\\\">Willing to experience building high throughput and scalable data pipelines using Hadoop/ Cloudera (HBase, Hive, Storm, Druid, Oozi)</li><li style=\\\"margin-bottom: 0.5rem; line-height: 1.618;\\\">Proven track record with planning and delivering coding assignments with high quality.</li><li style=\\\"margin-bottom: 0.5rem; line-height: 1.618;\\\">Motivated, self-starter results-oriented team player willing to do \\u201cwhatever it takes\\u201d in a dynamic and stimulating environment.</li><li style=\\\"margin-bottom: 0.5rem; line-height: 1.618;\\\">Great verbal and written communication skills</li></ul><ul style=\\\"font-size: 13px; font-family: -apple-system, blinkmacsystemfont, &quot;segoe ui&quot;, roboto, &quot;helvetica neue&quot;, arial, &quot;noto sans&quot;, sans-serif; text-align: justify; color: rgb(33, 37, 41);\\\"><li style=\\\"margin-bottom: 0.5rem; line-height: 1.618;\\\">Oversee and/or lead analysis, architecture design, development and maintenance of large scale and/or complex applications</li><li style=\\\"margin-bottom: 0.5rem; line-height: 1.618;\\\">Write modular, reusable and excellent quality code, code reviews, and implement best practices</li><li style=\\\"margin-bottom: 0.5rem; line-height: 1.618;\\\">Support the migration and redeployment of existing application (if any)</li><li style=\\\"margin-bottom: 0.5rem; line-height: 1.618;\\\">Take responsibility of project and ensure robust hosting, application stability, security and system integration</li></ul>\", \"location\": {\"id\": 175, \"country\": \"USA\", \"state\": \"Colorado\", \"zip_code\": \"80201\", \"city\": \"Denver\"}}"
 }

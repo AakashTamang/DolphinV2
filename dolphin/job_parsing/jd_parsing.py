@@ -135,7 +135,7 @@ class SpacyNer():
             for j in bigrams:
                 words = word_tokenize(j)
                 for k in words:
-                    if k in monograms:
+                    if k.lower() in [i.lower() for i in monograms]:
                         monograms.remove(k)
 
         if(bigrams and trigrams):
@@ -143,19 +143,19 @@ class SpacyNer():
                 words = word_tokenize(j)
                 for k in words:
                     for l in bigrams: 
-                        words = word_tokenize(l)
-                        for m in words:
-                            if k in m:
+                        b_words = word_tokenize(l)
+                        for m in b_words:
+                            if k.lower() in m.lower():
                                 bigrams.remove(l)
         
         if(trigrams and ngrams):
             for j in ngrams:
-                words = word_tokenize(j)
-                for k in words:
+                n_words = word_tokenize(j)
+                for k in n_words:
                     for l in trigrams: 
-                        words = word_tokenize(l)
-                        for m in words:
-                            if k in m:
+                        t_words = word_tokenize(l)
+                        for m in t_words:
+                            if k.lower() in m.lower():
                                 trigrams.remove(l)
         imp_words = []
         imp_words = monograms+bigrams+trigrams+ngrams
@@ -192,7 +192,7 @@ if __name__ == "__main__":
     
     # technical_skills, soft_skills = spacy_obj.get_skills_from_pool(jd_content)
 
-    technical_skills = ['Communication', 'Javascript', 'Java', 'Jquery', '.Net', 'Scrum', 'Css', 'Try Communication', 'my Css', 'Css', 'try this sql']
+    technical_skills = ['Communication', 'Javascript', 'Java', 'Jquery', '.net', 'Scrum', 'Css', 'Try Communication', 'my Css', 'Css', 'try this sql']
     
     soft_skills = ['Verbal Communication Skills Good','Teamwork', 'Analysis', 'Analysis', 'Design', 'Responsibility', 'Teamwork', 'Teamwork', 'Planning', 'Scheduling', 'Scheduling', 'Communication', 'Responsibility', 'Communication', 'Planning', 'Teamwork', 'Communication', 'Verbal Communication', 'Written Communication', 'Verbal Communication', 'Team Player','Verbal Communication Skills']
 
