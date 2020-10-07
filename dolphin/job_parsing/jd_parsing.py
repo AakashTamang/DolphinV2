@@ -192,7 +192,7 @@ if __name__ == "__main__":
     
     # technical_skills, soft_skills = spacy_obj.get_skills_from_pool(jd_content)
 
-    technical_skills = ['Communication', 'Javascript', 'Java', 'Jquery', '.net', 'Scrum', 'Css', 'Try Communication', 'my Css', 'Css', 'try this sql']
+    technical_skills = ['Java','Lead Java','Lead Java Developer','Communication', 'Javascript', 'Java', 'Jquery', '.net', 'Scrum', 'Css', 'Try Communication', 'my Css', 'Css', 'try this sql']
     
     soft_skills = ['Verbal Communication Skills Good','Teamwork', 'Analysis', 'Analysis', 'Design', 'Responsibility', 'Teamwork', 'Teamwork', 'Planning', 'Scheduling', 'Scheduling', 'Communication', 'Responsibility', 'Communication', 'Planning', 'Teamwork', 'Communication', 'Verbal Communication', 'Written Communication', 'Verbal Communication', 'Team Player','Verbal Communication Skills']
 

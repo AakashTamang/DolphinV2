@@ -186,7 +186,7 @@ def oneJDMultipleRes():
     if(required_experience):
         imp_words = imp_words+required_experience
     if(job_title):
-        imp_words = imp_words+job_title
+        imp_words = imp_words+[job_title]
     # print("Job Title --{} ---> {}".format(job_title, type(job_title)))
     # print("Job Soft Skills --{} ---> {}".format(req_soft_skills, type(req_soft_skills)))
     # print("Job Technical Skills --{} ---> {}".format(req_technical_skills, type(req_technical_skills)))
