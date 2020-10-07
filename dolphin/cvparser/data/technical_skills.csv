@@ -1,335 +1,22 @@
-﻿Predefined_skills
-ajenti
-django-suit
-django-xadmin
-flask-admin
-flower
-grappelli
-wooey
-pypattyrn
-Python-patterns
-Sorted-containers
-django
-fanstatic
-jinja-assets-compressor
-pyjwt
-python
-dogpile.cache
-hermescache
-johnny-cache
-spark
-virtualenv
-pytorch
-keras
-tensorflow
-theano
-docker
-cuisine
-fabric
-fabtools
-openstack
-haystack
-pexpect
-java
-r
-c++
-c#
-sphinx
-sphinxdoc
-mkdocs
-pdoc
-pycco
-s3cmd
-s4cmd
-Youtube-dl
-c
-hadoop
-bigdata
-datamining
-django oscar
-django shop
-react
-nodejs
-node.js
-angular
-html
-html5
-css
-bootstrap
-cartridge
-matplotlib
-shoop
-emacs
-elpy
-sublime
-anaconda
-vim
-Jedi-vim
-ptvs
-visual
-blender
-maya
-maya3d
-spyder
-flanker
-flutter
-mongodb
-neo4j
-swig
-bootstrap3
-tkinter
-pattern
-celery
-ajax
-tastypie
-devpi
-photoshop
-sql
-sqlalchemy
-oracle
-Stream-framework
-Stream-framework
-orator
-conda
-curdling
-wheel
-warehouse
-bandersnatch
-sarge
-cpython
-grumpy
-cython
-ironpython
-jython
-jupyter
-jupyter-notebook
-microsoft-word
-ptpython
-nupic
-scikit-learn
-sklearn
-pillow
-open-cv
-openCV
-opencv
-pynorm
-peewee
-hmap
-pyocr
-ocr
-pycallgraph
-graphql
-graph-ql
-docopt
-gooey
-cement
-mezzanine
-oop
-plone
-blackbox-testing
-blockchain
-colorama
-six
-pgcli
-cryptography
-data-analytics
-mysql
-data-mining
-analytical-skills
-debugging
-linux
-unit-testing
-testing
-hdl
-php
-javascript
-perl
-ruby
-ruby-on-rails
-cms
-crm
-cad
-wordpress
-android
-react native
-react-native
-reactjs
-Neo4j
-Salesforce CRM
-Salesforce SFA
-Apex Language
-SOQL
-SOSL
-Visualforce Pages/Components
-Apex Web Services
-Apex Data Loader
-Visualforce
-PL-SQL
-GitHub
-Eclipse 
-MS SQL Server 2000/2005
-Oracle 8i/9i/10g
-MS Access
-DB2
-Objective-C
-PhoneGap
-Appcelerator
-J2ME
-Android Studio
-Titanium Studio 3.2
-Dreamweaver CC
-Visual Studio
-Xamarin
-Eclipse4.3
-C++
-C
-C#
-SCM
-UCM 
-Multisite
-SVN
-TFS/VSTS
-GIT
-git
-Visual C++
-Oracle 9i/8i/10g
-IBM DB2/UDB
-SQL
-UML
-XML
-Jasmine
-jQuery
-Bootstrap
-AngularJS
-JSF
-webpack
-ReactJS
-NodeJS
-Spring
-Struts 2
-Hibernate
-Mockito
-TestNG
-Junit
-Patterns
-WebLogic Server
-JBoss
-WebSphere
-Jenkins
-Docker
-Rally
-routing
-switching
-wireless communication
-monitoring
-security policies
-Oracle
-MS SQL
-Data Analysis
-Object Oriented Programming
-AGILE
-uml
-Waterfall
-Spiral
-Rapid Application Development
-Scrum
-Tableau
-tableau
-MS access
-json
-CISCO
-Networking
-Hadoop
-RDBMS
-Testing
-Powe BI
-Business Intelligence
-business intelligence
-SDLC
-AWS
-SAS
-JavaScript
-Java
-Python
-Business Analysis
-Git
-Github
-Gitlab
-CSS
-AJAX
-JSP
-XML
-HTML
-HTML5
-Adobe Photoshop
-MS Office
-Angular
-Angular.JS
-JQuery
-jquery
-Apex
-Cyber Security
-PL/SQL
-JDBC
-SQL Server
-User Acceptance Testing 
-Regression testing
-regression testing
-user acceptance testing 
-J2EE
-PHP
-PL SQL
-Data Mining
-Data Warehousing
-MS Visio
-Quality Assurance
-QA
-Quality Control
-QC
-ASP.NET
-MVC
-OOP
-OOAD
-Object Oriented Analysis and Design
-REST
-SOAP
-SOA
-Service Oriented Architecture
-Knockout.JS
-Ember.JS
-Simplified Wrapper and Interface Generator
-Black-box testing
-ORM
-Object Relational Mapping
-Unit Testing
-Load Testing
-unit testing
-load testing
-cyber security
-load testing
-JSON
-.NET
-REST framework
-ADO.NET
-Agile
+Predefined_skills
 Ajenti
-Django-suit
-Django-xadmin
-Flask-admin
+Django-Suit
+Django-Xadmin
+Flask-Admin
 Flower
 Grappelli
 Wooey
 Pypattyrn
-python-patterns
-sorted-containers
+Python-Patterns
+Sorted-Containers
 Django
 Fanstatic
-Jinja-assets-compressor
+Jinja-Assets-Compressor
 Pyjwt
-python-patterns
-Dogpile.cache
+Python
+Dogpile.Cache
 Hermescache
-Johnny-cache
+Johnny-Cache
 Spark
 Virtualenv
 Pytorch
@@ -343,32 +30,32 @@ Fabtools
 Openstack
 Haystack
 Pexpect
-xml
+Java
 R
-object relational mapping
-orm
+C++
+C#
 Sphinx
 Sphinxdoc
-MkDocs
+Mkdocs
 Pdoc
 Pycco
-S3cmd
-S4cmd
-youtube-dl
-agile
-ember.js
+S3Cmd
+S4Cmd
+Youtube-Dl
+C
+Hadoop
 Bigdata
-Data mining
+Datamining
 Django Oscar
-Django SHOP
+Django Shop
 React
 Nodejs
-Node.js
-cisco
-ado.net
-html5
-ember.JS
-knockout.JS
+Node.Js
+Angular
+Html
+Html5
+Css
+Bootstrap
 Cartridge
 Matplotlib
 Shoop
@@ -377,28 +64,341 @@ Elpy
 Sublime
 Anaconda
 Vim
-jedi-vim
-PTVS
+Jedi-Vim
+Ptvs
 Visual
 Blender
 Maya
-Maya3d
+Maya3D
 Spyder
 Flanker
 Flutter
-MongoDB
-service oriented architecture
-SWIG
+Mongodb
+Neo4J
+Swig
 Bootstrap3
-TkInter
+Tkinter
 Pattern
 Celery
 Ajax
 Tastypie
 Devpi
 Photoshop
-knockout.js
-SqlAlchemy
+Sql
+Sqlalchemy
+Oracle
+Stream-Framework
+Stream-Framework
+Orator
+Conda
+Curdling
+Wheel
+Warehouse
+Bandersnatch
+Sarge
+Cpython
+Grumpy
+Cython
+Ironpython
+Jython
+Jupyter
+Jupyter-Notebook
+Microsoft-Word
+Ptpython
+Nupic
+Scikit-Learn
+Sklearn
+Pillow
+Open-Cv
+Opencv
+Opencv
+Pynorm
+Peewee
+Hmap
+Pyocr
+Ocr
+Pycallgraph
+Graphql
+Graph-Ql
+Docopt
+Gooey
+Cement
+Mezzanine
+Oop
+Plone
+Blackbox-Testing
+Blockchain
+Colorama
+Six
+Pgcli
+Cryptography
+Data-Analytics
+Mysql
+Data-Mining
+Analytical-Skills
+Debugging
+Linux
+Unit-Testing
+Testing
+Hdl
+Php
+Javascript
+Perl
+Ruby
+Ruby-On-Rails
+Cms
+Crm
+Cad
+Wordpress
+Android
+React Native
+React-Native
+Reactjs
+Neo4J
+Salesforce Crm
+Salesforce Sfa
+Apex Language
+Soql
+Sosl
+Visualforce Pages/Components
+Apex Web Services
+Apex Data Loader
+Visualforce
+Pl-Sql
+Github
+Eclipse 
+Ms Sql Server 2000/2005
+Oracle 8I/9I/10G
+Ms Access
+Db2
+Objective-C
+Phonegap
+Appcelerator
+J2Me
+Android Studio
+Titanium Studio 3.2
+Dreamweaver Cc
+Visual Studio
+Xamarin
+Eclipse4.3
+C++
+C
+C#
+Scm
+Ucm 
+Multisite
+Svn
+Tfs/Vsts
+Git
+Git
+Visual C++
+Oracle 9I/8I/10G
+Ibm Db2/Udb
+Sql
+Uml
+Xml
+Jasmine
+Jquery
+Bootstrap
+Angularjs
+Jsf
+Webpack
+Reactjs
+Nodejs
+Spring
+Struts 2
+Hibernate
+Mockito
+Testng
+Junit
+Patterns
+Weblogic Server
+Jboss
+Websphere
+Jenkins
+Docker
+Rally
+Routing
+Switching
+Wireless Communication
+Monitoring
+Security Policies
+Oracle
+Ms Sql
+Data Analysis
+Object Oriented Programming
+Agile
+Uml
+Waterfall
+Spiral
+Rapid Application Development
+Scrum
+Tableau
+Tableau
+Ms Access
+Json
+Cisco
+Networking
+Hadoop
+Rdbms
+Testing
+Powe Bi
+Business Intelligence
+Business Intelligence
+Sdlc
+Aws
+Sas
+Javascript
+Java
+Python
+Business Analysis
+Git
+Github
+Gitlab
+Css
+Ajax
+Jsp
+Xml
+Html
+Html5
+Adobe Photoshop
+Ms Office
+Angular
+Angular.Js
+Jquery
+Jquery
+Apex
+Cyber Security
+Pl/Sql
+Jdbc
+Sql Server
+User Acceptance Testing 
+Regression Testing
+Regression Testing
+User Acceptance Testing 
+J2Ee
+Php
+Pl Sql
+Data Mining
+Data Warehousing
+Ms Visio
+Quality Assurance
+Qa
+Quality Control
+Qc
+Asp.Net
+Mvc
+Oop
+Ooad
+Object Oriented Analysis And Design
+Rest
+Soap
+Soa
+Service Oriented Architecture
+Knockout.Js
+Ember.Js
+Simplified Wrapper And Interface Generator
+Black-Box Testing
+Orm
+Object Relational Mapping
+Unit Testing
+Load Testing
+Unit Testing
+Load Testing
+Cyber Security
+Load Testing
+Json
+.Net
+Rest Framework
+Ado.Net
+Agile
+Ajenti
+Django-Suit
+Django-Xadmin
+Flask-Admin
+Flower
+Grappelli
+Wooey
+Pypattyrn
+Python-Patterns
+Sorted-Containers
+Django
+Fanstatic
+Jinja-Assets-Compressor
+Pyjwt
+Python-Patterns
+Dogpile.Cache
+Hermescache
+Johnny-Cache
+Spark
+Virtualenv
+Pytorch
+Keras
+Tensorflow
+Theano
+Docker
+Cuisine
+Fabric
+Fabtools
+Openstack
+Haystack
+Pexpect
+Xml
+R
+Object Relational Mapping
+Orm
+Sphinx
+Sphinxdoc
+Mkdocs
+Pdoc
+Pycco
+S3Cmd
+S4Cmd
+Youtube-Dl
+Agile
+Ember.Js
+Bigdata
+Data Mining
+Django Oscar
+Django Shop
+React
+Nodejs
+Node.Js
+Cisco
+Ado.Net
+Html5
+Ember.Js
+Knockout.Js
+Cartridge
+Matplotlib
+Shoop
+Emacs
+Elpy
+Sublime
+Anaconda
+Vim
+Jedi-Vim
+Ptvs
+Visual
+Blender
+Maya
+Maya3D
+Spyder
+Flanker
+Flutter
+Mongodb
+Service Oriented Architecture
+Swig
+Bootstrap3
+Tkinter
+Pattern
+Celery
+Ajax
+Tastypie
+Devpi
+Photoshop
+Knockout.Js
+Sqlalchemy
 Oracle
 Stream-Framework
 Stream Framework
@@ -409,35 +409,35 @@ Wheel
 Warehouse
 Bandersnatch
 Sarge
-CPython
+Cpython
 Grumpy
 Cython
-IronPython
+Ironpython
 Jython
 Jupyter
 Jupyter Notebook
 Microsoft Word
-NUPIC
-Scikit learn
-Scikit-learn
+Nupic
+Scikit Learn
+Scikit-Learn
 Sklearn
 Pillow
-OpenCV
-rest framework
-.net
-PyNorm
+Opencv
+Rest Framework
+.Net
+Pynorm
 Pee Wee
 Hmap
-PyOCR
-OCR
-PyCallGraph
-GraphQL
-Graph-QL
+Pyocr
+Ocr
+Pycallgraph
+Graphql
+Graph-Ql
 Docopt
 Gooey
 Cement
 Mezzanine
-OOP
+Oop
 Plone
 Black Box Testing
 Blockchain
@@ -446,318 +446,318 @@ Six
 Pgcli
 Cryptography
 Data Analytics
-My-SQL
-Data-mining
-Analytical-skills
+My-Sql
+Data-Mining
+Analytical-Skills
 Debugging
 Linux
-gitlab
+Gitlab
 Testing
-HDL
-soa
-jsp
+Hdl
+Soa
+Jsp
 Perl
 Ruby
-Ruby on Rails
-CMS
-CRM
-CAD
-WordPress
+Ruby On Rails
+Cms
+Crm
+Cad
+Wordpress
 Android
 React Native
 React-Native
-rest
-object oriented analysis and design
-salesforce crm
-salesforce sfa
-apex language
-soql
-sosl
-visualforce pages/components
-apex web services
-apex data loader
-visualforce
-pl-sql
-github
-eclipse 
-ms sql server 2000/2005
-oracle 8i/9i/10g
-ms access
-db2
-objective-c
-phonegap
-appcelerator
-j2me
-android studio
-titanium studio 3.2
-dreamweaver CC
-visual studio
-xamarin
-eclipse4.3
-ms sql
+Rest
+Object Oriented Analysis And Design
+Salesforce Crm
+Salesforce Sfa
+Apex Language
+Soql
+Sosl
+Visualforce Pages/Components
+Apex Web Services
+Apex Data Loader
+Visualforce
+Pl-Sql
+Github
+Eclipse 
+Ms Sql Server 2000/2005
+Oracle 8I/9I/10G
+Ms Access
+Db2
+Objective-C
+Phonegap
+Appcelerator
+J2Me
+Android Studio
+Titanium Studio 3.2
+Dreamweaver Cc
+Visual Studio
+Xamarin
+Eclipse4.3
+Ms Sql
 C
-tfs
-scm
-ucm
-multisite
-svn
-vsts
-Visual c++
-visual c++
-visual C++
-oracle 9i/8i/10g
-ibm db2/udb
-sql
+Tfs
+Scm
+Ucm
+Multisite
+Svn
+Vsts
+Visual C++
+Visual C++
+Visual C++
+Oracle 9I/8I/10G
+Ibm Db2/Udb
+Sql
 Uml
-XML
-jasmine
-oop
-asp.net
-angularjs
-jsf
+Xml
+Jasmine
+Oop
+Asp.Net
+Angularjs
+Jsf
 Webpack
 Reactjs
-weblogic server
-spring
-struts 2
-hibernate
-mockito
-testng
-junit
-patterns
-Weblogic server
-jboss
-websphere
-jenkins
-docker
-rally
+Weblogic Server
+Spring
+Struts 2
+Hibernate
+Mockito
+Testng
+Junit
+Patterns
+Weblogic Server
+Jboss
+Websphere
+Jenkins
+Docker
+Rally
 Routing
 Switching
 Wireless Communication
 Monitoring
 Security Policies
-oracle
-MS sql
-data analysis
-object oriented programming
-RAD
-mvc
-waterfall
-spiral
-rapid application development
-scrum
-quality control
-qc
-regression testing
-ooad
-j2ee
-networking
-sql Server
-rdbms
-testing
-powe bi
+Oracle
+Ms Sql
+Data Analysis
+Object Oriented Programming
+Rad
+Mvc
+Waterfall
+Spiral
+Rapid Application Development
+Scrum
+Quality Control
+Qc
+Regression Testing
+Ooad
+J2Ee
+Networking
+Sql Server
+Rdbms
+Testing
+Powe Bi
 Business Intelligence
-business intelligence
-sdlc
-aws
-sas
+Business Intelligence
+Sdlc
+Aws
+Sas
 Javascript
-SQL server
-pl/sql
-business analysis
-pl sql
-data mining
-data warehousing
-ms visio
+Sql Server
+Pl/Sql
+Business Analysis
+Pl Sql
+Data Mining
+Data Warehousing
+Ms Visio
 Quality Assurance
-QA
-Regression testing
-jdbc
-apex
-adobe photoshop
-ms office
-angular.js
-Perl scripting
-perl scripting
-Shell scripting
-shell scripting
-Java/J2EE
-MYSQL
-mysql
-SQL Server 2008
+Qa
+Regression Testing
+Jdbc
+Apex
+Adobe Photoshop
+Ms Office
+Angular.Js
+Perl Scripting
+Perl Scripting
+Shell Scripting
+Shell Scripting
+Java/J2Ee
+Mysql
+Mysql
+Sql Server 2008
 Web Logic
-web logic
+Web Logic
 Web Sphere
-web sphere
+Web Sphere
 Apache Tomcat
-apache tomcat
-JBOSS
-jboss
+Apache Tomcat
+Jboss
+Jboss
 Subversion
-subversion
-SVN
-svn
+Subversion
+Svn
+Svn
 Clearcase
-clearcase
+Clearcase
 Harvest
-harvest
-JIRA
-jira
+Harvest
+Jira
+Jira
 Confluence
-confluence
-ServiceNow
-BugZilla
-bugzilla
-struts
+Confluence
+Servicenow
+Bugzilla
+Bugzilla
 Struts
-Angular JS
+Struts
+Angular Js
 Angular 2
-React JS
+React Js
 Redux
-redux
-RequireJS
-requirejs
+Redux
+Requirejs
+Requirejs
 Typescript
 Backbone
-typescript
-backbone
-Apache CXF
-apache cxf
-IntelliJ
+Typescript
+Backbone
+Apache Cxf
+Apache Cxf
+Intellij
 Rational Rose
-rational rose
-TOAD
+Rational Rose
+Toad
 Clear Case
-Web-storm
+Web-Storm
 Gulp
-gulp
-Web-storm
-clear case
-JBOSS
-Oracle 9i
-Oracle 10g
-XHTML
-JSP 2.0/2.1
-JSTL
-Log4j
-DHTML
-XSLT
-GWT
-RIA framework
-Restful web service
+Gulp
+Web-Storm
+Clear Case
+Jboss
+Oracle 9I
+Oracle 10G
+Xhtml
+Jsp 2.0/2.1
+Jstl
+Log4J
+Dhtml
+Xslt
+Gwt
+Ria Framework
+Restful Web Service
 Yeoman
 Grunt
 Firebug
-J Unit v 4.12
+J Unit V 4.12
 Firebug
-grunt
-yeoman
-restful web service
-gwt
-xslt
-dhtml
-CA siteminder
-CA SiteMinder
-CA siteminder
-Sun one directory server
-sun one directory server
+Grunt
+Yeoman
+Restful Web Service
+Gwt
+Xslt
+Dhtml
+Ca Siteminder
+Ca Siteminder
+Ca Siteminder
+Sun One Directory Server
+Sun One Directory Server
 Ping Federate
-ping federate
-VB.Net
+Ping Federate
+Vb.Net
 C#.Net
-WCF
-wcf
-WPF
-wpf
+Wcf
+Wcf
+Wpf
+Wpf
 Visual Studio Online
 Visual Studio Team Suite/Foundation
-visual studio team suite/foundation
-visual studio online
+Visual Studio Team Suite/Foundation
+Visual Studio Online
 Terraform
-terraform
+Terraform
 Microsoft Azure
-microsoft azure
-SQL Azure
-ASP
-LAN/WAN Architecture
-lan/wan architecture
-TCP/IP
-tcp/ip
+Microsoft Azure
+Sql Azure
+Asp
+Lan/Wan Architecture
+Lan/Wan Architecture
+Tcp/Ip
+Tcp/Ip
 Frame Relay
-frame relay
-VPN
-vpn
-VLAN
-vlan
-VTP
-vtp
-NAT
-nat
-PAT
-pat
-STP
-stp
-RSTP
-rstp
-PVST
-pvst
-MSTP
-mstp
+Frame Relay
+Vpn
+Vpn
+Vlan
+Vlan
+Vtp
+Vtp
+Nat
+Nat
+Pat
+Pat
+Stp
+Stp
+Rstp
+Rstp
+Pvst
+Pvst
+Mstp
+Mstp
 Cisco Switches
-cisco switches
+Cisco Switches
 Cisco Routers
-cisco routers
-ASA/Pix firewalls
-VMware
-VMware
+Cisco Routers
+Asa/Pix Firewalls
+Vmware
+Vmware
 Ironport
-PAP
-pap
-CHAP
-chap
-Cisco PIX
-cisco PIX
+Pap
+Pap
+Chap
+Chap
+Cisco Pix
+Cisco Pix
 Blue Coat
-blue coat
-OSPF
-ospf
-IGRP
-igrp
-EIGRP
-eigrp
+Blue Coat
+Ospf
+Ospf
+Igrp
+Igrp
+Eigrp
+Eigrp
 Routing Information Protocol
-RIP
-rip
-MPLS
-mpls
-IS-IS
-is-is
-BGP
-bgp
+Rip
+Rip
+Mpls
+Mpls
+Is-Is
+Is-Is
+Bgp
+Bgp
 Multicasting
-multicasting
+Multicasting
 Cisco Works 2000
-cisco works 2000
+Cisco Works 2000
 Wire Shark
-wire shark
-HRPing
-hrping
-J-developer
-j-developer
+Wire Shark
+Hrping
+Hrping
+J-Developer
+J-Developer
 Java 1.5
 Servlet 2.4
-JSP 2.0
+Jsp 2.0
 Ant 1.7
-JUnit 4
+Junit 4
 Hibernate 3.1
-Eclipse 3.x
-Oracle SQL Developer
-SVN
-VSS
-AllFusion Harvest Change Manager 7.1
-RUP. Clarity
-HealthRules
-Mainframe(CICS)
+Eclipse 3.X
+Oracle Sql Developer
+Svn
+Vss
+Allfusion Harvest Change Manager 7.1
+Rup. Clarity
+Healthrules
+Mainframe(Cics)
 Facets
-NaVinet
-SaaS
+Navinet
+Saas
