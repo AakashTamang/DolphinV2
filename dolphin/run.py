@@ -233,66 +233,70 @@ def get_score_for_resume_and_jd():
     jobs = ImmutableMultiDict(request.form)
     jobs = jobs.to_dict(flat=False)
     job_descriptions = jobs.get('jobs')
-    # job_descriptions = request.form.get('jobs')
-    if resume:
-        filename = resume.filename
-        file = tempStorage + '/' + filename
-        resume.save(file)
-        if type(job_descriptions) == str:
-            job_descriptions = ast.literal_eval(job_descriptions)
-        else:
-            pass
-        # sim_score = word2vec_obj.calculate_score(file,job_descriptions)
-        # response = sim_score
-        resume_content = prepare_text(file, dolower=False)
-        preprocessed_resume_content = preprocessor_obj.preprocess_text(
-            resume_content)
-        preprocessed_resume_content = " ".join(preprocessed_resume_content)
-        res_technical_skills, res_soft_skills = parse_jd.get_skills_from_pool(preprocessed_resume_content)
-        res_technical_skills = set(res_technical_skills)
-        res_soft_skills = set(res_soft_skills)
-        resume_vector = word2vec_obj.get_word_embeddings(preprocessed_resume_content)
-        score = {}
-        for jd in job_descriptions:
-            if type(jd) == str:
-                jd = ast.literal_eval(jd)
+    if not jobs:
+        return jsonify("Jobs not obtained to score")
+    else:
+        if resume:
+            filename = resume.filename
+            file = tempStorage + '/' + filename
+            resume.save(file)
+            if type(job_descriptions) == str:
+                job_descriptions = ast.literal_eval(job_descriptions)
             else:
                 pass
-            job_description = jd['job_description']
-            job_text = preprocessor_obj.preprocess_text(job_description)
-            job_text = " ".join(job_text)
-            jd_technical_skills, jd_soft_skills = parse_jd.get_skills_from_pool(job_text)
-            jd_technical_skills = set(jd_technical_skills)
-            jd_soft_skills = set(jd_soft_skills)
+            # sim_score = word2vec_obj.calculate_score(file,job_descriptions)
+            # response = sim_score
+            resume_content = prepare_text(file, dolower=False)
+            preprocessed_resume_content = preprocessor_obj.preprocess_text(
+                resume_content)
+            preprocessed_resume_content = " ".join(preprocessed_resume_content)
+            res_technical_skills, res_soft_skills = parse_jd.get_skills_from_pool(preprocessed_resume_content)
+            res_technical_skills = set(res_technical_skills)
+            res_soft_skills = set(res_soft_skills)
+            resume_vector = word2vec_obj.get_word_embeddings(preprocessed_resume_content)
+            score = {}
+            for jd in job_descriptions:
+                if type(jd) == str:
+                    jd = ast.literal_eval(jd)
+                else:
+                    pass
+                job_description = jd['job_description']
+                job_text = preprocessor_obj.preprocess_text(job_description)
+                job_text = " ".join(job_text)
+                jd_technical_skills, jd_soft_skills = parse_jd.get_skills_from_pool(job_text)
+                jd_technical_skills = set(jd_technical_skills)
+                jd_soft_skills = set(jd_soft_skills)
 
-            matched_soft_skills = res_soft_skills.intersection(jd_soft_skills)
-            matched_technical_skills = res_technical_skills.intersection(jd_technical_skills)
+                matched_soft_skills = res_soft_skills.intersection(jd_soft_skills)
+                matched_technical_skills = res_technical_skills.intersection(jd_technical_skills)
 
-            if matched_technical_skills != 0:
-                try:
-                    technical_skill_score = len(matched_technical_skills) / len(jd_technical_skills) * 35
-                except:
-                    technical_skill_score = 35
-            else:
-                technical_skill_score = 0
-            
-            if matched_soft_skills != 0:
-                try:
-                    soft_skills_score = len(matched_soft_skills) / len(jd_soft_skills) * 5
-                except:
-                    soft_skills_score = 5
-            else:
-                soft_skills_score = 0
-            
-            skill_score = technical_skill_score + soft_skills_score
-            
-            job_vector = word2vec_obj.get_word_embeddings(job_text)
-            similarity = word2vec_obj.calculate_similarity(job_vector, resume_vector)
-            if np.isnan(similarity):
-                similarity = 0
-            word2vecscore = int(similarity*60)
-            score[jd['pk']] = word2vecscore + skill_score
-        return jsonify(score)
+                if matched_technical_skills != 0:
+                    try:
+                        technical_skill_score = len(matched_technical_skills) / len(jd_technical_skills) * 35
+                    except:
+                        technical_skill_score = 35
+                else:
+                    technical_skill_score = 0
+                
+                if matched_soft_skills != 0:
+                    try:
+                        soft_skills_score = len(matched_soft_skills) / len(jd_soft_skills) * 5
+                    except:
+                        soft_skills_score = 5
+                else:
+                    soft_skills_score = 0
+                
+                skill_score = technical_skill_score + soft_skills_score
+                
+                job_vector = word2vec_obj.get_word_embeddings(job_text)
+                similarity = word2vec_obj.calculate_similarity(job_vector, resume_vector)
+                if np.isnan(similarity):
+                    similarity = 0
+                word2vecscore = int(similarity*60)
+                score[jd['pk']] = word2vecscore + skill_score
+            return jsonify(score)
+        else:
+            return jsonify("Resume not obtained to score")
 
 
 @app.route("/getjobscore", methods=["POST", "GET"])
