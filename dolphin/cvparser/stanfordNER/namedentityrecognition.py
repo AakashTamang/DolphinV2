@@ -179,7 +179,15 @@ class StanfordNER:
                     formatted_data.update({f"Exp{i}":temp_dict_container})
             else:
                 if tag =="DATE":
-                    temp_dict_container['exit_value']=value
+                    if 'exit_value' not in temp_dict_container:
+                        temp_dict_container['exit_value']=value
+                    else:
+                        i+=1
+                        discovered_tag = []
+                        formatted_data.update({'Exp{}'.format(i):temp_dict_container})
+                        temp_dict_container = {}
+                        discovered_tag.append(tag)
+                        temp_dict_container['entry_date'] = value
                 else:
                     i+=1
                     discovered_tag = []
