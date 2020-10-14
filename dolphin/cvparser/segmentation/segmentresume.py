@@ -7,7 +7,7 @@ class ResumeSegmentCreator:
 
     def __init__(self):
         self.personal_info = set("profile: profile information personal information additional information information: informations: introduction introduction:".split(' '))
-        self.objective = set("summary career summary summary: Summary: summary career objective objective: motivation motivation:".split(' '))
+        self.objective = set("summary career summary goal goal: summary: Summary: summary career objective objective: motivation motivation:".split(' '))
         self.skills = set("technical skills key mainfiles professional practical skill"
                           " skill: skills skills skills:"
                           " competencies competencies:".split(' '))
@@ -18,7 +18,7 @@ class ResumeSegmentCreator:
                                " profile: profiles profiles:".split(' '))
         self.projects = set("training training: trainings trainings: college projects "
                             "projects: training trainings: attended attended:".split(' '))
-        self.academics = set("EDUCATION education education: educational academic qualification"
+        self.academics = set("education certificate certificates certifications certification education: educational academic qualification"
                              " qualification: qualifications qualifications:".split(' '))
         self.rewards = set("certification certification: certifications "
                            "certifications rewards rewards:License License"
@@ -26,7 +26,7 @@ class ResumeSegmentCreator:
         self.languages = set("language language: languages languages:".split(' '))
         self.references = set("reference reference: references references:".split(' '))
 
-        self.links = set('links links: LINK LINK:'.split(' '))
+        self.links = set('links links: link link:'.split(' '))
 
         self.possible_title_keywords = self.personal_info | self.objective | self.experiences |\
                                        self.skills | self.projects | self.academics | self.rewards |\
