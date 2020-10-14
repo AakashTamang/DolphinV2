@@ -294,7 +294,10 @@ class Parser:
         personal_information = self.profile_information_parser(self.segmented_resume._.profile_segment)
         # self.education_information_parser(self.segmented_resume._.academics_segment)
         # self.experience_information_parser(self.cleaned_resume)
-        self.experience_academics_parser(self.cleaned_resume)
+        data_for_ner = "\n".join([self.segmented_resume._.objective_segment,self.segmented_resume._.skills_segment,self.segmented_resume._.links_segment,
+                        self.segmented_resume._.experience_segment,self.segmented_resume._.language_segment,self.segmented_resume._.projects_segment,
+                        self.segmented_resume._.rewards_segment,self.segmented_resume._.references_segment,self.segmented_resume._.academics_segment])
+        self.experience_academics_parser(data_for_ner)
         self.skills_language_parser()
 
         # personal_information = self.personal_information_parser(self.segmented_resume._.profile_segment)        
