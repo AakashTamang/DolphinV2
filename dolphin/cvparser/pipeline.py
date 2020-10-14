@@ -263,8 +263,30 @@ class NlpPipeline():
         technical_skills = [Span(doc, start, end, label="technical_skills") for match_id, start, end in technical_skills_matches]
         soft_skills = [Span(doc, start, end, label="soft_skills") for match_id, start, end in soft_skills_matches]
 
-        doc._.technical_skills = set([str(skills) for skills in technical_skills])
-        doc._.soft_skills = set([str(skills) for skills in soft_skills])
+        technical_skills = [ str(skill) for skill in technical_skills]
+        soft_skills = [str(skill) for skill in soft_skills]
+
+        final_tech_skill = []
+        final_soft_skill = []
+        unique_soft = set()
+        unique_tech = set()
+
+        for i in technical_skills:
+            i1 = i.lower()
+            if i1 not in unique_tech:
+                unique_tech.add(i1)
+                final_tech_skill.append(i)
+
+        for i in soft_skills:
+            i1 = i.lower()
+            if i1 not in unique_soft:
+                unique_soft.add(i1)
+                final_soft_skill.append(i)
+
+        # doc._.technical_skills = set([str(skills) for skills in technical_skills])
+        # doc._.soft_skills = set([str(skills) for skills in soft_skills])
+        doc._.technical_skills = final_tech_skill
+        doc._.soft_skills = final_soft_skill
         return doc
 
     # def pattern_matching_component(self,doc):
