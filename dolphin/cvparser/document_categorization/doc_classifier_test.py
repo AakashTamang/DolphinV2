@@ -8,13 +8,24 @@ from gensim.models import Phrases
 from gensim.models.phrases import Phraser
 
 class DocClassifier:
+    """
+    Class to classify whether the input document is resume, job_description or others
+    """
     def __init__(self, tfidfmodelpath, classifiermodelpath, nlp):
         # self.processed_text = processed_text
+        """
+        Initializes tfidf model path, classifier model path and spacy nlp attribute
+        """
         self.tfidfmodelpath = tfidfmodelpath
         self.classifiermodelpath = classifiermodelpath
         self.nlp = nlp
 
     def sent_to_words(self,file_content):
+        """
+        Converts sentences into words
+        :param: file_content :type:list of lists
+        :returns: sentence :type:str 
+        """
         for sent in [file_content]:
             sent = re.sub('\S*@\S*\s?', '', sent)  # remove emails
             sent = simple_preprocess(str(sent), deacc=True)
@@ -22,7 +33,16 @@ class DocClassifier:
 
         # !python3 -m spacy download en  # run in terminal once
     def preprocess_words(self,texts, stop_words, bigram_mod, trigram_mod, allowed_postags=['NOUN', 'ADJ', 'VERB', 'ADV']):
-        """Remove Stopwords, Form Bigrams, Trigrams and Lemmatization"""
+        """
+        Removes Stopwords, Form Bigrams, Trigrams and Lemmatization
+        then screens for allowed pos-tags
+        :params: texts :type:list
+                 stop_words :type:list
+                 bigram_mod :type:list
+                 trigram_mod :type:list
+                 allowed_postags :type:list
+        :returns: texts :type:list of list
+        """
         texts = [[word for word in simple_preprocess(str(doc)) if word not in stop_words] for doc in texts]
         texts = [bigram_mod[doc] for doc in texts]
         texts = [trigram_mod[bigram_mod[doc]] for doc in texts]
@@ -35,6 +55,14 @@ class DocClassifier:
         return texts_out
 
     def classify(self,file_content):
+        '''
+        Classifier function that removes stop_words from file_content
+        forms bigrams, trigrams
+        loads both the tfidf and classifier model
+        and distinguishes the file_content
+        :params: file_content :type:list
+        :return: category type:str
+        '''
         stop_words = stopwords.words('english')
         stop_words.extend(['from', 'subject', 're', 'edu', 'use', 'not', 'would', 'say', 'could', '_', 'be', 'know', 'good', 'go', 'get', 'do', 'done', 'try', 'many', 'some', 'nice', 'thank', 'think', 'see', 'rather', 'easy', 'easily', 'lot', 'lack', 'make', 'want', 'seem', 'run', 'need', 'even', 'right', 'line', 'even', 'also', 'may', 'take', 'come'])
         

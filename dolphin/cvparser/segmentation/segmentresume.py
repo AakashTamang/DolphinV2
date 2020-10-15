@@ -4,8 +4,13 @@ import pickle
 from settings import ResumeSegmentationModelPath
 
 class ResumeSegmentCreator:
-
+    """
+    Class to segment resume details
+    """
     def __init__(self):
+        '''
+        Initializes major attributes for segmentation
+        '''
         self.personal_info = set("profile: profile information personal information additional information information: informations: introduction introduction:".split(' '))
         self.objective = set("summary career summary goal goal: summary: Summary: summary career objective objective: motivation motivation:".split(' '))
         self.skills = set("technical skills key mainfiles professional practical skill"

@@ -82,7 +82,12 @@ class Word2VecScorer():
         return similarity
 
     def calculate_score(self, resume_file, job_descriptions):
-        
+        '''
+        Calculates similarity score between resume and job-description
+        :params: resume_file :type:str
+                 job_descriptions :type:list
+        :returns: score :type:dict
+        '''
         resume_content = prepare_text(resume_file, dolower=False)
         preprocessed_resume_content = preprocessor_obj.preprocess_text(
             resume_content)
@@ -140,6 +145,13 @@ class Word2VecScorer():
         return score
 
     def score_jobs(self, job_1,job_1_title,other_jobs):
+        '''
+        Calculates score between multiple jobs
+        :params: job_1 :type:str
+                 job_1_title :type:str
+                 other_jobs :type:list
+        :returns: sorted_job_score :type:list of scores
+        '''
         preprocessed_job_1 = preprocessor_obj.preprocess_text(job_1)
         preprocessed_job_1_formatted = " ".join(preprocessed_job_1)
         job_vector_1 = self.get_word_embeddings(preprocessed_job_1_formatted)

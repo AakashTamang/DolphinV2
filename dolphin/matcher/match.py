@@ -2,12 +2,22 @@ import copy
 
 
 class matcher():
-
+    """
+    Class for finding the best match between job-seeker and job-provider using gale-shapley algorithm
+    """
     def __init__(self,oneJD_MultipleRes_Score,oneRes_MultipleJD_Score):
+        '''
+        scores with highest priority are at first
+        '''
         self.oneJD_MultipleRes_Score = oneJD_MultipleRes_Score
         self.oneRes_MultipleJD_Score = oneRes_MultipleJD_Score
     
     def prefs(self,scores):
+        '''
+        takes the api response of scores and order them as per the preferences 
+        :param: text :type:dict
+        :return:preference score :type:dict 
+        '''
         preferences = {}
         for i in range(len(scores.keys())): 
             id = list(scores.keys())[i]
@@ -16,7 +26,11 @@ class matcher():
         return preferences
     
     def matchmaker(self):
-
+        '''
+        matching algorithm that finds the best match between
+        the job-seeker and job-provider from the preferences score
+        :return matched candidates :type:dict
+        '''
         employerPrefs = self.prefs(self.oneJD_MultipleRes_Score)
         candidatePrefs = self.prefs(self.oneRes_MultipleJD_Score)
 

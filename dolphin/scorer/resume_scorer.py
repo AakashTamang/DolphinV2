@@ -114,6 +114,15 @@ def calculate_distance(address1, address2):
 
 
 def calculate_progress(designation_dates, junior_pool_list, intermediate_pool_list, senior_pool_list, manager_pool_list):
+    ''' 
+    Calculates progress of a job-seeker as per the designation_dates and position detail
+    params: designation date :type:dict
+            junior position :type:list
+            intermediate position :type:list
+            senior position :type:list
+            manager position :type:list
+    returns: progress score :type:float
+    '''
     unique_data = sorted(list(set(designation_dates)))
     uni_designations = []
     uni_dates = []
@@ -191,6 +200,23 @@ def calculate_progress(designation_dates, junior_pool_list, intermediate_pool_li
 
 def one_resume_multiple_jd_scorer(job, designations, user_exp, user_soft_skills, user_technical_skills, user_location, designation_dates, junior_pool_list, 
                                   intermediate_pool_list, senior_pool_list, manager_pool_list):
+    '''
+    scoring function for one resume and multiple jd
+    :params: job :tpye:json
+            designations :type:list
+            user_experience :type:list
+            user_soft_skills :type:list
+            user_technical_skills :type:list
+            user_location :type:list
+            designation_dates :type:list
+            junior_pool_list :type:list
+            intermediate_pool_list :type:list
+            senior_pool_list :type:list
+            manager_pool_list :type:list
+    returns: job_id :type:str
+             total_score :type:float
+             missing_words :type:list
+    '''
     job_id = job.get('id')
     job_title = job.get('job_title')
     job_description = job.get('job_description')
@@ -356,6 +382,23 @@ def one_resume_multiple_jd_scorer(job, designations, user_exp, user_soft_skills,
 
 def one_JD_multiple_resume_scorer(profile, job_title,all_designations, req_exp, req_soft_skills, req_technical_skills, employer_city, junior_pool_list, 
                                   intermediate_pool_list, senior_pool_list, manager_pool_list):
+    '''
+    Scoring function for one jd and multiple resume
+    :params: profile :type:json
+             job_title :type:str
+             all_designations :type:list
+             req_exp :type:list
+             req_soft_skills :type:list
+             req_technical_skills :type:list
+             employer_city :type:list
+             junior_pool_list :type:list
+             intermediate_pool_list :type:list
+             senior_pool_list :type:list
+             manager_pool_list :type:list
+    :returns: user_id :type:str
+              total_score :type:float
+              missing_words :type:list
+    '''
     user_id = profile.get('user_id')
     user_soft_skills, user_technical_skills, user_exp, designations, user_location, designation_dates = prepare_profile(
         profile)

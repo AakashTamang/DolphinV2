@@ -7,7 +7,9 @@ from nltk import RegexpParser
 from nltk.corpus import stopwords
 
 class PreprocessData:
-
+    """
+    Class to preprocess the textual content
+    """
     def __init__(self,spacy_corpus='en_core_web_sm',n_gram_len=3):
         self.n_gram_len = n_gram_len
         self.nlp = spacy.load(spacy_corpus)
@@ -45,7 +47,9 @@ class PreprocessData:
 
 
 class NLTKHelper:
-
+    """
+    Helper class to find skills and experiences in the token
+    """
     def __init__(self,chunk_rules):
         self.chunk_rules = chunk_rules
 

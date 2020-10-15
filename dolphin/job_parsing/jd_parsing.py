@@ -10,7 +10,13 @@ from job_parsing.skill_parser import technical_skills_parser,soft_skills_parser
 
 
 class SpacyNer():
+    """
+    Class to parse contents like skills, organization, designation, education
+    """
     def __init__(self):
+        '''
+        Intializes ner model and spacy nlp model path
+        '''
         self.spacy_ner_model_path = jd_parse_ner_model
         self.nlp = spacy.load(self.spacy_ner_model_path)
         # self.spacy_pipeline = self.nlpPipeline()
@@ -110,12 +116,23 @@ class SpacyNer():
     #     return technical_skills,soft_skills
 
     def get_skills_from_pool(self,jd_content):
+        '''
+        function to extract matching skills from the pool
+        :param: jd_content :type:str
+        :return: technical_skills :type:set
+                 soft_skills :type:set
+        '''
         jd_doc = self.nlp(jd_content)
         tecnhical_skills = technical_skills_parser(jd_doc)
         soft_skills = soft_skills_parser(jd_doc)
         return tecnhical_skills,soft_skills
 
     def get_unique_skills(self, skills):
+        '''
+        Fucntion to compare between n-grams to find and remove the duplicate content
+        :params: skills :type:list
+        :return: imp_words :type:list
+        '''
         monograms = []
         bigrams = []
         trigrams = []
