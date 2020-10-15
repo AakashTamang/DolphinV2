@@ -150,14 +150,14 @@ class ResumeSegmentCreator:
                 pass
 
         resume_info_extracted = {'profile':' '.join(Profile),
-                                 'objectives':' '.join( Objectives),
-                                 'experiences':'\n'.join( Experiences),
+                                 'objectives':' '.join(Objectives),
+                                 'experiences':'\n'.join(Experiences),
                                  'skills':' '.join(Skills),
                                  'projects':' '.join(Projects),
-                                 'academics':' '.join( Educations),
+                                 'academics':'\n'.join(Educations),
                                  'rewards': ' '.join(Rewards),
                                  'languages':' '.join(Languages),
-                                 'references':' '.join( References),
+                                 'references':' '.join(References),
                                  'links':' '.join(Links),
                                  }
       
