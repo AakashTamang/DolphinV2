@@ -22,6 +22,14 @@ class StanfordNER:
     ###----<NER model that chooses the particular model and parser>----###
     @staticmethod
     def ner_parser(model,text,mode):
+        '''
+        This method tokenizes the given text and pass it to the specififed parsing type.
+
+        :param model: The custom trained Stanford NER model
+        :param text: A cleaned document
+        :param mode: The type of parsing we want to perform like profile parsing.
+        :returns: Executes the parsing mode and pass the tagged tuples and the document
+        '''
         words = nltk.word_tokenize(text)
         parser = {
                 'profile':StanfordNER.personal_info_parser,
@@ -36,6 +44,13 @@ class StanfordNER:
 
     @staticmethod
     def experience_academics_parser(tagged_tuples,text):
+        '''
+        This method tags the tokens that is related to academics and the job experiences.
+
+        :param tagged_tuples: It contains all the tagged tuples
+        :param text: It contains the cleaned document which has been tagged
+        :returns: The formatted result of academics and experience
+        '''
         
         alldegree = []
         alllocations = []
@@ -400,6 +415,13 @@ class StanfordNER:
 
     @staticmethod
     def personal_info_parser(tagged_tuples,text):
+        '''
+        This method tags the tokens that is related to personal information.
+
+        :param tagged_tuples: It contains all the tagged tuples
+        :param text: It contains the cleaned document which has been tagged
+        :returns: The formatted result of personal information
+        '''
         name = 'Anonymous'
         address = []
         possible_name = []

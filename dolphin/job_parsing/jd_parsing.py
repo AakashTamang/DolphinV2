@@ -33,8 +33,9 @@ class SpacyNer():
     def parse(self, jd_content):
         '''
         Function for parsing usiing custom Spacy NER
-        params: job content in text
-        return : list of strings of predictions
+
+        param jd_content: job content in text
+        return: list of strings of predictions
         '''
         tokenized_sentences = sent_tokenize(jd_content)
         self.nlp = spacy.load(self.spacy_ner_model_path)
@@ -118,9 +119,11 @@ class SpacyNer():
     def get_skills_from_pool(self,jd_content):
         '''
         function to extract matching skills from the pool
-        :param: jd_content :type:str
-        :return: technical_skills :type:set
-                 soft_skills :type:set
+
+        :param jd_content: job content in text
+        :type jd_content: str
+        :return: technical_skills and soft_skills
+        :rtype: set
         '''
         jd_doc = self.nlp(jd_content)
         tecnhical_skills = technical_skills_parser(jd_doc)
@@ -130,8 +133,10 @@ class SpacyNer():
     def get_unique_skills(self, skills):
         '''
         Fucntion to compare between n-grams to find and remove the duplicate content
-        :params: skills :type:list
-        :return: imp_words :type:list
+
+        :param skills: Gets a list of skills
+        :return: imp_words
+        :rtype: list
         '''
         monograms = []
         bigrams = []

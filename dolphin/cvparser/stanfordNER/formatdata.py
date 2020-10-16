@@ -6,6 +6,12 @@ import datefinder
 from .standarizedata import comparedates
 
 def key_value_formatter(list_kv):
+    '''
+    This method gives us the personal information detail like name, address etc in a key value format
+
+    :param list_kv: A list of key value pairs
+    :return: re arranged key value pairs
+    '''
     syn_name = ['Name', 'name']
     syn_birthdate = ['D.O.B', "Date of Birth", "Birthdate", "Birth date", "D-O-B"]
     syn_address = ['Address', 'Location', 'address']
@@ -51,6 +57,7 @@ def formatPersonalinfo(personal_info):
     '''
     This functions takes all the unstructured personal information and returns the formatted and structured
     personal information.
+    
     :param personal_info: (List) of all the fields required as personal info.
     :return: List(Returns the formatted personal info will all the required fields.)
     '''
@@ -84,6 +91,16 @@ def formatPersonalinfo(personal_info):
 
 def formatEducationalinfo(sent_tokens, sent2idx, alldegree,
                         alluniversity, alldate, alllocations):
+    '''
+    This methods is used for extracting out the educational data in the required format.
+
+    :param sent_tokens: a list of sentences
+    :param sent2idx: contains the sentence along with its index value
+    :param alldegree: all of the degrees extracted from the document
+    :param alluniversity: all of the universities extracted from the document
+    :param alldate: all of the dates extracted from the document
+    :param alllocations: all of the locations extracted from the document
+    '''
     unique_identifier = 0
     degree_index = []
     university_index = []
@@ -204,7 +221,7 @@ def formatEducationalinfo(sent_tokens, sent2idx, alldegree,
                     degree = degree.replace(i,"").strip()
             academic_cluster.update({"program":degree})
         for university,unindex in university_index:
-            if abs(degindex - unindex) <= 2:
+            if abs(degindex - unindex) == 0:
                 academic_cluster.update({'institution':university})
         # for location,locindex  in location_index:
         #     if abs(degindex - locindex) <= 2:

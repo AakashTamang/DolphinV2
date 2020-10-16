@@ -7,16 +7,19 @@ class matcher():
     """
     def __init__(self,oneJD_MultipleRes_Score,oneRes_MultipleJD_Score):
         '''
-        scores with highest priority are at first
+        Scores with highest priority are at first
         '''
         self.oneJD_MultipleRes_Score = oneJD_MultipleRes_Score
         self.oneRes_MultipleJD_Score = oneRes_MultipleJD_Score
     
     def prefs(self,scores):
         '''
-        takes the api response of scores and order them as per the preferences 
-        :param: text :type:dict
-        :return:preference score :type:dict 
+        takes the api response of scores and order them as per the preferences
+
+        :param scores: Contains the score value
+        :type scores: dict
+        :return: preference score 
+        :rtype: dict 
         '''
         preferences = {}
         for i in range(len(scores.keys())): 
@@ -29,7 +32,9 @@ class matcher():
         '''
         matching algorithm that finds the best match between
         the job-seeker and job-provider from the preferences score
-        :return matched candidates :type:dict
+
+        :return: matched candidates 
+        :rtype: dict
         '''
         employerPrefs = self.prefs(self.oneJD_MultipleRes_Score)
         candidatePrefs = self.prefs(self.oneRes_MultipleJD_Score)

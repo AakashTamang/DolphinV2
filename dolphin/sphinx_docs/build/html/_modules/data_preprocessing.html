@@ -1,0 +1,150 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>data_preprocessing &#8212; Dolphwin 2.0 documentation</title>
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Dolphwin 2.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for data_preprocessing</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">nltk</span>
+<span class="kn">import</span> <span class="nn">spacy</span>
+<span class="kn">import</span> <span class="nn">textacy</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">nltk.tag</span> <span class="kn">import</span> <span class="n">pos_tag</span>
+<span class="kn">from</span> <span class="nn">nltk</span> <span class="kn">import</span> <span class="n">RegexpParser</span>
+<span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
+
+
+<div class="viewcode-block" id="PreprocessData"><a class="viewcode-back" href="../index.html#data_preprocessing.PreprocessData">[docs]</a><span class="k">class</span> <span class="nc">PreprocessData</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class for preprocessing contents from resumes or job descriptions</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spacy_corpus</span><span class="o">=</span><span class="s1">&#39;en_core_web_sm&#39;</span><span class="p">,</span> <span class="n">n_gram_len</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        pos_tags:</span>
+<span class="sd">        NN - noun, singular eg: - ‘desk’</span>
+<span class="sd">        NNS - noun, plural eg: - ‘desks’</span>
+<span class="sd">        NNP - proper noun, singular eg: - ‘Harrison’</span>
+<span class="sd">        VB - verb, base form eg: - take is the base form of taking</span>
+<span class="sd">        CD - Cardinal digit</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_gram_len</span> <span class="o">=</span> <span class="n">n_gram_len</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">spacy_corpus</span><span class="p">)</span>
+        <span class="n">load_stopwords</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">))</span>
+        <span class="n">new_stop_words</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;developer&#39;</span><span class="p">,</span><span class="s1">&#39;skills&#39;</span><span class="p">,</span><span class="s1">&#39;requirement&#39;</span><span class="p">,</span><span class="s1">&#39;qualification&#39;</span><span class="p">,</span><span class="s1">&#39;education&#39;</span><span class="p">,</span><span class="s1">&#39;good&#39;</span><span class="p">,</span><span class="s1">&#39;experienced&#39;</span><span class="p">,</span><span class="s1">&#39;engineer&#39;</span><span class="p">,</span><span class="s1">&#39;technology&#39;</span><span class="p">,</span><span class="s1">&#39;stakeholders&#39;</span><span class="p">,</span><span class="s1">&#39;potential&#39;</span><span class="p">,</span><span class="s1">&#39;may&#39;</span><span class="p">,</span> <span class="s1">&#39;usedwpf&#39;</span><span class="p">,</span> <span class="s1">&#39;patient&#39;</span><span class="p">,</span><span class="s1">&#39;florida&#39;</span><span class="p">,</span> <span class="s1">&#39;techniques&#39;</span><span class="p">,</span> <span class="s1">&#39;6&#39;</span><span class="p">,</span> <span class="s1">&#39;filters&#39;</span><span class="p">,</span><span class="s1">&#39;template&#39;</span><span class="p">,</span> <span class="s1">&#39;themes&#39;</span><span class="p">,</span> <span class="s1">&#39;atlanta&#39;</span><span class="p">,</span> <span class="s1">&#39;project&#39;</span><span class="p">,</span><span class="s1">&#39;data&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;help&#39;</span><span class="p">,</span><span class="s1">&#39;research&#39;</span><span class="p">,</span><span class="s1">&#39;domain&#39;</span><span class="p">,</span><span class="s1">&#39;results&#39;</span><span class="p">,</span><span class="s1">&#39;ingest&#39;</span><span class="p">,</span><span class="s1">&#39;transformation&#39;</span><span class="p">,</span><span class="s1">&#39;transfer&#39;</span><span class="p">,</span><span class="s1">&#39;opportunities&#39;</span><span class="p">,</span><span class="s1">&#39;training&#39;</span><span class="p">,</span><span class="s1">&#39;customers&#39;</span><span class="p">,</span><span class="s1">&#39;knowledge&#39;</span><span class="p">,</span><span class="s1">&#39;etc&#39;</span><span class="p">,</span><span class="s1">&#39;experience&#39;</span><span class="p">,</span><span class="s1">&#39;technical&#39;</span><span class="p">,</span><span class="s1">&#39;computer&#39;</span><span class="p">,</span> <span class="s1">&#39;dependency&#39;</span><span class="p">,</span> <span class="s1">&#39;achieve&#39;</span><span class="p">,</span> <span class="s1">&#39;panel&#39;</span><span class="p">,</span> <span class="s1">&#39;phases&#39;</span><span class="p">,</span> <span class="s1">&#39;performance&#39;</span><span class="p">,</span><span class="s1">&#39;extender&#39;</span><span class="p">,</span> <span class="s1">&#39;sources&#39;</span><span class="p">,</span> <span class="s1">&#39;solid&#39;</span><span class="p">,</span> <span class="s1">&#39;order&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;non-technical&#39;</span><span class="p">,</span><span class="s1">&#39;contenterra&#39;</span><span class="p">,</span> <span class="s1">&#39;consumed&#39;</span><span class="p">,</span> <span class="s1">&#39;basis&#39;</span><span class="p">,</span> <span class="s1">&#39;reviews&#39;</span><span class="p">,</span> <span class="s1">&#39;script&#39;</span><span class="p">,</span><span class="s1">&#39;cycle&#39;</span><span class="p">,</span> <span class="s1">&#39;pages&#39;</span><span class="p">,</span> <span class="s1">&#39;andhra&#39;</span><span class="p">,</span><span class="s1">&#39;architecture&#39;</span><span class="p">,</span> <span class="s1">&#39;implementation&#39;</span><span class="p">,</span> <span class="s1">&#39;solutions&#39;</span><span class="p">,</span> <span class="s1">&#39;crystal&#39;</span><span class="p">,</span><span class="s1">&#39;generate&#39;</span><span class="p">,</span> <span class="s1">&#39;reston&#39;</span><span class="p">,</span> <span class="s1">&#39;specification&#39;</span><span class="p">,</span> <span class="s1">&#39;support&#39;</span><span class="p">,</span> <span class="s1">&#39;mapping&#39;</span><span class="p">,</span> <span class="s1">&#39;queries&#39;</span><span class="p">,</span> <span class="s1">&#39;designs&#39;</span><span class="p">,</span> <span class="s1">&#39;generator&#39;</span><span class="p">,</span> <span class="s1">&#39;systems&#39;</span><span class="p">,</span> <span class="s1">&#39;department&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;staff&#39;</span><span class="p">,</span> <span class="s1">&#39;iis&#39;</span><span class="p">,</span> <span class="s1">&#39;commit&#39;</span><span class="p">,</span> <span class="s1">&#39;feel&#39;</span><span class="p">,</span> <span class="s1">&#39;inc.&#39;</span><span class="p">,</span> <span class="s1">&#39;life&#39;</span><span class="p">,</span> <span class="s1">&#39;distributed&#39;</span><span class="p">,</span> <span class="s1">&#39;board&#39;</span><span class="p">,</span><span class="s1">&#39;sign-on&#39;</span><span class="p">,</span> <span class="s1">&#39;rates&#39;</span><span class="p">,</span> <span class="s1">&#39;writing&#39;</span><span class="p">,</span><span class="s1">&#39;databases&#39;</span><span class="p">,</span> <span class="s1">&#39;applicationsleveragingado.net&#39;</span><span class="p">,</span><span class="s1">&#39;schemas&#39;</span><span class="p">,</span> <span class="s1">&#39;service&#39;</span><span class="p">,</span> <span class="s1">&#39;connectivity&#39;</span><span class="p">,</span> <span class="s1">&#39;meetings&#39;</span><span class="p">,</span> <span class="s1">&#39;base&#39;</span><span class="p">,</span> <span class="s1">&#39;directives&#39;</span><span class="p">,</span><span class="s1">&#39;change&#39;</span><span class="p">,</span> <span class="s1">&#39;relational&#39;</span><span class="p">,</span> <span class="s1">&#39;crated&#39;</span><span class="p">,</span> <span class="s1">&#39;website&#39;</span><span class="p">,</span> <span class="s1">&#39;utilize&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;accept&#39;</span><span class="p">,</span> <span class="s1">&#39;controller&#39;</span><span class="p">,</span> <span class="s1">&#39;workflows&#39;</span><span class="p">,</span><span class="s1">&#39;hands&#39;</span><span class="p">,</span> <span class="s1">&#39;section&#39;</span><span class="p">,</span> <span class="s1">&#39;tortoise&#39;</span><span class="p">,</span> <span class="s1">&#39;intelligence&#39;</span><span class="p">,</span><span class="s1">&#39;pharmacy&#39;</span><span class="p">,</span> <span class="s1">&#39;skins&#39;</span><span class="p">,</span> <span class="s1">&#39;forms&#39;</span><span class="p">,</span> <span class="s1">&#39;look&#39;</span><span class="p">,</span> <span class="s1">&#39;dec&#39;</span><span class="p">,</span> <span class="s1">&#39;functions&#39;</span><span class="p">,</span> <span class="s1">&#39;action&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="s1">&#39;services&#39;</span><span class="p">,</span> <span class="s1">&#39;file&#39;</span><span class="p">,</span><span class="s1">&#39;client&#39;</span><span class="p">,</span><span class="s1">&#39;clients&#39;</span><span class="p">,</span><span class="s1">&#39;process&#39;</span><span class="p">,</span><span class="s1">&#39;responsible&#39;</span><span class="p">,</span> <span class="s1">&#39;site&#39;</span><span class="p">,</span> <span class="s1">&#39;versions&#39;</span><span class="p">,</span> <span class="s1">&#39;installation&#39;</span><span class="p">,</span> <span class="s1">&#39;reusability&#39;</span><span class="p">,</span> <span class="s1">&#39;work&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;reader&#39;</span><span class="p">,</span> <span class="s1">&#39;map&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;industry&#39;</span><span class="p">,</span> <span class="s1">&#39;react&#39;</span><span class="p">,</span> <span class="s1">&#39;configurations&#39;</span><span class="p">,</span><span class="s1">&#39;iterative&#39;</span><span class="p">,</span><span class="s1">&#39;succeed&#39;</span><span class="p">,</span> <span class="s1">&#39;ability&#39;</span><span class="p">,</span><span class="s1">&#39;program&#39;</span><span class="p">,</span> <span class="s1">&#39;features&#39;</span><span class="p">,</span> <span class="s1">&#39;conflict&#39;</span><span class="p">,</span><span class="s1">&#39;applications&#39;</span><span class="p">,</span><span class="s1">&#39;application&#39;</span><span class="p">,</span><span class="s1">&#39;need&#39;</span><span class="p">,</span><span class="s1">&#39;require&#39;</span><span class="p">,</span><span class="s1">&#39;execution&#39;</span><span class="p">,</span><span class="s1">&#39;budets&#39;</span><span class="p">,</span><span class="s1">&#39;retrieve&#39;</span><span class="p">,</span><span class="s1">&#39;ado&#39;</span><span class="p">,</span><span class="s1">&#39;done&#39;</span><span class="p">,</span><span class="s1">&#39;improve&#39;</span><span class="p">,</span><span class="s1">&#39;end&#39;</span><span class="p">,</span><span class="s1">&#39;complete&#39;</span><span class="p">,</span><span class="s1">&#39;block&#39;</span><span class="p">,</span><span class="s1">&#39;purchase&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;transactions&#39;</span><span class="p">,</span> <span class="s1">&#39;controls&#39;</span><span class="p">,</span> <span class="s1">&#39;get&#39;</span><span class="p">,</span><span class="s1">&#39;single&#39;</span><span class="p">,</span><span class="s1">&#39;create&#39;</span><span class="p">,</span><span class="s1">&#39;issues&#39;</span><span class="p">,</span><span class="s1">&#39;safe&#39;</span><span class="p">,</span><span class="s1">&#39;phone&#39;</span><span class="p">,</span><span class="s1">&#39;number&#39;</span><span class="p">,</span><span class="s1">&#39;country&#39;</span><span class="p">,</span><span class="s1">&#39;city&#39;</span><span class="p">,</span><span class="s1">&#39;state&#39;</span><span class="p">,</span><span class="s1">&#39;place&#39;</span><span class="p">,</span><span class="s1">&#39;advantage&#39;</span><span class="p">,</span><span class="s1">&#39;able&#39;</span><span class="p">,</span><span class="s1">&#39;familirity&#39;</span><span class="p">,</span><span class="s1">&#39;volunteers&#39;</span><span class="p">,</span><span class="s1">&#39;tech&#39;</span><span class="p">,</span><span class="s1">&#39;custom&#39;</span><span class="p">,</span><span class="s1">&#39;bay&#39;</span><span class="p">,</span><span class="s1">&#39;follow&#39;</span><span class="p">,</span><span class="s1">&#39;focus&#39;</span><span class="p">,</span><span class="s1">&#39;revit&#39;</span><span class="p">,</span><span class="s1">&#39;responsibility&#39;</span><span class="p">,</span><span class="s1">&#39;responsibilities&#39;</span><span class="p">,</span><span class="s1">&#39;want&#39;</span><span class="p">,</span><span class="s1">&#39;meet&#39;</span><span class="p">,</span><span class="s1">&#39;write&#39;</span><span class="p">,</span><span class="s1">&#39;travel&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;document&#39;</span><span class="p">,</span><span class="s1">&#39;way&#39;</span><span class="p">,</span><span class="s1">&#39;provide&#39;</span><span class="p">,</span><span class="s1">&#39;growth&#39;</span><span class="p">,</span><span class="s1">&#39;execute&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stopwords</span> <span class="o">=</span> <span class="n">load_stopwords</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">new_stop_words</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">priority_tag</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;NN&#39;</span><span class="p">,</span> <span class="s1">&#39;NNP&#39;</span><span class="p">,</span> <span class="s1">&#39;NNS&#39;</span><span class="p">,</span> <span class="s1">&#39;VB&#39;</span><span class="p">,</span> <span class="s1">&#39;CD&#39;</span><span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tagged_tokens</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tokenized_text</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">doc</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ngrams</span> <span class="o">=</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="PreprocessData.preprocess_text"><a class="viewcode-back" href="../index.html#data_preprocessing.PreprocessData.preprocess_text">[docs]</a>    <span class="k">def</span> <span class="nf">preprocess_text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">filter_tag</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Preprocessing function that takes the plain text</span>
+<span class="sd">        removes words other than nouns and verbs then</span>
+<span class="sd">        removes the stop words if any in the filtered_tokens</span>
+<span class="sd">        :param text:type str</span>
+<span class="sd">        :return:final_tokens :type list</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">doc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nlp</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="c1"># self.tokenized_text_test = [token.text for token in self.doc]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tokenized_text</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">word_tokenize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tagged_tokens</span> <span class="o">=</span> <span class="n">pos_tag</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tokenized_text</span><span class="p">)</span>
+        <span class="n">n_gram_words</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_gram_len</span><span class="p">):</span>
+            <span class="n">n_gram_words</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">textacy</span><span class="o">.</span><span class="n">extract</span><span class="o">.</span><span class="n">ngrams</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">doc</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_grams</span> <span class="o">=</span> <span class="p">{</span><span class="n">ngm</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">ngm</span> <span class="ow">in</span> <span class="n">n_gram_words</span><span class="p">}</span>
+        <span class="k">if</span> <span class="n">filter_tag</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">final_tokens</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">pos</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tagged_tokens</span>
+                            <span class="k">if</span> <span class="n">pos</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">priority_tag</span><span class="p">]</span>
+            <span class="n">final_tokens</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">final_tokens</span>
+                            <span class="k">if</span> <span class="n">word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">stopwords</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">final_tokens</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">pos</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tagged_tokens</span><span class="p">]</span>
+
+        <span class="n">final_tokens</span> <span class="o">=</span> <span class="nb">list</span><span class="p">({</span><span class="n">tok</span> <span class="k">for</span> <span class="n">tok</span> <span class="ow">in</span> <span class="n">final_tokens</span><span class="p">})</span>
+        <span class="c1"># print (f&quot;final_tokens: \n{final_tokens}&quot;)</span>
+        <span class="c1"># print (&quot;\n---------------------------------\n&quot;)</span>
+        <span class="k">return</span> <span class="n">final_tokens</span></div></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Dolphwin 2.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Module code</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, InfoDevelopers.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
+    </div>
+  </body>
+</html>

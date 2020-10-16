@@ -38,9 +38,10 @@ def prepare_profile(profile):
     Takes user profile and filters
     only the necessary attributes
     for the score calculation
-    :arg profile of user :type dict
-    :returns technical skills,
-    all_experiences :type set , list
+
+    :arg profile: profile of user 
+    :type profile: dict
+    :returns: Information such as skills, experiences, designations etc.
     '''
     technical_skills = set(profile.get('technical_skills'))
     soft_skills = set(profile.get('soft_skills'))
@@ -83,10 +84,10 @@ def prepare_job_description(job_description):
     Takes the job description and
     extracts the skills and experience
     that falls under the job requirements
-    :arg job_description
-    :type str
-    :returns required_skills,required_experiences
-    :type set ,list
+
+    :arg job_description: The textual data of the job description 
+    :type job_description: str
+    :returns: Information such as skills, experiences, designations etc.
     '''
 
     required_technical_skills, required_soft_skills = NerObj.get_skills_from_pool(
@@ -102,8 +103,9 @@ def prepare_job_description(job_description):
 def calculate_distance(address1, address2):
     ''' 
     Gives distance between two locations
-    params: address of first location
-                adress of second location
+
+    param address1: address of first location
+    param address2: adress of second location
     returns: distance between two address in kilometers
     '''
     location1, (latitude1, longitude1) = geolocator.geocode(address1)
@@ -116,12 +118,19 @@ def calculate_distance(address1, address2):
 def calculate_progress(designation_dates, junior_pool_list, intermediate_pool_list, senior_pool_list, manager_pool_list):
     ''' 
     Calculates progress of a job-seeker as per the designation_dates and position detail
-    params: designation date :type:dict
-            junior position :type:list
-            intermediate position :type:list
-            senior position :type:list
-            manager position :type:list
-    returns: progress score :type:float
+    
+    :param designation_dates: designation date 
+    :type: dict
+    :param junior_pool_list: junior position 
+    :type: list
+    :param intermediate_pool_list: intermediate position 
+    :type: list
+    :param senior_pool_list: senior position 
+    :type: list
+    :param manager_pool_list: manager position 
+    :type: list
+    :returns: progress score 
+    :rtype: float
     '''
     unique_data = sorted(list(set(designation_dates)))
     uni_designations = []
@@ -202,20 +211,31 @@ def one_resume_multiple_jd_scorer(job, designations, user_exp, user_soft_skills,
                                   intermediate_pool_list, senior_pool_list, manager_pool_list):
     '''
     scoring function for one resume and multiple jd
-    :params: job :tpye:json
-            designations :type:list
-            user_experience :type:list
-            user_soft_skills :type:list
-            user_technical_skills :type:list
-            user_location :type:list
-            designation_dates :type:list
-            junior_pool_list :type:list
-            intermediate_pool_list :type:list
-            senior_pool_list :type:list
-            manager_pool_list :type:list
-    returns: job_id :type:str
-             total_score :type:float
-             missing_words :type:list
+
+    :param job: The information of the job
+    :type: json
+    :param designations: Collection of the user's designations in the resume
+    :type: list
+    :param user_exp: Collection of the user's experiece in the resume
+    :type: list
+    :param user_soft_skills: Collection of the user's soft skills in the resume
+    :type: list
+    :param user_technical_skills: Collection of the user's technical skills in the resume
+    :type: list
+    :param user_location: Collection of the user's location in the resume
+    :type: list
+    :param designation_dates: Collection of the dates of designation in the resume
+    :type: list
+    :param junior_pool_list: Collection of the names of the junior position
+    :type: list
+    :param intermediate_pool_list: Collection of the names of the intermediate position
+    :type: list
+    :param senior_pool_list: Collection of the names of the senior position
+    :type: list
+    :param manager_pool_list: Collection of the names of the manager position
+    :type: list
+    :returns: job_id, total_score, missing_words
+    :rtype: str, float, list
     '''
     job_id = job.get('id')
     job_title = job.get('job_title')
@@ -384,20 +404,31 @@ def one_JD_multiple_resume_scorer(profile, job_title,all_designations, req_exp, 
                                   intermediate_pool_list, senior_pool_list, manager_pool_list):
     '''
     Scoring function for one jd and multiple resume
-    :params: profile :type:json
-             job_title :type:str
-             all_designations :type:list
-             req_exp :type:list
-             req_soft_skills :type:list
-             req_technical_skills :type:list
-             employer_city :type:list
-             junior_pool_list :type:list
-             intermediate_pool_list :type:list
-             senior_pool_list :type:list
-             manager_pool_list :type:list
-    :returns: user_id :type:str
-              total_score :type:float
-              missing_words :type:list
+
+    :param profile: The information of the Job Seeker's resume
+    :type: json
+    :param job_title: Name of the job
+    :type: str
+    :param all_designations: Collection of designations from multiple jobs
+    :type: list
+    :param req_exp: Collection of the required experiences from multiple jobs
+    :type: list
+    :param req_soft_skills: Collection of required soft skills from multiple jobs
+    :type: list
+    :param req_technical_skills: Collection of required technical skills from multiple jobs
+    :type: list
+    :param employer_city: Collection of the location of office from multiple jobs
+    :type: list
+    :param junior_pool_list: Collection of the names of the junior position
+    :type: list
+    :param intermediate_pool_list: Collection of the names of the intermediate position
+    :type: list
+    :param senior_pool_list: Collection of the names of the senior position
+    :type: list
+    :param manager_pool_list: Collection of the names of the manager position
+    :type: list
+    :returns: user_id, total_score, missing_words
+    :rtype: str, float, list
     '''
     user_id = profile.get('user_id')
     user_soft_skills, user_technical_skills, user_exp, designations, user_location, designation_dates = prepare_profile(

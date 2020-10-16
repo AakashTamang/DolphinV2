@@ -1,0 +1,179 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>scorer.helper &#8212; Dolphwin 2.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Dolphwin 2.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for scorer.helper</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">nltk</span>
+<span class="kn">import</span> <span class="nn">spacy</span>
+<span class="kn">import</span> <span class="nn">textacy</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">nltk.tag</span> <span class="kn">import</span> <span class="n">pos_tag</span>
+<span class="kn">from</span> <span class="nn">nltk</span> <span class="kn">import</span> <span class="n">RegexpParser</span>
+<span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
+
+<div class="viewcode-block" id="PreprocessData"><a class="viewcode-back" href="../../index.html#scorer.helper.PreprocessData">[docs]</a><span class="k">class</span> <span class="nc">PreprocessData</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class to preprocess the textual content</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">spacy_corpus</span><span class="o">=</span><span class="s1">&#39;en_core_web_sm&#39;</span><span class="p">,</span><span class="n">n_gram_len</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_gram_len</span> <span class="o">=</span> <span class="n">n_gram_len</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">spacy_corpus</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stopwords</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">priority_tag</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;NN&#39;</span><span class="p">,</span><span class="s1">&#39;NNP&#39;</span><span class="p">,</span><span class="s1">&#39;NNS&#39;</span><span class="p">,</span><span class="s1">&#39;VB&#39;</span><span class="p">,</span><span class="s1">&#39;CD&#39;</span><span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tagged_tokens</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tokenized_text</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">doc</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ngrams</span> <span class="o">=</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="PreprocessData.preprocess_text"><a class="viewcode-back" href="../../index.html#scorer.helper.PreprocessData.preprocess_text">[docs]</a>    <span class="k">def</span> <span class="nf">preprocess_text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span><span class="n">filter_tag</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Preprocessing function that takes the plain text</span>
+<span class="sd">        removes words other than nouns and verbs then</span>
+<span class="sd">        removes the stop words if any in the filtered_tokens</span>
+
+<span class="sd">        :param text: Textual data of a document</span>
+<span class="sd">        :type text: str</span>
+<span class="sd">        :return: final_tokens</span>
+<span class="sd">        :rtype: list</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">doc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nlp</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="c1"># self.tokenized_text_test = [token.text for token in self.doc]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tokenized_text</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">word_tokenize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tagged_tokens</span> <span class="o">=</span> <span class="n">pos_tag</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tokenized_text</span><span class="p">)</span>
+        <span class="n">n_gram_words</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_gram_len</span><span class="p">):</span>
+            <span class="n">n_gram_words</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">textacy</span><span class="o">.</span><span class="n">extract</span><span class="o">.</span><span class="n">ngrams</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">doc</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_grams</span> <span class="o">=</span> <span class="p">{</span><span class="n">ngm</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">ngm</span> <span class="ow">in</span> <span class="n">n_gram_words</span><span class="p">}</span>
+        <span class="k">if</span> <span class="n">filter_tag</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">final_tokens</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">pos</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tagged_tokens</span> \
+                            <span class="k">if</span> <span class="n">pos</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">priority_tag</span><span class="p">]</span>
+            <span class="n">final_tokens</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">final_tokens</span>\
+                            <span class="k">if</span> <span class="n">word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">stopwords</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">final_tokens</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span><span class="p">,</span><span class="n">pos</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tagged_tokens</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">final_tokens</span></div></div>
+
+
+<div class="viewcode-block" id="NLTKHelper"><a class="viewcode-back" href="../../index.html#scorer.helper.NLTKHelper">[docs]</a><span class="k">class</span> <span class="nc">NLTKHelper</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Helper class to find skills and experiences in the token</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">chunk_rules</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">chunk_rules</span> <span class="o">=</span> <span class="n">chunk_rules</span>
+
+
+<div class="viewcode-block" id="NLTKHelper.experiencefinder"><a class="viewcode-back" href="../../index.html#scorer.helper.NLTKHelper.experiencefinder">[docs]</a>    <span class="k">def</span> <span class="nf">experiencefinder</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">tagged_tokens</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Takes the tokenized job description section of the</span>
+<span class="sd">        posted job and uses the nltk regex chunker to chunk the</span>
+<span class="sd">        experience out from the section</span>
+
+<span class="sd">        :param tagged_tokens: description part of the job</span>
+<span class="sd">        :type tagged_tokens: str</span>
+<span class="sd">        :return: provides the list of chunked experiences</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">chunked_phrases</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">rule</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunk_rules</span><span class="p">:</span>
+            <span class="n">chunk_parser</span> <span class="o">=</span> <span class="n">RegexpParser</span><span class="p">(</span><span class="n">rule</span><span class="p">)</span>
+            <span class="n">matched_phrases</span> <span class="o">=</span> <span class="n">chunk_parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">tagged_tokens</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">subtree</span> <span class="ow">in</span> <span class="n">matched_phrases</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">subtree</span><span class="p">)</span> <span class="o">==</span> <span class="n">nltk</span><span class="o">.</span><span class="n">Tree</span> <span class="ow">and</span> <span class="n">subtree</span><span class="o">.</span><span class="n">label</span><span class="p">()</span> <span class="o">==</span> <span class="n">rule</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]:</span>
+                    <span class="n">chunked_phrases</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">token</span> <span class="k">for</span> <span class="n">token</span><span class="p">,</span> <span class="n">pos</span> <span class="ow">in</span> <span class="n">subtree</span><span class="o">.</span><span class="n">leaves</span><span class="p">()]))</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">chunked_phrases</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="NLTKHelper.skillsfinder"><a class="viewcode-back" href="../../index.html#scorer.helper.NLTKHelper.skillsfinder">[docs]</a>    <span class="k">def</span> <span class="nf">skillsfinder</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">n_grams</span><span class="p">,</span><span class="n">skillFilePath</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Takes the n-grams created from any document</span>
+<span class="sd">        then compares them to the existing pool of the skills</span>
+
+<span class="sd">        :param n_grams: Skills in n grams</span>
+<span class="sd">        :type n_grams: list</span>
+<span class="sd">        :param skillFilePath: Path of the file that contains the skills</span>
+<span class="sd">        :return: provides the set of skills found</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="n">skills</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">skillFilePath</span><span class="p">)</span>
+        <span class="n">skill_mapper</span> <span class="o">=</span> <span class="p">{</span><span class="n">skill</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span><span class="n">skill</span> <span class="k">for</span> <span class="n">skill</span> <span class="ow">in</span> <span class="n">n_grams</span><span class="p">}</span>
+        <span class="n">total_skills</span> <span class="o">=</span> <span class="p">[</span><span class="n">skill</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">skill</span> <span class="ow">in</span> <span class="n">n_grams</span><span class="p">]</span>
+        <span class="n">skills</span><span class="p">[</span><span class="s1">&#39;matched&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">skills</span><span class="p">[</span><span class="s1">&#39;Predefined_skills&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">total_skills</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">matched_skills</span> <span class="o">=</span> <span class="n">skills</span><span class="o">.</span><span class="n">Predefined_skills</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">skills</span><span class="p">[</span><span class="s1">&#39;matched&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+        <span class="n">matched_skills</span> <span class="o">=</span> <span class="n">matched_skills</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        <span class="n">formatted_skills</span> <span class="o">=</span> <span class="p">{</span><span class="n">skill_mapper</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">skill</span><span class="p">)</span> <span class="k">for</span> <span class="n">skill</span> <span class="ow">in</span> <span class="n">matched_skills</span><span class="p">}</span>
+        <span class="k">return</span> <span class="n">formatted_skills</span></div></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Dolphwin 2.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, InfoDevelopers.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
+    </div>
+  </body>
+</html>

@@ -25,8 +25,11 @@ class PreprocessData:
         Preprocessing function that takes the plain text
         removes words other than nouns and verbs then
         removes the stop words if any in the filtered_tokens
-        :param text:type str
-        :return:final_tokens :type list
+
+        :param text: Textual data of a document
+        :type text: str
+        :return: final_tokens
+        :rtype: list
         '''
         self.doc = self.nlp(text)
         # self.tokenized_text_test = [token.text for token in self.doc]
@@ -59,8 +62,10 @@ class NLTKHelper:
         Takes the tokenized job description section of the
         posted job and uses the nltk regex chunker to chunk the
         experience out from the section
-        :param description_section :type str
-        :return:provides the list of experience chunked
+
+        :param tagged_tokens: description part of the job
+        :type tagged_tokens: str
+        :return: provides the list of chunked experiences
         '''
         chunked_phrases = []
         for rule in self.chunk_rules:
@@ -75,9 +80,11 @@ class NLTKHelper:
     def skillsfinder(self,n_grams,skillFilePath):
         '''
         Takes the n-grams created from any document
-        then compares them to the existing pool of
-        the skills
-        :param n_grams    :type list
+        then compares them to the existing pool of the skills
+
+        :param n_grams: Skills in n grams
+        :type n_grams: list
+        :param skillFilePath: Path of the file that contains the skills
         :return: provides the set of skills found
         '''
 
