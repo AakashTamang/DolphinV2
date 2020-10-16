@@ -23,6 +23,14 @@ class SpacyNer():
         # self.spacy_pipeline.add_skills_pattern_matching()
 
     def clean_parse_jd(self,file_path):
+        '''
+        This method takes the document or the it's path and parsers the required
+        information like designation, experience, education etc. form it.
+
+        :param file_path: Path of the document or a document itself
+        :return: A parsed data from the document
+        :rtype: dict
+        '''
         cleaned_text = prepare_text(file_path,dolower=False)
         desig, org, exp, edu, loc = self.parse(cleaned_text)
         technical_skills,soft_skills = self.get_skills_from_pool(cleaned_text)

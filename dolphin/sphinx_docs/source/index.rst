@@ -19,73 +19,90 @@ Datareader
 
 Data Preprocessing
 ==========================
-.. automodule:: data_preprocessing
+.. autoclass:: data_preprocessing.PreprocessData
    :members:
+
+   .. automethod:: __init__
 
 Word2Vec
 ==============
-.. automodule:: word2vec
+.. autoclass:: word2vec.Word2VecScorer
    :members:
 
+   .. automethod:: __init__
 
 Document_categorization
 ===================================
-.. automodule:: cvparser.document_categorization.doc_classifier_test
-	:members:
+.. autoclass:: cvparser.document_categorization.doc_classifier_test.DocClassifier
+   :members:
+
+   .. automethod:: __init__
 
 Resume_segmentation
 ===================================
-.. automodule:: cvparser.segmentation.segmentresume
+.. autoclass:: cvparser.segmentation.segmentresume.ResumeSegmentCreator
    :members:
+
+   .. automethod:: __init__
 
 Named_entity_recognition
 ===================================
-.. automodule:: cvparser.stanfordNER.formatdata
-	:members:
+.. autoclass:: cvparser.stanfordNER.namedentityrecognition.StanfordNER
+   :members:
 
-.. automodule:: cvparser.stanfordNER.namedentityrecognition
+   .. automethod:: __init__
+
+.. automodule:: cvparser.stanfordNER.formatdata
 	:members:
 
 .. automodule:: cvparser.stanfordNER.standarizedata
 	:members:
 
+spaCy pipeline
+=======================
+.. autoclass:: cvparser.pipeline.NlpPipeline
+   :members:
+
+   .. automethod:: __init__
 
 Parsing a Document
 =======================
-.. automodule:: cvparser.pipeline
+.. autoclass:: cvparser.newParse.Parser
    :members:
 
-.. automodule:: cvparser.newParse
-   :members:
-
-Domain Classification
-=========================
-.. automodule:: domain_classification
-   :members:
+   .. automethod:: __init__
 
 Job Parsing
 ============================
+.. autoclass:: job_parsing.jd_parsing.SpacyNer
+   :members:
+
+   .. automethod:: __init__
+
+.. autoclass:: job_parsing.stanford_ner.Stanford_NER
+   :members:
+
+   .. automethod:: __init__
+
 .. automodule:: job_parsing.createngrams
    :members:
-
-.. automodule:: job_parsing.jd_parsing
-   :members:
-
+   
 .. automodule:: job_parsing.skill_parser
-   :members:
-
-.. automodule:: job_parsing.stanford_ner
    :members:
 
 Matcher Component
 =========================
-.. automodule:: matcher.match
+.. autoclass:: matcher.match.matcher
    :members:
+
+   .. automethod:: __init__
 
 Scoring Component
 ======================
-.. automodule:: scorer.helper
+.. autoclass:: scorer.helper.PreprocessData
    :members:
+
+   .. automethod:: __init__
 
 .. automodule:: scorer.resume_scorer
    :members:

@@ -69,11 +69,11 @@
 <span class="sd">    Gives embeddings similarity between two textual contents</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word2vec_path</span><span class="p">):</span>
+<div class="viewcode-block" id="Word2VecScorer.__init__"><a class="viewcode-back" href="../index.html#word2vec.Word2VecScorer.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word2vec_path</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This cosntructor loads the word2vec model that will be used for getting the  word embeddings on the textual document and give similarity between two documents</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">word2vec</span> <span class="o">=</span> <span class="n">Word2Vec</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">word2vec_path</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">word2vec</span> <span class="o">=</span> <span class="n">Word2Vec</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">word2vec_path</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Word2VecScorer.get_word_embeddings"><a class="viewcode-back" href="../index.html#word2vec.Word2VecScorer.get_word_embeddings">[docs]</a>    <span class="k">def</span> <span class="nf">get_word_embeddings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">token_list</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>

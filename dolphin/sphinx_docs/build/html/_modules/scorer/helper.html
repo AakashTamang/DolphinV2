@@ -49,7 +49,7 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Class to preprocess the textual content</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">spacy_corpus</span><span class="o">=</span><span class="s1">&#39;en_core_web_sm&#39;</span><span class="p">,</span><span class="n">n_gram_len</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+<div class="viewcode-block" id="PreprocessData.__init__"><a class="viewcode-back" href="../../index.html#scorer.helper.PreprocessData.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">spacy_corpus</span><span class="o">=</span><span class="s1">&#39;en_core_web_sm&#39;</span><span class="p">,</span><span class="n">n_gram_len</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">n_gram_len</span> <span class="o">=</span> <span class="n">n_gram_len</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">spacy_corpus</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">stopwords</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">))</span>
@@ -57,7 +57,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">tagged_tokens</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tokenized_text</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">doc</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ngrams</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ngrams</span> <span class="o">=</span> <span class="kc">None</span></div>
 
 <div class="viewcode-block" id="PreprocessData.preprocess_text"><a class="viewcode-back" href="../../index.html#scorer.helper.PreprocessData.preprocess_text">[docs]</a>    <span class="k">def</span> <span class="nf">preprocess_text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span><span class="n">filter_tag</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
@@ -88,7 +88,7 @@
         <span class="k">return</span> <span class="n">final_tokens</span></div></div>
 
 
-<div class="viewcode-block" id="NLTKHelper"><a class="viewcode-back" href="../../index.html#scorer.helper.NLTKHelper">[docs]</a><span class="k">class</span> <span class="nc">NLTKHelper</span><span class="p">:</span>
+<span class="k">class</span> <span class="nc">NLTKHelper</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Helper class to find skills and experiences in the token</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -96,7 +96,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">chunk_rules</span> <span class="o">=</span> <span class="n">chunk_rules</span>
 
 
-<div class="viewcode-block" id="NLTKHelper.experiencefinder"><a class="viewcode-back" href="../../index.html#scorer.helper.NLTKHelper.experiencefinder">[docs]</a>    <span class="k">def</span> <span class="nf">experiencefinder</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">tagged_tokens</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">experiencefinder</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">tagged_tokens</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Takes the tokenized job description section of the</span>
 <span class="sd">        posted job and uses the nltk regex chunker to chunk the</span>
@@ -113,10 +113,10 @@
             <span class="k">for</span> <span class="n">subtree</span> <span class="ow">in</span> <span class="n">matched_phrases</span><span class="p">:</span>
                 <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">subtree</span><span class="p">)</span> <span class="o">==</span> <span class="n">nltk</span><span class="o">.</span><span class="n">Tree</span> <span class="ow">and</span> <span class="n">subtree</span><span class="o">.</span><span class="n">label</span><span class="p">()</span> <span class="o">==</span> <span class="n">rule</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]:</span>
                     <span class="n">chunked_phrases</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">token</span> <span class="k">for</span> <span class="n">token</span><span class="p">,</span> <span class="n">pos</span> <span class="ow">in</span> <span class="n">subtree</span><span class="o">.</span><span class="n">leaves</span><span class="p">()]))</span>
-        <span class="k">return</span> <span class="p">(</span><span class="n">chunked_phrases</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="p">(</span><span class="n">chunked_phrases</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="NLTKHelper.skillsfinder"><a class="viewcode-back" href="../../index.html#scorer.helper.NLTKHelper.skillsfinder">[docs]</a>    <span class="k">def</span> <span class="nf">skillsfinder</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">n_grams</span><span class="p">,</span><span class="n">skillFilePath</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">skillsfinder</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">n_grams</span><span class="p">,</span><span class="n">skillFilePath</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Takes the n-grams created from any document</span>
 <span class="sd">        then compares them to the existing pool of the skills</span>
@@ -134,7 +134,7 @@
         <span class="n">matched_skills</span> <span class="o">=</span> <span class="n">skills</span><span class="o">.</span><span class="n">Predefined_skills</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">skills</span><span class="p">[</span><span class="s1">&#39;matched&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
         <span class="n">matched_skills</span> <span class="o">=</span> <span class="n">matched_skills</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
         <span class="n">formatted_skills</span> <span class="o">=</span> <span class="p">{</span><span class="n">skill_mapper</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">skill</span><span class="p">)</span> <span class="k">for</span> <span class="n">skill</span> <span class="ow">in</span> <span class="n">matched_skills</span><span class="p">}</span>
-        <span class="k">return</span> <span class="n">formatted_skills</span></div></div>
+        <span class="k">return</span> <span class="n">formatted_skills</span>
 </pre></div>
 
           </div>
