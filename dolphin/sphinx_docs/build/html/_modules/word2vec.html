@@ -1,0 +1,282 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>word2vec &#8212; Dolphwin 2.0 documentation</title>
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Dolphwin 2.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for word2vec</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">settings</span> <span class="k">as</span> <span class="nn">cfg</span>
+<span class="kn">from</span> <span class="nn">gensim.models</span> <span class="kn">import</span> <span class="n">Word2Vec</span>
+<span class="c1"># from nltk.corpus import stopwords</span>
+<span class="kn">import</span> <span class="nn">ast</span>
+<span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">word_tokenize</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">spatial</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">nltk</span>
+<span class="kn">import</span> <span class="nn">string</span>
+<span class="kn">from</span> <span class="nn">datareader</span> <span class="kn">import</span> <span class="n">prepare_text</span>
+<span class="kn">from</span> <span class="nn">data_preprocessing</span> <span class="kn">import</span> <span class="n">PreprocessData</span>
+<span class="c1"># from job_parsing.jd_parsing import SpacyNer</span>
+<span class="c1"># from settings import technical_skills_pool, soft_skills_pool</span>
+<span class="c1"># from cvparser.pipeline import NlpPipeline</span>
+
+
+<span class="c1"># nltk.download(&#39;stopwords&#39;)</span>
+
+<span class="c1"># stop_words = set(stopwords.words(&#39;english&#39;))</span>
+
+<span class="n">preprocessor_obj</span> <span class="o">=</span> <span class="n">PreprocessData</span><span class="p">()</span>
+
+<span class="c1"># NerObj = SpacyNer()</span>
+<span class="c1"># spacy_pipeline = NlpPipeline()</span>
+<span class="c1"># spacy_pipeline.add_skills_pattern_matching()</span>
+
+
+<div class="viewcode-block" id="Word2VecScorer"><a class="viewcode-back" href="../index.html#word2vec.Word2VecScorer">[docs]</a><span class="k">class</span> <span class="nc">Word2VecScorer</span><span class="p">():</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Gives embeddings similarity between two textual contents</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word2vec_path</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This cosntructor loads the word2vec model that will be used for getting the  word embeddings on the textual document and give similarity between two documents</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">word2vec</span> <span class="o">=</span> <span class="n">Word2Vec</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">word2vec_path</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Word2VecScorer.get_word_embeddings"><a class="viewcode-back" href="../index.html#word2vec.Word2VecScorer.get_word_embeddings">[docs]</a>    <span class="k">def</span> <span class="nf">get_word_embeddings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">token_list</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Takes the list of the tokenized resumes and returns their embedded vectors</span>
+
+<span class="sd">        :param token_list: It is a list of list which contains the tokens of a document</span>
+<span class="sd">        :type token_list: list</span>
+<span class="sd">        :return: It returns a list of list which contians word embeddings of the provided tokens</span>
+<span class="sd">        :rtype: list</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">doc_word2vec</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">token_list</span><span class="p">)</span> <span class="o">==</span> <span class="nb">str</span><span class="p">:</span>
+            <span class="n">token_list</span> <span class="o">=</span> <span class="n">token_list</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+            <span class="n">flat_list</span> <span class="o">=</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">token_list</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">token_list</span> <span class="o">=</span> <span class="n">token_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+            <span class="n">flat_list</span> <span class="o">=</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">token_list</span><span class="p">)</span>
+        
+        <span class="c1"># print(&quot;Flat list is this -- {}  type --{}&quot;.format(flat_list,type(flat_list)))</span>
+        <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">flat_list</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">doc_word2vec</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">word2vec</span><span class="p">[</span><span class="n">token</span><span class="p">])</span>
+                <span class="c1"># print(&quot;Now Token&quot;,token)</span>
+            <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">K</span><span class="p">:</span>
+                <span class="c1"># logger.exception(msg=K)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Keyerror here....:  &quot;</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
+
+        <span class="n">doc_vectors</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">doc_word2vec</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">doc_vectors</span></div>
+
+<div class="viewcode-block" id="Word2VecScorer.calculate_similarity"><a class="viewcode-back" href="../index.html#word2vec.Word2VecScorer.calculate_similarity">[docs]</a>    <span class="k">def</span> <span class="nf">calculate_similarity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">first_vector</span><span class="p">,</span> <span class="n">second_vector</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This function makes the use of cosine distance to measure the similarity between two embeddings</span>
+
+<span class="sd">        :param first_vector: The first vector value</span>
+<span class="sd">        :type first_vector: list</span>
+<span class="sd">        :param second_vector: The second vector value</span>
+<span class="sd">        :type second_vector: list</span>
+<span class="sd">        :return: Similarity score between the first and second vector</span>
+<span class="sd">        :rtype: float</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">similarity</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">spatial</span><span class="o">.</span><span class="n">distance</span><span class="o">.</span><span class="n">cosine</span><span class="p">(</span><span class="n">first_vector</span><span class="p">,</span> <span class="n">second_vector</span><span class="p">)))</span>
+        <span class="k">if</span> <span class="n">similarity</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">similarity</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">elif</span> <span class="n">similarity</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">:</span>
+            <span class="n">similarity</span> <span class="o">=</span> <span class="mi">100</span>
+        <span class="k">return</span> <span class="n">similarity</span></div>
+
+<div class="viewcode-block" id="Word2VecScorer.calculate_score"><a class="viewcode-back" href="../index.html#word2vec.Word2VecScorer.calculate_score">[docs]</a>    <span class="k">def</span> <span class="nf">calculate_score</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resume_file</span><span class="p">,</span> <span class="n">job_descriptions</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Calculates similarity score between resume and job-description</span>
+
+<span class="sd">        :param resume_file: It is a document(resume)</span>
+<span class="sd">        :param job_descriptions: The information about the job</span>
+<span class="sd">        :type job_descriptions: list</span>
+<span class="sd">        :returns: Score between the resume and the job description</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">resume_content</span> <span class="o">=</span> <span class="n">prepare_text</span><span class="p">(</span><span class="n">resume_file</span><span class="p">,</span> <span class="n">dolower</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">preprocessed_resume_content</span> <span class="o">=</span> <span class="n">preprocessor_obj</span><span class="o">.</span><span class="n">preprocess_text</span><span class="p">(</span>
+            <span class="n">resume_content</span><span class="p">)</span>
+        <span class="n">preprocessed_resume_content</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">preprocessed_resume_content</span><span class="p">)</span>
+        <span class="c1"># res_technical_skills, res_soft_skills = NerObj.get_skills(preprocessed_resume_content)</span>
+        <span class="c1"># jd_skills = spacy_pipeline.process_text(preprocessed_resume_content)</span>
+        <span class="c1"># res_technical_skills = jd_skills._.technical_skills</span>
+        <span class="c1"># res_soft_skills = jd_skills._.soft_skills</span>
+
+        <span class="c1"># preprocessed_resume_content = resume_content</span>
+        <span class="n">resume_vector</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_word_embeddings</span><span class="p">(</span><span class="n">preprocessed_resume_content</span><span class="p">)</span>
+        <span class="n">score</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">jd</span> <span class="ow">in</span> <span class="n">job_descriptions</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">jd</span><span class="p">)</span> <span class="o">==</span> <span class="nb">str</span><span class="p">:</span>
+                <span class="n">jd</span> <span class="o">=</span> <span class="n">ast</span><span class="o">.</span><span class="n">literal_eval</span><span class="p">(</span><span class="n">jd</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">pass</span>
+            <span class="n">job_description</span> <span class="o">=</span> <span class="n">jd</span><span class="p">[</span><span class="s1">&#39;job_description&#39;</span><span class="p">]</span>
+            <span class="n">job_text</span> <span class="o">=</span> <span class="n">preprocessor_obj</span><span class="o">.</span><span class="n">preprocess_text</span><span class="p">(</span><span class="n">job_description</span><span class="p">)</span>
+            <span class="n">job_text</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">job_text</span><span class="p">)</span>
+            <span class="c1"># jd_technical_skills, jd_soft_skills = NerObj.get_skills(job_text)</span>
+            <span class="c1"># jd_skills = spacy_pipeline.process_text(job_text)</span>
+            <span class="c1"># jd_technical_skills = jd_skills._.technical_skills</span>
+            <span class="c1"># jd_soft_skills = jd_skills._.soft_skills</span>
+            <span class="c1"># matched_soft_skills = res_soft_skills.intersection(jd_soft_skills)</span>
+            <span class="c1"># matched_technical_skills = res_technical_skills.intersection(jd_technical_skills)</span>
+
+            <span class="c1"># if matched_technical_skills != 0:</span>
+            <span class="c1">#     try:</span>
+            <span class="c1">#         technical_skill_score = len(matched_technical_skills) / len(jd_technical_skills) * 35</span>
+            <span class="c1">#     except:</span>
+            <span class="c1">#         technical_skill_score = 35</span>
+            <span class="c1"># else:</span>
+            <span class="c1">#     technical_skill_score = 0</span>
+            
+            <span class="c1"># if matched_soft_skills != 0:</span>
+            <span class="c1">#     try:</span>
+            <span class="c1">#         soft_skills_score = len(matched_soft_skills) / len(jd_soft_skills) * 5</span>
+            <span class="c1">#     except:</span>
+            <span class="c1">#         soft_skills_score = 5</span>
+            <span class="c1"># else:</span>
+            <span class="c1">#     soft_skills_score = 0</span>
+            
+            <span class="c1"># skill_score = technical_skill_score + soft_skills_score</span>
+
+            <span class="c1"># job_text = job_description</span>
+            <span class="n">job_vector</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_word_embeddings</span><span class="p">(</span><span class="n">job_text</span><span class="p">)</span>
+            <span class="n">similarity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">calculate_similarity</span><span class="p">(</span><span class="n">job_vector</span><span class="p">,</span> <span class="n">resume_vector</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">similarity</span><span class="p">):</span>
+                <span class="n">similarity</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">word2vecscore</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">similarity</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+            <span class="c1"># score[jd[&#39;pk&#39;]] = word2vecscore + skill_score</span>
+            <span class="n">score</span><span class="p">[</span><span class="n">jd</span><span class="p">[</span><span class="s1">&#39;pk&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">word2vecscore</span>
+            <span class="c1"># print(score)</span>
+        <span class="k">return</span> <span class="n">score</span></div>
+
+<div class="viewcode-block" id="Word2VecScorer.score_jobs"><a class="viewcode-back" href="../index.html#word2vec.Word2VecScorer.score_jobs">[docs]</a>    <span class="k">def</span> <span class="nf">score_jobs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job_1</span><span class="p">,</span><span class="n">job_1_title</span><span class="p">,</span><span class="n">other_jobs</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Calculates score between multiple jobs</span>
+
+<span class="sd">        :param job_1: A textual information about a job</span>
+<span class="sd">        :type job_1: str</span>
+<span class="sd">        :param job_1_title: The title of the job</span>
+<span class="sd">        :type job_1_title: str</span>
+<span class="sd">        :param other_jobs: A list of other jobs</span>
+<span class="sd">        :type other_jobs: list</span>
+<span class="sd">        :returns: Scores between the multiple jobs</span>
+<span class="sd">        :rtype: list</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">preprocessed_job_1</span> <span class="o">=</span> <span class="n">preprocessor_obj</span><span class="o">.</span><span class="n">preprocess_text</span><span class="p">(</span><span class="n">job_1</span><span class="p">)</span>
+        <span class="n">preprocessed_job_1_formatted</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">preprocessed_job_1</span><span class="p">)</span>
+        <span class="n">job_vector_1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_word_embeddings</span><span class="p">(</span><span class="n">preprocessed_job_1_formatted</span><span class="p">)</span>
+        <span class="n">job_title_1</span> <span class="o">=</span> <span class="n">job_1_title</span>
+        <span class="n">job_score</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">job</span> <span class="ow">in</span> <span class="n">other_jobs</span><span class="p">:</span>
+            <span class="n">job_text</span> <span class="o">=</span> <span class="n">job</span><span class="p">[</span><span class="s1">&#39;job_description&#39;</span><span class="p">]</span>
+            <span class="n">job_title</span> <span class="o">=</span> <span class="n">job</span><span class="p">[</span><span class="s1">&#39;job_title&#39;</span><span class="p">]</span>
+            <span class="n">job_text_preprocessed</span> <span class="o">=</span> <span class="n">preprocessor_obj</span><span class="o">.</span><span class="n">preprocess_text</span><span class="p">(</span><span class="n">job_text</span><span class="p">)</span>
+            <span class="n">job_text_preprocessed_formatted</span><span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">job_text_preprocessed</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Other job &quot;</span><span class="p">,</span><span class="n">job_text_preprocessed_formatted</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The job&quot;</span><span class="p">,</span><span class="n">preprocessed_job_1_formatted</span><span class="p">)</span>
+            <span class="n">job_text_vector</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_word_embeddings</span><span class="p">(</span><span class="n">job_text_preprocessed_formatted</span><span class="p">)</span>
+            <span class="n">simialrity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">calculate_similarity</span><span class="p">(</span>
+                <span class="n">job_vector_1</span><span class="p">,</span> <span class="n">job_text_vector</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">job_title</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="n">job_title_1</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+                <span class="n">desig_score</span> <span class="o">=</span> <span class="mi">20</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">desig_score</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">content_score</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">simialrity</span> <span class="o">*</span> <span class="mi">80</span><span class="p">)</span>
+            <span class="n">job_score</span><span class="p">[</span><span class="n">job</span><span class="p">[</span><span class="s1">&#39;pk&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">desig_score</span> <span class="o">+</span> <span class="n">content_score</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Desig score ---</span><span class="si">{}</span><span class="s2"> Content score -- </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">desig_score</span><span class="p">,</span><span class="n">content_score</span><span class="p">))</span>
+        
+        <span class="n">sorted_job_score</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">job_score</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">reverse</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)}</span>
+        <span class="c1"># top_four_job_score = {k: sorted_job_score[k] for k in list(sorted_job_score)[:4]}</span>
+        <span class="k">return</span> <span class="n">sorted_job_score</span></div></div>
+
+
+<span class="c1"># if __name__ == &quot;__main__&quot;:</span>
+<span class="c1">#     scorer_obj = Word2VecScorer(cfg.word2vec_model)</span>
+<span class="c1">#     test1 = &quot;I want a job in python&quot;</span>
+<span class="c1">#     test2 = &quot;We need a django developer&quot;</span>
+<span class="c1">#     test1_embedding = scorer_obj.get_word_embeddings(test1)</span>
+<span class="c1">#     test2_embedding = scorer_obj.get_word_embeddings(test2)</span>
+<span class="c1">#     similarity = scorer_obj.calculate_similarity(</span>
+<span class="c1">#         test1_embedding, test2_embedding)</span>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Dolphwin 2.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Module code</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, InfoDevelopers.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
+    </div>
+  </body>
+</html>

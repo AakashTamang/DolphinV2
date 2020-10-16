@@ -38,10 +38,12 @@ class Word2VecScorer():
 
     def get_word_embeddings(self, token_list):
         '''
-        Takes the list of the tokenized
-        resumes and returns their embedded vectors
-        :param resume_token_list:type list of list
-        :return:cv_word2vec :type list of list
+        Takes the list of the tokenized resumes and returns their embedded vectors
+
+        :param token_list: It is a list of list which contains the tokens of a document
+        :type token_list: list
+        :return: It returns a list of list which contians word embeddings of the provided tokens
+        :rtype: list
         '''
         doc_word2vec = list()
         if type(token_list) == str:
@@ -66,11 +68,12 @@ class Word2VecScorer():
     def calculate_similarity(self, first_vector, second_vector):
         """
         This function makes the use of cosine distance to measure the similarity between two embeddings
-        :param: first_vector
-        :type:list
-        :param:second_vector
-        :type:list
-        :return: similarity
+
+        :param first_vector: The first vector value
+        :type first_vector: list
+        :param second_vector: The second vector value
+        :type second_vector: list
+        :return: Similarity score between the first and second vector
         :rtype: float
         """
         similarity = (
@@ -84,9 +87,12 @@ class Word2VecScorer():
     def calculate_score(self, resume_file, job_descriptions):
         '''
         Calculates similarity score between resume and job-description
-        :params: resume_file :type:str
-                 job_descriptions :type:list
-        :returns: score :type:dict
+
+        :param resume_file: It is a document(resume)
+        :param job_descriptions: The information about the job
+        :type job_descriptions: list
+        :returns: Score between the resume and the job description
+        :rtype: dict
         '''
         resume_content = prepare_text(resume_file, dolower=False)
         preprocessed_resume_content = preprocessor_obj.preprocess_text(
@@ -147,10 +153,15 @@ class Word2VecScorer():
     def score_jobs(self, job_1,job_1_title,other_jobs):
         '''
         Calculates score between multiple jobs
-        :params: job_1 :type:str
-                 job_1_title :type:str
-                 other_jobs :type:list
-        :returns: sorted_job_score :type:list of scores
+
+        :param job_1: A textual information about a job
+        :type job_1: str
+        :param job_1_title: The title of the job
+        :type job_1_title: str
+        :param other_jobs: A list of other jobs
+        :type other_jobs: list
+        :returns: Scores between the multiple jobs
+        :rtype: list
         '''
         preprocessed_job_1 = preprocessor_obj.preprocess_text(job_1)
         preprocessed_job_1_formatted = " ".join(preprocessed_job_1)

@@ -18,7 +18,8 @@ class Stanford_NER():
     def parse(self, jd_content):
         '''
         Function for parsing using Stanford Ner
-        params: jar engine path, trained model path, tokens from the file
+
+        param jd_content: Textual data of the job description
         return : stanford ner prediction results
         '''
         tokens = word_tokenize(jd_content)

@@ -42,6 +42,11 @@ class ResumeSegmentCreator:
 
 
     def unique_index_headings(self):
+        '''
+        This method uses the whole document and exract the possible title headings form it.
+
+        :returns: headings along with its index
+        '''
         # Split text for heading extraction
         sent_lines = self.text.splitlines()
         list_of_headings_with_repeated_index = []
@@ -79,6 +84,11 @@ class ResumeSegmentCreator:
         return unique_indx_headings
 
     def sliced_resume_text(self):
+        '''
+        This method uses the headings and its indexes to extract the information and store on those headings.
+
+        :returns: A dictionary with the headings and its respective information
+        '''
         #resume_text = self.text
     	
         sent_lines = self.text.splitlines()
@@ -111,6 +121,12 @@ class ResumeSegmentCreator:
         return sliced_text
 
     def format_segment(self,text):
+        '''
+        This method uses the document and segments it onto different parts like profile information, experience, academics etc.
+
+        :param text: A cleaned document
+        :returns: A dictionary containing the segmented result
+        '''
         self.text = text
         Profile = []
         Objectives = []

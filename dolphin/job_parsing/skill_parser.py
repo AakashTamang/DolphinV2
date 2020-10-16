@@ -8,7 +8,9 @@ def capitalizeinput(inputparameter):
     tokenize the string and capitalize all
     the token and returns the formatted
     capitalized text.
-    :param inputparameter :type str
+
+    :param inputparameter: Textul data
+    :type inputparameter: str
     :return: string(text will all the tokens capitalized)
     '''
     formatted_output = inputparameter.title()
@@ -20,9 +22,9 @@ def technical_skills_parser(jd_doc):
     skill present in the resume. It does so by
     comparing the predefined skills tokens and
     bigrams with the tokens and bigrams of the resume.
+
     :param jd_doc: spaCy doc
-    :return: This returns the capitalized skills in
-            the form of list of str.
+    :return: This returns the capitalized skills in the form of list of str.
     '''
     skillbigrams = get_ngrams(jd_doc,2)
     skill_tokens = [token.text for token in jd_doc]
@@ -42,9 +44,9 @@ def soft_skills_parser(jd_doc):
     soft skills present in the resume. It does so by
     comparing the predefined soft skills tokens and
     bigrams with the tokens and bigrams of the resume.
+
     :param jd_doc: spaCy doc
-    :return: This returns the capitalized soft skills in
-            the form of list of str.
+    :return: This returns the capitalized soft skills in the form of list of str.
     '''
     soft_skill_bigrams = get_ngrams(jd_doc,2)
     soft_skill_trigrams = get_ngrams(jd_doc,3)
