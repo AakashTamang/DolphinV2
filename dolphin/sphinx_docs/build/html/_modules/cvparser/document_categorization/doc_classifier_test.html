@@ -50,14 +50,14 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Class to classify whether the input document is resume, job_description or others</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tfidfmodelpath</span><span class="p">,</span> <span class="n">classifiermodelpath</span><span class="p">,</span> <span class="n">nlp</span><span class="p">):</span>
+<div class="viewcode-block" id="DocClassifier.__init__"><a class="viewcode-back" href="../../../index.html#cvparser.document_categorization.doc_classifier_test.DocClassifier.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tfidfmodelpath</span><span class="p">,</span> <span class="n">classifiermodelpath</span><span class="p">,</span> <span class="n">nlp</span><span class="p">):</span>
         <span class="c1"># self.processed_text = processed_text</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initializes tfidf model path, classifier model path and spacy nlp attribute</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tfidfmodelpath</span> <span class="o">=</span> <span class="n">tfidfmodelpath</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">classifiermodelpath</span> <span class="o">=</span> <span class="n">classifiermodelpath</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">nlp</span> <span class="o">=</span> <span class="n">nlp</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nlp</span> <span class="o">=</span> <span class="n">nlp</span></div>
 
 <div class="viewcode-block" id="DocClassifier.sent_to_words"><a class="viewcode-back" href="../../../index.html#cvparser.document_categorization.doc_classifier_test.DocClassifier.sent_to_words">[docs]</a>    <span class="k">def</span> <span class="nf">sent_to_words</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">file_content</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>

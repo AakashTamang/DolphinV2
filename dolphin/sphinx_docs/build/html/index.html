@@ -121,12 +121,23 @@ cleans the noise
 </dd></dl>
 
 </div>
-<div class="section" id="module-data_preprocessing">
-<span id="data-preprocessing"></span><h1>Data Preprocessing<a class="headerlink" href="#module-data_preprocessing" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="data-preprocessing">
+<h1>Data Preprocessing<a class="headerlink" href="#data-preprocessing" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="data_preprocessing.PreprocessData">
 <em class="property">class </em><code class="descclassname">data_preprocessing.</code><code class="descname">PreprocessData</code><span class="sig-paren">(</span><em>spacy_corpus='en_core_web_sm'</em>, <em>n_gram_len=3</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_preprocessing.html#PreprocessData"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#data_preprocessing.PreprocessData" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class for preprocessing contents from resumes or job descriptions</p>
+<dl class="method">
+<dt id="data_preprocessing.PreprocessData.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>spacy_corpus='en_core_web_sm'</em>, <em>n_gram_len=3</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_preprocessing.html#PreprocessData.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#data_preprocessing.PreprocessData.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>pos_tags:
+NN - noun, singular eg: - ‘desk’
+NNS - noun, plural eg: - ‘desks’
+NNP - proper noun, singular eg: - ‘Harrison’
+VB - verb, base form eg: - take is the base form of taking
+CD - Cardinal digit</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="data_preprocessing.PreprocessData.preprocess_text">
 <code class="descname">preprocess_text</code><span class="sig-paren">(</span><em>text</em>, <em>filter_tag=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_preprocessing.html#PreprocessData.preprocess_text"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#data_preprocessing.PreprocessData.preprocess_text" title="Permalink to this definition">¶</a></dt>
@@ -140,12 +151,18 @@ removes the stop words if any in the filtered_tokens
 </dd></dl>
 
 </div>
-<div class="section" id="module-word2vec">
-<span id="word2vec"></span><h1>Word2Vec<a class="headerlink" href="#module-word2vec" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="word2vec">
+<h1>Word2Vec<a class="headerlink" href="#word2vec" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="word2vec.Word2VecScorer">
 <em class="property">class </em><code class="descclassname">word2vec.</code><code class="descname">Word2VecScorer</code><span class="sig-paren">(</span><em>word2vec_path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/word2vec.html#Word2VecScorer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#word2vec.Word2VecScorer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gives embeddings similarity between two textual contents</p>
+<dl class="method">
+<dt id="word2vec.Word2VecScorer.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>word2vec_path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/word2vec.html#Word2VecScorer.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#word2vec.Word2VecScorer.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>This cosntructor loads the word2vec model that will be used for getting the  word embeddings on the textual document and give similarity between two documents</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="word2vec.Word2VecScorer.calculate_score">
 <code class="descname">calculate_score</code><span class="sig-paren">(</span><em>resume_file</em>, <em>job_descriptions</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/word2vec.html#Word2VecScorer.calculate_score"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#word2vec.Word2VecScorer.calculate_score" title="Permalink to this definition">¶</a></dt>
@@ -240,12 +257,18 @@ removes the stop words if any in the filtered_tokens
 </dd></dl>
 
 </div>
-<div class="section" id="module-cvparser.document_categorization.doc_classifier_test">
-<span id="document-categorization"></span><h1>Document_categorization<a class="headerlink" href="#module-cvparser.document_categorization.doc_classifier_test" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="document-categorization">
+<h1>Document_categorization<a class="headerlink" href="#document-categorization" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="cvparser.document_categorization.doc_classifier_test.DocClassifier">
 <em class="property">class </em><code class="descclassname">cvparser.document_categorization.doc_classifier_test.</code><code class="descname">DocClassifier</code><span class="sig-paren">(</span><em>tfidfmodelpath</em>, <em>classifiermodelpath</em>, <em>nlp</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cvparser/document_categorization/doc_classifier_test.html#DocClassifier"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cvparser.document_categorization.doc_classifier_test.DocClassifier" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class to classify whether the input document is resume, job_description or others</p>
+<dl class="method">
+<dt id="cvparser.document_categorization.doc_classifier_test.DocClassifier.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>tfidfmodelpath</em>, <em>classifiermodelpath</em>, <em>nlp</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cvparser/document_categorization/doc_classifier_test.html#DocClassifier.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cvparser.document_categorization.doc_classifier_test.DocClassifier.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initializes tfidf model path, classifier model path and spacy nlp attribute</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="cvparser.document_categorization.doc_classifier_test.DocClassifier.classify">
 <code class="descname">classify</code><span class="sig-paren">(</span><em>file_content</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cvparser/document_categorization/doc_classifier_test.html#DocClassifier.classify"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cvparser.document_categorization.doc_classifier_test.DocClassifier.classify" title="Permalink to this definition">¶</a></dt>
@@ -305,12 +328,18 @@ allowed_postags :type:list</td>
 </dd></dl>
 
 </div>
-<div class="section" id="module-cvparser.segmentation.segmentresume">
-<span id="resume-segmentation"></span><h1>Resume_segmentation<a class="headerlink" href="#module-cvparser.segmentation.segmentresume" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="resume-segmentation">
+<h1>Resume_segmentation<a class="headerlink" href="#resume-segmentation" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="cvparser.segmentation.segmentresume.ResumeSegmentCreator">
 <em class="property">class </em><code class="descclassname">cvparser.segmentation.segmentresume.</code><code class="descname">ResumeSegmentCreator</code><a class="reference internal" href="_modules/cvparser/segmentation/segmentresume.html#ResumeSegmentCreator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cvparser.segmentation.segmentresume.ResumeSegmentCreator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class to segment resume details</p>
+<dl class="method">
+<dt id="cvparser.segmentation.segmentresume.ResumeSegmentCreator.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/cvparser/segmentation/segmentresume.html#ResumeSegmentCreator.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cvparser.segmentation.segmentresume.ResumeSegmentCreator.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initializes major attributes for segmentation</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="cvparser.segmentation.segmentresume.ResumeSegmentCreator.format_segment">
 <code class="descname">format_segment</code><span class="sig-paren">(</span><em>text</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cvparser/segmentation/segmentresume.html#ResumeSegmentCreator.format_segment"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cvparser.segmentation.segmentresume.ResumeSegmentCreator.format_segment" title="Permalink to this definition">¶</a></dt>
@@ -358,9 +387,84 @@ allowed_postags :type:list</td>
 </dd></dl>
 
 </div>
-<div class="section" id="module-cvparser.stanfordNER.formatdata">
-<span id="named-entity-recognition"></span><h1>Named_entity_recognition<a class="headerlink" href="#module-cvparser.stanfordNER.formatdata" title="Permalink to this headline">¶</a></h1>
-<dl class="function">
+<div class="section" id="named-entity-recognition">
+<h1>Named_entity_recognition<a class="headerlink" href="#named-entity-recognition" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="cvparser.stanfordNER.namedentityrecognition.StanfordNER">
+<em class="property">class </em><code class="descclassname">cvparser.stanfordNER.namedentityrecognition.</code><code class="descname">StanfordNER</code><a class="reference internal" href="_modules/cvparser/stanfordNER/namedentityrecognition.html#StanfordNER"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cvparser.stanfordNER.namedentityrecognition.StanfordNER" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="cvparser.stanfordNER.namedentityrecognition.StanfordNER.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cvparser.stanfordNER.namedentityrecognition.StanfordNER.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="cvparser.stanfordNER.namedentityrecognition.StanfordNER.experience_academics_parser">
+<em class="property">static </em><code class="descname">experience_academics_parser</code><span class="sig-paren">(</span><em>tagged_tuples</em>, <em>text</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cvparser/stanfordNER/namedentityrecognition.html#StanfordNER.experience_academics_parser"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cvparser.stanfordNER.namedentityrecognition.StanfordNER.experience_academics_parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method tags the tokens that is related to academics and the job experiences.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>tagged_tuples</strong> – It contains all the tagged tuples</li>
+<li><strong>text</strong> – It contains the cleaned document which has been tagged</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The formatted result of academics and experience</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="cvparser.stanfordNER.namedentityrecognition.StanfordNER.ner_parser">
+<em class="property">static </em><code class="descname">ner_parser</code><span class="sig-paren">(</span><em>model</em>, <em>text</em>, <em>mode</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cvparser/stanfordNER/namedentityrecognition.html#StanfordNER.ner_parser"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cvparser.stanfordNER.namedentityrecognition.StanfordNER.ner_parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method tokenizes the given text and pass it to the specififed parsing type.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>model</strong> – The custom trained Stanford NER model</li>
+<li><strong>text</strong> – A cleaned document</li>
+<li><strong>mode</strong> – The type of parsing we want to perform like profile parsing.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Executes the parsing mode and pass the tagged tuples and the document</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="cvparser.stanfordNER.namedentityrecognition.StanfordNER.personal_info_parser">
+<em class="property">static </em><code class="descname">personal_info_parser</code><span class="sig-paren">(</span><em>tagged_tuples</em>, <em>text</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cvparser/stanfordNER/namedentityrecognition.html#StanfordNER.personal_info_parser"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cvparser.stanfordNER.namedentityrecognition.StanfordNER.personal_info_parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method tags the tokens that is related to personal information.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>tagged_tuples</strong> – It contains all the tagged tuples</li>
+<li><strong>text</strong> – It contains the cleaned document which has been tagged</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The formatted result of personal information</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-cvparser.stanfordNER.formatdata"></span><dl class="function">
 <dt id="cvparser.stanfordNER.formatdata.formatEducationalinfo">
 <code class="descclassname">cvparser.stanfordNER.formatdata.</code><code class="descname">formatEducationalinfo</code><span class="sig-paren">(</span><em>sent_tokens</em>, <em>sent2idx</em>, <em>alldegree</em>, <em>alluniversity</em>, <em>alldate</em>, <em>alllocations</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cvparser/stanfordNER/formatdata.html#formatEducationalinfo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cvparser.stanfordNER.formatdata.formatEducationalinfo" title="Permalink to this definition">¶</a></dt>
 <dd><p>This methods is used for extracting out the educational data in the required format.</p>
@@ -415,34 +519,56 @@ personal information.</p>
 </table>
 </dd></dl>
 
-<span class="target" id="module-cvparser.stanfordNER.namedentityrecognition"></span><span class="target" id="module-cvparser.stanfordNER.standarizedata"></span><dl class="function">
+<span class="target" id="module-cvparser.stanfordNER.standarizedata"></span><dl class="function">
 <dt id="cvparser.stanfordNER.standarizedata.capitalizeinput">
 <code class="descclassname">cvparser.stanfordNER.standarizedata.</code><code class="descname">capitalizeinput</code><span class="sig-paren">(</span><em>inputparameter</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cvparser/stanfordNER/standarizedata.html#capitalizeinput"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cvparser.stanfordNER.standarizedata.capitalizeinput" title="Permalink to this definition">¶</a></dt>
 <dd><p>This will take the raw input text and
 tokenize the string and capitalize all
 the token and returns the formatted
 capitalized text.</p>
-<p>:param inputparameter :type str
-:return: string(text will all the tokens capitalized)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>inputparameter</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – A textual data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string(text will all the tokens capitalized)</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
 <dt id="cvparser.stanfordNER.standarizedata.comparedates">
 <code class="descclassname">cvparser.stanfordNER.standarizedata.</code><code class="descname">comparedates</code><span class="sig-paren">(</span><em>datelist</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cvparser/stanfordNER/standarizedata.html#comparedates"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cvparser.stanfordNER.standarizedata.comparedates" title="Permalink to this definition">¶</a></dt>
-<dd><p>this function takes the list of the date
+<dd><p>This function takes the list of the date
 parse them and compares them and provide
 larger date and smaller date</p>
-<p>:param datelist:type list of str
-:return: sorted dates</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>datelist</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><em>list</em></a>) – It contains the collection of dates</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">sorted dates</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
-<div class="section" id="module-cvparser.pipeline">
-<span id="parsing-a-document"></span><h1>Parsing a Document<a class="headerlink" href="#module-cvparser.pipeline" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="spacy-pipeline">
+<h1>spaCy pipeline<a class="headerlink" href="#spacy-pipeline" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="cvparser.pipeline.NlpPipeline">
 <em class="property">class </em><code class="descclassname">cvparser.pipeline.</code><code class="descname">NlpPipeline</code><a class="reference internal" href="_modules/cvparser/pipeline.html#NlpPipeline"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cvparser.pipeline.NlpPipeline" title="Permalink to this definition">¶</a></dt>
 <dd><p><strong>This class is developed to add the custom spacy pipelines for document categorization, resume segmentation, and resume parsing.</strong></p>
+<dl class="method">
+<dt id="cvparser.pipeline.NlpPipeline.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/cvparser/pipeline.html#NlpPipeline.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cvparser.pipeline.NlpPipeline.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Construcotr method</strong></p>
+</dd></dl>
+
 <dl class="method">
 <dt id="cvparser.pipeline.NlpPipeline.add_category_component">
 <code class="descname">add_category_component</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/cvparser/pipeline.html#NlpPipeline.add_category_component"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cvparser.pipeline.NlpPipeline.add_category_component" title="Permalink to this definition">¶</a></dt>
@@ -605,38 +731,180 @@ larger date and smaller date</p>
 
 </dd></dl>
 
-<span class="target" id="module-cvparser.newParse"></span></div>
-<div class="section" id="module-domain_classification">
-<span id="domain-classification"></span><h1>Domain Classification<a class="headerlink" href="#module-domain_classification" title="Permalink to this headline">¶</a></h1>
 </div>
-<div class="section" id="module-job_parsing.createngrams">
-<span id="job-parsing"></span><h1>Job Parsing<a class="headerlink" href="#module-job_parsing.createngrams" title="Permalink to this headline">¶</a></h1>
-<dl class="function">
-<dt id="job_parsing.createngrams.get_ngrams">
-<code class="descclassname">job_parsing.createngrams.</code><code class="descname">get_ngrams</code><span class="sig-paren">(</span><em>doc</em>, <em>n</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/job_parsing/createngrams.html#get_ngrams"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#job_parsing.createngrams.get_ngrams" title="Permalink to this definition">¶</a></dt>
-<dd><p>This function takes the spacy doc and number of grams(n) and returns the grams of the formatted doc
-according to the number(n) passed</p>
+<div class="section" id="parsing-a-document">
+<h1>Parsing a Document<a class="headerlink" href="#parsing-a-document" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="cvparser.newParse.Parser">
+<em class="property">class </em><code class="descclassname">cvparser.newParse.</code><code class="descname">Parser</code><a class="reference internal" href="_modules/cvparser/newParse.html#Parser"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cvparser.newParse.Parser" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="cvparser.newParse.Parser.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/cvparser/newParse.html#Parser.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cvparser.newParse.Parser.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initializer that creates an object of the spaCy and adds all the 5 pipeline components.
+It will also take the path of the resume</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="cvparser.newParse.Parser.experience_academics_parser">
+<code class="descname">experience_academics_parser</code><span class="sig-paren">(</span><em>experience_academics_segment</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cvparser/newParse.html#Parser.experience_academics_parser"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cvparser.newParse.Parser.experience_academics_parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method will extract the available experience and academics from the resume.
+Here, only “experience_academics_ner_parsing_component” is enabled.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>doc</strong> – spaCy doc</li>
-<li><strong>n</strong> – Int(Number of n grams needed eg: 2,3,4…)</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">n grams of the formatted doc with respect to value of n passed</p>
-</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>experience_academics_segment</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – The experience and education segment from a resume. Here we are using the whole resume. So that we do not miss any experiences.</td>
 </tr>
 </tbody>
 </table>
 </dd></dl>
 
-<span class="target" id="module-job_parsing.jd_parsing"></span><dl class="class">
+<dl class="method">
+<dt id="cvparser.newParse.Parser.getScore">
+<code class="descname">getScore</code><span class="sig-paren">(</span><em>jd_path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cvparser/newParse.html#Parser.getScore"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cvparser.newParse.Parser.getScore" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method will give us the similarity score between two documents i.e. resume and job description.
+Here, only “embedding_component” is enabled.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>jd_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Path of the job description file</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A similarity score which is between 0 and 1</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cvparser.newParse.Parser.getStructuredData">
+<code class="descname">getStructuredData</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/cvparser/newParse.html#Parser.getStructuredData"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cvparser.newParse.Parser.getStructuredData" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method will get all the required segmented part form a resume.
+Then the segmented part will be passed to their respective method and receive the required parsed information.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A JSON formatted data</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cvparser.newParse.Parser.identifyResume">
+<code class="descname">identifyResume</code><span class="sig-paren">(</span><em>resume_path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cvparser/newParse.html#Parser.identifyResume"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cvparser.newParse.Parser.identifyResume" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method will identify if a given document is a resume or job description or others.
+Except the “category_component” pipeline, all the other pipeline components are disabled</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>resume_path</strong> – Takes the path of the resume</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Executes the respective method as per document is classified</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cvparser.newParse.Parser.parseCV">
+<code class="descname">parseCV</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/cvparser/newParse.html#Parser.parseCV"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cvparser.newParse.Parser.parseCV" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method will be executed if a given document is identified as a resume.
+The resume will be passed to the spaCy pipeline for processing.
+Here, the “segmentation_component” pipeline is enabled and the others are disabled.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A structured data in the required JSON format</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cvparser.newParse.Parser.profile_information_parser">
+<code class="descname">profile_information_parser</code><span class="sig-paren">(</span><em>profile_segment</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cvparser/newParse.html#Parser.profile_information_parser"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cvparser.newParse.Parser.profile_information_parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method will extract the available personal information for the profile segment or the whole resume.
+Here, only “profile_ner_parsing_component” and “profile_pattern_matching_component” are enabled.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>profile_segment</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – The profile segment from a resume</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Required informations from the profile</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cvparser.newParse.Parser.rejectCV">
+<code class="descname">rejectCV</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/cvparser/newParse.html#Parser.rejectCV"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cvparser.newParse.Parser.rejectCV" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method will be executed if a given document is not a resume.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="cvparser.newParse.Parser.returnjson">
+<code class="descname">returnjson</code><span class="sig-paren">(</span><em>personal_information</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cvparser/newParse.html#Parser.returnjson"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cvparser.newParse.Parser.returnjson" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method will arrange all the informations in the required JSON format.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>personal_information</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.9)"><em>tuple</em></a>) – Personal information of a resume</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">All required information in the JSON format</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cvparser.newParse.Parser.skills_language_parser">
+<code class="descname">skills_language_parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/cvparser/newParse.html#Parser.skills_language_parser"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cvparser.newParse.Parser.skills_language_parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method will extract the available skills from the resume.
+Here, only “skills_pattern_matching_component” is enabled.
+As the skills can be in many parts of resume, we have passed the whole resume so that we can extract all the possible skills.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="job-parsing">
+<h1>Job Parsing<a class="headerlink" href="#job-parsing" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
 <dt id="job_parsing.jd_parsing.SpacyNer">
 <em class="property">class </em><code class="descclassname">job_parsing.jd_parsing.</code><code class="descname">SpacyNer</code><a class="reference internal" href="_modules/job_parsing/jd_parsing.html#SpacyNer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#job_parsing.jd_parsing.SpacyNer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class to parse contents like skills, organization, designation, education</p>
+<dl class="method">
+<dt id="job_parsing.jd_parsing.SpacyNer.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/job_parsing/jd_parsing.html#SpacyNer.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#job_parsing.jd_parsing.SpacyNer.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Intializes ner model and spacy nlp model path</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="job_parsing.jd_parsing.SpacyNer.clean_parse_jd">
+<code class="descname">clean_parse_jd</code><span class="sig-paren">(</span><em>file_path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/job_parsing/jd_parsing.html#SpacyNer.clean_parse_jd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#job_parsing.jd_parsing.SpacyNer.clean_parse_jd" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method takes the document or the it’s path and parsers the required
+information like designation, experience, education etc. form it.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>file_path</strong> – Path of the document or a document itself</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A parsed data from the document</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)">dict</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 <dl class="method">
 <dt id="job_parsing.jd_parsing.SpacyNer.get_skills_from_pool">
 <code class="descname">get_skills_from_pool</code><span class="sig-paren">(</span><em>jd_content</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/job_parsing/jd_parsing.html#SpacyNer.get_skills_from_pool"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#job_parsing.jd_parsing.SpacyNer.get_skills_from_pool" title="Permalink to this definition">¶</a></dt>
@@ -681,6 +949,48 @@ according to the number(n) passed</p>
 return: list of strings of predictions</p>
 </dd></dl>
 
+</dd></dl>
+
+<dl class="class">
+<dt id="job_parsing.stanford_ner.Stanford_NER">
+<em class="property">class </em><code class="descclassname">job_parsing.stanford_ner.</code><code class="descname">Stanford_NER</code><a class="reference internal" href="_modules/job_parsing/stanford_ner.html#Stanford_NER"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#job_parsing.stanford_ner.Stanford_NER" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class for applying trained stanford model to our data</p>
+<dl class="method">
+<dt id="job_parsing.stanford_ner.Stanford_NER.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/job_parsing/stanford_ner.html#Stanford_NER.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#job_parsing.stanford_ner.Stanford_NER.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="job_parsing.stanford_ner.Stanford_NER.parse">
+<code class="descname">parse</code><span class="sig-paren">(</span><em>jd_content</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/job_parsing/stanford_ner.html#Stanford_NER.parse"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#job_parsing.stanford_ner.Stanford_NER.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function for parsing using Stanford Ner</p>
+<p>param jd_content: Textual data of the job description
+return : stanford ner prediction results</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-job_parsing.createngrams"></span><dl class="function">
+<dt id="job_parsing.createngrams.get_ngrams">
+<code class="descclassname">job_parsing.createngrams.</code><code class="descname">get_ngrams</code><span class="sig-paren">(</span><em>doc</em>, <em>n</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/job_parsing/createngrams.html#get_ngrams"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#job_parsing.createngrams.get_ngrams" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function takes the spacy doc and number of grams(n) and returns the grams of the formatted doc
+according to the number(n) passed</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>doc</strong> – spaCy doc</li>
+<li><strong>n</strong> – Int(Number of n grams needed eg: 2,3,4…)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">n grams of the formatted doc with respect to value of n passed</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <span class="target" id="module-job_parsing.skill_parser"></span><dl class="function">
@@ -740,27 +1050,19 @@ bigrams with the tokens and bigrams of the resume.</p>
 </table>
 </dd></dl>
 
-<span class="target" id="module-job_parsing.stanford_ner"></span><dl class="class">
-<dt id="job_parsing.stanford_ner.Stanford_NER">
-<em class="property">class </em><code class="descclassname">job_parsing.stanford_ner.</code><code class="descname">Stanford_NER</code><a class="reference internal" href="_modules/job_parsing/stanford_ner.html#Stanford_NER"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#job_parsing.stanford_ner.Stanford_NER" title="Permalink to this definition">¶</a></dt>
-<dd><p>Class for applying trained stanford model to our data</p>
-<dl class="method">
-<dt id="job_parsing.stanford_ner.Stanford_NER.parse">
-<code class="descname">parse</code><span class="sig-paren">(</span><em>jd_content</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/job_parsing/stanford_ner.html#Stanford_NER.parse"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#job_parsing.stanford_ner.Stanford_NER.parse" title="Permalink to this definition">¶</a></dt>
-<dd><p>Function for parsing using Stanford Ner</p>
-<p>param jd_content: Textual data of the job description
-return : stanford ner prediction results</p>
-</dd></dl>
-
-</dd></dl>
-
 </div>
-<div class="section" id="module-matcher.match">
-<span id="matcher-component"></span><h1>Matcher Component<a class="headerlink" href="#module-matcher.match" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="matcher-component">
+<h1>Matcher Component<a class="headerlink" href="#matcher-component" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="matcher.match.matcher">
 <em class="property">class </em><code class="descclassname">matcher.match.</code><code class="descname">matcher</code><span class="sig-paren">(</span><em>oneJD_MultipleRes_Score</em>, <em>oneRes_MultipleJD_Score</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matcher/match.html#matcher"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matcher.match.matcher" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class for finding the best match between job-seeker and job-provider using gale-shapley algorithm</p>
+<dl class="method">
+<dt id="matcher.match.matcher.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>oneJD_MultipleRes_Score</em>, <em>oneRes_MultipleJD_Score</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/matcher/match.html#matcher.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matcher.match.matcher.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Scores with highest priority are at first</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="matcher.match.matcher.matchmaker">
 <code class="descname">matchmaker</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/matcher/match.html#matcher.matchmaker"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#matcher.match.matcher.matchmaker" title="Permalink to this definition">¶</a></dt>
@@ -799,58 +1101,18 @@ the job-seeker and job-provider from the preferences score</p>
 </dd></dl>
 
 </div>
-<div class="section" id="module-scorer.helper">
-<span id="scoring-component"></span><h1>Scoring Component<a class="headerlink" href="#module-scorer.helper" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
-<dt id="scorer.helper.NLTKHelper">
-<em class="property">class </em><code class="descclassname">scorer.helper.</code><code class="descname">NLTKHelper</code><span class="sig-paren">(</span><em>chunk_rules</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scorer/helper.html#NLTKHelper"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#scorer.helper.NLTKHelper" title="Permalink to this definition">¶</a></dt>
-<dd><p>Helper class to find skills and experiences in the token</p>
-<dl class="method">
-<dt id="scorer.helper.NLTKHelper.experiencefinder">
-<code class="descname">experiencefinder</code><span class="sig-paren">(</span><em>tagged_tokens</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scorer/helper.html#NLTKHelper.experiencefinder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#scorer.helper.NLTKHelper.experiencefinder" title="Permalink to this definition">¶</a></dt>
-<dd><p>Takes the tokenized job description section of the
-posted job and uses the nltk regex chunker to chunk the
-experience out from the section</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>tagged_tokens</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – description part of the job</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">provides the list of chunked experiences</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="scorer.helper.NLTKHelper.skillsfinder">
-<code class="descname">skillsfinder</code><span class="sig-paren">(</span><em>n_grams</em>, <em>skillFilePath</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scorer/helper.html#NLTKHelper.skillsfinder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#scorer.helper.NLTKHelper.skillsfinder" title="Permalink to this definition">¶</a></dt>
-<dd><p>Takes the n-grams created from any document
-then compares them to the existing pool of the skills</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>n_grams</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><em>list</em></a>) – Skills in n grams</li>
-<li><strong>skillFilePath</strong> – Path of the file that contains the skills</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">provides the set of skills found</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</dd></dl>
-
+<div class="section" id="scoring-component">
+<h1>Scoring Component<a class="headerlink" href="#scoring-component" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="scorer.helper.PreprocessData">
 <em class="property">class </em><code class="descclassname">scorer.helper.</code><code class="descname">PreprocessData</code><span class="sig-paren">(</span><em>spacy_corpus='en_core_web_sm'</em>, <em>n_gram_len=3</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scorer/helper.html#PreprocessData"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#scorer.helper.PreprocessData" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class to preprocess the textual content</p>
+<dl class="method">
+<dt id="scorer.helper.PreprocessData.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>spacy_corpus='en_core_web_sm'</em>, <em>n_gram_len=3</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scorer/helper.html#PreprocessData.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#scorer.helper.PreprocessData.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="scorer.helper.PreprocessData.preprocess_text">
 <code class="descname">preprocess_text</code><span class="sig-paren">(</span><em>text</em>, <em>filter_tag=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scorer/helper.html#PreprocessData.preprocess_text"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#scorer.helper.PreprocessData.preprocess_text" title="Permalink to this definition">¶</a></dt>
@@ -1112,16 +1374,16 @@ for the score calculation</p>
   <ul>
 <li><a class="reference internal" href="#">Welcome to Dolphwin’s documentation!</a></li>
 <li><a class="reference internal" href="#module-datareader">Datareader</a></li>
-<li><a class="reference internal" href="#module-data_preprocessing">Data Preprocessing</a></li>
-<li><a class="reference internal" href="#module-word2vec">Word2Vec</a></li>
-<li><a class="reference internal" href="#module-cvparser.document_categorization.doc_classifier_test">Document_categorization</a></li>
-<li><a class="reference internal" href="#module-cvparser.segmentation.segmentresume">Resume_segmentation</a></li>
-<li><a class="reference internal" href="#module-cvparser.stanfordNER.formatdata">Named_entity_recognition</a></li>
-<li><a class="reference internal" href="#module-cvparser.pipeline">Parsing a Document</a></li>
-<li><a class="reference internal" href="#module-domain_classification">Domain Classification</a></li>
-<li><a class="reference internal" href="#module-job_parsing.createngrams">Job Parsing</a></li>
-<li><a class="reference internal" href="#module-matcher.match">Matcher Component</a></li>
-<li><a class="reference internal" href="#module-scorer.helper">Scoring Component</a></li>
+<li><a class="reference internal" href="#data-preprocessing">Data Preprocessing</a></li>
+<li><a class="reference internal" href="#word2vec">Word2Vec</a></li>
+<li><a class="reference internal" href="#document-categorization">Document_categorization</a></li>
+<li><a class="reference internal" href="#resume-segmentation">Resume_segmentation</a></li>
+<li><a class="reference internal" href="#named-entity-recognition">Named_entity_recognition</a></li>
+<li><a class="reference internal" href="#spacy-pipeline">spaCy pipeline</a></li>
+<li><a class="reference internal" href="#parsing-a-document">Parsing a Document</a></li>
+<li><a class="reference internal" href="#job-parsing">Job Parsing</a></li>
+<li><a class="reference internal" href="#matcher-component">Matcher Component</a></li>
+<li><a class="reference internal" href="#scoring-component">Scoring Component</a></li>
 <li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
 </ul>
 

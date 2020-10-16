@@ -1,0 +1,433 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>cvparser.newParse &#8212; Dolphwin 2.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Dolphwin 2.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for cvparser.newParse</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">import</span> <span class="nn">cProfile</span><span class="o">,</span> <span class="nn">pstats</span><span class="o">,</span> <span class="nn">io</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="kn">from</span> <span class="nn">datareader</span> <span class="kn">import</span> <span class="n">prepare_text</span>
+<span class="kn">from</span> <span class="nn">cvparser.stanfordNER</span> <span class="kn">import</span> <span class="n">formatdata</span>
+<span class="kn">from</span> <span class="nn">cvparser.pipeline</span> <span class="kn">import</span> <span class="n">NlpPipeline</span>
+<span class="kn">from</span> <span class="nn">word2vec</span> <span class="kn">import</span> <span class="n">Word2VecScorer</span>
+<span class="kn">import</span> <span class="nn">settings</span> <span class="k">as</span> <span class="nn">cfg</span>
+
+<span class="c1"># java_path = r&quot;C:\Program Files\Java\jdk-12.0.1\bin\java.exe&quot;</span>
+<span class="c1"># os.environ[&#39;JAVAHOME&#39;] = java_path</span>
+
+<div class="viewcode-block" id="Parser"><a class="viewcode-back" href="../../index.html#cvparser.newParse.Parser">[docs]</a><span class="k">class</span> <span class="nc">Parser</span><span class="p">:</span>
+    
+<div class="viewcode-block" id="Parser.__init__"><a class="viewcode-back" href="../../index.html#cvparser.newParse.Parser.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Initializer that creates an object of the spaCy and adds all the 5 pipeline components.</span>
+<span class="sd">        It will also take the path of the resume</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">spacy_pipeline</span> <span class="o">=</span> <span class="n">NlpPipeline</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">spacy_pipeline</span><span class="o">.</span><span class="n">add_category_component</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">spacy_pipeline</span><span class="o">.</span><span class="n">add_segmentation_component</span><span class="p">()</span>
+        <span class="c1"># self.spacy_pipeline.add_ner_parsing()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">spacy_pipeline</span><span class="o">.</span><span class="n">add_profile_ner_parsing</span><span class="p">()</span>
+        <span class="c1"># self.spacy_pipeline.add_academics_ner_parsing()</span>
+        <span class="c1"># self.spacy_pipeline.add_experience_ner_parsing()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">spacy_pipeline</span><span class="o">.</span><span class="n">add_experience_academics_ner_parsing_component</span><span class="p">()</span>
+        <span class="c1"># self.spacy_pipeline.add_pattern_matching()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">spacy_pipeline</span><span class="o">.</span><span class="n">add_profile_pattern_matching</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">spacy_pipeline</span><span class="o">.</span><span class="n">add_skills_pattern_matching</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">spacy_pipeline</span><span class="o">.</span><span class="n">add_embedding_component</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Parser.identifyResume"><a class="viewcode-back" href="../../index.html#cvparser.newParse.Parser.identifyResume">[docs]</a>    <span class="k">def</span> <span class="nf">identifyResume</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">resume_path</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        This method will identify if a given document is a resume or job description or others.</span>
+<span class="sd">        Except the &quot;category_component&quot; pipeline, all the other pipeline components are disabled</span>
+
+<span class="sd">        :param resume_path: Takes the path of the resume</span>
+<span class="sd">        :return: Executes the respective method as per document is classified</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cleaned_resume</span> <span class="o">=</span> <span class="n">prepare_text</span><span class="p">(</span><span class="n">resume_path</span><span class="p">,</span><span class="n">dolower</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="c1"># with self.spacy_pipeline.nlp.disable_pipes(&quot;segmentation_component&quot;,&quot;profile_ner_parsing_component&quot;,&quot;academics_ner_parsing_component&quot;,&quot;experience_ner_parsing_component&quot;,&quot;profile_pattern_matching_component&quot;,&quot;skills_pattern_matching_component&quot;,&quot;embedding_component&quot;):</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">spacy_pipeline</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">disable_pipes</span><span class="p">(</span><span class="s2">&quot;segmentation_component&quot;</span><span class="p">,</span><span class="s2">&quot;profile_ner_parsing_component&quot;</span><span class="p">,</span><span class="s2">&quot;experience_academics_ner_parsing_component&quot;</span><span class="p">,</span><span class="s2">&quot;profile_pattern_matching_component&quot;</span><span class="p">,</span><span class="s2">&quot;skills_pattern_matching_component&quot;</span><span class="p">,</span><span class="s2">&quot;embedding_component&quot;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">classify_doc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">spacy_pipeline</span><span class="o">.</span><span class="n">process_text</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cleaned_resume</span><span class="p">)</span>
+        <span class="n">document_classified</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;resume&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">parseCV</span><span class="p">,</span>
+            <span class="s1">&#39;job_description&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">rejectCV</span><span class="p">,</span>
+            <span class="s1">&#39;others&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">rejectCV</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">document_classified</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">classify_doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">category</span><span class="p">]()</span></div>
+
+<div class="viewcode-block" id="Parser.parseCV"><a class="viewcode-back" href="../../index.html#cvparser.newParse.Parser.parseCV">[docs]</a>    <span class="k">def</span> <span class="nf">parseCV</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        This method will be executed if a given document is identified as a resume.</span>
+<span class="sd">        The resume will be passed to the spaCy pipeline for processing.</span>
+<span class="sd">        Here, the &quot;segmentation_component&quot; pipeline is enabled and the others are disabled.</span>
+
+<span class="sd">        :return: A structured data in the required JSON format</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="c1"># with self.spacy_pipeline.nlp.disable_pipes(&quot;category_component&quot;,&quot;profile_ner_parsing_component&quot;,&quot;academics_ner_parsing_component&quot;,&quot;experience_ner_parsing_component&quot;,&quot;profile_pattern_matching_component&quot;,&quot;skills_pattern_matching_component&quot;,&quot;embedding_component&quot;):</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">spacy_pipeline</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">disable_pipes</span><span class="p">(</span><span class="s2">&quot;category_component&quot;</span><span class="p">,</span><span class="s2">&quot;profile_ner_parsing_component&quot;</span><span class="p">,</span><span class="s2">&quot;experience_academics_ner_parsing_component&quot;</span><span class="p">,</span><span class="s2">&quot;profile_pattern_matching_component&quot;</span><span class="p">,</span><span class="s2">&quot;skills_pattern_matching_component&quot;</span><span class="p">,</span><span class="s2">&quot;embedding_component&quot;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">segmented_resume</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">spacy_pipeline</span><span class="o">.</span><span class="n">process_text</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cleaned_resume</span><span class="p">)</span>
+        <span class="n">final_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getStructuredData</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">final_data</span></div>
+
+    <span class="c1"># def personal_information_parser(self, profile_segment):</span>
+    <span class="c1">#     &#39;&#39;&#39;</span>
+    <span class="c1">#     This method will extract the available personal information for the profile segment or the whole resume.</span>
+    <span class="c1">#     Here, only &quot;ner_parsing_component&quot; and &quot;pattern_matching_component&quot; are enabled.</span>
+
+    <span class="c1">#     :param profile_segment: The profile segment from a resume</span>
+    <span class="c1">#     :type profile_segment: str</span>
+    <span class="c1">#     :return: Required information from the profile</span>
+    <span class="c1">#     &#39;&#39;&#39;</span>
+    <span class="c1">#     profile_text = profile_segment</span>
+    <span class="c1">#     with self.spacy_pipeline.nlp.disable_pipes(&quot;category_component&quot;,&quot;segmentation_component&quot;,&quot;embedding_component&quot;):</span>
+    <span class="c1">#         if profile_text:</span>
+    <span class="c1">#             self.resume_profile = self.spacy_pipeline.process_text(profile_text)</span>
+    <span class="c1">#             name,address = self.resume_profile._.name, self.resume_profile._.address</span>
+    <span class="c1">#             emails = self.resume_profile._.emails</span>
+    <span class="c1">#             phone = self.resume_profile._.phone</span>
+    <span class="c1">#             birthdate = self.resume_profile._.date</span>
+    <span class="c1">#             gender = self.resume_profile._.gender</span>
+    <span class="c1">#             nationality = self.resume_profile._.nationality</span>
+    <span class="c1">#             github = self.resume_profile._.github</span>
+    <span class="c1">#             linkedin = self.resume_profile._.linkedin</span>
+    <span class="c1">#             zipcode = self.resume_profile._.zipcode</span>
+    <span class="c1">#         else:</span>
+    <span class="c1">#             self.resume_profile = self.spacy_pipeline.process_text(self.cleaned_resume)</span>
+    <span class="c1">#             name,address = self.resume_profile._.name, self.resume_profile._.address</span>
+    <span class="c1">#             emails = self.resume_profile._.emails</span>
+    <span class="c1">#             phone = self.resume_profile._.phone</span>
+    <span class="c1">#             birthdate = self.resume_profile._.date</span>
+    <span class="c1">#             gender = self.resume_profile._.gender</span>
+    <span class="c1">#             nationality = self.resume_profile._.nationality</span>
+    <span class="c1">#             github = self.resume_profile._.github</span>
+    <span class="c1">#             linkedin = self.resume_profile._.linkedin</span>
+    <span class="c1">#             zipcode = self.resume_profile._.zipcode</span>
+    <span class="c1">#     return name,address,list(emails),list(phone),list(zipcode),list(nationality),list(github),list(linkedin),list(birthdate),list(gender)</span>
+
+<div class="viewcode-block" id="Parser.profile_information_parser"><a class="viewcode-back" href="../../index.html#cvparser.newParse.Parser.profile_information_parser">[docs]</a>    <span class="k">def</span> <span class="nf">profile_information_parser</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">profile_segment</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        This method will extract the available personal information for the profile segment or the whole resume.</span>
+<span class="sd">        Here, only &quot;profile_ner_parsing_component&quot; and &quot;profile_pattern_matching_component&quot; are enabled.</span>
+
+<span class="sd">        :param profile_segment: The profile segment from a resume</span>
+<span class="sd">        :type profile_segment: str</span>
+<span class="sd">        :return: Required informations from the profile</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="c1"># with self.spacy_pipeline.nlp.disable_pipes(&quot;category_component&quot;,&quot;segmentation_component&quot;,&quot;academics_ner_parsing_component&quot;,&quot;experience_ner_parsing_component&quot;,&quot;skills_pattern_matching_component&quot;,&quot;embedding_component&quot;):</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">spacy_pipeline</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">disable_pipes</span><span class="p">(</span><span class="s2">&quot;category_component&quot;</span><span class="p">,</span><span class="s2">&quot;segmentation_component&quot;</span><span class="p">,</span><span class="s2">&quot;experience_academics_ner_parsing_component&quot;</span><span class="p">,</span><span class="s2">&quot;skills_pattern_matching_component&quot;</span><span class="p">,</span><span class="s2">&quot;embedding_component&quot;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">profile_segment</span><span class="p">:</span>
+                <span class="c1"># self.resume_profile = self.spacy_pipeline.process_text(profile_segment)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">resume_profile</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">spacy_pipeline</span><span class="o">.</span><span class="n">process_text</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">profile_segment</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">segmented_resume</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">language_segment</span><span class="p">]))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">resume_profile</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">spacy_pipeline</span><span class="o">.</span><span class="n">process_text</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cleaned_resume</span><span class="p">)</span>
+        <span class="n">name</span><span class="p">,</span><span class="n">address</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">resume_profile</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">segmented_resume</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">address</span>
+        <span class="n">emails</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">resume_profile</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">emails</span>
+        <span class="n">phone</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">resume_profile</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">phone</span>
+        <span class="n">phone</span> <span class="o">=</span> <span class="p">[</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\s+&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">phone</span><span class="p">]</span>
+        <span class="n">birthdate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">resume_profile</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">date</span>
+        <span class="n">gender</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">resume_profile</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">gender</span>
+        <span class="n">nationality</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">resume_profile</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">nationality</span>
+        <span class="n">github</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">resume_profile</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">github</span>
+        <span class="n">linkedin</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">resume_profile</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">linkedin</span>
+        <span class="n">zipcode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">resume_profile</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">zipcode</span>
+        <span class="k">return</span> <span class="n">name</span><span class="p">,</span><span class="n">address</span><span class="p">,</span><span class="nb">list</span><span class="p">(</span><span class="n">emails</span><span class="p">),</span><span class="nb">list</span><span class="p">(</span><span class="n">phone</span><span class="p">),</span><span class="nb">list</span><span class="p">(</span><span class="n">zipcode</span><span class="p">),</span><span class="nb">list</span><span class="p">(</span><span class="n">nationality</span><span class="p">),</span><span class="nb">list</span><span class="p">(</span><span class="n">github</span><span class="p">),</span><span class="nb">list</span><span class="p">(</span><span class="n">linkedin</span><span class="p">),</span><span class="nb">list</span><span class="p">(</span><span class="n">birthdate</span><span class="p">),</span><span class="nb">list</span><span class="p">(</span><span class="n">gender</span><span class="p">)</span></div>
+    
+    <span class="c1"># def education_information_parser(self,academics_segment):</span>
+    <span class="c1">#     with self.spacy_pipeline.nlp.disable_pipes(&quot;category_component&quot;,&quot;segmentation_component&quot;,&quot;profile_ner_parsing_component&quot;,&quot;experience_ner_parsing_component&quot;,&quot;profile_pattern_matching_component&quot;,&quot;skills_pattern_matching_component&quot;,&quot;embedding_component&quot;):</span>
+    <span class="c1">#             if academics_segment:</span>
+    <span class="c1">#                 self.resume_education = self.spacy_pipeline.process_text(academics_segment)</span>
+    <span class="c1">#             else:</span>
+    <span class="c1">#                 self.resume_education = self.spacy_pipeline.process_text(self.cleaned_resume)</span>
+
+    <span class="c1"># def experience_information_parser(self,experience_segment):</span>
+    <span class="c1">#     with self.spacy_pipeline.nlp.disable_pipes(&quot;category_component&quot;,&quot;segmentation_component&quot;,&quot;profile_ner_parsing_component&quot;,&quot;academics_ner_parsing_component&quot;,&quot;profile_pattern_matching_component&quot;,&quot;skills_pattern_matching_component&quot;,&quot;embedding_component&quot;):</span>
+    <span class="c1">#         if experience_segment:</span>
+    <span class="c1">#             self.resume_experience = self.spacy_pipeline.process_text(experience_segment)</span>
+    <span class="c1">#         else:</span>
+    <span class="c1">#             self.resume_experience = self.spacy_pipeline.process_text(self.cleaned_resume)</span>
+
+<div class="viewcode-block" id="Parser.experience_academics_parser"><a class="viewcode-back" href="../../index.html#cvparser.newParse.Parser.experience_academics_parser">[docs]</a>    <span class="k">def</span> <span class="nf">experience_academics_parser</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">experience_academics_segment</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        This method will extract the available experience and academics from the resume.</span>
+<span class="sd">        Here, only &quot;experience_academics_ner_parsing_component&quot; is enabled.</span>
+
+<span class="sd">        :param experience_academics_segment: The experience and education segment from a resume. Here we are using the whole resume. So that we do not miss any experiences.</span>
+<span class="sd">        :type experience_academics_segment: str</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">spacy_pipeline</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">disable_pipes</span><span class="p">(</span><span class="s2">&quot;category_component&quot;</span><span class="p">,</span><span class="s2">&quot;segmentation_component&quot;</span><span class="p">,</span><span class="s2">&quot;profile_ner_parsing_component&quot;</span><span class="p">,</span><span class="s2">&quot;profile_pattern_matching_component&quot;</span><span class="p">,</span><span class="s2">&quot;skills_pattern_matching_component&quot;</span><span class="p">,</span><span class="s2">&quot;embedding_component&quot;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">resume_experience_academics</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">spacy_pipeline</span><span class="o">.</span><span class="n">process_text</span><span class="p">(</span><span class="n">experience_academics_segment</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Parser.skills_language_parser"><a class="viewcode-back" href="../../index.html#cvparser.newParse.Parser.skills_language_parser">[docs]</a>    <span class="k">def</span> <span class="nf">skills_language_parser</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        This method will extract the available skills from the resume.</span>
+<span class="sd">        Here, only &quot;skills_pattern_matching_component&quot; is enabled.</span>
+<span class="sd">        As the skills can be in many parts of resume, we have passed the whole resume so that we can extract all the possible skills.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="c1"># with self.spacy_pipeline.nlp.disable_pipes(&quot;category_component&quot;,&quot;segmentation_component&quot;,&quot;profile_ner_parsing_component&quot;,&quot;academics_ner_parsing_component&quot;,&quot;experience_ner_parsing_component&quot;,&quot;profile_pattern_matching_component&quot;,&quot;embedding_component&quot;):</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">spacy_pipeline</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">disable_pipes</span><span class="p">(</span><span class="s2">&quot;category_component&quot;</span><span class="p">,</span><span class="s2">&quot;segmentation_component&quot;</span><span class="p">,</span><span class="s2">&quot;profile_ner_parsing_component&quot;</span><span class="p">,</span><span class="s2">&quot;experience_academics_ner_parsing_component&quot;</span><span class="p">,</span><span class="s2">&quot;profile_pattern_matching_component&quot;</span><span class="p">,</span><span class="s2">&quot;embedding_component&quot;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">resume_skills_language</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">spacy_pipeline</span><span class="o">.</span><span class="n">process_text</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cleaned_resume</span><span class="p">)</span></div>
+
+    <span class="c1"># def skills_parser(self,skill_segment):</span>
+    <span class="c1">#     &#39;&#39;&#39;</span>
+    <span class="c1">#     This method will extract the technical skills and the soft skills from the skills segment or the whole resume.</span>
+    <span class="c1">#     Here, only &quot;pattern_matching_component&quot; is enabled.</span>
+
+    <span class="c1">#     :param skill_segment: The skill segment from a resume</span>
+    <span class="c1">#     :type skill_segment: str</span>
+    <span class="c1">#     :return: A set of technical skills and soft skills</span>
+    <span class="c1">#     &#39;&#39;&#39;</span>
+    <span class="c1">#     skill_text = skill_segment</span>
+    <span class="c1">#     with self.spacy_pipeline.nlp.disable_pipes(&quot;category_component&quot;,&quot;segmentation_component&quot;,&quot;ner_parsing_component&quot;,&quot;embedding_component&quot;):</span>
+    <span class="c1">#         if skill_text:</span>
+    <span class="c1">#             self.resume_skills = self.spacy_pipeline.process_text(skill_text)</span>
+    <span class="c1">#             technical_skills = self.resume_skills._.technical_skills</span>
+    <span class="c1">#             soft_skills = self.resume_skills._.soft_skills</span>
+    <span class="c1">#         else:</span>
+    <span class="c1">#             self.resume_skills = self.spacy_pipeline.process_text(self.cleaned_resume)</span>
+    <span class="c1">#             technical_skills = self.resume_skills._.technical_skills</span>
+    <span class="c1">#             soft_skills = self.resume_skills._.soft_skills</span>
+    <span class="c1">#     return list(technical_skills),list(soft_skills)</span>
+
+
+    <span class="c1"># def education_parser(self,edu_segment):</span>
+    <span class="c1">#     &#39;&#39;&#39;</span>
+    <span class="c1">#     This method will extract the education information from the education segment or from the whole resume.</span>
+    <span class="c1">#     Here, only &quot;ner_parsing_component&quot; is enabled.</span>
+
+    <span class="c1">#     :param edu_segment: The education segment from a resume</span>
+    <span class="c1">#     :type edu_segment: str</span>
+    <span class="c1">#     :return: A list of academics degree from a resume</span>
+    <span class="c1">#     &#39;&#39;&#39;</span>
+    <span class="c1">#     education_text = edu_segment</span>
+    <span class="c1">#     with self.spacy_pipeline.nlp.disable_pipes(&quot;category_component&quot;,&quot;segmentation_component&quot;,&quot;pattern_matching_component&quot;,&quot;embedding_component&quot;):</span>
+    <span class="c1">#         if education_text:</span>
+    <span class="c1">#             self.resume_education = self.spacy_pipeline.process_text(education_text)</span>
+    <span class="c1">#             academics = self.resume_education._.education</span>
+    <span class="c1">#         else:</span>
+    <span class="c1">#             self.resume_education = self.spacy_pipeline.process_text(self.cleaned_resume)</span>
+    <span class="c1">#             academics = self.resume_education._.education</span>
+    <span class="c1">#     return academics</span>
+
+    
+    <span class="c1"># def experience_parser(self,exp_segment):</span>
+    <span class="c1">#     &#39;&#39;&#39;</span>
+    <span class="c1">#     This method will extract the experiences from the experience segment or from the whole resume.</span>
+    <span class="c1">#     Here, only &quot;ner_parsing_component&quot; is enabled.</span>
+
+    <span class="c1">#     :param exp_segment: The experience segment from a resume</span>
+    <span class="c1">#     :type exp_segment: str</span>
+    <span class="c1">#     :return: A list of experiences from a resume</span>
+    <span class="c1">#     &#39;&#39;&#39;</span>
+    <span class="c1">#     experience_text = exp_segment</span>
+    <span class="c1">#     with self.spacy_pipeline.nlp.disable_pipes(&quot;category_component&quot;,&quot;segmentation_component&quot;,&quot;pattern_matching_component&quot;,&quot;embedding_component&quot;):</span>
+    <span class="c1">#         if experience_text:</span>
+    <span class="c1">#             self.resume_experience = self.spacy_pipeline.process_text(experience_text)</span>
+    <span class="c1">#             experience = self.resume_experience._.experiences</span>
+    <span class="c1">#         else:</span>
+    <span class="c1">#             self.resume_experience = self.spacy_pipeline.process_text(self.cleaned_resume)</span>
+    <span class="c1">#             experience = self.resume_experience._.experiences</span>
+    <span class="c1">#     return experience</span>
+
+    <span class="c1"># def language_parser(self,lang_segment):</span>
+    <span class="c1">#     &#39;&#39;&#39;</span>
+    <span class="c1">#     This method will extract the language language segment or from the whole resume.</span>
+    <span class="c1">#     Here, only &quot;pattern_matching_component&quot; is enabled.</span>
+
+    <span class="c1">#     :param lang_segment: The language segment from a resume</span>
+    <span class="c1">#     :type lang_segment: str</span>
+    <span class="c1">#     :return: A list of languages from a resume</span>
+    <span class="c1">#     &#39;&#39;&#39;</span>
+    <span class="c1">#     language_text = lang_segment</span>
+    <span class="c1">#     with self.spacy_pipeline.nlp.disable_pipes(&quot;category_component&quot;,&quot;segmentation_component&quot;,&quot;ner_parsing_component&quot;,&quot;embedding_component&quot;):</span>
+    <span class="c1">#         if language_text:</span>
+    <span class="c1">#             self.resume_language = self.spacy_pipeline.process_text(language_text)</span>
+    <span class="c1">#             language = self.resume_language._.language</span>
+    <span class="c1">#         else:</span>
+    <span class="c1">#             self.resume_language = self.spacy_pipeline.process_text(self.cleaned_resume)</span>
+    <span class="c1">#             language = self.resume_language._.language</span>
+    <span class="c1">#     return list(language)</span>
+    
+
+<div class="viewcode-block" id="Parser.returnjson"><a class="viewcode-back" href="../../index.html#cvparser.newParse.Parser.returnjson">[docs]</a>    <span class="k">def</span> <span class="nf">returnjson</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">personal_information</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        This method will arrange all the informations in the required JSON format.</span>
+<span class="sd">        </span>
+<span class="sd">        :param personal_information: Personal information of a resume</span>
+<span class="sd">        :type personal_information: tuple</span>
+<span class="sd">        :return: All required information in the JSON format</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">personalInfo</span> <span class="o">=</span> <span class="n">formatdata</span><span class="o">.</span><span class="n">formatPersonalinfo</span><span class="p">(</span><span class="n">personal_information</span><span class="p">)</span>
+        <span class="c1"># json_data = {</span>
+        <span class="c1">#     &quot;PERSONAL_INFORMATION&quot;: personalInfo,</span>
+        <span class="c1">#     &quot;OBJECTIVE&quot;: self.segmented_resume._.objective_segment,</span>
+        <span class="c1">#     &quot;SKILLS&quot;:{</span>
+        <span class="c1">#         &#39;Skills&#39;: list(self.resume_skills_language._.technical_skills),</span>
+        <span class="c1">#         &#39;Soft_skills&#39;: list(self.resume_skills_language._.soft_skills),</span>
+        <span class="c1">#     },</span>
+        <span class="c1">#     &quot;EDUCATION&quot;: self.resume_education._.education,</span>
+        <span class="c1">#     &quot;EXPERIENCE&quot;: self.resume_experience._.experiences,</span>
+        <span class="c1">#     &quot;LANGUAGES&quot;: list(self.resume_profile._.language),</span>
+        <span class="c1">#     &quot;PROJECTS&quot;: self.segmented_resume._.projects_segment,</span>
+        <span class="c1">#     &quot;REWARDS&quot;: self.segmented_resume._.rewards_segment,</span>
+        <span class="c1">#     &quot;REFERENCES&quot;: self.segmented_resume._.references_segment,</span>
+        <span class="c1"># }</span>
+        <span class="n">json_data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;PERSONAL_INFORMATION&quot;</span><span class="p">:</span> <span class="n">personalInfo</span><span class="p">,</span>
+            <span class="s2">&quot;OBJECTIVE&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">segmented_resume</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">objective_segment</span><span class="p">,</span>
+            <span class="s2">&quot;SKILLS&quot;</span><span class="p">:{</span>
+                <span class="s1">&#39;Skills&#39;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">resume_skills_language</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">technical_skills</span><span class="p">),</span>
+                <span class="s1">&#39;Soft_skills&#39;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">resume_skills_language</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">soft_skills</span><span class="p">),</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;EDUCATION&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">resume_experience_academics</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">experience_academics</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+            <span class="s2">&quot;EXPERIENCE&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">resume_experience_academics</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">experience_academics</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+            <span class="s2">&quot;LANGUAGES&quot;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">resume_profile</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">language</span><span class="p">),</span>
+            <span class="s2">&quot;PROJECTS&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">segmented_resume</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">projects_segment</span><span class="p">,</span>
+            <span class="s2">&quot;REWARDS&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">segmented_resume</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">rewards_segment</span><span class="p">,</span>
+            <span class="s2">&quot;REFERENCES&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">segmented_resume</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">references_segment</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">json_data</span></div>
+
+<div class="viewcode-block" id="Parser.getStructuredData"><a class="viewcode-back" href="../../index.html#cvparser.newParse.Parser.getStructuredData">[docs]</a>    <span class="k">def</span> <span class="nf">getStructuredData</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        This method will get all the required segmented part form a resume.</span>
+<span class="sd">        Then the segmented part will be passed to their respective method and receive the required parsed information.</span>
+
+<span class="sd">        :return: A JSON formatted data</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">personal_information</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">profile_information_parser</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">segmented_resume</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">profile_segment</span><span class="p">)</span>
+        <span class="c1"># self.education_information_parser(self.segmented_resume._.academics_segment)</span>
+        <span class="c1"># self.experience_information_parser(self.cleaned_resume)</span>
+        <span class="n">data_for_ner</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">segmented_resume</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">objective_segment</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">segmented_resume</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">skills_segment</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">segmented_resume</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">links_segment</span><span class="p">,</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">segmented_resume</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">experience_segment</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">segmented_resume</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">language_segment</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">segmented_resume</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">projects_segment</span><span class="p">,</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">segmented_resume</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">rewards_segment</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">segmented_resume</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">references_segment</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">segmented_resume</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">academics_segment</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">experience_academics_parser</span><span class="p">(</span><span class="n">data_for_ner</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">skills_language_parser</span><span class="p">()</span>
+
+        <span class="c1"># personal_information = self.personal_information_parser(self.segmented_resume._.profile_segment)        </span>
+        <span class="c1"># objectives = self.segmented_resume._.objective_segment        </span>
+        <span class="c1"># skills = self.skills_parser(self.segmented_resume._.skills_segment)        </span>
+        <span class="c1"># academics = self.education_parser(self.segmented_resume._.academics_segment)        </span>
+        <span class="c1"># experiences = self.experience_parser(self.segmented_resume._.experience_segment)        </span>
+        <span class="c1"># language = self.language_parser(self.segmented_resume._.language_segment)        </span>
+        <span class="c1"># projects = self.segmented_resume._.projects_segment        </span>
+        <span class="c1"># rewards = self.segmented_resume._.rewards_segment        </span>
+        <span class="c1"># references = self.segmented_resume._.references_segment</span>
+        <span class="c1"># print (f&quot;PERSONAL INFORMATION: {personal_information}\n&quot;)</span>
+        <span class="c1"># print (f&quot;OBJECTIVES : {objectives}\n&quot;)</span>
+        <span class="c1"># print (f&quot;SKILLS: {skills}\n&quot;)</span>
+        <span class="c1"># print (f&quot;ACADEMICS: {academics}\n&quot;)</span>
+        <span class="c1"># print (f&quot;EXPERIENCES: {experiences}\n&quot;)</span>
+        <span class="c1"># print (f&quot;LANGUAGES: {language}\n&quot;)</span>
+        <span class="c1"># print (f&quot;PROJECTS: {projects}\n&quot;)</span>
+        <span class="c1"># print (f&quot;REWARDS: {rewards}\n&quot;)</span>
+        <span class="c1"># print (f&quot;REFERENCES: {references}\n&quot;)</span>
+        <span class="n">formatted_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">returnjson</span><span class="p">(</span><span class="n">personal_information</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">formatted_data</span></div>
+
+
+<div class="viewcode-block" id="Parser.getScore"><a class="viewcode-back" href="../../index.html#cvparser.newParse.Parser.getScore">[docs]</a>    <span class="k">def</span> <span class="nf">getScore</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">jd_path</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        This method will give us the similarity score between two documents i.e. resume and job description.</span>
+<span class="sd">        Here, only &quot;embedding_component&quot; is enabled.</span>
+
+<span class="sd">        :param jd_path: Path of the job description file</span>
+<span class="sd">        :type jd_path: str</span>
+<span class="sd">        :return: A similarity score which is between 0 and 1</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">scorer</span> <span class="o">=</span> <span class="n">Word2VecScorer</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">word2vec_model</span><span class="p">)</span>
+        <span class="n">cleaned_jd</span> <span class="o">=</span> <span class="n">prepare_text</span><span class="p">(</span><span class="n">jd_path</span><span class="p">,</span><span class="n">dolower</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="c1"># with self.spacy_pipeline.nlp.disable_pipes(&quot;category_component&quot;,&quot;segmentation_component&quot;,&quot;profile_ner_parsing_component&quot;,&quot;academics_ner_parsing_component&quot;,&quot;experience_ner_parsing_component&quot;,&quot;profile_pattern_matching_component&quot;,&quot;skills_pattern_matching_component&quot;):</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">spacy_pipeline</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">disable_pipes</span><span class="p">(</span><span class="s2">&quot;category_component&quot;</span><span class="p">,</span><span class="s2">&quot;segmentation_component&quot;</span><span class="p">,</span><span class="s2">&quot;profile_ner_parsing_component&quot;</span><span class="p">,</span><span class="s2">&quot;experience_academics_ner_parsing_component&quot;</span><span class="p">,</span><span class="s2">&quot;profile_pattern_matching_component&quot;</span><span class="p">,</span><span class="s2">&quot;skills_pattern_matching_component&quot;</span><span class="p">):</span>
+            <span class="n">resume_embedding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">spacy_pipeline</span><span class="o">.</span><span class="n">process_text</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cleaned_resume</span><span class="p">)</span>
+            <span class="n">jd_embedding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">spacy_pipeline</span><span class="o">.</span><span class="n">process_text</span><span class="p">(</span><span class="n">cleaned_jd</span><span class="p">)</span>
+        <span class="n">similarity_score</span> <span class="o">=</span> <span class="n">scorer</span><span class="o">.</span><span class="n">calculate_similarity</span><span class="p">(</span><span class="n">resume_embedding</span><span class="p">,</span> <span class="n">jd_embedding</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">similarity_score</span></div>
+
+<div class="viewcode-block" id="Parser.rejectCV"><a class="viewcode-back" href="../../index.html#cvparser.newParse.Parser.rejectCV">[docs]</a>    <span class="k">def</span> <span class="nf">rejectCV</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        This method will be executed if a given document is not a resume.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="s2">&quot;This document is not a resume&quot;</span></div></div>
+
+
+<span class="c1"># test_doc = Parser()</span>
+<span class="c1"># result = test_doc.identifyResume(r&quot;C:\Users\Aakash\Desktop\Python\Scraping\Projects\dolphin2\seven\dolphin\datasets\resumes\Ananya Jain BA Pharma2.docx&quot;)</span>
+<span class="c1"># print (result)</span>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Dolphwin 2.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, InfoDevelopers.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
+    </div>
+  </body>
+</html>

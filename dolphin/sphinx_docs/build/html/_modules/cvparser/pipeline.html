@@ -59,7 +59,7 @@
 <span class="sd">     **This class is developed to add the custom spacy pipelines for document categorization, resume segmentation, and resume parsing.**</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="NlpPipeline.__init__"><a class="viewcode-back" href="../../index.html#cvparser.pipeline.NlpPipeline.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        **Construcotr method**</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -89,7 +89,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">soft_skills_pattern</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">predefined_soft_skills</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">technical_skills_patterns</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">predefined_technical_skills</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">languages_pattern</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">predefined_languages</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">nationality_pattern</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">predefined_nationalities</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nationality_pattern</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">predefined_nationalities</span><span class="p">))</span></div>
 
 <div class="viewcode-block" id="NlpPipeline.embedding_component"><a class="viewcode-back" href="../../index.html#cvparser.pipeline.NlpPipeline.embedding_component">[docs]</a>    <span class="k">def</span> <span class="nf">embedding_component</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">doc</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>

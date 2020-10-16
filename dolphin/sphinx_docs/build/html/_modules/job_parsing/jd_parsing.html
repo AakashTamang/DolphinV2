@@ -52,21 +52,29 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Class to parse contents like skills, organization, designation, education</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="SpacyNer.__init__"><a class="viewcode-back" href="../../index.html#job_parsing.jd_parsing.SpacyNer.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Intializes ner model and spacy nlp model path</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">spacy_ner_model_path</span> <span class="o">=</span> <span class="n">jd_parse_ner_model</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">spacy_ner_model_path</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">spacy_ner_model_path</span><span class="p">)</span></div>
         <span class="c1"># self.spacy_pipeline = self.nlpPipeline()</span>
         <span class="c1"># self.spacy_pipeline.add_skills_pattern_matching()</span>
 
-    <span class="k">def</span> <span class="nf">clean_parse_jd</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">file_path</span><span class="p">):</span>
+<div class="viewcode-block" id="SpacyNer.clean_parse_jd"><a class="viewcode-back" href="../../index.html#job_parsing.jd_parsing.SpacyNer.clean_parse_jd">[docs]</a>    <span class="k">def</span> <span class="nf">clean_parse_jd</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">file_path</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        This method takes the document or the it&#39;s path and parsers the required</span>
+<span class="sd">        information like designation, experience, education etc. form it.</span>
+
+<span class="sd">        :param file_path: Path of the document or a document itself</span>
+<span class="sd">        :return: A parsed data from the document</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="n">cleaned_text</span> <span class="o">=</span> <span class="n">prepare_text</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span><span class="n">dolower</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="n">desig</span><span class="p">,</span> <span class="n">org</span><span class="p">,</span> <span class="n">exp</span><span class="p">,</span> <span class="n">edu</span><span class="p">,</span> <span class="n">loc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">cleaned_text</span><span class="p">)</span>
         <span class="n">technical_skills</span><span class="p">,</span><span class="n">soft_skills</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_skills_from_pool</span><span class="p">(</span><span class="n">cleaned_text</span><span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">formatted_data</span><span class="p">(</span><span class="n">desig</span><span class="p">,</span> <span class="n">org</span><span class="p">,</span> <span class="n">exp</span><span class="p">,</span> <span class="n">edu</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">technical_skills</span><span class="p">,</span><span class="n">soft_skills</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">result</span>
+        <span class="k">return</span> <span class="n">result</span></div>
 
 
 <div class="viewcode-block" id="SpacyNer.parse"><a class="viewcode-back" href="../../index.html#job_parsing.jd_parsing.SpacyNer.parse">[docs]</a>    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">jd_content</span><span class="p">):</span>
