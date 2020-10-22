@@ -23,6 +23,7 @@ class DocClassifier:
     def sent_to_words(self,file_content):
         """
         Converts sentences into words
+
         :param: file_content :type:list of lists
         :returns: sentence :type:str 
         """
@@ -36,6 +37,7 @@ class DocClassifier:
         """
         Removes Stopwords, Form Bigrams, Trigrams and Lemmatization
         then screens for allowed pos-tags
+
         :params: texts :type:list
                  stop_words :type:list
                  bigram_mod :type:list
@@ -60,6 +62,7 @@ class DocClassifier:
         forms bigrams, trigrams
         loads both the tfidf and classifier model
         and distinguishes the file_content
+        
         :params: file_content :type:list
         :return: category type:str
         '''

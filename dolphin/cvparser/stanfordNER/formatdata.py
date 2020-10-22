@@ -6,6 +6,12 @@ import datefinder
 from .standarizedata import comparedates
 
 def key_value_formatter(list_kv):
+    '''
+    This method gives us the personal information detail like name, address etc in a key value format
+
+    :param list_kv: A list of key value pairs
+    :return: re arranged key value pairs
+    '''
     syn_name = ['Name', 'name']
     syn_birthdate = ['D.O.B', "Date of Birth", "Birthdate", "Birth date", "D-O-B"]
     syn_address = ['Address', 'Location', 'address']
@@ -51,6 +57,7 @@ def formatPersonalinfo(personal_info):
     '''
     This functions takes all the unstructured personal information and returns the formatted and structured
     personal information.
+    
     :param personal_info: (List) of all the fields required as personal info.
     :return: List(Returns the formatted personal info will all the required fields.)
     '''
@@ -84,6 +91,16 @@ def formatPersonalinfo(personal_info):
 
 def formatEducationalinfo(sent_tokens, sent2idx, alldegree,
                         alluniversity, alldate, alllocations):
+    '''
+    This methods is used for extracting out the educational data in the required format.
+
+    :param sent_tokens: a list of sentences
+    :param sent2idx: contains the sentence along with its index value
+    :param alldegree: all of the degrees extracted from the document
+    :param alluniversity: all of the universities extracted from the document
+    :param alldate: all of the dates extracted from the document
+    :param alllocations: all of the locations extracted from the document
+    '''
     unique_identifier = 0
     degree_index = []
     university_index = []
@@ -184,17 +201,31 @@ def formatEducationalinfo(sent_tokens, sent2idx, alldegree,
             university_index.append((new_university,new_index))
             university_index.append(('dummy',100))
 
+    bachelor_degree = ["Bachelors", "Bachelor","Bachelor's"]
+    master_degree = ["Masters","Master's","Master"]
+    phd_degree = ["PHD", "PhD"]
+    words = ["Bachelors","Bachelor","Bachelor's","Masters","Master","Master's","PHD","PhD","Degree","degree","in","of"]
+
     for degree,degindex in degree_index:
 
         academic_cluster = {}
         if degree != 'dummy':
-            academic_cluster.update({'Degree':degree})
+            if degree.split(" ")[0] in bachelor_degree:
+                academic_cluster.update({"degree":"B"})
+            elif degree.split(" ")[0] in master_degree:
+                academic_cluster.update({"degree":"M"})
+            elif degree.split(" ")[0] in phd_degree:
+                academic_cluster.update({"degree":"P"})
+            for i in words:
+                if i in degree:
+                    degree = degree.replace(i,"").strip()
+            academic_cluster.update({"program":degree})
         for university,unindex in university_index:
-            if abs(degindex - unindex) <= 2:
-                academic_cluster.update({'university':university})
-        for location,locindex  in location_index:
-            if abs(degindex - locindex) <= 2:
-                academic_cluster.update({'location':location})
+            if abs(degindex - unindex) == 0:
+                academic_cluster.update({'institution':university})
+        # for location,locindex  in location_index:
+        #     if abs(degindex - locindex) <= 2:
+        #         academic_cluster.update({'location':location})
         possible_dates = []
         new_date_index = 0
         for date,dateindex in date_index:
@@ -206,14 +237,14 @@ def formatEducationalinfo(sent_tokens, sent2idx, alldegree,
                 possible_dates.append(date)
         if len(possible_dates)>=2:
             exit_date,entry_date = comparedates(possible_dates)
-            academic_cluster.update({'enrolled_date': entry_date,
-                                       'graduated_date': exit_date})
+            academic_cluster.update({'from_date': entry_date,
+                                       'to_date': exit_date})
         else:
             if possible_dates:
                 entry_date = 'unknown'
                 exit_date = possible_dates[0]
-                academic_cluster.update({'enrolled_date': entry_date,
-                                       'graduated_date': exit_date})
+                academic_cluster.update({'from_date': entry_date,
+                                       'to_date': exit_date})
 
         unique_identifier+=1
         formatted_academics.update({'E{}'.format(unique_identifier):academic_cluster})

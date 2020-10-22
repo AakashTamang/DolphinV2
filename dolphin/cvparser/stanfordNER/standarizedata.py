@@ -6,7 +6,9 @@ def capitalizeinput(inputparameter):
     tokenize the string and capitalize all
     the token and returns the formatted
     capitalized text.
-    :param inputparameter :type str
+    
+    :param inputparameter: A textual data
+    :type inputparameter: str
     :return: string(text will all the tokens capitalized)
     '''
     formatted_output = inputparameter.title()
@@ -15,10 +17,12 @@ def capitalizeinput(inputparameter):
 
 def comparedates(datelist):
     '''
-    this function takes the list of the date
+    This function takes the list of the date
     parse them and compares them and provide
     larger date and smaller date
-    :param datelist:type list of str
+    
+    :param datelist: It contains the collection of dates
+    :type datelist: list
     :return: sorted dates
     '''
     try:

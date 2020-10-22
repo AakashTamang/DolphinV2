@@ -1,0 +1,530 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>cvparser.stanfordNER.formatdata &#8212; Dolphwin 2.0 documentation</title>
+    <link rel="stylesheet" href="../../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Dolphwin 2.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for cvparser.stanfordNER.formatdata</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">string</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+
+<span class="kn">import</span> <span class="nn">datefinder</span>
+<span class="kn">from</span> <span class="nn">.standarizedata</span> <span class="kn">import</span> <span class="n">comparedates</span>
+
+<div class="viewcode-block" id="key_value_formatter"><a class="viewcode-back" href="../../../index.html#cvparser.stanfordNER.formatdata.key_value_formatter">[docs]</a><span class="k">def</span> <span class="nf">key_value_formatter</span><span class="p">(</span><span class="n">list_kv</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This method gives us the personal information detail like name, address etc in a key value format</span>
+
+<span class="sd">    :param list_kv: A list of key value pairs</span>
+<span class="sd">    :return: re arranged key value pairs</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">syn_name</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">]</span>
+    <span class="n">syn_birthdate</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;D.O.B&#39;</span><span class="p">,</span> <span class="s2">&quot;Date of Birth&quot;</span><span class="p">,</span> <span class="s2">&quot;Birthdate&quot;</span><span class="p">,</span> <span class="s2">&quot;Birth date&quot;</span><span class="p">,</span> <span class="s2">&quot;D-O-B&quot;</span><span class="p">]</span>
+    <span class="n">syn_address</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Address&#39;</span><span class="p">,</span> <span class="s1">&#39;Location&#39;</span><span class="p">,</span> <span class="s1">&#39;address&#39;</span><span class="p">]</span>
+    <span class="n">rule</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;[^:|\s|\n|-]+[A-Za-z0-9\s/.,@-]+&#39;</span>
+    <span class="n">key_value_pair</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">name_value</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">date_value</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">location_value</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">list_kv</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">rule</span><span class="p">,</span> <span class="n">token</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">syn_name</span><span class="p">:</span>
+                <span class="n">name_value</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                <span class="n">key_value_pair</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">key</span><span class="p">:</span> <span class="n">name_value</span><span class="p">})</span>
+            <span class="k">elif</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">syn_birthdate</span><span class="p">:</span>
+                <span class="n">key</span> <span class="o">=</span> <span class="s2">&quot;D.O.B&quot;</span>
+                <span class="n">date_value</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                <span class="n">key_value_pair</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">key</span><span class="p">:</span> <span class="n">date_value</span><span class="p">})</span>
+            <span class="k">elif</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">syn_address</span><span class="p">:</span>
+                <span class="n">key</span> <span class="o">=</span> <span class="s2">&quot;Address&quot;</span>
+                <span class="n">location_value</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                <span class="n">key_value_pair</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">key</span><span class="p">:</span> <span class="n">location_value</span><span class="p">})</span>
+    <span class="k">return</span> <span class="n">key_value_pair</span></div>
+
+
+<span class="k">def</span> <span class="nf">key_value_identifier</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="n">rule</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;[A-Za-z\.][:|-|:-][^\n]+&#39;</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">rule</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">key_value_formatter</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="k">def</span> <span class="nf">cleandata</span><span class="p">(</span><span class="n">sentence</span><span class="p">):</span>
+    <span class="n">cleanedsent</span> <span class="o">=</span> <span class="n">sentence</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">string</span><span class="o">.</span><span class="n">punctuation</span><span class="p">))</span>
+    <span class="n">cleanedsent</span> <span class="o">=</span><span class="n">cleanedsent</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="n">cleanedsent</span> <span class="o">=</span> <span class="n">cleanedsent</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="n">cleanedsent</span> <span class="o">=</span> <span class="p">(</span><span class="n">cleanedsent</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+    <span class="n">cleanedsent</span> <span class="o">=</span>  <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cleanedsent</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39; +&#39;</span><span class="p">,</span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="n">cleanedsent</span><span class="p">))</span>
+
+
+<div class="viewcode-block" id="formatPersonalinfo"><a class="viewcode-back" href="../../../index.html#cvparser.stanfordNER.formatdata.formatPersonalinfo">[docs]</a><span class="k">def</span> <span class="nf">formatPersonalinfo</span><span class="p">(</span><span class="n">personal_info</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This functions takes all the unstructured personal information and returns the formatted and structured</span>
+<span class="sd">    personal information.</span>
+<span class="sd">    </span>
+<span class="sd">    :param personal_info: (List) of all the fields required as personal info.</span>
+<span class="sd">    :return: List(Returns the formatted personal info will all the required fields.)</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">personalInfo</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">personal_title</span> <span class="o">=</span> <span class="p">[</span>
+                     <span class="s1">&#39;name&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;Address&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;Email&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;Phone_Number&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;Zip_Code&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;Nationality&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;github&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;linkedin&#39;</span><span class="p">,</span>
+                      <span class="s1">&#39;birthdate&#39;</span><span class="p">,</span>
+                      <span class="s1">&#39;Gender&#39;</span>
+                      <span class="p">]</span>
+    <span class="k">for</span> <span class="n">arg</span><span class="p">,</span><span class="n">title</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">personal_info</span><span class="p">,</span><span class="n">personal_title</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">title</span> <span class="o">==</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span>
+            <span class="n">name_tokens</span> <span class="o">=</span> <span class="n">arg</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">name_tokens</span><span class="p">)</span><span class="o">&gt;=</span><span class="mi">3</span><span class="p">:</span>
+                <span class="n">personalInfo</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;First_Name&#39;</span><span class="p">:</span><span class="n">name_tokens</span><span class="p">[</span><span class="mi">0</span><span class="p">]})</span>
+                <span class="n">personalInfo</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;Last_Name&#39;</span><span class="p">:</span><span class="n">name_tokens</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]})</span>
+                <span class="n">personalInfo</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;Middle_Name&#39;</span><span class="p">:</span><span class="n">name_tokens</span><span class="p">[</span><span class="mi">1</span><span class="p">]})</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">personalInfo</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;First_Name&#39;</span><span class="p">:</span> <span class="n">name_tokens</span><span class="p">[</span><span class="mi">0</span><span class="p">]})</span>
+                <span class="n">personalInfo</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;Last_Name&#39;</span><span class="p">:</span> <span class="n">name_tokens</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]})</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">personalInfo</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">title</span><span class="p">:</span><span class="n">arg</span><span class="p">})</span>
+    <span class="k">return</span> <span class="n">personalInfo</span></div>
+
+
+<div class="viewcode-block" id="formatEducationalinfo"><a class="viewcode-back" href="../../../index.html#cvparser.stanfordNER.formatdata.formatEducationalinfo">[docs]</a><span class="k">def</span> <span class="nf">formatEducationalinfo</span><span class="p">(</span><span class="n">sent_tokens</span><span class="p">,</span> <span class="n">sent2idx</span><span class="p">,</span> <span class="n">alldegree</span><span class="p">,</span>
+                        <span class="n">alluniversity</span><span class="p">,</span> <span class="n">alldate</span><span class="p">,</span> <span class="n">alllocations</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This methods is used for extracting out the educational data in the required format.</span>
+
+<span class="sd">    :param sent_tokens: a list of sentences</span>
+<span class="sd">    :param sent2idx: contains the sentence along with its index value</span>
+<span class="sd">    :param alldegree: all of the degrees extracted from the document</span>
+<span class="sd">    :param alluniversity: all of the universities extracted from the document</span>
+<span class="sd">    :param alldate: all of the dates extracted from the document</span>
+<span class="sd">    :param alllocations: all of the locations extracted from the document</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">unique_identifier</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">degree_index</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">university_index</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">date_index</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">location_index</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">formatted_academics</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">item_tracker</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="n">sent_tokens</span><span class="p">:</span>
+        <span class="n">cleaned_sentence</span> <span class="o">=</span> <span class="n">cleandata</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">degree</span> <span class="ow">in</span> <span class="n">alldegree</span><span class="p">:</span>
+            <span class="n">cleaned_degree</span> <span class="o">=</span> <span class="n">cleandata</span><span class="p">(</span><span class="n">degree</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">cleaned_degree</span> <span class="ow">in</span> <span class="n">cleaned_sentence</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">cleaned_degree</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">item_tracker</span><span class="p">:</span>
+                    <span class="n">item_tracker</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">cleaned_degree</span><span class="p">:</span><span class="mi">1</span><span class="p">})</span>
+                    <span class="n">degree_index</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">degree</span><span class="p">,</span><span class="n">sent2idx</span><span class="p">[</span><span class="n">cleaned_sentence</span><span class="p">]))</span>
+
+
+                <span class="k">elif</span> <span class="n">cleaned_degree</span> <span class="ow">in</span> <span class="n">item_tracker</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">cleaned_degree</span> <span class="o">==</span> <span class="n">cleaned_sentence</span><span class="p">:</span>
+                        <span class="n">key</span> <span class="o">=</span> <span class="n">cleaned_sentence</span><span class="o">+</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">item_tracker</span><span class="p">[</span><span class="n">cleaned_degree</span><span class="p">])</span>
+
+                        <span class="n">degree_index</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">degree</span><span class="p">,</span><span class="n">sent2idx</span><span class="p">[</span><span class="n">key</span><span class="p">]))</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">degree_index</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">degree</span><span class="p">,</span><span class="n">sent2idx</span><span class="p">[</span><span class="n">cleaned_sentence</span><span class="p">]))</span>
+                <span class="n">alldegree</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">degree</span><span class="p">)</span>
+                <span class="k">break</span>
+
+
+
+        <span class="k">for</span> <span class="n">university</span> <span class="ow">in</span> <span class="n">alluniversity</span><span class="p">:</span>
+            <span class="n">cleaned_university</span> <span class="o">=</span> <span class="n">cleandata</span><span class="p">(</span><span class="n">university</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">cleaned_university</span> <span class="ow">in</span> <span class="n">cleaned_sentence</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">cleaned_university</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">item_tracker</span><span class="p">:</span>
+                    <span class="n">university_index</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">university</span><span class="p">,</span><span class="n">sent2idx</span><span class="p">[</span><span class="n">cleaned_sentence</span><span class="p">]))</span>
+                    <span class="n">item_tracker</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">cleaned_university</span><span class="p">:</span><span class="mi">1</span><span class="p">})</span>
+
+                <span class="k">elif</span> <span class="n">cleaned_university</span> <span class="ow">in</span> <span class="n">item_tracker</span><span class="p">:</span>
+
+                    <span class="n">key</span> <span class="o">=</span> <span class="n">cleaned_sentence</span><span class="o">+</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">item_tracker</span><span class="p">[</span><span class="n">cleaned_university</span><span class="p">])</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">university_index</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">university</span><span class="p">,</span><span class="n">sent2idx</span><span class="p">[</span><span class="n">key</span><span class="p">]))</span>
+                    <span class="k">except</span><span class="p">:</span>
+                        <span class="k">pass</span>
+                <span class="n">alluniversity</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">university</span><span class="p">)</span>
+                <span class="k">break</span>
+
+        <span class="k">for</span> <span class="n">date</span> <span class="ow">in</span> <span class="n">alldate</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">date</span> <span class="ow">in</span> <span class="n">sentence</span><span class="p">:</span>
+                <span class="n">found_date</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">found_date</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">datefinder</span><span class="o">.</span><span class="n">find_dates</span><span class="p">(</span><span class="n">date</span><span class="p">)]</span>
+                <span class="k">except</span><span class="p">:</span>
+                    <span class="k">pass</span>
+
+                <span class="k">if</span> <span class="n">found_date</span><span class="p">:</span>
+                    <span class="n">formatted_date</span> <span class="o">=</span> <span class="n">found_date</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">-%m-%Y&quot;</span><span class="p">)</span>
+                    <span class="n">date_index</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">formatted_date</span><span class="p">,</span> <span class="n">sent2idx</span><span class="p">[</span><span class="n">cleaned_sentence</span><span class="p">]))</span>
+                <span class="n">alldate</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">location</span> <span class="ow">in</span> <span class="n">alllocations</span><span class="p">:</span>
+            <span class="n">cleaned_location</span> <span class="o">=</span> <span class="n">cleandata</span><span class="p">(</span><span class="n">location</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">cleaned_location</span> <span class="ow">in</span> <span class="n">cleaned_sentence</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">cleaned_location</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">item_tracker</span><span class="p">:</span>
+                    <span class="n">location_index</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">location</span><span class="p">,</span> <span class="n">sent2idx</span><span class="p">[</span><span class="n">cleaned_sentence</span><span class="p">]))</span>
+                    <span class="n">item_tracker</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">cleaned_location</span><span class="p">:</span><span class="mi">1</span><span class="p">})</span>
+
+                <span class="k">elif</span> <span class="n">cleaned_location</span> <span class="ow">in</span> <span class="n">item_tracker</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">cleaned_location</span> <span class="o">==</span> <span class="n">cleaned_sentence</span><span class="p">:</span>
+                        <span class="n">key</span> <span class="o">=</span> <span class="n">cleaned_sentence</span> <span class="o">+</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">item_tracker</span><span class="p">[</span><span class="n">cleaned_location</span><span class="p">])</span>
+                        <span class="n">location_index</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">location</span><span class="p">,</span><span class="n">sent2idx</span><span class="p">[</span><span class="n">key</span><span class="p">]))</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">location_index</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">location</span><span class="p">,</span><span class="n">sent2idx</span><span class="p">[</span><span class="n">cleaned_sentence</span><span class="p">]))</span>
+                    <span class="n">alllocations</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">location</span><span class="p">)</span>
+
+                <span class="k">break</span>
+
+
+
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">degree_index</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">j</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span>
+        <span class="k">if</span> <span class="n">degree_index</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">degree_index</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="mi">1</span><span class="p">]:</span>
+
+            <span class="n">new_degree</span> <span class="o">=</span> <span class="p">((</span><span class="n">degree_index</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39; &#39;</span><span class="o">+</span> <span class="n">degree_index</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="mi">0</span><span class="p">]))</span>
+            <span class="n">new_index</span> <span class="o">=</span> <span class="n">degree_index</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">degree_index</span><span class="o">.</span><span class="n">remove</span><span class="p">((</span><span class="n">degree_index</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span><span class="n">degree_index</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]))</span>
+            <span class="n">degree_index</span><span class="o">.</span><span class="n">remove</span><span class="p">((</span><span class="n">degree_index</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span><span class="n">degree_index</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]))</span>
+            <span class="n">degree_index</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">new_degree</span><span class="p">,</span><span class="n">new_index</span><span class="p">))</span>
+            <span class="n">degree_index</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s1">&#39;dummy&#39;</span><span class="p">,</span><span class="mi">1000</span><span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">university_index</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">j</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span>
+        <span class="k">if</span> <span class="n">university_index</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">university_index</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="mi">1</span><span class="p">]:</span>
+            <span class="n">new_university</span> <span class="o">=</span> <span class="p">((</span><span class="n">university_index</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39; &#39;</span> <span class="o">+</span><span class="n">university_index</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="mi">0</span><span class="p">]))</span>
+            <span class="n">new_index</span> <span class="o">=</span> <span class="n">university_index</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">university_index</span><span class="o">.</span><span class="n">remove</span><span class="p">((</span><span class="n">university_index</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span><span class="n">university_index</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]))</span>
+            <span class="n">university_index</span><span class="o">.</span><span class="n">remove</span><span class="p">((</span><span class="n">university_index</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span><span class="n">university_index</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]))</span>
+            <span class="n">university_index</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">new_university</span><span class="p">,</span><span class="n">new_index</span><span class="p">))</span>
+            <span class="n">university_index</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s1">&#39;dummy&#39;</span><span class="p">,</span><span class="mi">100</span><span class="p">))</span>
+
+    <span class="n">bachelor_degree</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Bachelors&quot;</span><span class="p">,</span> <span class="s2">&quot;Bachelor&quot;</span><span class="p">,</span><span class="s2">&quot;Bachelor&#39;s&quot;</span><span class="p">]</span>
+    <span class="n">master_degree</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Masters&quot;</span><span class="p">,</span><span class="s2">&quot;Master&#39;s&quot;</span><span class="p">,</span><span class="s2">&quot;Master&quot;</span><span class="p">]</span>
+    <span class="n">phd_degree</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;PHD&quot;</span><span class="p">,</span> <span class="s2">&quot;PhD&quot;</span><span class="p">]</span>
+    <span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Bachelors&quot;</span><span class="p">,</span><span class="s2">&quot;Bachelor&quot;</span><span class="p">,</span><span class="s2">&quot;Bachelor&#39;s&quot;</span><span class="p">,</span><span class="s2">&quot;Masters&quot;</span><span class="p">,</span><span class="s2">&quot;Master&quot;</span><span class="p">,</span><span class="s2">&quot;Master&#39;s&quot;</span><span class="p">,</span><span class="s2">&quot;PHD&quot;</span><span class="p">,</span><span class="s2">&quot;PhD&quot;</span><span class="p">,</span><span class="s2">&quot;Degree&quot;</span><span class="p">,</span><span class="s2">&quot;degree&quot;</span><span class="p">,</span><span class="s2">&quot;in&quot;</span><span class="p">,</span><span class="s2">&quot;of&quot;</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">degree</span><span class="p">,</span><span class="n">degindex</span> <span class="ow">in</span> <span class="n">degree_index</span><span class="p">:</span>
+
+        <span class="n">academic_cluster</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="n">degree</span> <span class="o">!=</span> <span class="s1">&#39;dummy&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">degree</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="n">bachelor_degree</span><span class="p">:</span>
+                <span class="n">academic_cluster</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;degree&quot;</span><span class="p">:</span><span class="s2">&quot;B&quot;</span><span class="p">})</span>
+            <span class="k">elif</span> <span class="n">degree</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="n">master_degree</span><span class="p">:</span>
+                <span class="n">academic_cluster</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;degree&quot;</span><span class="p">:</span><span class="s2">&quot;M&quot;</span><span class="p">})</span>
+            <span class="k">elif</span> <span class="n">degree</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="n">phd_degree</span><span class="p">:</span>
+                <span class="n">academic_cluster</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;degree&quot;</span><span class="p">:</span><span class="s2">&quot;P&quot;</span><span class="p">})</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">degree</span><span class="p">:</span>
+                    <span class="n">degree</span> <span class="o">=</span> <span class="n">degree</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="n">academic_cluster</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;program&quot;</span><span class="p">:</span><span class="n">degree</span><span class="p">})</span>
+        <span class="k">for</span> <span class="n">university</span><span class="p">,</span><span class="n">unindex</span> <span class="ow">in</span> <span class="n">university_index</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">degindex</span> <span class="o">-</span> <span class="n">unindex</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">academic_cluster</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;institution&#39;</span><span class="p">:</span><span class="n">university</span><span class="p">})</span>
+        <span class="c1"># for location,locindex  in location_index:</span>
+        <span class="c1">#     if abs(degindex - locindex) &lt;= 2:</span>
+        <span class="c1">#         academic_cluster.update({&#39;location&#39;:location})</span>
+        <span class="n">possible_dates</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">new_date_index</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">date</span><span class="p">,</span><span class="n">dateindex</span> <span class="ow">in</span> <span class="n">date_index</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">degindex</span> <span class="o">-</span> <span class="n">dateindex</span> <span class="p">)</span> <span class="o">&lt;=</span><span class="mi">3</span><span class="p">:</span>
+                <span class="n">new_date_index</span> <span class="o">=</span> <span class="n">dateindex</span>
+                <span class="n">possible_dates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
+
+            <span class="k">elif</span> <span class="nb">abs</span><span class="p">(</span><span class="n">new_date_index</span> <span class="o">-</span> <span class="n">dateindex</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="n">possible_dates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">possible_dates</span><span class="p">)</span><span class="o">&gt;=</span><span class="mi">2</span><span class="p">:</span>
+            <span class="n">exit_date</span><span class="p">,</span><span class="n">entry_date</span> <span class="o">=</span> <span class="n">comparedates</span><span class="p">(</span><span class="n">possible_dates</span><span class="p">)</span>
+            <span class="n">academic_cluster</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;from_date&#39;</span><span class="p">:</span> <span class="n">entry_date</span><span class="p">,</span>
+                                       <span class="s1">&#39;to_date&#39;</span><span class="p">:</span> <span class="n">exit_date</span><span class="p">})</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">possible_dates</span><span class="p">:</span>
+                <span class="n">entry_date</span> <span class="o">=</span> <span class="s1">&#39;unknown&#39;</span>
+                <span class="n">exit_date</span> <span class="o">=</span> <span class="n">possible_dates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">academic_cluster</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;from_date&#39;</span><span class="p">:</span> <span class="n">entry_date</span><span class="p">,</span>
+                                       <span class="s1">&#39;to_date&#39;</span><span class="p">:</span> <span class="n">exit_date</span><span class="p">})</span>
+
+        <span class="n">unique_identifier</span><span class="o">+=</span><span class="mi">1</span>
+        <span class="n">formatted_academics</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;E</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">unique_identifier</span><span class="p">):</span><span class="n">academic_cluster</span><span class="p">})</span>
+
+    <span class="k">return</span> <span class="n">formatted_academics</span></div>
+
+
+<span class="k">def</span> <span class="nf">formatExperienceinfo</span><span class="p">(</span><span class="n">sent_tokens</span><span class="p">,</span><span class="n">sent2idx</span><span class="p">,</span><span class="n">alldesignation</span><span class="p">,</span>
+                        <span class="n">allcompany</span><span class="p">,</span><span class="n">alldate</span><span class="p">,</span><span class="n">alllocations</span><span class="p">,</span><span class="n">allroles</span><span class="p">):</span>
+
+
+    <span class="n">unique_identifier</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">designation_index</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">company_index</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">date_index</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">location_index</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">role_index</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">formatted_experience</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">item_tracker</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="n">sent_tokens</span><span class="p">:</span>
+        <span class="n">cleaned_sentence</span> <span class="o">=</span> <span class="n">cleandata</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">designation</span> <span class="ow">in</span> <span class="n">alldesignation</span><span class="p">:</span>
+            <span class="n">cleaned_designation</span> <span class="o">=</span> <span class="n">cleandata</span><span class="p">(</span><span class="n">designation</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">cleaned_designation</span> <span class="ow">in</span> <span class="n">cleaned_sentence</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">cleaned_designation</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">item_tracker</span><span class="p">:</span>
+                    <span class="n">item_tracker</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">cleaned_designation</span><span class="p">:</span><span class="mi">1</span><span class="p">})</span>
+                    <span class="n">designation_index</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">designation</span><span class="p">,</span><span class="n">sent2idx</span><span class="p">[</span><span class="n">cleaned_sentence</span><span class="p">]))</span>
+
+
+                <span class="k">elif</span> <span class="n">cleaned_designation</span> <span class="ow">in</span> <span class="n">item_tracker</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">cleaned_designation</span> <span class="o">==</span> <span class="n">cleaned_sentence</span><span class="p">:</span>
+                        <span class="n">key</span> <span class="o">=</span> <span class="n">cleaned_sentence</span><span class="o">+</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">item_tracker</span><span class="p">[</span><span class="n">cleaned_designation</span><span class="p">])</span>
+
+                        <span class="n">designation_index</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">designation</span><span class="p">,</span><span class="n">sent2idx</span><span class="p">[</span><span class="n">key</span><span class="p">]))</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">designation_index</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">designation</span><span class="p">,</span><span class="n">sent2idx</span><span class="p">[</span><span class="n">cleaned_sentence</span><span class="p">]))</span>
+                <span class="n">alldesignation</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">designation</span><span class="p">)</span>
+                <span class="k">break</span>
+
+
+        <span class="k">for</span> <span class="n">company</span> <span class="ow">in</span> <span class="n">allcompany</span><span class="p">:</span>
+            <span class="n">cleaned_company</span> <span class="o">=</span> <span class="n">cleandata</span><span class="p">(</span><span class="n">company</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">cleaned_company</span> <span class="ow">in</span> <span class="n">cleaned_sentence</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">cleaned_company</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">item_tracker</span><span class="p">:</span>
+                    <span class="n">company_index</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">company</span><span class="p">,</span><span class="n">sent2idx</span><span class="p">[</span><span class="n">cleaned_sentence</span><span class="p">]))</span>
+                    <span class="n">item_tracker</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">cleaned_company</span><span class="p">:</span><span class="mi">1</span><span class="p">})</span>
+
+                <span class="k">elif</span> <span class="n">cleaned_company</span> <span class="ow">in</span> <span class="n">item_tracker</span><span class="p">:</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">key</span> <span class="o">=</span> <span class="n">cleaned_sentence</span><span class="o">+</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">item_tracker</span><span class="p">[</span><span class="n">cleaned_company</span><span class="p">])</span>
+                        <span class="n">company_index</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">company</span><span class="p">,</span><span class="n">sent2idx</span><span class="p">[</span><span class="n">key</span><span class="p">]))</span>
+                    <span class="k">except</span><span class="p">:</span>
+                        <span class="k">pass</span>
+                <span class="n">allcompany</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">company</span><span class="p">)</span>
+                <span class="k">break</span>
+
+
+        <span class="k">for</span> <span class="n">location</span> <span class="ow">in</span> <span class="n">alllocations</span><span class="p">:</span>
+            <span class="n">cleaned_location</span> <span class="o">=</span> <span class="n">cleandata</span><span class="p">(</span><span class="n">location</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">cleaned_location</span> <span class="ow">in</span> <span class="n">cleaned_sentence</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">cleaned_location</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">item_tracker</span><span class="p">:</span>
+                    <span class="n">location_index</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">location</span><span class="p">,</span> <span class="n">sent2idx</span><span class="p">[</span><span class="n">cleaned_sentence</span><span class="p">]))</span>
+                    <span class="n">item_tracker</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">cleaned_location</span><span class="p">:</span><span class="mi">1</span><span class="p">})</span>
+
+                <span class="k">elif</span> <span class="n">cleaned_location</span> <span class="ow">in</span> <span class="n">item_tracker</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">cleaned_location</span> <span class="o">==</span> <span class="n">cleaned_sentence</span><span class="p">:</span>
+                        <span class="c1"># key = cleaned_sentence +&#39;{}&#39;.format(item_tracker[cleaned_location])</span>
+                        <span class="c1"># key is not being matched</span>
+                        <span class="n">key</span> <span class="o">=</span> <span class="n">cleaned_sentence</span>
+                        <span class="n">location_index</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">location</span><span class="p">,</span><span class="n">sent2idx</span><span class="p">[</span><span class="n">key</span><span class="p">]))</span>
+                        
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">location_index</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">location</span><span class="p">,</span><span class="n">sent2idx</span><span class="p">[</span><span class="n">cleaned_sentence</span><span class="p">]))</span>
+                    <span class="n">alllocations</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">location</span><span class="p">)</span>
+
+                <span class="k">break</span>
+
+
+        <span class="k">for</span> <span class="n">role</span> <span class="ow">in</span> <span class="n">allroles</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">role</span> <span class="ow">in</span> <span class="n">sentence</span><span class="p">:</span>
+                <span class="n">role_index</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">role</span><span class="p">,</span><span class="n">sent2idx</span><span class="p">[</span><span class="n">cleaned_sentence</span><span class="p">]))</span>
+                <span class="n">allroles</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">role</span><span class="p">)</span>
+                <span class="k">break</span>
+        <span class="n">checked_date</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">date</span> <span class="ow">in</span> <span class="n">alldate</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">date</span> <span class="ow">in</span> <span class="n">sentence</span><span class="p">:</span>
+                <span class="n">found_date</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">if</span> <span class="n">date</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span> <span class="s2">&quot;present&quot;</span> <span class="ow">or</span> <span class="n">date</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;current&quot;</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">counter</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="n">datetime_object</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+                        <span class="n">found_date</span> <span class="o">=</span> <span class="p">[</span><span class="n">datetime_object</span><span class="p">]</span>
+                        <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">found_date</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">datefinder</span><span class="o">.</span><span class="n">find_dates</span><span class="p">(</span><span class="n">date</span><span class="p">)]</span>
+
+                    <span class="k">except</span><span class="p">:</span>
+
+                        <span class="k">pass</span>
+
+                <span class="k">if</span> <span class="n">found_date</span><span class="p">:</span>
+                    <span class="n">formatted_date</span> <span class="o">=</span> <span class="n">found_date</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">-%m-%Y&quot;</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">formatted_date</span><span class="p">,</span> <span class="n">sent2idx</span><span class="p">[</span><span class="n">cleaned_sentence</span><span class="p">])</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">checked_date</span><span class="p">:</span>
+                        <span class="n">date_index</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">formatted_date</span><span class="p">,</span> <span class="n">sent2idx</span><span class="p">[</span><span class="n">cleaned_sentence</span><span class="p">]))</span>
+                        <span class="n">checked_date</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">formatted_date</span><span class="p">,</span> <span class="n">sent2idx</span><span class="p">[</span><span class="n">cleaned_sentence</span><span class="p">]))</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="k">pass</span>
+
+
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">designation_index</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">j</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span>
+        <span class="k">if</span> <span class="n">designation_index</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">designation_index</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="mi">1</span><span class="p">]:</span>
+            <span class="n">new_designation</span> <span class="o">=</span> <span class="p">((</span><span class="n">designation_index</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39; &#39;</span><span class="o">+</span> <span class="n">designation_index</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="mi">0</span><span class="p">]))</span>
+            <span class="n">new_index</span> <span class="o">=</span> <span class="n">designation_index</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">designation_index</span><span class="o">.</span><span class="n">remove</span><span class="p">((</span><span class="n">designation_index</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span><span class="n">designation_index</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]))</span>
+            <span class="n">designation_index</span><span class="o">.</span><span class="n">remove</span><span class="p">((</span><span class="n">designation_index</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span><span class="n">designation_index</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]))</span>
+            <span class="n">designation_index</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">new_designation</span><span class="p">,</span><span class="n">new_index</span><span class="p">))</span>
+            <span class="n">designation_index</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s1">&#39;dummy&#39;</span><span class="p">,</span><span class="mi">1000</span><span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">company_index</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">j</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span>
+        <span class="k">if</span> <span class="n">company_index</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">company_index</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="mi">1</span><span class="p">]:</span>
+            <span class="n">new_company</span> <span class="o">=</span> <span class="p">((</span><span class="n">company_index</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39; &#39;</span><span class="o">+</span><span class="n">company_index</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="mi">0</span><span class="p">]))</span>
+            <span class="n">new_index</span> <span class="o">=</span> <span class="n">company_index</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">company_index</span><span class="o">.</span><span class="n">remove</span><span class="p">((</span><span class="n">company_index</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span><span class="n">company_index</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]))</span>
+            <span class="n">company_index</span><span class="o">.</span><span class="n">remove</span><span class="p">((</span><span class="n">company_index</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span><span class="n">company_index</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]))</span>
+            <span class="n">company_index</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">new_company</span><span class="p">,</span><span class="n">new_index</span><span class="p">))</span>
+            <span class="n">company_index</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s1">&#39;dummy&#39;</span><span class="p">,</span><span class="mi">100</span><span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">designation</span><span class="p">,</span><span class="n">desigindex</span> <span class="ow">in</span> <span class="n">designation_index</span><span class="p">:</span>
+        <span class="n">experience_cluster</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="n">designation</span> <span class="o">!=</span> <span class="s1">&#39;dummy&#39;</span><span class="p">:</span>
+            <span class="n">experience_cluster</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;Designation&#39;</span><span class="p">:</span><span class="n">designation</span><span class="p">})</span>
+        <span class="k">for</span> <span class="n">company</span><span class="p">,</span><span class="n">comindex</span> <span class="ow">in</span> <span class="n">company_index</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">desigindex</span> <span class="o">-</span> <span class="n">comindex</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="n">experience_cluster</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;company&#39;</span><span class="p">:</span><span class="n">company</span><span class="p">})</span>
+        <span class="k">for</span> <span class="n">location</span><span class="p">,</span><span class="n">locindex</span>  <span class="ow">in</span> <span class="n">location_index</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">desigindex</span> <span class="o">-</span> <span class="n">locindex</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="n">experience_cluster</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;location&#39;</span><span class="p">:</span><span class="n">location</span><span class="p">})</span>
+        <span class="n">possible_dates</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">date</span><span class="p">,</span><span class="n">dateindex</span> <span class="ow">in</span> <span class="n">date_index</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">desigindex</span> <span class="o">-</span> <span class="n">dateindex</span> <span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">4</span> <span class="ow">and</span> <span class="p">(</span><span class="n">date</span><span class="p">,</span><span class="n">dateindex</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">possible_dates</span><span class="p">:</span>
+                <span class="n">possible_dates</span><span class="o">.</span><span class="n">add</span><span class="p">((</span><span class="n">date</span><span class="p">,</span><span class="n">dateindex</span><span class="p">))</span>
+                <span class="c1"># date_index.remove((date,dateindex))</span>
+        <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="n">possible_dates</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">possible_dates</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">possible_dates</span><span class="p">)</span><span class="o">&gt;=</span><span class="mi">2</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">possible_dates</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">possible_dates</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">possible_dates</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">possible_dates</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="ow">or</span>\
+                                <span class="nb">abs</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">possible_dates</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span> <span class="o">-</span> <span class="nb">int</span><span class="p">(</span><span class="n">possible_dates</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span><span class="o">==</span><span class="mi">1</span><span class="p">):</span>
+                                <span class="n">exit_date</span><span class="p">,</span><span class="n">entry_date</span> <span class="o">=</span> <span class="n">comparedates</span><span class="p">(</span><span class="n">possible_dates</span><span class="p">)</span>
+                                <span class="n">experience_cluster</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;entry_date&#39;</span><span class="p">:</span> <span class="n">entry_date</span><span class="p">,</span>
+                                                        <span class="s1">&#39;exit_date&#39;</span><span class="p">:</span> <span class="n">exit_date</span><span class="p">})</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="k">if</span> <span class="n">possible_dates</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">possible_dates</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="mi">1</span><span class="p">]:</span>
+                                <span class="n">date_index</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">possible_dates</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">possible_dates</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]))</span>
+                                <span class="n">possible_dates</span><span class="o">.</span><span class="n">remove</span><span class="p">((</span><span class="n">possible_dates</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">possible_dates</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]))</span>
+
+                            <span class="k">else</span><span class="p">:</span>
+                                <span class="n">date_index</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">possible_dates</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">possible_dates</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="mi">1</span><span class="p">]))</span>
+                                <span class="n">possible_dates</span><span class="o">.</span><span class="n">remove</span><span class="p">((</span><span class="n">possible_dates</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">possible_dates</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="mi">1</span><span class="p">]))</span>
+
+                    <span class="k">except</span><span class="p">:</span>
+                        <span class="k">pass</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">possible_dates</span><span class="p">:</span>
+                <span class="n">entry_date</span> <span class="o">=</span> <span class="s1">&#39;unknown&#39;</span>
+
+                <span class="n">exit_date</span> <span class="o">=</span> <span class="n">possible_dates</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">experience_cluster</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;entry_date&#39;</span><span class="p">:</span> <span class="n">entry_date</span><span class="p">,</span>
+                                                    <span class="s1">&#39;exit_date&#39;</span><span class="p">:</span> <span class="n">exit_date</span><span class="p">})</span>
+
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">experience_cluster</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;roles&#39;</span><span class="p">:</span><span class="n">allroles</span><span class="p">[</span><span class="n">unique_identifier</span><span class="p">]})</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="n">unique_identifier</span><span class="o">+=</span><span class="mi">1</span>
+        <span class="n">formatted_experience</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;Exp</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">unique_identifier</span><span class="p">):</span><span class="n">experience_cluster</span><span class="p">})</span>
+
+    <span class="k">return</span> <span class="n">formatted_experience</span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Dolphwin 2.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, InfoDevelopers.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
+    </div>
+  </body>
+</html>

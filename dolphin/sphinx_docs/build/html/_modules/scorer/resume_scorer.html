@@ -1,0 +1,667 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>scorer.resume_scorer &#8212; Dolphwin 2.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Dolphwin 2.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for scorer.resume_scorer</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">date</span>
+<span class="kn">from</span> <span class="nn">dateutil.relativedelta</span> <span class="kn">import</span> <span class="n">relativedelta</span>
+<span class="kn">import</span> <span class="nn">settings</span> <span class="k">as</span> <span class="nn">cfg</span>
+<span class="kn">from</span> <span class="nn">datareader</span> <span class="kn">import</span> <span class="n">prepare_text</span>
+<span class="kn">from</span> <span class="nn">geopy.geocoders</span> <span class="kn">import</span> <span class="n">Nominatim</span>
+<span class="kn">from</span> <span class="nn">geopy.distance</span> <span class="kn">import</span> <span class="n">geodesic</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+<span class="kn">from</span> <span class="nn">scorer.helper</span> <span class="kn">import</span> <span class="n">PreprocessData</span><span class="p">,</span> <span class="n">NLTKHelper</span>
+<span class="kn">from</span> <span class="nn">word2vec</span> <span class="kn">import</span> <span class="n">Word2VecScorer</span>
+<span class="kn">from</span> <span class="nn">job_parsing.jd_parsing</span> <span class="kn">import</span> <span class="n">SpacyNer</span>
+<span class="kn">from</span> <span class="nn">domain_classification.domain_classification</span> <span class="kn">import</span> <span class="n">DomainClassification</span>
+
+
+<span class="n">domain_classification_obj</span> <span class="o">=</span> <span class="n">DomainClassification</span><span class="p">()</span>
+<span class="n">score_generator_obj</span> <span class="o">=</span> <span class="n">Word2VecScorer</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">word2vec_model</span><span class="p">)</span>
+<span class="n">preprocessor_obj_for_score</span> <span class="o">=</span> <span class="n">PreprocessData</span><span class="p">()</span>
+<span class="n">NerObj</span> <span class="o">=</span> <span class="n">SpacyNer</span><span class="p">()</span>
+<span class="c1"># helper_obj = NLTKHelper({&quot;experience_type_a:{&lt;VB&gt;?&lt;CD&gt;?&lt;N.*&gt;?&lt;IN&gt;?&lt;N.*|VBN|JJ&gt;+&lt;IN|VB.*&gt;+&lt;DT&gt;?&lt;JJ|VBG|N.*&gt;+&lt;CC&gt;?&lt;N.*&gt;?}&quot;})</span>
+
+
+<span class="c1"># scorer = Word2VecScorer(cfg.word2vec_model)</span>
+<span class="n">java_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;C:\Program Files\Java\jdk-12.0.1\bin\java.exe&quot;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;JAVAHOME&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">java_path</span>
+
+<span class="n">geolocator</span> <span class="o">=</span> <span class="n">Nominatim</span><span class="p">(</span><span class="n">user_agent</span><span class="o">=</span><span class="s2">&quot;Dolphin&quot;</span><span class="p">)</span>
+<span class="c1"># new_pipeline = NlpPipeline()</span>
+<span class="c1"># adding embedding component</span>
+<span class="c1"># new_pipeline.add_embedding_component()</span>
+
+
+<div class="viewcode-block" id="prepare_profile"><a class="viewcode-back" href="../../index.html#scorer.resume_scorer.prepare_profile">[docs]</a><span class="k">def</span> <span class="nf">prepare_profile</span><span class="p">(</span><span class="n">profile</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Takes user profile and filters</span>
+<span class="sd">    only the necessary attributes</span>
+<span class="sd">    for the score calculation</span>
+
+<span class="sd">    :arg profile: profile of user </span>
+<span class="sd">    :type profile: dict</span>
+<span class="sd">    :returns: Information such as skills, experiences, designations etc.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">technical_skills</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;technical_skills&#39;</span><span class="p">))</span>
+    <span class="n">soft_skills</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;soft_skills&#39;</span><span class="p">))</span>
+    <span class="c1"># skills = technical_skills.union(soft_skills)</span>
+    <span class="c1"># technical_skills = set(profile.get(&#39;skills&#39;))</span>
+    <span class="n">designations</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">job_seeker_location</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">profile</span><span class="p">[</span><span class="s1">&#39;profile&#39;</span><span class="p">])[</span><span class="s1">&#39;address&#39;</span><span class="p">][</span><span class="s1">&#39;city&#39;</span><span class="p">]</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">job_seeker_location</span> <span class="o">=</span> <span class="n">profile</span><span class="p">[</span><span class="s1">&#39;profile&#39;</span><span class="p">][</span><span class="s1">&#39;address&#39;</span><span class="p">][</span><span class="s1">&#39;city&#39;</span><span class="p">]</span>
+    <span class="n">all_experiences</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">designation_dates</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">xp</span> <span class="ow">in</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;exps&#39;</span><span class="p">)):</span>
+        <span class="n">designation</span> <span class="o">=</span> <span class="n">xp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;designation&#39;</span><span class="p">)</span>
+        <span class="n">entry_date</span> <span class="o">=</span> <span class="n">xp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;entry_date&#39;</span><span class="p">)</span>
+        <span class="n">exit_date</span> <span class="o">=</span> <span class="n">xp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;exit_date&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">entry_date</span><span class="p">:</span>
+            <span class="n">entry_date</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">())</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">exit_date</span><span class="p">:</span>
+            <span class="n">exit_date</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">())</span>
+        <span class="n">total_exp_days</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">exit_date</span><span class="p">,</span> <span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">-</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">entry_date</span><span class="p">,</span> <span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">days</span>
+        <span class="n">date_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="n">entry_date</span><span class="p">,</span><span class="n">exit_date</span><span class="p">]:</span>
+            <span class="n">year</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">month</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">day</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span>
+            <span class="n">date_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">date</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">year</span><span class="p">),</span><span class="nb">int</span><span class="p">(</span><span class="n">month</span><span class="p">),</span><span class="nb">int</span><span class="p">(</span><span class="n">day</span><span class="p">)))</span>
+
+        <span class="n">rdelta</span> <span class="o">=</span> <span class="n">relativedelta</span><span class="p">(</span><span class="n">date_list</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">date_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+        <span class="n">designations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">designation</span><span class="p">)</span>
+        <span class="n">all_experiences</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="nb">str</span><span class="p">(</span><span class="n">rdelta</span><span class="o">.</span><span class="n">years</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; years,&#39;</span> <span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">rdelta</span><span class="o">.</span><span class="n">months</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39; months and &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">rdelta</span><span class="o">.</span><span class="n">days</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39; days of&#39;</span><span class="o">+</span><span class="s1">&#39; experience as &#39;</span><span class="o">+</span><span class="n">designation</span><span class="p">))</span>
+        <span class="n">designation_dates</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">entry_date</span><span class="p">,</span> <span class="n">designation</span><span class="p">,</span><span class="n">total_exp_days</span><span class="p">))</span>
+        <span class="nb">set</span><span class="p">(</span><span class="n">designations</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">soft_skills</span><span class="p">,</span> <span class="n">technical_skills</span><span class="p">,</span> <span class="n">all_experiences</span><span class="p">,</span> <span class="n">designations</span><span class="p">,</span> <span class="n">job_seeker_location</span><span class="p">,</span> <span class="n">designation_dates</span></div>
+
+
+<div class="viewcode-block" id="prepare_job_description"><a class="viewcode-back" href="../../index.html#scorer.resume_scorer.prepare_job_description">[docs]</a><span class="k">def</span> <span class="nf">prepare_job_description</span><span class="p">(</span><span class="n">job_description</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Takes the job description and</span>
+<span class="sd">    extracts the skills and experience</span>
+<span class="sd">    that falls under the job requirements</span>
+
+<span class="sd">    :arg job_description: The textual data of the job description </span>
+<span class="sd">    :type job_description: str</span>
+<span class="sd">    :returns: Information such as skills, experiences, designations etc.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="n">required_technical_skills</span><span class="p">,</span> <span class="n">required_soft_skills</span> <span class="o">=</span> <span class="n">NerObj</span><span class="o">.</span><span class="n">get_skills_from_pool</span><span class="p">(</span>
+        <span class="n">job_description</span><span class="p">)</span>
+    <span class="n">required_soft_skills</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">required_soft_skills</span><span class="p">)</span>
+    <span class="n">required_technical_skills</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">required_technical_skills</span><span class="p">)</span>
+    <span class="n">all_designations</span><span class="p">,</span> <span class="n">all_organizations</span><span class="p">,</span> <span class="n">required_experience</span><span class="p">,</span> <span class="n">all_educations</span><span class="p">,</span> <span class="n">all_locations</span> <span class="o">=</span> <span class="n">NerObj</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span>
+        <span class="n">job_description</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">required_soft_skills</span><span class="p">,</span> <span class="n">required_technical_skills</span><span class="p">,</span> <span class="n">required_experience</span><span class="p">,</span> <span class="n">all_designations</span><span class="p">,</span> <span class="n">all_organizations</span><span class="p">,</span> <span class="n">all_educations</span><span class="p">,</span> <span class="n">all_locations</span></div>
+
+
+<div class="viewcode-block" id="calculate_distance"><a class="viewcode-back" href="../../index.html#scorer.resume_scorer.calculate_distance">[docs]</a><span class="k">def</span> <span class="nf">calculate_distance</span><span class="p">(</span><span class="n">address1</span><span class="p">,</span> <span class="n">address2</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39; </span>
+<span class="sd">    Gives distance between two locations</span>
+
+<span class="sd">    param address1: address of first location</span>
+<span class="sd">    param address2: adress of second location</span>
+<span class="sd">    returns: distance between two address in kilometers</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">location1</span><span class="p">,</span> <span class="p">(</span><span class="n">latitude1</span><span class="p">,</span> <span class="n">longitude1</span><span class="p">)</span> <span class="o">=</span> <span class="n">geolocator</span><span class="o">.</span><span class="n">geocode</span><span class="p">(</span><span class="n">address1</span><span class="p">)</span>
+    <span class="n">location2</span><span class="p">,</span> <span class="p">(</span><span class="n">latitude2</span><span class="p">,</span> <span class="n">longitude2</span><span class="p">)</span> <span class="o">=</span> <span class="n">geolocator</span><span class="o">.</span><span class="n">geocode</span><span class="p">(</span><span class="n">address2</span><span class="p">)</span>
+    <span class="n">distance</span> <span class="o">=</span> <span class="n">geodesic</span><span class="p">((</span><span class="n">latitude1</span><span class="p">,</span> <span class="n">longitude1</span><span class="p">),</span>
+                        <span class="p">(</span><span class="n">latitude2</span><span class="p">,</span> <span class="n">longitude2</span><span class="p">))</span><span class="o">.</span><span class="n">kilometers</span>
+    <span class="k">return</span> <span class="n">distance</span></div>
+
+
+<div class="viewcode-block" id="calculate_progress"><a class="viewcode-back" href="../../index.html#scorer.resume_scorer.calculate_progress">[docs]</a><span class="k">def</span> <span class="nf">calculate_progress</span><span class="p">(</span><span class="n">designation_dates</span><span class="p">,</span> <span class="n">junior_pool_list</span><span class="p">,</span> <span class="n">intermediate_pool_list</span><span class="p">,</span> <span class="n">senior_pool_list</span><span class="p">,</span> <span class="n">manager_pool_list</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39; </span>
+<span class="sd">    Calculates progress of a job-seeker as per the designation_dates and position detail</span>
+<span class="sd">    </span>
+<span class="sd">    :param designation_dates: designation date </span>
+<span class="sd">    :type: dict</span>
+<span class="sd">    :param junior_pool_list: junior position </span>
+<span class="sd">    :type: list</span>
+<span class="sd">    :param intermediate_pool_list: intermediate position </span>
+<span class="sd">    :type: list</span>
+<span class="sd">    :param senior_pool_list: senior position </span>
+<span class="sd">    :type: list</span>
+<span class="sd">    :param manager_pool_list: manager position </span>
+<span class="sd">    :type: list</span>
+<span class="sd">    :returns: progress score </span>
+<span class="sd">    :rtype: float</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">unique_data</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">designation_dates</span><span class="p">)))</span>
+    <span class="n">uni_designations</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">uni_dates</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">uni_days</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">unique_data</span><span class="p">)):</span>
+        <span class="n">uni_dates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">unique_data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">uni_designations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">unique_data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+        <span class="n">uni_days</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">unique_data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span> 
+
+    <span class="c1"># print(uni_designations)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">uni_designations</span><span class="p">)):</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">uni_days</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">730</span><span class="p">):</span>
+            <span class="n">uni_designations</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Senior Employee&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">uni_designations</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">in</span> <span class="n">senior_pool_list</span><span class="p">):</span>
+                <span class="n">uni_designations</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Senior Employee&quot;</span>
+            <span class="k">elif</span><span class="p">(</span><span class="n">uni_designations</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">in</span> <span class="n">junior_pool_list</span><span class="p">):</span>
+                <span class="n">uni_designations</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Junior Employee&quot;</span>
+            <span class="k">elif</span><span class="p">(</span><span class="n">uni_designations</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">in</span> <span class="n">manager_pool_list</span><span class="p">):</span>
+                <span class="n">uni_designations</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Manager&quot;</span>
+            <span class="k">elif</span><span class="p">(</span><span class="n">uni_designations</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">in</span> <span class="n">intermediate_pool_list</span><span class="p">):</span>
+                <span class="n">uni_designations</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Intermediate Employee&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">uni_designations</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Intern&quot;</span>
+
+    <span class="c1"># print(&quot;\n&quot;)</span>
+    <span class="c1"># print(uni_designations)  </span>
+
+    <span class="n">corres_num</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">uni_designations</span><span class="p">:</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="s1">&#39;Intern&#39;</span><span class="p">):</span>
+            <span class="n">corres_num</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">elif</span><span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="s1">&#39;Junior Employee&#39;</span><span class="p">):</span>
+            <span class="n">corres_num</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">elif</span><span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="s1">&#39;Intermediate Employee&#39;</span><span class="p">):</span>
+            <span class="n">corres_num</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        <span class="k">elif</span><span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="s1">&#39;Senior Employee&#39;</span><span class="p">):</span>
+            <span class="n">corres_num</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+        <span class="k">elif</span><span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="s1">&#39;Manager&#39;</span><span class="p">):</span>
+            <span class="n">corres_num</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+
+    <span class="n">list_data</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">uni_dates</span><span class="p">)):</span>
+        <span class="n">list_data</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">uni_dates</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">corres_num</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+
+    <span class="c1"># print(&quot;\n&quot;)</span>
+    <span class="c1"># print(list_data)</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">list_data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Column1&#39;</span><span class="p">,</span> <span class="s1">&#39;Column2&#39;</span><span class="p">])</span>
+
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;date_ordinal&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Column1&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">toordinal</span><span class="p">)</span>
+    <span class="k">del</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Column1&#39;</span><span class="p">]</span>
+
+    <span class="n">together_conv</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+    <span class="n">min_max_scaler</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span>
+
+    <span class="n">norm_data</span> <span class="o">=</span> <span class="n">min_max_scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">together_conv</span><span class="p">)</span>
+    <span class="n">final_norm</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">norm_data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="s1">&#39;normalized_date&#39;</span><span class="p">])</span>
+
+    <span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span> <span class="n">r_value</span><span class="p">,</span> <span class="n">p_value</span><span class="p">,</span> <span class="n">std_err</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">final_norm</span><span class="p">[</span><span class="s1">&#39;normalized_date&#39;</span><span class="p">],</span> <span class="n">final_norm</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">])</span>
+    <span class="c1"># slope = slope - 0.0089661424386942</span>
+    <span class="c1"># print(std_err)</span>
+    <span class="c1"># slope ranges from (+1.0089661424386942 to -1.0089661424386942)</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="n">slope</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="n">progress_score</span> <span class="o">=</span> <span class="n">slope</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">-</span> <span class="mf">0.89661424386942</span>
+        <span class="c1"># print(&#39;Progress Score :&#39;, progress_score)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">progress_score</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c1"># print(&quot;Since your progress isn&#39;t promising your Progress Score is &quot;, progress_score)</span>
+
+    <span class="k">return</span> <span class="n">progress_score</span></div>
+
+<div class="viewcode-block" id="one_resume_multiple_jd_scorer"><a class="viewcode-back" href="../../index.html#scorer.resume_scorer.one_resume_multiple_jd_scorer">[docs]</a><span class="k">def</span> <span class="nf">one_resume_multiple_jd_scorer</span><span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="n">designations</span><span class="p">,</span> <span class="n">user_exp</span><span class="p">,</span> <span class="n">user_soft_skills</span><span class="p">,</span> <span class="n">user_technical_skills</span><span class="p">,</span> <span class="n">user_location</span><span class="p">,</span> <span class="n">designation_dates</span><span class="p">,</span> <span class="n">junior_pool_list</span><span class="p">,</span> 
+                                  <span class="n">intermediate_pool_list</span><span class="p">,</span> <span class="n">senior_pool_list</span><span class="p">,</span> <span class="n">manager_pool_list</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    scoring function for one resume and multiple jd</span>
+
+<span class="sd">    :param job: The information of the job</span>
+<span class="sd">    :type: json</span>
+<span class="sd">    :param designations: Collection of the user&#39;s designations in the resume</span>
+<span class="sd">    :type: list</span>
+<span class="sd">    :param user_exp: Collection of the user&#39;s experiece in the resume</span>
+<span class="sd">    :type: list</span>
+<span class="sd">    :param user_soft_skills: Collection of the user&#39;s soft skills in the resume</span>
+<span class="sd">    :type: list</span>
+<span class="sd">    :param user_technical_skills: Collection of the user&#39;s technical skills in the resume</span>
+<span class="sd">    :type: list</span>
+<span class="sd">    :param user_location: Collection of the user&#39;s location in the resume</span>
+<span class="sd">    :type: list</span>
+<span class="sd">    :param designation_dates: Collection of the dates of designation in the resume</span>
+<span class="sd">    :type: list</span>
+<span class="sd">    :param junior_pool_list: Collection of the names of the junior position</span>
+<span class="sd">    :type: list</span>
+<span class="sd">    :param intermediate_pool_list: Collection of the names of the intermediate position</span>
+<span class="sd">    :type: list</span>
+<span class="sd">    :param senior_pool_list: Collection of the names of the senior position</span>
+<span class="sd">    :type: list</span>
+<span class="sd">    :param manager_pool_list: Collection of the names of the manager position</span>
+<span class="sd">    :type: list</span>
+<span class="sd">    :returns: job_id, total_score, missing_words</span>
+<span class="sd">    :rtype: str, float, list</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">job_id</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">)</span>
+    <span class="n">job_title</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;job_title&#39;</span><span class="p">)</span>
+    <span class="n">job_description</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;job_description&#39;</span><span class="p">)</span>
+    <span class="n">req_soft_skills</span><span class="p">,</span> <span class="n">req_technical_skills</span><span class="p">,</span> <span class="n">req_experience</span><span class="p">,</span> <span class="n">all_designations</span><span class="p">,</span> <span class="n">all_organizations</span><span class="p">,</span> <span class="n">all_educations</span><span class="p">,</span> <span class="n">all_locations</span> <span class="o">=</span> <span class="n">prepare_job_description</span><span class="p">(</span>
+        <span class="n">job_description</span><span class="p">)</span>
+
+    <span class="n">employer_city</span> <span class="o">=</span> <span class="n">job</span><span class="p">[</span><span class="s1">&#39;location&#39;</span><span class="p">][</span><span class="s1">&#39;city&#39;</span><span class="p">]</span>
+    <span class="c1"># employer_country = job[&#39;location&#39;][&#39;country&#39;]</span>
+    <span class="c1"># employer_state = job[&#39;location&#39;][&#39;state&#39;]</span>
+
+    <span class="c1">#Scoring on the basis of distance</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">distance</span> <span class="o">=</span> <span class="n">calculate_distance</span><span class="p">(</span><span class="n">employer_city</span><span class="p">,</span> <span class="n">user_location</span><span class="p">)</span>
+        <span class="c1"># Normalizing to a range from 0 to 10</span>
+        <span class="n">distance_score</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">-</span> <span class="p">((</span><span class="n">distance</span><span class="o">/</span><span class="mi">20000</span><span class="p">)</span><span class="o">*</span><span class="mi">5</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">distance_score</span> <span class="o">=</span> <span class="mi">5</span>
+
+    <span class="c1">#Scoring on the basis of matching skills of user profile and jobs</span>
+    <span class="c1"># matched_soft_skills = user_soft_skills.intersection(req_soft_skills)</span>
+    <span class="c1"># matched_technical_skills = user_technical_skills.intersection(req_technical_skills)</span>
+    <span class="n">user_soft_skills</span> <span class="o">=</span> <span class="p">[</span><span class="n">skill</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">skill</span> <span class="ow">in</span> <span class="n">user_soft_skills</span><span class="p">]</span>
+    <span class="n">user_technical_skills</span> <span class="o">=</span> <span class="p">[</span><span class="n">skill</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">skill</span> <span class="ow">in</span> <span class="n">user_technical_skills</span><span class="p">]</span>
+
+    <span class="n">matched_soft_skills</span> <span class="o">=</span> <span class="p">[</span><span class="n">skill</span> <span class="k">for</span> <span class="n">skill</span> <span class="ow">in</span> <span class="n">user_soft_skills</span> <span class="k">if</span> <span class="n">skill</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">req_soft_skills</span><span class="p">]</span>
+    <span class="n">matched_technical_skills</span> <span class="o">=</span> <span class="p">[</span><span class="n">skill</span> <span class="k">for</span> <span class="n">skill</span> <span class="ow">in</span> <span class="n">user_technical_skills</span> <span class="k">if</span> <span class="n">skill</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">req_technical_skills</span><span class="p">]</span>
+
+    <span class="n">missed_technical_skills</span> <span class="o">=</span> <span class="p">[</span><span class="n">skill</span> <span class="k">for</span> <span class="n">skill</span> <span class="ow">in</span> <span class="n">req_technical_skills</span> <span class="k">if</span> <span class="n">skill</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">user_technical_skills</span><span class="p">]</span>
+    
+    <span class="c1"># print(&#39;====================================================&#39;)</span>
+    <span class="c1"># print(&#39;job_id&#39;, job_id)</span>
+    <span class="c1"># print(&#39;req_technical_skills&#39;,req_technical_skills)</span>
+    <span class="c1"># print(&#39;user_technical_skills&#39;,user_technical_skills)</span>
+    <span class="c1"># print(&#39;====================================================&#39;)</span>
+    
+    <span class="n">missed_soft_skills</span> <span class="o">=</span> <span class="p">[</span><span class="n">skill</span> <span class="k">for</span> <span class="n">skill</span> <span class="ow">in</span> <span class="n">req_soft_skills</span> <span class="k">if</span> <span class="n">skill</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">user_soft_skills</span><span class="p">]</span>
+    <span class="n">missed_skills</span> <span class="o">=</span> <span class="n">missed_technical_skills</span> <span class="o">+</span> <span class="n">missed_soft_skills</span> 
+
+    <span class="k">if</span> <span class="n">matched_technical_skills</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">technical_skill_score</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">matched_technical_skills</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">req_technical_skills</span><span class="p">)</span> <span class="o">*</span> <span class="mi">35</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">technical_skill_score</span> <span class="o">=</span> <span class="mi">35</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">technical_skill_score</span> <span class="o">=</span> <span class="mi">0</span>
+    
+        <span class="c1"># skills score on basis of soft skills</span>
+    <span class="k">if</span> <span class="n">matched_soft_skills</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">soft_skills_score</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">matched_soft_skills</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">req_soft_skills</span><span class="p">)</span> <span class="o">*</span> <span class="mi">5</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">soft_skills_score</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">soft_skills_score</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="n">skill_score</span> <span class="o">=</span> <span class="n">technical_skill_score</span> <span class="o">+</span> <span class="n">soft_skills_score</span>
+
+    <span class="c1"># designation score on the basis of matching and word2vec</span>
+    <span class="n">job_title</span> <span class="o">=</span> <span class="n">job_title</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="n">designations</span> <span class="o">=</span> <span class="p">[</span><span class="n">desig</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">desig</span> <span class="ow">in</span> <span class="n">designations</span><span class="p">]</span>
+    <span class="n">job_designations</span> <span class="o">=</span> <span class="p">[</span><span class="n">job_title</span><span class="p">]</span> <span class="o">+</span> <span class="n">all_designations</span>
+    <span class="n">user_designations</span> <span class="o">=</span> <span class="n">designations</span>
+    <span class="n">missing_designation</span> <span class="o">=</span> <span class="p">[</span><span class="n">desig</span> <span class="k">for</span> <span class="n">desig</span> <span class="ow">in</span> <span class="n">job_designations</span> <span class="k">if</span> <span class="n">desig</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">user_designations</span><span class="p">]]</span>
+    <span class="c1"># missing_designation = [i.lower() for i in job_designations] ^ [j.lower() for j in user_designations]</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">job_designations</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">user_designations</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">desig_score</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">job_title</span> <span class="ow">in</span> <span class="n">designations</span><span class="p">:</span>
+            <span class="n">desig_score</span> <span class="o">=</span> <span class="mi">40</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">most_common_domain_user</span> <span class="o">=</span> <span class="n">domain_classification_obj</span><span class="o">.</span><span class="n">classify_domain_from_designation</span><span class="p">(</span><span class="n">user_designations</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">most_common_domain_job</span> <span class="o">=</span> <span class="n">domain_classification_obj</span><span class="o">.</span><span class="n">classify_domain_from_designation</span><span class="p">(</span><span class="n">job_designations</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">most_common_domain_user</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">most_common_domain_user</span><span class="p">)</span>
+                <span class="n">most_common_domain_job</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">most_common_domain_job</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">most_common_domain_user</span> <span class="o">==</span> <span class="n">most_common_domain_job</span><span class="p">:</span>
+                    <span class="n">desig_score</span> <span class="o">=</span> <span class="mi">30</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">vector_score</span> <span class="o">=</span> <span class="p">[]</span>
+                    <span class="k">for</span> <span class="n">desig</span> <span class="ow">in</span> <span class="n">designations</span><span class="p">:</span>
+                        <span class="n">desig_vec</span> <span class="o">=</span> <span class="n">score_generator_obj</span><span class="o">.</span><span class="n">get_word_embeddings</span><span class="p">(</span><span class="n">desig</span><span class="p">)</span>
+                        <span class="c1"># print(str(user_id) + &quot;---- User designation ---- {} \n&quot;.format(desig))</span>
+                        <span class="c1"># print(str(user_id) + &quot;---- job designation ---- {} \n&quot;.format(job_title))</span>
+                        <span class="n">job_title_vec</span> <span class="o">=</span> <span class="n">score_generator_obj</span><span class="o">.</span><span class="n">get_word_embeddings</span><span class="p">(</span><span class="n">job_title</span><span class="p">)</span>
+                        <span class="n">desig_job_title_similarity_desig</span> <span class="o">=</span> <span class="n">score_generator_obj</span><span class="o">.</span><span class="n">calculate_similarity</span><span class="p">(</span>
+                            <span class="n">desig_vec</span><span class="p">,</span> <span class="n">job_title_vec</span><span class="p">)</span>
+                        <span class="c1"># print(str(user_id) + &quot;---- Simialrity ---- {} \n&quot;.format(desig_job_title_similarity_desig))</span>
+                        <span class="n">vector_score</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">desig_job_title_similarity_desig</span><span class="p">)</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="c1"># Calculating average score for every designations</span>
+                        <span class="n">desig_job_title_similarity_designations</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span>
+                            <span class="n">vector_score</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">designations</span><span class="p">)</span>
+                    <span class="k">except</span><span class="p">:</span>
+                        <span class="n">desig_job_title_similarity_designations</span> <span class="o">=</span> <span class="mi">0</span>
+                    <span class="c1"># Normalizing to range 0 to 40</span>
+                    <span class="n">desig_score</span> <span class="o">=</span> <span class="n">desig_job_title_similarity_designations</span> <span class="o">*</span> <span class="mi">40</span>
+            <span class="k">except</span><span class="p">:</span>
+                    <span class="n">vector_score</span> <span class="o">=</span> <span class="p">[]</span>
+                    <span class="k">for</span> <span class="n">desig</span> <span class="ow">in</span> <span class="n">designations</span><span class="p">:</span>
+                        <span class="n">desig_vec</span> <span class="o">=</span> <span class="n">score_generator_obj</span><span class="o">.</span><span class="n">get_word_embeddings</span><span class="p">(</span><span class="n">desig</span><span class="p">)</span>
+                        <span class="n">job_title_vec</span> <span class="o">=</span> <span class="n">score_generator_obj</span><span class="o">.</span><span class="n">get_word_embeddings</span><span class="p">(</span><span class="n">job_title</span><span class="p">)</span>
+                        <span class="n">desig_job_title_similarity_desig</span> <span class="o">=</span> <span class="n">score_generator_obj</span><span class="o">.</span><span class="n">calculate_similarity</span><span class="p">(</span>
+                            <span class="n">desig_vec</span><span class="p">,</span> <span class="n">job_title_vec</span><span class="p">)</span>
+                        <span class="n">vector_score</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">desig_job_title_similarity_desig</span><span class="p">)</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="c1"># Calculating average score for every designations</span>
+                        <span class="n">desig_job_title_similarity_designations</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span>
+                            <span class="n">vector_score</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">designations</span><span class="p">)</span>
+                    <span class="k">except</span><span class="p">:</span>
+                        <span class="n">desig_job_title_similarity_designations</span> <span class="o">=</span> <span class="mi">0</span>
+                    <span class="c1"># Normalizing to range 0 to 40</span>
+                    <span class="n">desig_score</span> <span class="o">=</span> <span class="n">desig_job_title_similarity_designations</span> <span class="o">*</span> <span class="mi">40</span>
+
+
+    <span class="c1">#Calculating score on the basis of experience matching</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">req_exp</span> <span class="o">=</span> <span class="s2">&quot; and &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">req_experience</span><span class="p">)</span>
+        <span class="n">user_exp</span><span class="o">=</span> <span class="s2">&quot; and &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">user_exp</span><span class="p">)</span> 
+        <span class="c1"># In case the chunking didn&#39;t extract any experience from job description</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">req_exp</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">user_exp</span><span class="p">:</span>
+            <span class="n">vec_sim</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">req_exp_vector</span> <span class="o">=</span> <span class="n">score_generator_obj</span><span class="o">.</span><span class="n">get_word_embeddings</span><span class="p">(</span><span class="n">req_exp</span><span class="p">)</span>
+            <span class="n">user_exp_vector</span> <span class="o">=</span> <span class="n">score_generator_obj</span><span class="o">.</span><span class="n">get_word_embeddings</span><span class="p">(</span><span class="n">user_exp</span><span class="p">)</span>
+
+            <span class="n">vec_sim</span> <span class="o">=</span> <span class="n">score_generator_obj</span><span class="o">.</span><span class="n">calculate_similarity</span><span class="p">(</span>
+                <span class="n">req_exp_vector</span><span class="p">,</span> <span class="p">[</span><span class="n">user_exp_vector</span><span class="p">])</span>
+
+        <span class="c1"># Normalizing to a range from 0 to 40</span>
+        <span class="n">experience_score</span> <span class="o">=</span> <span class="n">vec_sim</span> <span class="o">*</span> <span class="mi">5</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">experience_score</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1"># Scoring on the basis of progress of user</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">designation_dates</span><span class="p">):</span>
+            <span class="n">progress_score</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">else</span><span class="p">:</span> 
+            <span class="n">progress_score</span> <span class="o">=</span> <span class="n">calculate_progress</span><span class="p">(</span><span class="n">designation_dates</span><span class="p">,</span> <span class="n">junior_pool_list</span><span class="p">,</span> 
+                                  <span class="n">intermediate_pool_list</span><span class="p">,</span> <span class="n">senior_pool_list</span><span class="p">,</span> <span class="n">manager_pool_list</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">progress_score</span> <span class="o">=</span> <span class="mi">10</span>
+
+    <span class="c1"># If any nan values</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">experience_score</span><span class="p">):</span>
+        <span class="n">experience_score</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">desig_score</span><span class="p">):</span>
+        <span class="n">desig_score</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">skill_score</span><span class="p">):</span>
+        <span class="n">skill_score</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">progress_score</span><span class="p">):</span>
+        <span class="n">progress_score</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">distance_score</span><span class="p">):</span>
+        <span class="n">distance_score</span> <span class="o">=</span> <span class="mi">0</span>
+
+
+    <span class="n">missing_words</span> <span class="o">=</span> <span class="n">missed_skills</span> <span class="o">+</span> <span class="n">missing_designation</span>
+
+    <span class="n">total_score</span> <span class="o">=</span> <span class="n">experience_score</span> <span class="o">+</span> <span class="n">desig_score</span> <span class="o">+</span> <span class="n">skill_score</span> <span class="o">+</span> <span class="n">distance_score</span> <span class="o">+</span> <span class="n">progress_score</span>
+    <span class="k">return</span> <span class="n">job_id</span><span class="p">,</span> <span class="n">total_score</span><span class="p">,</span> <span class="n">missing_words</span></div>
+
+
+<div class="viewcode-block" id="one_JD_multiple_resume_scorer"><a class="viewcode-back" href="../../index.html#scorer.resume_scorer.one_JD_multiple_resume_scorer">[docs]</a><span class="k">def</span> <span class="nf">one_JD_multiple_resume_scorer</span><span class="p">(</span><span class="n">profile</span><span class="p">,</span> <span class="n">job_title</span><span class="p">,</span><span class="n">all_designations</span><span class="p">,</span> <span class="n">req_exp</span><span class="p">,</span> <span class="n">req_soft_skills</span><span class="p">,</span> <span class="n">req_technical_skills</span><span class="p">,</span> <span class="n">employer_city</span><span class="p">,</span> <span class="n">junior_pool_list</span><span class="p">,</span> 
+                                  <span class="n">intermediate_pool_list</span><span class="p">,</span> <span class="n">senior_pool_list</span><span class="p">,</span> <span class="n">manager_pool_list</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Scoring function for one jd and multiple resume</span>
+
+<span class="sd">    :param profile: The information of the Job Seeker&#39;s resume</span>
+<span class="sd">    :type: json</span>
+<span class="sd">    :param job_title: Name of the job</span>
+<span class="sd">    :type: str</span>
+<span class="sd">    :param all_designations: Collection of designations from multiple jobs</span>
+<span class="sd">    :type: list</span>
+<span class="sd">    :param req_exp: Collection of the required experiences from multiple jobs</span>
+<span class="sd">    :type: list</span>
+<span class="sd">    :param req_soft_skills: Collection of required soft skills from multiple jobs</span>
+<span class="sd">    :type: list</span>
+<span class="sd">    :param req_technical_skills: Collection of required technical skills from multiple jobs</span>
+<span class="sd">    :type: list</span>
+<span class="sd">    :param employer_city: Collection of the location of office from multiple jobs</span>
+<span class="sd">    :type: list</span>
+<span class="sd">    :param junior_pool_list: Collection of the names of the junior position</span>
+<span class="sd">    :type: list</span>
+<span class="sd">    :param intermediate_pool_list: Collection of the names of the intermediate position</span>
+<span class="sd">    :type: list</span>
+<span class="sd">    :param senior_pool_list: Collection of the names of the senior position</span>
+<span class="sd">    :type: list</span>
+<span class="sd">    :param manager_pool_list: Collection of the names of the manager position</span>
+<span class="sd">    :type: list</span>
+<span class="sd">    :returns: user_id, total_score, missing_words</span>
+<span class="sd">    :rtype: str, float, list</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">user_id</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;user_id&#39;</span><span class="p">)</span>
+    <span class="n">user_soft_skills</span><span class="p">,</span> <span class="n">user_technical_skills</span><span class="p">,</span> <span class="n">user_exp</span><span class="p">,</span> <span class="n">designations</span><span class="p">,</span> <span class="n">user_location</span><span class="p">,</span> <span class="n">designation_dates</span> <span class="o">=</span> <span class="n">prepare_profile</span><span class="p">(</span>
+        <span class="n">profile</span><span class="p">)</span>
+    <span class="n">user_soft_skills</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">user_soft_skills</span><span class="p">]</span>
+    <span class="n">user_technical_skills</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">user_technical_skills</span><span class="p">]</span>
+    <span class="n">matched_soft_skills</span> <span class="o">=</span> <span class="p">[</span><span class="n">skill</span> <span class="k">for</span> <span class="n">skill</span> <span class="ow">in</span> <span class="n">req_soft_skills</span> <span class="k">if</span> <span class="n">skill</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">user_soft_skills</span><span class="p">]</span>
+    <span class="n">matched_technical_skills</span> <span class="o">=</span> <span class="p">[</span><span class="n">skill</span> <span class="k">for</span> <span class="n">skill</span> <span class="ow">in</span> <span class="n">req_technical_skills</span> <span class="k">if</span> <span class="n">skill</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">user_technical_skills</span><span class="p">]</span>
+    <span class="c1"># matched_soft_skills = set(user_soft_skills).intersection(set(req_soft_skills))</span>
+    <span class="c1"># matched_technical_skills = set(user_technical_skills).intersection(set(req_technical_skills))</span>
+
+    <span class="n">missed_technical_skills</span> <span class="o">=</span> <span class="p">[</span><span class="n">skill</span> <span class="k">for</span> <span class="n">skill</span> <span class="ow">in</span> <span class="n">req_technical_skills</span> <span class="k">if</span> <span class="n">skill</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">user_technical_skills</span><span class="p">]</span>
+    <span class="n">missed_soft_skills</span> <span class="o">=</span> <span class="p">[</span><span class="n">skill</span> <span class="k">for</span> <span class="n">skill</span> <span class="ow">in</span> <span class="n">req_soft_skills</span> <span class="k">if</span> <span class="n">skill</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">user_soft_skills</span><span class="p">]</span>
+    <span class="n">missed_skills</span> <span class="o">=</span> <span class="n">missed_technical_skills</span> <span class="o">+</span> <span class="n">missed_soft_skills</span>
+    <span class="c1"># calculating score for distance</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">distance</span> <span class="o">=</span> <span class="n">calculate_distance</span><span class="p">(</span><span class="n">employer_city</span><span class="p">,</span> <span class="n">user_location</span><span class="p">)</span>
+        <span class="c1"># Normalizing to a range from 0 to 10</span>
+        <span class="n">rounded_dist</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">distance</span><span class="p">)</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">rounded_dist</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="n">distance_score</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">-</span> <span class="p">(</span><span class="n">distance</span><span class="o">/</span><span class="mi">20000</span><span class="o">*</span><span class="mi">5</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">distance_score</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">distance_score</span> <span class="o">=</span> <span class="mi">5</span>
+    
+
+    <span class="c1">#skill score on basis of technical skills matching</span>
+    <span class="k">if</span> <span class="n">matched_technical_skills</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">technical_skill_score</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">matched_technical_skills</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">req_technical_skills</span><span class="p">)</span> <span class="o">*</span> <span class="mi">35</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">technical_skill_score</span> <span class="o">=</span> <span class="mi">35</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">technical_skill_score</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1"># skills score on basis of soft skills</span>
+    <span class="k">if</span> <span class="n">matched_soft_skills</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">soft_skills_score</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">matched_soft_skills</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">req_soft_skills</span><span class="p">)</span> <span class="o">*</span> <span class="mi">5</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">soft_skills_score</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">soft_skills_score</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="n">skill_score</span> <span class="o">=</span> <span class="n">technical_skill_score</span> <span class="o">+</span> <span class="n">soft_skills_score</span>
+
+    <span class="c1"># designation score on the basis of matching and word2vec</span>
+    <span class="n">job_title</span> <span class="o">=</span> <span class="n">job_title</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="n">designations</span> <span class="o">=</span> <span class="p">[</span><span class="n">desig</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">desig</span> <span class="ow">in</span> <span class="n">designations</span><span class="p">]</span>
+    <span class="n">job_designations</span> <span class="o">=</span> <span class="p">[</span><span class="n">job_title</span><span class="p">]</span> <span class="o">+</span> <span class="n">all_designations</span>
+    <span class="n">user_designations</span> <span class="o">=</span> <span class="n">designations</span>
+    <span class="n">missing_designation</span> <span class="o">=</span> <span class="p">[</span><span class="n">desig</span> <span class="k">for</span> <span class="n">desig</span> <span class="ow">in</span> <span class="n">job_designations</span> <span class="k">if</span> <span class="n">desig</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">user_designations</span><span class="p">]]</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">job_designations</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">user_designations</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">desig_score</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">job_title</span> <span class="ow">in</span> <span class="n">designations</span><span class="p">:</span>
+            <span class="n">desig_score</span> <span class="o">=</span> <span class="mi">40</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">most_common_domain_user</span> <span class="o">=</span> <span class="n">domain_classification_obj</span><span class="o">.</span><span class="n">classify_domain_from_designation</span><span class="p">(</span><span class="n">user_designations</span><span class="p">)</span>
+                <span class="c1"># print(&quot;******************most common domain****** {} --type {}&quot;.format(most_common_domain_user,type(most_common_domain_user)))</span>
+                <span class="n">most_common_domain_job</span> <span class="o">=</span> <span class="n">domain_classification_obj</span><span class="o">.</span><span class="n">classify_domain_from_designation</span><span class="p">(</span><span class="n">job_designations</span><span class="p">)</span>
+                <span class="n">most_common_domain_user</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">most_common_domain_user</span><span class="p">)</span>
+                <span class="n">most_common_domain_job</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">most_common_domain_job</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">most_common_domain_user</span> <span class="o">==</span> <span class="n">most_common_domain_job</span><span class="p">:</span>
+                    <span class="n">desig_score</span> <span class="o">=</span> <span class="mi">30</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">vector_score</span> <span class="o">=</span> <span class="p">[]</span>
+                    <span class="k">for</span> <span class="n">desig</span> <span class="ow">in</span> <span class="n">designations</span><span class="p">:</span>
+                        <span class="n">desig_vec</span> <span class="o">=</span> <span class="n">score_generator_obj</span><span class="o">.</span><span class="n">get_word_embeddings</span><span class="p">(</span><span class="n">desig</span><span class="p">)</span>
+                        <span class="c1"># print(str(user_id) + &quot;---- User designation ---- {} \n&quot;.format(desig))</span>
+                        <span class="c1"># print(str(user_id) + &quot;---- job designation ---- {} \n&quot;.format(job_title))</span>
+                        <span class="n">job_title_vec</span> <span class="o">=</span> <span class="n">score_generator_obj</span><span class="o">.</span><span class="n">get_word_embeddings</span><span class="p">(</span><span class="n">job_title</span><span class="p">)</span>
+                        <span class="n">desig_job_title_similarity_desig</span> <span class="o">=</span> <span class="n">score_generator_obj</span><span class="o">.</span><span class="n">calculate_similarity</span><span class="p">(</span>
+                            <span class="n">desig_vec</span><span class="p">,</span> <span class="n">job_title_vec</span><span class="p">)</span>
+                        <span class="c1"># print(str(user_id) + &quot;---- Simialrity ---- {} \n&quot;.format(desig_job_title_similarity_desig))</span>
+                        <span class="n">vector_score</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">desig_job_title_similarity_desig</span><span class="p">)</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="c1"># Calculating average score for every designations</span>
+                        <span class="n">desig_job_title_similarity_designations</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span>
+                            <span class="n">vector_score</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">designations</span><span class="p">)</span>
+                    <span class="k">except</span><span class="p">:</span>
+                        <span class="n">desig_job_title_similarity_designations</span> <span class="o">=</span> <span class="mi">0</span>
+                    <span class="c1"># Normalizing to range 0 to 40</span>
+                    <span class="n">desig_score</span> <span class="o">=</span> <span class="n">desig_job_title_similarity_designations</span> <span class="o">*</span> <span class="mi">40</span>
+            <span class="k">except</span><span class="p">:</span>
+                    <span class="n">vector_score</span> <span class="o">=</span> <span class="p">[]</span>
+                    <span class="k">for</span> <span class="n">desig</span> <span class="ow">in</span> <span class="n">designations</span><span class="p">:</span>
+                        <span class="n">desig_vec</span> <span class="o">=</span> <span class="n">score_generator_obj</span><span class="o">.</span><span class="n">get_word_embeddings</span><span class="p">(</span><span class="n">desig</span><span class="p">)</span>
+                        <span class="n">job_title_vec</span> <span class="o">=</span> <span class="n">score_generator_obj</span><span class="o">.</span><span class="n">get_word_embeddings</span><span class="p">(</span><span class="n">job_title</span><span class="p">)</span>
+                        <span class="n">desig_job_title_similarity_desig</span> <span class="o">=</span> <span class="n">score_generator_obj</span><span class="o">.</span><span class="n">calculate_similarity</span><span class="p">(</span>
+                            <span class="n">desig_vec</span><span class="p">,</span> <span class="n">job_title_vec</span><span class="p">)</span>
+                        <span class="n">vector_score</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">desig_job_title_similarity_desig</span><span class="p">)</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="c1"># Calculating average score for every designations</span>
+                        <span class="n">desig_job_title_similarity_designations</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span>
+                            <span class="n">vector_score</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">designations</span><span class="p">)</span>
+                    <span class="k">except</span><span class="p">:</span>
+                        <span class="n">desig_job_title_similarity_designations</span> <span class="o">=</span> <span class="mi">0</span>
+                    <span class="c1"># Normalizing to range 0 to 40</span>
+                    <span class="n">desig_score</span> <span class="o">=</span> <span class="n">desig_job_title_similarity_designations</span> <span class="o">*</span> <span class="mi">40</span>
+
+    <span class="c1">#Calculating score on the basis of experience matching</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">req_exp</span> <span class="o">=</span> <span class="s2">&quot; and &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">req_exp</span><span class="p">)</span>
+        <span class="n">user_exp</span><span class="o">=</span> <span class="s2">&quot; and &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">user_exp</span><span class="p">)</span> 
+        <span class="c1"># In case the chunking didn&#39;t extract any experience from job description</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">req_exp</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">user_exp</span><span class="p">:</span>
+            <span class="n">vec_sim</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">req_exp_vector</span> <span class="o">=</span> <span class="n">score_generator_obj</span><span class="o">.</span><span class="n">get_word_embeddings</span><span class="p">(</span><span class="n">req_exp</span><span class="p">)</span>
+            <span class="n">user_exp_vector</span> <span class="o">=</span> <span class="n">score_generator_obj</span><span class="o">.</span><span class="n">get_word_embeddings</span><span class="p">(</span><span class="n">user_exp</span><span class="p">)</span>
+
+            <span class="n">vec_sim</span> <span class="o">=</span> <span class="n">score_generator_obj</span><span class="o">.</span><span class="n">calculate_similarity</span><span class="p">(</span>
+                <span class="n">req_exp_vector</span><span class="p">,</span> <span class="p">[</span><span class="n">user_exp_vector</span><span class="p">])</span>
+
+        <span class="c1"># Normalizing to a range from 0 to 40</span>
+        <span class="n">experience_score</span> <span class="o">=</span> <span class="n">vec_sim</span> <span class="o">*</span> <span class="mi">5</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">experience_score</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1"># Calculate progress score of user profile acc to his experiences</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">designation_dates</span><span class="p">):</span>
+            <span class="n">progress_score</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">progress_score</span> <span class="o">=</span> <span class="n">calculate_progress</span><span class="p">(</span><span class="n">designation_dates</span><span class="p">,</span> <span class="n">junior_pool_list</span><span class="p">,</span> 
+                                  <span class="n">intermediate_pool_list</span><span class="p">,</span> <span class="n">senior_pool_list</span><span class="p">,</span> <span class="n">manager_pool_list</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">progress_score</span> <span class="o">=</span> <span class="mi">10</span>
+
+    <span class="c1"># If any nan values convert to zero</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">experience_score</span><span class="p">):</span>
+        <span class="n">experience_score</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">desig_score</span><span class="p">):</span>
+        <span class="n">desig_score</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">skill_score</span><span class="p">):</span>
+        <span class="n">skill_score</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">progress_score</span><span class="p">):</span>
+        <span class="n">progress_score</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">distance_score</span><span class="p">):</span>
+        <span class="n">distance_score</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="n">missing_words</span> <span class="o">=</span> <span class="n">missed_skills</span> <span class="o">+</span> <span class="n">missing_designation</span>
+    <span class="n">total_score</span> <span class="o">=</span> <span class="n">experience_score</span> <span class="o">+</span> <span class="n">desig_score</span> <span class="o">+</span> <span class="n">skill_score</span> <span class="o">+</span> <span class="n">distance_score</span> <span class="o">+</span> <span class="n">progress_score</span>
+    <span class="c1"># print(str(user_id)+&quot;--------------Designation score-----------------&quot;+str(desig_score))</span>
+    <span class="c1"># print(str(user_id)+&quot;--------------Progress-----------------&quot;+str(progress_score))</span>
+    <span class="c1"># print(str(user_id)+&quot;--------------Experience-----------------&quot;+str(experience_score))</span>
+    <span class="c1"># print(str(user_id)+&quot;-----------------Distance--------------&quot;+str(distance_score))</span>
+    <span class="c1"># print(str(user_id)+&quot;-----------------Designation--------------&quot;+str(desig_score))</span>
+    <span class="c1"># print(str(user_id)+&quot;-----------------Skills--------------&quot;+str(skill_score))</span>
+    <span class="c1"># print(str(user_id)+&quot;-----------------Total--------------&quot;+str(total_score))</span>
+    <span class="k">return</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">total_score</span><span class="p">,</span> <span class="n">missing_words</span></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Dolphwin 2.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, InfoDevelopers.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
+    </div>
+  </body>
+</html>

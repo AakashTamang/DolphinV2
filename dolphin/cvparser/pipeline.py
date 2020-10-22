@@ -55,6 +55,7 @@ class NlpPipeline():
     def embedding_component(self,doc):
         '''
         Gets textual content and returns respective embedding of the document
+
         :param doc: spacy Doc of textual data
         :return: Doc object with word embedding attribute
         '''
@@ -65,6 +66,7 @@ class NlpPipeline():
     def category_component(self,doc):
         '''
         Method to add resume identification component to the pipeline
+
         :param doc: spacy Doc of textual data
         :return: Doc object with doc category attribute
         '''
@@ -74,6 +76,7 @@ class NlpPipeline():
     def segmentation_component(self,doc):
         '''
         Method to add resume identification component to the pipeline
+        
         :param doc: spacy Doc of textual data
         :return: Doc object with different segmented attributes
         '''
@@ -108,6 +111,7 @@ class NlpPipeline():
     def profile_ner_parsing_component(self,doc):
         '''
         Method for performing Stanford NER tagging in profile in spacy
+
         :param doc: spacy Doc of textual data
         :return: Doc object with name and address attribute
         '''
@@ -129,6 +133,7 @@ class NlpPipeline():
     def experience_academics_ner_parsing_component(self,doc):
         '''
         Method for peforming Stanford NER tagging of experience and academics
+
         :param doc: spacy Doc of textual data
         :return: Doc object with academics and experience attribute
         '''
@@ -177,6 +182,7 @@ class NlpPipeline():
     def profile_pattern_matching_component(self,doc):
         '''
         Method for peforming pattern matching in for profile related information
+
         :param doc: spacy Doc of textual data
         :return: Doc object with different profile attribute
         '''
@@ -248,6 +254,7 @@ class NlpPipeline():
     def skills_pattern_matching_component(self,doc):
         '''
         Method for peforming pattern matching of soft skills and technical skills in a document
+        
         :param doc: spacy Doc of textual data
         :return: Doc object with soft skillls and technical skills attribute
         '''

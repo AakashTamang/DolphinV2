@@ -1,0 +1,550 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>cvparser.pipeline &#8212; Dolphwin 2.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Dolphwin 2.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for cvparser.pipeline</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="kn">import</span> <span class="nn">spacy</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">spacy.tokens</span> <span class="kn">import</span> <span class="n">Span</span><span class="p">,</span> <span class="n">Doc</span>
+<span class="kn">from</span> <span class="nn">spacy.matcher</span> <span class="kn">import</span> <span class="n">PhraseMatcher</span><span class="p">,</span> <span class="n">Matcher</span>
+<span class="kn">from</span> <span class="nn">nltk.tag.stanford</span> <span class="kn">import</span> <span class="n">StanfordNERTagger</span>
+
+<span class="kn">import</span> <span class="nn">settings</span> <span class="k">as</span> <span class="nn">cfg</span>
+<span class="kn">from</span> <span class="nn">word2vec</span> <span class="kn">import</span> <span class="n">Word2VecScorer</span>
+<span class="kn">from</span> <span class="nn">cvparser.stanfordNER.namedentityrecognition</span> <span class="kn">import</span> <span class="n">StanfordNER</span>
+<span class="kn">from</span> <span class="nn">cvparser.segmentation.segmentresume</span> <span class="kn">import</span> <span class="n">ResumeSegmentCreator</span>
+<span class="kn">from</span> <span class="nn">cvparser.document_categorization.identify_resume</span> <span class="kn">import</span> <span class="n">categorize_document</span>
+
+<div class="viewcode-block" id="NlpPipeline"><a class="viewcode-back" href="../../index.html#cvparser.pipeline.NlpPipeline">[docs]</a><span class="k">class</span> <span class="nc">NlpPipeline</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">     **This class is developed to add the custom spacy pipelines for document categorization, resume segmentation, and resume parsing.**</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="NlpPipeline.__init__"><a class="viewcode-back" href="../../index.html#cvparser.pipeline.NlpPipeline.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        **Construcotr method**</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;pipeline_preparation&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+        <span class="n">formatter</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%(asctime)s</span><span class="s1"> | </span><span class="si">%(name)s</span><span class="s1"> | </span><span class="si">%(levelname)s</span><span class="s1">: </span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">file_handler</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">FileHandler</span><span class="p">(</span><span class="s1">&#39;pipeline_info.log&#39;</span><span class="p">)</span>
+        <span class="n">file_handler</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">formatter</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">file_handler</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;en_core_web_sm&quot;</span><span class="p">,</span> <span class="n">disable</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;tagger&#39;</span><span class="p">,</span><span class="s1">&#39;parser&#39;</span><span class="p">,</span><span class="s1">&#39;ner&#39;</span><span class="p">,</span><span class="s1">&#39;textcat&#39;</span><span class="p">])</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="c1"># print (e)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ner_tagger</span> <span class="o">=</span> <span class="n">StanfordNERTagger</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">NerModelPath</span><span class="p">,</span><span class="n">cfg</span><span class="o">.</span><span class="n">jarPath</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">segmentation_obj</span> <span class="o">=</span> <span class="n">ResumeSegmentCreator</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scorer</span> <span class="o">=</span> <span class="n">Word2VecScorer</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">word2vec_model</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">predefined_technical_skills</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">technical_skills_pool</span><span class="p">)[</span><span class="s1">&#39;Predefined_skills&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+            <span class="n">predefined_soft_skills</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">soft_skills_pool</span><span class="p">)[</span><span class="s1">&#39;Predefined_skills&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+            <span class="n">predefined_languages</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">languages_pool</span><span class="p">)[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+            <span class="n">predefined_nationalities</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">nationality_pool</span><span class="p">)[</span><span class="s1">&#39;Nationality&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="c1"># print (e)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">soft_skills_pattern</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">predefined_soft_skills</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">technical_skills_patterns</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">predefined_technical_skills</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">languages_pattern</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">predefined_languages</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nationality_pattern</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">predefined_nationalities</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="NlpPipeline.embedding_component"><a class="viewcode-back" href="../../index.html#cvparser.pipeline.NlpPipeline.embedding_component">[docs]</a>    <span class="k">def</span> <span class="nf">embedding_component</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">doc</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Gets textual content and returns respective embedding of the document</span>
+
+<span class="sd">        :param doc: spacy Doc of textual data</span>
+<span class="sd">        :return: Doc object with word embedding attribute</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">embedding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scorer</span><span class="o">.</span><span class="n">get_word_embeddings</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">doc</span><span class="p">))</span>
+        <span class="c1"># doc2._.embedding = self.scorer.get_word_embeddings(str(doc2))</span>
+        <span class="k">return</span> <span class="n">doc</span></div>
+
+<div class="viewcode-block" id="NlpPipeline.category_component"><a class="viewcode-back" href="../../index.html#cvparser.pipeline.NlpPipeline.category_component">[docs]</a>    <span class="k">def</span> <span class="nf">category_component</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">doc</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Method to add resume identification component to the pipeline</span>
+
+<span class="sd">        :param doc: spacy Doc of textual data</span>
+<span class="sd">        :return: Doc object with doc category attribute</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">category</span> <span class="o">=</span> <span class="n">categorize_document</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">doc</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">doc</span></div>
+
+<div class="viewcode-block" id="NlpPipeline.segmentation_component"><a class="viewcode-back" href="../../index.html#cvparser.pipeline.NlpPipeline.segmentation_component">[docs]</a>    <span class="k">def</span> <span class="nf">segmentation_component</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">doc</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Method to add resume identification component to the pipeline</span>
+<span class="sd">        </span>
+<span class="sd">        :param doc: spacy Doc of textual data</span>
+<span class="sd">        :return: Doc object with different segmented attributes</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">resume_segment</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">segmentation_obj</span><span class="o">.</span><span class="n">format_segment</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">doc</span><span class="p">))</span>
+        <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">profile_segment</span> <span class="o">=</span> <span class="n">resume_segment</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;profile&#39;</span><span class="p">)</span>
+        <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">objective_segment</span> <span class="o">=</span> <span class="n">resume_segment</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;objectives&#39;</span><span class="p">)</span>
+        <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">skills_segment</span> <span class="o">=</span> <span class="n">resume_segment</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;skills&#39;</span><span class="p">)</span>
+        <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">academics_segment</span> <span class="o">=</span> <span class="n">resume_segment</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;academics&#39;</span><span class="p">)</span>
+        <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">experience_segment</span> <span class="o">=</span> <span class="n">resume_segment</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;experiences&#39;</span><span class="p">)</span>
+        <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">language_segment</span> <span class="o">=</span> <span class="n">resume_segment</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;languages&#39;</span><span class="p">)</span>
+        <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">projects_segment</span> <span class="o">=</span> <span class="n">resume_segment</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;projects&#39;</span><span class="p">)</span>
+        <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">rewards_segment</span> <span class="o">=</span> <span class="n">resume_segment</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;rewards&#39;</span><span class="p">)</span>
+        <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">references_segment</span> <span class="o">=</span> <span class="n">resume_segment</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;references&#39;</span><span class="p">)</span>
+        <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">links_segment</span> <span class="o">=</span> <span class="n">resume_segment</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;links&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">doc</span></div>
+
+    <span class="c1"># def ner_parsing_component(self,doc):</span>
+    <span class="c1">#     &#39;&#39;&#39;</span>
+    <span class="c1">#     **Function for preparing custom ner parsing component** </span>
+    <span class="c1">#     params: doc of content from file</span>
+    <span class="c1">#     return: doc containing parsed information from keyword</span>
+    <span class="c1">#     &#39;&#39;&#39;</span>
+    <span class="c1">#     name,address = StanfordNER.ner_parser(self.ner_tagger,str(doc),&quot;profile&quot;)</span>
+    <span class="c1">#     education = StanfordNER.ner_parser(self.ner_tagger,str(doc),&quot;academics&quot;)</span>
+    <span class="c1">#     experiences = StanfordNER.ner_parser(self.ner_tagger,str(doc),&quot;experience&quot;)</span>
+    <span class="c1">#     doc._.name = name</span>
+    <span class="c1">#     doc._.address = address</span>
+    <span class="c1">#     doc._.education = education</span>
+    <span class="c1">#     doc._.experiences = experiences</span>
+    <span class="c1">#     return doc</span>
+
+<div class="viewcode-block" id="NlpPipeline.profile_ner_parsing_component"><a class="viewcode-back" href="../../index.html#cvparser.pipeline.NlpPipeline.profile_ner_parsing_component">[docs]</a>    <span class="k">def</span> <span class="nf">profile_ner_parsing_component</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">doc</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Method for performing Stanford NER tagging in profile in spacy</span>
+
+<span class="sd">        :param doc: spacy Doc of textual data</span>
+<span class="sd">        :return: Doc object with name and address attribute</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">name</span><span class="p">,</span><span class="n">address</span> <span class="o">=</span> <span class="n">StanfordNER</span><span class="o">.</span><span class="n">ner_parser</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ner_tagger</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="n">doc</span><span class="p">),</span><span class="s2">&quot;profile&quot;</span><span class="p">)</span>
+        <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">address</span> <span class="o">=</span> <span class="n">address</span>
+        <span class="k">return</span> <span class="n">doc</span></div>
+
+    <span class="c1"># def academics_ner_parsing_component(self,doc):</span>
+    <span class="c1">#     education = StanfordNER.ner_parser(self.ner_tagger,str(doc),&quot;academics&quot;)</span>
+    <span class="c1">#     doc._.education = education</span>
+    <span class="c1">#     return doc</span>
+
+    <span class="c1"># def experience_ner_parsing_component(self,doc):</span>
+    <span class="c1">#     experiences = StanfordNER.ner_parser(self.ner_tagger,str(doc),&quot;experience&quot;)</span>
+    <span class="c1">#     doc._.experiences = experiences</span>
+    <span class="c1">#     return doc</span>
+
+<div class="viewcode-block" id="NlpPipeline.experience_academics_ner_parsing_component"><a class="viewcode-back" href="../../index.html#cvparser.pipeline.NlpPipeline.experience_academics_ner_parsing_component">[docs]</a>    <span class="k">def</span> <span class="nf">experience_academics_ner_parsing_component</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">doc</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Method for peforming Stanford NER tagging of experience and academics</span>
+
+<span class="sd">        :param doc: spacy Doc of textual data</span>
+<span class="sd">        :return: Doc object with academics and experience attribute</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">experience_academics</span> <span class="o">=</span> <span class="n">StanfordNER</span><span class="o">.</span><span class="n">ner_parser</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ner_tagger</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="n">doc</span><span class="p">),</span><span class="s2">&quot;experience_academics&quot;</span><span class="p">)</span>
+        <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">experience_academics</span> <span class="o">=</span> <span class="n">experience_academics</span>
+        <span class="k">return</span> <span class="n">doc</span></div>
+
+    <span class="c1"># def add_ner_parsing(self):</span>
+    <span class="c1">#     &#39;&#39;&#39;</span>
+    <span class="c1">#     **Method for adding custom NER pipeline in nlp model**</span>
+    <span class="c1">#     &#39;&#39;&#39;</span>
+    <span class="c1">#     self.nlp.add_pipe(self.ner_parsing_component,after=&quot;segmentation_component&quot;)</span>
+    <span class="c1">#     Doc.set_extension(&#39;name&#39; , default=None)</span>
+    <span class="c1">#     Doc.set_extension(&#39;address&#39; , default=None)</span>
+    <span class="c1">#     Doc.set_extension(&quot;education&quot;, default = None)</span>
+    <span class="c1">#     Doc.set_extension(&quot;experiences&quot;, default = None)</span>
+    <span class="c1">#     self.logger.info(&quot;NER pipeline added&quot;)</span>
+
+<div class="viewcode-block" id="NlpPipeline.add_profile_ner_parsing"><a class="viewcode-back" href="../../index.html#cvparser.pipeline.NlpPipeline.add_profile_ner_parsing">[docs]</a>    <span class="k">def</span> <span class="nf">add_profile_ner_parsing</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Method for adding profile NER parsing component to the spacy custom pipeline</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">add_pipe</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">profile_ner_parsing_component</span><span class="p">)</span>
+        <span class="n">Doc</span><span class="o">.</span><span class="n">set_extension</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+        <span class="n">Doc</span><span class="o">.</span><span class="n">set_extension</span><span class="p">(</span><span class="s2">&quot;address&quot;</span><span class="p">,</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Profile NER pipeline added&quot;</span><span class="p">)</span></div>
+
+    <span class="c1"># def add_academics_ner_parsing(self):</span>
+    <span class="c1">#     self.nlp.add_pipe(self.academics_ner_parsing_component)</span>
+    <span class="c1">#     Doc.set_extension(&#39;education&#39;,default=None)</span>
+    <span class="c1">#     self.logger.info(&quot;Academics NER pipeline added&quot;)</span>
+
+    <span class="c1"># def add_experience_ner_parsing(self):</span>
+    <span class="c1">#     self.nlp.add_pipe(self.experience_ner_parsing_component)</span>
+    <span class="c1">#     Doc.set_extension(&#39;experiences&#39;,default=None)</span>
+    <span class="c1">#     self.logger.info(&quot;Experience NER pipeline added&quot;)</span>
+
+<div class="viewcode-block" id="NlpPipeline.add_experience_academics_ner_parsing_component"><a class="viewcode-back" href="../../index.html#cvparser.pipeline.NlpPipeline.add_experience_academics_ner_parsing_component">[docs]</a>    <span class="k">def</span> <span class="nf">add_experience_academics_ner_parsing_component</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Method for adding experience and academics NER parsing component to the spacy custom pipeline</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">add_pipe</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">experience_academics_ner_parsing_component</span><span class="p">)</span>
+        <span class="n">Doc</span><span class="o">.</span><span class="n">set_extension</span><span class="p">(</span><span class="s1">&#39;experience_academics&#39;</span><span class="p">,</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Experience Academics NER pipeline added&quot;</span><span class="p">)</span></div>
+        
+<div class="viewcode-block" id="NlpPipeline.profile_pattern_matching_component"><a class="viewcode-back" href="../../index.html#cvparser.pipeline.NlpPipeline.profile_pattern_matching_component">[docs]</a>    <span class="k">def</span> <span class="nf">profile_pattern_matching_component</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">doc</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Method for peforming pattern matching in for profile related information</span>
+
+<span class="sd">        :param doc: spacy Doc of textual data</span>
+<span class="sd">        :return: Doc object with different profile attribute</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">phone_patterns</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;([\+\-()\d]{1,8})?\s?([(]?\d</span><span class="si">{3}</span><span class="s1">[)]?[\s-]?\d</span><span class="si">{3}</span><span class="s1">[\s-]?\d{3,4})&#39;</span>
+        <span class="n">zip_code_patterns</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;(\b\d</span><span class="si">{5}</span><span class="s1">-\d</span><span class="si">{4}</span><span class="s1">\b|\b\d</span><span class="si">{5}</span><span class="s1">\b\s)&#39;</span>
+        <span class="n">github_patterns</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;github.com/[^ |^\n]+&#39;</span>
+        <span class="n">linkedin_patterns</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;linkedin.com/[^ |^\n]+&quot;</span>
+
+        <span class="n">emails_pattern</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;TEXT&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;REGEX&quot;</span><span class="p">:</span><span class="s2">&quot;[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+&quot;</span><span class="p">}}]</span>
+        <span class="c1"># date_patterns = [{&quot;IS_DIGIT&quot;:True, &quot;LENGTH&quot;:{&quot;IN&quot;:[2,4]}}, {&quot;TEXT&quot;:{&quot;IN&quot;:[&#39;-&#39;]}},{&quot;IS_DIGIT&quot;:True, &quot;LENGTH&quot;:2},{&quot;TEXT&quot;:{&quot;IN&quot;:[&#39;-&#39;]}},{&quot;IS_DIGIT&quot;:True,&quot;LENGTH&quot;:{&quot;IN&quot;:[2,4]}}]</span>
+        <span class="n">date_pattern_1</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;IS_DIGIT&quot;</span><span class="p">:</span><span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;LENGTH&quot;</span><span class="p">:</span><span class="mi">4</span><span class="p">},{</span><span class="s2">&quot;TEXT&quot;</span><span class="p">:{</span><span class="s2">&quot;IN&quot;</span><span class="p">:[</span><span class="s1">&#39;-&#39;</span><span class="p">]}},{</span><span class="s2">&quot;IS_DIGIT&quot;</span><span class="p">:</span><span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;LENGTH&quot;</span><span class="p">:{</span><span class="s2">&quot;IN&quot;</span><span class="p">:[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]}},{</span><span class="s2">&quot;TEXT&quot;</span><span class="p">:{</span><span class="s2">&quot;IN&quot;</span><span class="p">:[</span><span class="s1">&#39;-&#39;</span><span class="p">]}},{</span><span class="s2">&quot;IS_DIGIT&quot;</span><span class="p">:</span><span class="kc">True</span><span class="p">,</span><span class="s2">&quot;LENGTH&quot;</span><span class="p">:{</span><span class="s2">&quot;IN&quot;</span><span class="p">:[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]}}]</span>
+        <span class="n">date_pattern_2</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;IS_DIGIT&quot;</span><span class="p">:</span><span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;LENGTH&quot;</span><span class="p">:{</span><span class="s2">&quot;IN&quot;</span><span class="p">:[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]}},{</span><span class="s2">&quot;TEXT&quot;</span><span class="p">:{</span><span class="s2">&quot;IN&quot;</span><span class="p">:[</span><span class="s2">&quot;-&quot;</span><span class="p">]}},{</span><span class="s2">&quot;IS_DIGIT&quot;</span><span class="p">:</span><span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;LENGTH&quot;</span><span class="p">:{</span><span class="s2">&quot;IN&quot;</span><span class="p">:[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]}},{</span><span class="s2">&quot;TEXT&quot;</span><span class="p">:{</span><span class="s2">&quot;IN&quot;</span><span class="p">:[</span><span class="s2">&quot;-&quot;</span><span class="p">]}},{</span><span class="s2">&quot;IS_DIGIT&quot;</span><span class="p">:</span><span class="kc">True</span><span class="p">,</span><span class="s2">&quot;LENGTH&quot;</span><span class="p">:{</span><span class="s2">&quot;IN&quot;</span><span class="p">:[</span><span class="mi">4</span><span class="p">]}}]</span>
+        <span class="n">date_pattern_3</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;TEXT&quot;</span><span class="p">:{</span><span class="s2">&quot;REGEX&quot;</span><span class="p">:</span><span class="s2">&quot;\d</span><span class="si">{4}</span><span class="s2">[-/]\d{1,2}[-/]\d{1,2}&quot;</span><span class="p">}}]</span>
+        <span class="n">date_pattern_4</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;TEXT&quot;</span><span class="p">:{</span><span class="s2">&quot;REGEX&quot;</span><span class="p">:</span><span class="s2">&quot;\d{1,2}[-/]\d{1,2}[-/]\d</span><span class="si">{4}</span><span class="s2">&quot;</span><span class="p">}}]</span>
+        <span class="n">gender_patterns</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;TEXT&quot;</span><span class="p">:{</span><span class="s2">&quot;REGEX&quot;</span><span class="p">:</span><span class="s2">&quot;^(?:m|M|male|Male|f|F|female|Female)$&quot;</span><span class="p">}}]</span>
+
+        <span class="n">language_matcher</span> <span class="o">=</span> <span class="n">PhraseMatcher</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">vocab</span><span class="p">)</span>
+        <span class="n">nationality_matcher</span> <span class="o">=</span> <span class="n">PhraseMatcher</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">vocab</span><span class="p">)</span>
+        <span class="n">emails_matcher</span> <span class="o">=</span> <span class="n">Matcher</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">vocab</span><span class="p">)</span>
+        <span class="n">date_matcher</span> <span class="o">=</span> <span class="n">Matcher</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">vocab</span><span class="p">)</span>
+        <span class="n">gender_matcher</span> <span class="o">=</span> <span class="n">Matcher</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">vocab</span><span class="p">)</span>
+
+        <span class="n">emails_matcher</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;email&quot;</span><span class="p">,</span><span class="kc">None</span><span class="p">,</span><span class="n">emails_pattern</span><span class="p">)</span>
+        <span class="n">date_matcher</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;date&quot;</span><span class="p">,</span><span class="kc">None</span><span class="p">,</span><span class="n">date_pattern_1</span><span class="p">)</span>
+        <span class="n">date_matcher</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;date&quot;</span><span class="p">,</span><span class="kc">None</span><span class="p">,</span><span class="n">date_pattern_2</span><span class="p">)</span>
+        <span class="n">date_matcher</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;date&quot;</span><span class="p">,</span><span class="kc">None</span><span class="p">,</span><span class="n">date_pattern_3</span><span class="p">)</span>
+        <span class="n">date_matcher</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;date&quot;</span><span class="p">,</span><span class="kc">None</span><span class="p">,</span><span class="n">date_pattern_4</span><span class="p">)</span>
+        <span class="n">gender_matcher</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;gender&quot;</span><span class="p">,</span><span class="kc">None</span><span class="p">,</span><span class="n">gender_patterns</span><span class="p">)</span>
+        <span class="n">nationality_matcher</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;nationality&quot;</span><span class="p">,</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">nationality_pattern</span><span class="p">)</span>
+        <span class="n">language_matcher</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;languages&quot;</span><span class="p">,</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">languages_pattern</span><span class="p">)</span>
+
+        <span class="n">emails_matches</span> <span class="o">=</span> <span class="n">emails_matcher</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+        <span class="n">date_matches</span> <span class="o">=</span> <span class="n">date_matcher</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+        <span class="n">gender_matches</span> <span class="o">=</span> <span class="n">gender_matcher</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+        <span class="n">nationality_matches</span> <span class="o">=</span> <span class="n">nationality_matcher</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+        <span class="n">language_matches</span> <span class="o">=</span> <span class="n">language_matcher</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+        
+        <span class="n">date</span> <span class="o">=</span> <span class="p">[</span><span class="n">Span</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;dates&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">match_id</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="ow">in</span> <span class="n">date_matches</span><span class="p">]</span>
+        <span class="n">gender</span> <span class="o">=</span> <span class="p">[</span><span class="n">Span</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;gender&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">match_id</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="ow">in</span> <span class="n">gender_matches</span><span class="p">]</span>
+        <span class="n">emails</span> <span class="o">=</span> <span class="p">[</span><span class="n">Span</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;emails&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">match_id</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="ow">in</span> <span class="n">emails_matches</span><span class="p">]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">emails</span><span class="p">:</span>
+            <span class="n">emails</span> <span class="o">=</span> <span class="p">[</span><span class="n">token</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">doc</span> <span class="k">if</span> <span class="n">token</span><span class="o">.</span><span class="n">like_email</span> <span class="o">==</span> <span class="kc">True</span><span class="p">]</span>
+        
+        <span class="c1"># If our matcher and regex fails to extract the date or email, this condition will extract them</span>
+        <span class="c1"># if not date or emails:</span>
+        <span class="c1">#     if not date:</span>
+        <span class="c1">#         nlp2 = spacy.load(&quot;en_core_web_sm&quot;)</span>
+        <span class="c1">#         doc2 = nlp2(doc.text)</span>
+        <span class="c1">#         date = [ent.text for ent in doc2.ents if ent.label_ == &quot;DATE&quot;]</span>
+        <span class="c1">#     if not emails:</span>
+        <span class="c1">#         emails = [token.text for token in doc2 if token.like_email == True]</span>
+
+
+        <span class="n">nationality</span> <span class="o">=</span> <span class="p">[</span><span class="n">Span</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;nationality&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">match_id</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="ow">in</span> <span class="n">nationality_matches</span><span class="p">]</span>
+        <span class="n">language</span> <span class="o">=</span> <span class="p">[</span><span class="n">Span</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;languages&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">match_id</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="ow">in</span> <span class="n">language_matches</span><span class="p">]</span>
+
+        <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">phone</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">())</span> <span class="k">for</span> <span class="n">match</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="n">phone_patterns</span><span class="p">,</span><span class="n">doc</span><span class="o">.</span><span class="n">text</span><span class="p">))</span>
+        <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">date</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">date</span> <span class="p">)</span>
+        <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">gender</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">gender</span> <span class="p">)</span>
+        <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">emails</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">emails</span> <span class="p">)</span>
+        <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">github</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">())</span> <span class="k">for</span> <span class="n">match</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="n">github_patterns</span><span class="p">,</span><span class="n">doc</span><span class="o">.</span><span class="n">text</span><span class="p">))</span>
+        <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">linkedin</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">())</span> <span class="k">for</span> <span class="n">match</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="n">linkedin_patterns</span><span class="p">,</span><span class="n">doc</span><span class="o">.</span><span class="n">text</span><span class="p">))</span>
+        <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">zipcode</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">())</span> <span class="k">for</span> <span class="n">match</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="n">zip_code_patterns</span><span class="p">,</span><span class="n">doc</span><span class="o">.</span><span class="n">text</span><span class="p">))</span>
+        
+        <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">nationality</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nationality</span><span class="p">])</span>
+        <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">language</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">language</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">doc</span></div>
+
+<div class="viewcode-block" id="NlpPipeline.skills_pattern_matching_component"><a class="viewcode-back" href="../../index.html#cvparser.pipeline.NlpPipeline.skills_pattern_matching_component">[docs]</a>    <span class="k">def</span> <span class="nf">skills_pattern_matching_component</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">doc</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Method for peforming pattern matching of soft skills and technical skills in a document</span>
+<span class="sd">        </span>
+<span class="sd">        :param doc: spacy Doc of textual data</span>
+<span class="sd">        :return: Doc object with soft skillls and technical skills attribute</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">technical_skills_matcher</span> <span class="o">=</span> <span class="n">PhraseMatcher</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">vocab</span><span class="p">)</span>
+        <span class="n">soft_skills_matcher</span> <span class="o">=</span> <span class="n">PhraseMatcher</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">vocab</span><span class="p">)</span>
+
+        <span class="n">technical_skills_matcher</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;technical_skills&quot;</span><span class="p">,</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">technical_skills_patterns</span><span class="p">)</span>
+        <span class="n">soft_skills_matcher</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;soft_skills&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">soft_skills_pattern</span><span class="p">)</span>
+
+        <span class="n">technical_skills_matches</span> <span class="o">=</span> <span class="n">technical_skills_matcher</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+        <span class="n">soft_skills_matches</span> <span class="o">=</span> <span class="n">soft_skills_matcher</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+
+        <span class="n">technical_skills</span> <span class="o">=</span> <span class="p">[</span><span class="n">Span</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;technical_skills&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">match_id</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="ow">in</span> <span class="n">technical_skills_matches</span><span class="p">]</span>
+        <span class="n">soft_skills</span> <span class="o">=</span> <span class="p">[</span><span class="n">Span</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;soft_skills&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">match_id</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="ow">in</span> <span class="n">soft_skills_matches</span><span class="p">]</span>
+
+        <span class="n">technical_skills</span> <span class="o">=</span> <span class="p">[</span> <span class="nb">str</span><span class="p">(</span><span class="n">skill</span><span class="p">)</span> <span class="k">for</span> <span class="n">skill</span> <span class="ow">in</span> <span class="n">technical_skills</span><span class="p">]</span>
+        <span class="n">soft_skills</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">skill</span><span class="p">)</span> <span class="k">for</span> <span class="n">skill</span> <span class="ow">in</span> <span class="n">soft_skills</span><span class="p">]</span>
+
+        <span class="n">final_tech_skill</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">final_soft_skill</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">unique_soft</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="n">unique_tech</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">technical_skills</span><span class="p">:</span>
+            <span class="n">i1</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">i1</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">unique_tech</span><span class="p">:</span>
+                <span class="n">unique_tech</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">i1</span><span class="p">)</span>
+                <span class="n">final_tech_skill</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">soft_skills</span><span class="p">:</span>
+            <span class="n">i1</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">i1</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">unique_soft</span><span class="p">:</span>
+                <span class="n">unique_soft</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">i1</span><span class="p">)</span>
+                <span class="n">final_soft_skill</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+        <span class="c1"># doc._.technical_skills = set([str(skills) for skills in technical_skills])</span>
+        <span class="c1"># doc._.soft_skills = set([str(skills) for skills in soft_skills])</span>
+        <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">technical_skills</span> <span class="o">=</span> <span class="n">final_tech_skill</span>
+        <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">soft_skills</span> <span class="o">=</span> <span class="n">final_soft_skill</span>
+        <span class="k">return</span> <span class="n">doc</span></div>
+
+    <span class="c1"># def pattern_matching_component(self,doc):</span>
+    <span class="c1">#     &#39;&#39;&#39;</span>
+    <span class="c1">#     **Method for preparing pattern matching component in spacy**</span>
+    <span class="c1">#     params: doc from document</span>
+    <span class="c1">#     return : doc containing matched keywords</span>
+    <span class="c1">#     &#39;&#39;&#39;        </span>
+    <span class="c1">#     # REGEX PATTERN</span>
+    <span class="c1">#     phone_patterns = r&#39;([\+\-()\d]{1,8})?\s?([(]?\d{3}[)]?[\s-]?\d{3}[\s-]?\d{3,4})&#39;</span>
+    <span class="c1">#     zip_code_patterns = r&#39;(\b\d{5}-\d{4}\b|\b\d{5}\b\s)&#39;</span>
+    <span class="c1">#     github_patterns = r&#39;github.com/[^ |^\n]+&#39;</span>
+    <span class="c1">#     linkedin_patterns = r&quot;linkedin.com/[^ |^\n]+&quot;</span>
+
+    <span class="c1">#     # SPACY MATCHER</span>
+    <span class="c1">#     # phone_patterns = [{&quot;TEXT&quot;:{&quot;REGEX&quot;:&quot;^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$&quot;}}]</span>
+    <span class="c1">#     emails_pattern = [{&quot;TEXT&quot;: {&quot;REGEX&quot;:&quot;[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+&quot;}}]</span>
+    <span class="c1">#     # date_patterns = [{&quot;TEXT&quot;:{&quot;REGEX&quot;:&quot;\d{4}(?P&lt;sep&gt;[-/])\d{2}(?P=sep)\d{2}&quot;}}]</span>
+    <span class="c1">#     date_patterns = [{&quot;IS_DIGIT&quot;:True, &quot;LENGTH&quot;:{&quot;IN&quot;:[2,4]}}, {&quot;TEXT&quot;:{&quot;IN&quot;:[&#39;-&#39;]}},{&quot;IS_DIGIT&quot;:True, &quot;LENGTH&quot;:2,},{&quot;TEXT&quot;:{&quot;IN&quot;:[&#39;-&#39;]}},{&quot;IS_DIGIT&quot;:True,&quot;LENGTH&quot;:{&quot;IN&quot;:[2,4]}}]</span>
+    <span class="c1">#     gender_patterns = [{&quot;TEXT&quot;:{&quot;REGEX&quot;:&quot;^(?:m|M|male|Male|f|F|female|Female)$&quot;}}]</span>
+
+    <span class="c1">#     technical_skills_matcher = PhraseMatcher(self.nlp.vocab)</span>
+    <span class="c1">#     language_matcher = PhraseMatcher(self.nlp.vocab)</span>
+    <span class="c1">#     nationality_matcher = PhraseMatcher(self.nlp.vocab)</span>
+    <span class="c1">#     soft_skills_matcher = PhraseMatcher(self.nlp.vocab)</span>
+
+    <span class="c1">#     emails_matcher = Matcher(self.nlp.vocab)</span>
+    <span class="c1">#     date_matcher = Matcher(self.nlp.vocab)</span>
+    <span class="c1">#     # phone_matcher = Matcher(self.nlp.vocab)</span>
+    <span class="c1">#     # emails_matcher = RegexMatcher(self.nlp.vocab)</span>
+    <span class="c1">#     # phone_matcher = RegexMatcher(self.nlp.vocab)</span>
+    <span class="c1">#     # date_matcher = RegexMatcher(self.nlp.vocab)</span>
+    <span class="c1">#     gender_matcher = Matcher(self.nlp.vocab)</span>
+
+    <span class="c1">#     technical_skills_matcher.add(&quot;technical_skills&quot;,None, *self.technical_skills_patterns)</span>
+    <span class="c1">#     soft_skills_matcher.add(&quot;soft_skills&quot;, None, *self.soft_skills_pattern)</span>
+    <span class="c1">#     nationality_matcher.add(&quot;nationality&quot;,None, *self.nationality_pattern)</span>
+    <span class="c1">#     language_matcher.add(&quot;languages&quot;,None, *self.languages_pattern)</span>
+
+    <span class="c1">#     emails_matcher.add(&quot;email&quot;,None,emails_pattern)</span>
+    <span class="c1">#     date_matcher.add(&quot;date&quot;,None,date_patterns)</span>
+    <span class="c1">#     # phone_matcher.add(&quot;phone&quot;,None,phone_patterns)</span>
+    <span class="c1">#     # emails_matcher.add(&quot;emeail&quot;,[&#39;emails&#39;],kwargs=[{&quot;predef&quot;:True}])</span>
+    <span class="c1">#     # phone_matcher.add(&quot;phone&quot;,[&#39;phones&#39;],kwargs=[{&quot;predef&quot;:True}])</span>
+    <span class="c1">#     # date_matcher.add(&quot;date&quot;,[&#39;dates&#39;],kwargs=[{&quot;predef&quot;:True}])</span>
+    <span class="c1">#     gender_matcher.add(&quot;gender&quot;,None,gender_patterns)</span>
+
+    <span class="c1">#     technical_skills_matches = technical_skills_matcher(doc)</span>
+    <span class="c1">#     soft_skills_matches = soft_skills_matcher(doc)</span>
+    <span class="c1">#     nationality_matches = nationality_matcher(doc)</span>
+    <span class="c1">#     language_matches = language_matcher(doc)</span>
+    <span class="c1">#     emails_matches = emails_matcher(doc)</span>
+    <span class="c1">#     # phone_matches = phone_matcher(doc)</span>
+    <span class="c1">#     date_matches = date_matcher(doc)</span>
+    <span class="c1">#     gender_matches = gender_matcher(doc)</span>
+        
+    <span class="c1">#     # phone = [Span(doc, start, end, label=&quot;phne&quot;) for match_id, start, end in phone_matches]</span>
+    <span class="c1">#     date = [Span(doc, start, end, label=&quot;dates&quot;) for match_id, start, end in date_matches]</span>
+    <span class="c1">#     gender = [Span(doc, start, end, label=&quot;gender&quot;) for match_id, start, end in gender_matches]</span>
+    <span class="c1">#     emails = [Span(doc, start, end, label=&quot;emails&quot;) for match_id, start, end in emails_matches]</span>
+        
+    <span class="c1">#     # If our matcher and regex fails to extract the date or email, this condition will extract them</span>
+    <span class="c1">#     if not date or emails:</span>
+    <span class="c1">#         if not date:</span>
+    <span class="c1">#             nlp2 = spacy.load(&quot;en_core_web_sm&quot;)</span>
+    <span class="c1">#             doc2 = nlp2(doc.text)</span>
+    <span class="c1">#             date = [ent.text for ent in doc2.ents if ent.label_ == &quot;DATE&quot;]</span>
+    <span class="c1">#         if not emails:</span>
+    <span class="c1">#             emails = [token.text for token in doc2 if token.like_email == True]</span>
+
+    <span class="c1">#     technical_skills = [Span(doc, start, end, label=&quot;technical_skills&quot;) for match_id, start, end in technical_skills_matches]</span>
+    <span class="c1">#     soft_skills = [Span(doc, start, end, label=&quot;soft_skills&quot;) for match_id, start, end in soft_skills_matches]</span>
+    <span class="c1">#     nationality = [Span(doc, start, end, label=&quot;nationality&quot;) for match_id, start, end in nationality_matches]</span>
+    <span class="c1">#     language = [Span(doc, start, end, label=&quot;languages&quot;) for match_id, start, end in language_matches]</span>
+
+    <span class="c1">#     # doc._.phone = set(str(p) for p in phone )</span>
+    <span class="c1">#     doc._.phone = set(str(match.group()) for match in re.finditer(phone_patterns,doc.text))</span>
+    <span class="c1">#     doc._.date = set(str(d) for d in date )</span>
+    <span class="c1">#     doc._.gender = set(str(g) for g in gender )</span>
+    <span class="c1">#     doc._.emails = set(str(e) for e in emails )</span>
+    <span class="c1">#     doc._.github = set(str(match.group()) for match in re.finditer(github_patterns,doc.text))</span>
+    <span class="c1">#     doc._.linkedin = set(str(match.group()) for match in re.finditer(linkedin_patterns,doc.text))</span>
+    <span class="c1">#     doc._.zipcode = set(str(match.group()) for match in re.finditer(zip_code_patterns,doc.text))</span>
+        
+    <span class="c1">#     doc._.nationality = set([str(n) for n in nationality])</span>
+    <span class="c1">#     doc._.language = set([str(l) for l in language])</span>
+    <span class="c1">#     doc._.technical_skills = set([str(skills) for skills in technical_skills])</span>
+    <span class="c1">#     doc._.soft_skills = set([str(skills) for skills in soft_skills])</span>
+    <span class="c1">#     return doc</span>
+
+    <span class="c1"># def add_pattern_matching(self):</span>
+    <span class="c1">#     &#39;&#39;&#39;</span>
+    <span class="c1">#     **Method for adding pattern matching component in pipeline**</span>
+    <span class="c1">#     &#39;&#39;&#39;</span>
+    <span class="c1">#     self.nlp.add_pipe(self.pattern_matching_component)</span>
+    <span class="c1">#     Doc.set_extension(&#39;technical_skills&#39;, default=None, force=True)</span>
+    <span class="c1">#     Doc.set_extension(&#39;soft_skills&#39;, default=None, force=True)</span>
+    <span class="c1">#     Doc.set_extension(&quot;nationality&quot;, default = None, force=True)</span>
+    <span class="c1">#     Doc.set_extension(&quot;language&quot;, default = None, force=True)</span>
+    <span class="c1">#     Doc.set_extension(&quot;emails&quot;, default = None, force=True)</span>
+    <span class="c1">#     Doc.set_extension(&quot;gender&quot;, default = None, force=True)</span>
+    <span class="c1">#     Doc.set_extension(&quot;date&quot;, default = None, force=True)</span>
+    <span class="c1">#     Doc.set_extension(&quot;phone&quot;, default = None, force=True)</span>
+    <span class="c1">#     Doc.set_extension(&quot;github&quot;, default = None, force=True)</span>
+    <span class="c1">#     Doc.set_extension(&quot;linkedin&quot;, default = None, force=True)</span>
+    <span class="c1">#     Doc.set_extension(&quot;zipcode&quot;, default = None, force=True)</span>
+    <span class="c1">#     # asyncio.ensure_future(add_ner_parsing())</span>
+    <span class="c1">#     self.logger.info(&quot;Pattern matching pipeline added&quot;)</span>
+    
+<div class="viewcode-block" id="NlpPipeline.add_profile_pattern_matching"><a class="viewcode-back" href="../../index.html#cvparser.pipeline.NlpPipeline.add_profile_pattern_matching">[docs]</a>    <span class="k">def</span> <span class="nf">add_profile_pattern_matching</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Method for adding profile pattern matching component to the spacy custom pipeline</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">add_pipe</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">profile_pattern_matching_component</span><span class="p">)</span>
+        <span class="n">Doc</span><span class="o">.</span><span class="n">set_extension</span><span class="p">(</span><span class="s2">&quot;nationality&quot;</span><span class="p">,</span> <span class="n">default</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">Doc</span><span class="o">.</span><span class="n">set_extension</span><span class="p">(</span><span class="s2">&quot;language&quot;</span><span class="p">,</span> <span class="n">default</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">Doc</span><span class="o">.</span><span class="n">set_extension</span><span class="p">(</span><span class="s2">&quot;emails&quot;</span><span class="p">,</span> <span class="n">default</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">Doc</span><span class="o">.</span><span class="n">set_extension</span><span class="p">(</span><span class="s2">&quot;gender&quot;</span><span class="p">,</span> <span class="n">default</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">Doc</span><span class="o">.</span><span class="n">set_extension</span><span class="p">(</span><span class="s2">&quot;date&quot;</span><span class="p">,</span> <span class="n">default</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">Doc</span><span class="o">.</span><span class="n">set_extension</span><span class="p">(</span><span class="s2">&quot;phone&quot;</span><span class="p">,</span> <span class="n">default</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">Doc</span><span class="o">.</span><span class="n">set_extension</span><span class="p">(</span><span class="s2">&quot;github&quot;</span><span class="p">,</span> <span class="n">default</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">Doc</span><span class="o">.</span><span class="n">set_extension</span><span class="p">(</span><span class="s2">&quot;linkedin&quot;</span><span class="p">,</span> <span class="n">default</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">Doc</span><span class="o">.</span><span class="n">set_extension</span><span class="p">(</span><span class="s2">&quot;zipcode&quot;</span><span class="p">,</span> <span class="n">default</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="c1"># asyncio.ensure_future(add_ner_parsing())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Profile Pattern matching pipeline added&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NlpPipeline.add_skills_pattern_matching"><a class="viewcode-back" href="../../index.html#cvparser.pipeline.NlpPipeline.add_skills_pattern_matching">[docs]</a>    <span class="k">def</span> <span class="nf">add_skills_pattern_matching</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Method for adding skills pattern matching component to the spacy custom pipeline</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">add_pipe</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">skills_pattern_matching_component</span><span class="p">)</span>
+        <span class="n">Doc</span><span class="o">.</span><span class="n">set_extension</span><span class="p">(</span><span class="s1">&#39;technical_skills&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">Doc</span><span class="o">.</span><span class="n">set_extension</span><span class="p">(</span><span class="s1">&#39;soft_skills&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="c1"># asyncio.ensure_future(add_ner_parsing())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Skills Pattern matching pipeline added&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NlpPipeline.add_embedding_component"><a class="viewcode-back" href="../../index.html#cvparser.pipeline.NlpPipeline.add_embedding_component">[docs]</a>    <span class="k">def</span> <span class="nf">add_embedding_component</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Method to add embedding component in pipeline</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">add_pipe</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">embedding_component</span><span class="p">)</span>
+        <span class="n">Doc</span><span class="o">.</span><span class="n">set_extension</span><span class="p">(</span><span class="s2">&quot;embedding&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NlpPipeline.add_category_component"><a class="viewcode-back" href="../../index.html#cvparser.pipeline.NlpPipeline.add_category_component">[docs]</a>    <span class="k">def</span> <span class="nf">add_category_component</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Method to add document categorization component to the spacy custom pipeline</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">add_pipe</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">category_component</span><span class="p">,</span><span class="n">first</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">Doc</span><span class="o">.</span><span class="n">set_extension</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">,</span> <span class="n">default</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>	</div>
+
+<div class="viewcode-block" id="NlpPipeline.add_segmentation_component"><a class="viewcode-back" href="../../index.html#cvparser.pipeline.NlpPipeline.add_segmentation_component">[docs]</a>    <span class="k">def</span> <span class="nf">add_segmentation_component</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Method to add resume segmentation component to the spacy custom pipeline</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">add_pipe</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">segmentation_component</span><span class="p">)</span>
+        <span class="n">Doc</span><span class="o">.</span><span class="n">set_extension</span><span class="p">(</span><span class="s1">&#39;profile_segment&#39;</span><span class="p">,</span> <span class="n">default</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">Doc</span><span class="o">.</span><span class="n">set_extension</span><span class="p">(</span><span class="s1">&#39;objective_segment&#39;</span><span class="p">,</span> <span class="n">default</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">Doc</span><span class="o">.</span><span class="n">set_extension</span><span class="p">(</span><span class="s1">&#39;skills_segment&#39;</span><span class="p">,</span> <span class="n">default</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">Doc</span><span class="o">.</span><span class="n">set_extension</span><span class="p">(</span><span class="s1">&#39;academics_segment&#39;</span><span class="p">,</span> <span class="n">default</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">Doc</span><span class="o">.</span><span class="n">set_extension</span><span class="p">(</span><span class="s1">&#39;experience_segment&#39;</span><span class="p">,</span><span class="n">default</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="c1"># Doc.set_extension(&#39;academics&#39;, default = None)</span>
+        <span class="n">Doc</span><span class="o">.</span><span class="n">set_extension</span><span class="p">(</span><span class="s1">&#39;language_segment&#39;</span><span class="p">,</span> <span class="n">default</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">Doc</span><span class="o">.</span><span class="n">set_extension</span><span class="p">(</span><span class="s1">&#39;projects_segment&#39;</span><span class="p">,</span> <span class="n">default</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">Doc</span><span class="o">.</span><span class="n">set_extension</span><span class="p">(</span><span class="s1">&#39;rewards_segment&#39;</span><span class="p">,</span> <span class="n">default</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">Doc</span><span class="o">.</span><span class="n">set_extension</span><span class="p">(</span><span class="s1">&#39;references_segment&#39;</span><span class="p">,</span> <span class="n">default</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">Doc</span><span class="o">.</span><span class="n">set_extension</span><span class="p">(</span><span class="s1">&#39;links_segment&#39;</span><span class="p">,</span> <span class="n">default</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NlpPipeline.process_text"><a class="viewcode-back" href="../../index.html#cvparser.pipeline.NlpPipeline.process_text">[docs]</a>    <span class="k">def</span> <span class="nf">process_text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">content</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Method to process as spacy doc</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">doc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nlp</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">doc</span></div></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Dolphwin 2.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, InfoDevelopers.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
+    </div>
+  </body>
+</html>
