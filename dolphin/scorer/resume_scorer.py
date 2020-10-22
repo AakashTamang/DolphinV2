@@ -24,7 +24,8 @@ NerObj = SpacyNer()
 
 
 # scorer = Word2VecScorer(cfg.word2vec_model)
-java_path = r"C:\Program Files\Java\jdk-12.0.1\bin\java.exe"
+# java_path = r"C:\Program Files\Java\jdk-12.0.1\bin\java.exe"
+java_path = r"C:\Program Files\Java\jdk-15\bin\java.exe"
 os.environ['JAVAHOME'] = java_path
 
 geolocator = Nominatim(user_agent="Dolphin")
@@ -299,8 +300,7 @@ def one_resume_multiple_jd_scorer(job, designations, user_exp, user_soft_skills,
     designations = [desig.lower() for desig in designations]
     job_designations = [job_title] + all_designations
     user_designations = designations
-    missing_designation = [desig for desig in job_designations if desig.lower() not in [x.lower() for x in user_designations]]
-    # missing_designation = [i.lower() for i in job_designations] ^ [j.lower() for j in user_designations]
+    # missing_designation = [desig for desig in job_designations if desig.lower() not in [x.lower() for x in user_designations]]
 
     if len(job_designations) == 0 or len(user_designations) == 0:
         desig_score = 0
@@ -394,7 +394,8 @@ def one_resume_multiple_jd_scorer(job, designations, user_exp, user_soft_skills,
         distance_score = 0
 
 
-    missing_words = missed_skills + missing_designation
+    # missing_words = missed_skills + missing_designation
+    missing_words = missed_skills
 
     total_score = experience_score + desig_score + skill_score + distance_score + progress_score
     return job_id, total_score, missing_words
@@ -481,7 +482,7 @@ def one_JD_multiple_resume_scorer(profile, job_title,all_designations, req_exp, 
     designations = [desig.lower() for desig in designations]
     job_designations = [job_title] + all_designations
     user_designations = designations
-    missing_designation = [desig for desig in job_designations if desig.lower() not in [x.lower() for x in user_designations]]
+    # missing_designation = [desig for desig in job_designations if desig.lower() not in [x.lower() for x in user_designations]]
     if len(job_designations) == 0 or len(user_designations) == 0:
         desig_score = 0
     else:
@@ -574,7 +575,8 @@ def one_JD_multiple_resume_scorer(profile, job_title,all_designations, req_exp, 
     if np.isnan(distance_score):
         distance_score = 0
 
-    missing_words = missed_skills + missing_designation
+    # missing_words = missed_skills + missing_designation
+    missing_words = missed_skills
     total_score = experience_score + desig_score + skill_score + distance_score + progress_score
     # print(str(user_id)+"--------------Designation score-----------------"+str(desig_score))
     # print(str(user_id)+"--------------Progress-----------------"+str(progress_score))
