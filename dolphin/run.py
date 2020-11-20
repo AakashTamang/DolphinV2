@@ -215,13 +215,15 @@ def classify_domain():
 
 @app.route('/parsejd', methods=['POST'])
 def parsing_jd():
-    document = request.files.get('job_description')
-    if document:
-        filename = document.filename
-        file = tempStorage + '/' + filename
-        document.save(file)
-        jd_parsed_result = parse_jd.clean_parse_jd(file)
-        return jsonify(jd_parsed_result)
+    # document = request.files.get('job_description')
+    job_description_textual_content = request.json['job_description']
+    # if document:
+    #     filename = document.filename
+    #     file = tempStorage + '/' + filename
+    #     document.save(file)
+    #     jd_parsed_result = parse_jd.clean_parse_jd(file)
+    jd_parsed_result = parse_jd.clean_parse_jd_using_textual_content(job_description_textual_content)
+    return jsonify(jd_parsed_result)
 
 
 @app.route("/generatescore", methods=["POST", "GET"])

@@ -38,6 +38,13 @@ class SpacyNer():
         return result
 
 
+    def clean_parse_jd_using_textual_content(self,textual_content):
+        desig, org, exp, edu, loc = self.parse(textual_content)
+        technical_skills,soft_skills = self.get_skills_from_pool(textual_content)
+        result = self.formatted_data(desig, org, exp, edu, loc, technical_skills,soft_skills)
+        return result
+
+
     def parse(self, jd_content):
         '''
         Function for parsing usiing custom Spacy NER
