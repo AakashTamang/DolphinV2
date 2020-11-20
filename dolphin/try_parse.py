@@ -5,11 +5,6 @@ import time
 # Azure Endpoint == http://40.122.71.113:8002
 # Info server endpoint = http://139.5.71.109:8002
 desired_endpoint = "http://0.0.0.0:8002"
-<<<<<<< HEAD
-# # # desired_endpoint = "http://139.5.71.109:8002"
-=======
-# desired_endpoint = "http://139.5.71.109:8002"
->>>>>>> 9a6e13ea3dbc1026e780d6332f96b35a62d2bdab
 
 # # # # # # # # # # # parsing api test
 # url_endpoint = desired_endpoint+"/parse"
@@ -38,34 +33,34 @@ desired_endpoint = "http://0.0.0.0:8002"
 # print(type(response.json()))
 
 
-# scoring api for multiple user profiles test
-url_endpoint = desired_endpoint+"/generatescorejobdescription"
+# # scoring api for multiple user profiles test
+# url_endpoint = desired_endpoint+"/generatescorejobdescription"
 
-with open("data/test.json", 'r') as f: #multiple_user_profile.json
-    data = json.load(f)
+# with open("data/test.json", 'r') as f: #multiple_user_profile.json
+#     data = json.load(f)
 
-start_time = time.time()
-response = requests.post(url_endpoint, json=data)
-print("--- %s seconds ---" % (time.time() - start_time))
-print(response.status_code)
-print(response.json())
-print(type(response.json()))
-print("Time taken: {} seconds".format(time.time() - start_time))
+# start_time = time.time()
+# response = requests.post(url_endpoint, json=data)
+# print("--- %s seconds ---" % (time.time() - start_time))
+# print(response.status_code)
+# print(response.json())
+# print(type(response.json()))
+# print("Time taken: {} seconds".format(time.time() - start_time))
 
 
 # # parsing job description test
-url_endpoint =  desired_endpoint+"/parsejd"
+# url_endpoint =  desired_endpoint+"/parsejd"
 
-job_descriptions_sample = """
-We are looking for a Python Developer with skills like python, java, HTML and so on.
-"""
+# job_descriptions_sample = """
+# We are looking for a Python Developer with skills like python, java, HTML and so on.
+# """
 
-start_time1 = time.time()
-response = requests.post(url_endpoint, json = {"job_description":job_descriptions_sample})
-print("New API results")
-print(response)
-print(response.json())
-print("Time taken: {} seconds".format(time.time() - start_time1))
+# start_time1 = time.time()
+# response = requests.post(url_endpoint, json = {"job_description":job_descriptions_sample})
+# print("New API results")
+# print(response)
+# print(response.json())
+# print("Time taken: {} seconds".format(time.time() - start_time1))
 
 # domain classification test
 
@@ -82,32 +77,32 @@ print("Time taken: {} seconds".format(time.time() - start_time1))
 # print("Time taken: {} seconds".format(time.time() - start_time1))
 
 
-# url_endpoint = desired_endpoint + "/generatescore"
-# resume_file = open(
-#     "cvparser/datasets/resumes/Ashish Suwal_Sr. Data Analyst.docx", "rb")
+url_endpoint = desired_endpoint + "/generatescore"
+resume_file = open(
+    "cvparser/datasets/resumes/Ashish Suwal_Sr. Data Analyst.docx", "rb")
 
 
-# job_data = [
-#     # {
-#     #     "pk": 46,
-#     #     "job_description": "Experience in Python , Postgresql , XML , HTML , CSS , JavaScript , JQuery. Experience with common python libraries / frameworks like Django, Flask, Pyramid, Werkzeug Solid understanding of object-oriented programming Familiarity with concepts of MVT, ORM RESTful Knowledge in React JS/Angular JS will be an added advantage Proficient understanding of GIT Able to implement automated testing platforms and unit tests Good Communication in the English language is a must. Knowlege of docker, pandas, pytorch, scikitlearn, numpy, deep learning etc."
-#     # },
-#     # {
-#     #     "pk": 103,
-#     #     "job_description": "Set up and manage our AI development and production infrastructure Help AI product managers and business stakeholders understand the potential and limitations of AI when planning new products. Build data ingest and data transformation infrastructure.Identify transfer learning opportunities and new training datasets. Build AI models from scratch and help product managers and stakeholders understand results. Deploy AI models into production.Create APIs and help business customers put results of your AI models into operations.Keep current of latest AI research relevant to our business domain."
-#     # },
-#     # {
-#     #     "pk": 42,
-#     #     "job_description": "Experience in Python , Postgresql , XML , HTML , CSS , JavaScript , JQuery. Experience with common python libraries / frameworks like Django, Flask, Pyramid, Werkzeug Solid understanding of object-oriented programming Familiarity with concepts of MVT, ORM RESTful Knowledge in React JS/Angular JS will be an added advantage Proficient understanding of GIT Able to implement automated testing platforms and unit tests Good Communication in the English language is a must. Knowlege of docker, pandas, pytorch, scikitlearn, numpy, deep learning etc."
-#     # }
-# ]
+job_data = [
+    # {
+    #     "pk": 46,
+    #     "job_description": "Experience in Python , Postgresql , XML , HTML , CSS , JavaScript , JQuery. Experience with common python libraries / frameworks like Django, Flask, Pyramid, Werkzeug Solid understanding of object-oriented programming Familiarity with concepts of MVT, ORM RESTful Knowledge in React JS/Angular JS will be an added advantage Proficient understanding of GIT Able to implement automated testing platforms and unit tests Good Communication in the English language is a must. Knowlege of docker, pandas, pytorch, scikitlearn, numpy, deep learning etc."
+    # },
+    # {
+    #     "pk": 103,
+    #     "job_description": "Set up and manage our AI development and production infrastructure Help AI product managers and business stakeholders understand the potential and limitations of AI when planning new products. Build data ingest and data transformation infrastructure.Identify transfer learning opportunities and new training datasets. Build AI models from scratch and help product managers and stakeholders understand results. Deploy AI models into production.Create APIs and help business customers put results of your AI models into operations.Keep current of latest AI research relevant to our business domain."
+    # },
+    # {
+    #     "pk": 42,
+    #     "job_description": "Experience in Python , Postgresql , XML , HTML , CSS , JavaScript , JQuery. Experience with common python libraries / frameworks like Django, Flask, Pyramid, Werkzeug Solid understanding of object-oriented programming Familiarity with concepts of MVT, ORM RESTful Knowledge in React JS/Angular JS will be an added advantage Proficient understanding of GIT Able to implement automated testing platforms and unit tests Good Communication in the English language is a must. Knowlege of docker, pandas, pytorch, scikitlearn, numpy, deep learning etc."
+    # }
+]
 
-# start_time1 = time.time()
-# response = requests.post(url_endpoint,data = {'jobs':job_data},files ={'resume': resume_file})
-# print(response.json())
-# print(type(response.json()))
-# print(response)
-# print("Time taken: {} seconds".format(time.time() - start_time1))
+start_time1 = time.time()
+response = requests.post(url_endpoint,data = {'jobs':job_data},files ={'resume': resume_file})
+print(response.json())
+print(type(response.json()))
+print(response)
+print("Time taken: {} seconds".format(time.time() - start_time1))
 
 
 #testing similar job scoring endpoint

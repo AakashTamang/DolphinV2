@@ -206,8 +206,8 @@ class SpacyNer():
             "EDUCATION": edu,
             "LOCATION": loc,
             "SKILLS":{
-                "TECHNICAL_SKILLS": list(technical_skills),
-                "SOFT_SKILLS": list(soft_skills),
+                "TECHNICAL_SKILLS": list(set(technical_skills)),
+                "SOFT_SKILLS": list(set(soft_skills)),
             }
         }
         return json_data
