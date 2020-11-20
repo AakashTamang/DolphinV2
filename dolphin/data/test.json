@@ -1,0 +1,274 @@
+{
+    "user_profiles": [
+        {
+            "user_id": 153,
+            "profile": "{\"user_pk\": 188, \"profile_id\": 153, \"full_name\": \"Kevin Wilson\", \"first_name\": \"Kevin\", \"last_name\": \"Wilson\", \"profile_photo\": null, \"resume\": null, \"job_group\": {\"id\": 1, \"name\": \"Python\"}, \"email\": \"jobseeker2@dolphwin.com\", \"phone\": \"9843726396\", \"gender\": 1, \"address\": {\"id\": 7, \"country\": \"Nepal\", \"state\": \"Bagmati\", \"zip_code\": \"44600\", \"city\": \"Kathmandu\"}}",
+            "technical_skills": [],
+            "soft_skills": [],
+            "exps": "[]"
+        },
+        {
+            "user_id": 162,
+            "profile": "{\"user_pk\": 197, \"profile_id\": 162, \"full_name\": \"Ram Thapa\", \"first_name\": \"Ram\", \"last_name\": \"Thapa\", \"profile_photo\": null, \"resume\": null, \"job_group\": {\"id\": 1, \"name\": \"Python\"}, \"email\": \"jobseeker3@yopmail.com\", \"phone\": \"9843726396\", \"gender\": 1, \"address\": {\"id\": 7, \"country\": \"Nepal\", \"state\": \"Bagmati\", \"zip_code\": \"44600\", \"city\": \"Kathmandu\"}}",
+            "technical_skills": [
+                "Python",
+                "Django",
+                "Docker",
+                "Flask",
+                "Numpy",
+                "scipy",
+                "Scikit Learn",
+                "Deep Learning",
+                "Neural Networks"
+            ],
+            "soft_skills": [],
+            "exps": "[{\"id\": 132, \"designation\": \"Machine Learning Engineer\", \"company\": \"NewTech Pvt Ltd\", \"entry_date\": \"2016-09-08\", \"exit_date\": \"2017-01-09\", \"roles\": null}, {\"id\": 133, \"designation\": \"Python Developer\", \"company\": \"Google Inc.\", \"entry_date\": \"2012-01-08\", \"exit_date\": \"2013-01-09\", \"roles\": null}]"
+        },
+        {
+            "user_id": 165,
+            "profile": "{\"user_pk\": 201, \"profile_id\": 165, \"full_name\": \"Harrison Roman Norton\", \"first_name\": \"Harrison Roman\", \"last_name\": \"Norton\", \"profile_photo\": null, \"resume\": null, \"job_group\": {\"id\": 1, \"name\": \"Python\"}, \"email\": \"jobseeker5@yopmail.com\", \"phone\": \"9843726396\", \"gender\": 1, \"address\": {\"id\": 7, \"country\": \"Nepal\", \"state\": \"Bagmati\", \"zip_code\": \"44600\", \"city\": \"Kathmandu\"}}",
+            "technical_skills": [
+                "Flask",
+                "PHP",
+                "Numpy",
+                "Pandas",
+                "scipy",
+                "Scikit Learn",
+                "Deep Learning",
+                "Neural Networks"
+            ],
+            "soft_skills": [],
+            "exps": "[{\"id\": 139, \"designation\": \"Ruby on Rails Developer\", \"company\": \"Google Inc.\", \"entry_date\": \"2012-01-08\", \"exit_date\": \"2013-01-09\", \"roles\": \"\"}, {\"id\": 138, \"designation\": \"NLP Engineer\", \"company\": \"NewTech Pvt Ltd\", \"entry_date\": \"2016-09-08\", \"exit_date\": \"2017-01-09\", \"roles\": \"\"}]"
+        },
+        {
+            "user_id": 164,
+            "profile": "{\"user_pk\": 200, \"profile_id\": 164, \"full_name\": \"Xavier Norton\", \"first_name\": \"Xavier\", \"last_name\": \"Norton\", \"profile_photo\": null, \"resume\": null, \"job_group\": {\"id\": 1, \"name\": \"Python\"}, \"email\": \"jobseeker4@yopmail.com\", \"phone\": \"9843726396\", \"gender\": 1, \"address\": {\"id\": 7, \"country\": \"Nepal\", \"state\": \"Bagmati\", \"zip_code\": \"44600\", \"city\": \"Kathmandu\"}}",
+            "technical_skills": [
+                "Javascript",
+                "Node.Js",
+                "Vim",
+                "Php",
+                "Python",
+                "Django",
+                "PHP",
+                "Numpy",
+                "Pandas",
+                "scipy",
+                "Scikit Learn",
+                "Deep Learning",
+                "Neural Networks"
+            ],
+            "soft_skills": [],
+            "exps": "[{\"id\": 137, \"designation\": \"Senior Python Developer\", \"company\": \"Google Inc.\", \"entry_date\": \"2012-01-08\", \"exit_date\": \"2013-01-09\", \"roles\": \"\"}, {\"id\": 136, \"designation\": \"Machine Learning Engineer\", \"company\": \"NewTech Pvt Ltd\", \"entry_date\": \"2016-09-08\", \"exit_date\": \"2017-01-09\", \"roles\": \"\"}]"
+        },
+        {
+            "user_id": 163,
+            "profile": "{\"user_pk\": 199, \"profile_id\": 163, \"full_name\": \"William Johnson\", \"first_name\": \"William\", \"last_name\": \"Johnson\", \"profile_photo\": null, \"resume\": null, \"job_group\": {\"id\": 1, \"name\": \"Python\"}, \"email\": \"jobseeker1@yopmail.com\", \"phone\": \"9843726396\", \"gender\": 1, \"address\": {\"id\": 7, \"country\": \"Nepal\", \"state\": \"Bagmati\", \"zip_code\": \"44600\", \"city\": \"Kathmandu\"}}",
+            "technical_skills": [
+                "Pandas",
+                "Java",
+                "Laravel",
+                "Javascript",
+                "C++",
+                "Sql",
+                "Ajax",
+                "C",
+                "Html5",
+                "Mongodb",
+                "Angular",
+                "scipy",
+                "Linux",
+                "Scikit Learn",
+                "Python",
+                "Django",
+                "Docker",
+                "Numpy"
+            ],
+            "soft_skills": [
+                "punctual",
+                "management skill",
+                "Documentation"
+            ],
+            "exps": "[{\"id\": 135, \"designation\": \"Python Developer\", \"company\": \"Google Inc.\", \"entry_date\": \"2012-01-08\", \"exit_date\": \"2013-01-09\", \"roles\": \"\"}, {\"id\": 134, \"designation\": \"Machine Learning Engineer\", \"company\": \"NewTech Pvt Ltd\", \"entry_date\": \"2016-09-08\", \"exit_date\": \"2017-01-09\", \"roles\": \"\"}]"
+        },
+        {
+            "user_id": 166,
+            "profile": "{\"user_pk\": 202, \"profile_id\": 166, \"full_name\": \"Ram Thapa\", \"first_name\": \"Ram\", \"last_name\": \"Thapa\", \"profile_photo\": null, \"resume\": null, \"job_group\": {\"id\": 1, \"name\": \"Python\"}, \"email\": \"jobseeker7@yopmail.com\", \"phone\": \"9843726396\", \"gender\": 1, \"address\": {\"id\": 7, \"country\": \"Nepal\", \"state\": \"Bagmati\", \"zip_code\": \"44600\", \"city\": \"Kathmandu\"}}",
+            "technical_skills": [
+                "C++",
+                "Sql",
+                "Bootstrap",
+                "Mongodb",
+                "Python",
+                "Django",
+                "Docker",
+                "Flask",
+                "Numpy",
+                "Pandas",
+                "scipy",
+                "Scikit Learn",
+                "Deep Learning",
+                "Neural Networks",
+                "Pyramid"
+            ],
+            "soft_skills": [],
+            "exps": "[{\"id\": 141, \"designation\": \"Javascript Engineer\", \"company\": \"Google Inc.\", \"entry_date\": \"2012-01-08\", \"exit_date\": \"2013-01-09\", \"roles\": \"\"}, {\"id\": 140, \"designation\": \"Data Scientist\", \"company\": \"NewTech Pvt Ltd\", \"entry_date\": \"2016-09-08\", \"exit_date\": \"2017-01-09\", \"roles\": \"\"}]"
+        },
+        {
+            "user_id": 176,
+            "profile": "{\"user_pk\": 241, \"profile_id\": 176, \"full_name\": \"arthur Gems\", \"first_name\": \"arthur\", \"last_name\": \"Gems\", \"profile_photo\": \"/media/jobseeker_images/aurther_gem%40yopmail.com/dearwalk_Scz0vjv.jpeg\", \"resume\": \"/media/jobseeker_documents/aurther_gem%40yopmail.com/Bob-Bao_m1Fvfos.pdf\", \"job_group\": {\"id\": 4, \"name\": \"Java\"}, \"email\": \"aurther_gem@yopmail.com\", \"phone\": \"9843724595\", \"gender\": 1, \"address\": {\"id\": 42, \"country\": \"USA\", \"state\": \"Bagmati\", \"zip_code\": \"44600\", \"city\": \"naxal\"}}",
+            "technical_skills": [
+                "Javascript",
+                "Docker",
+                "Pandas"
+            ],
+            "soft_skills": [
+                "communication",
+                "punctual",
+                "management skill"
+            ],
+            "exps": "[{\"id\": 162, \"designation\": \"Angular Developer\", \"company\": \"NewSunTech\", \"entry_date\": \"2014-08-01\", \"exit_date\": \"2015-01-09\", \"roles\": null}, {\"id\": 175, \"designation\": \"Database Engineer\", \"company\": \"Apple. Pvt Ltd.\", \"entry_date\": \"2014-01-08\", \"exit_date\": \"2016-01-09\", \"roles\": null}, {\"id\": 161, \"designation\": \"IOS dev\", \"company\": \"Google Inc.\", \"entry_date\": \"2012-01-08\", \"exit_date\": \"2013-01-09\", \"roles\": null}, {\"id\": 176, \"designation\": \"reacct\", \"company\": \"sdfghhj\", \"entry_date\": \"2020-09-09\", \"exit_date\": \"2020-09-30\", \"roles\": null}, {\"id\": 177, \"designation\": \"Data Specialist\", \"company\": \"NewIT Solutions\", \"entry_date\": \"2016-09-08\", \"exit_date\": null, \"roles\": null}]"
+        },
+        {
+            "user_id": 169,
+            "profile": "{\"user_pk\": 209, \"profile_id\": 169, \"full_name\": \"Wilson Lasow\", \"first_name\": \"Wilson\", \"last_name\": \"Lasow\", \"profile_photo\": null, \"resume\": null, \"job_group\": {\"id\": 1, \"name\": \"Python\"}, \"email\": \"jobseeker8@yopmail.com\", \"phone\": \"9843726396\", \"gender\": 1, \"address\": {\"id\": 7, \"country\": \"Nepal\", \"state\": \"Bagmati\", \"zip_code\": \"44600\", \"city\": \"Kathmandu\"}}",
+            "technical_skills": [],
+            "soft_skills": [],
+            "exps": "[]"
+        },
+        {
+            "user_id": 172,
+            "profile": "{\"user_pk\": 212, \"profile_id\": 172, \"full_name\": \"Sam Smith\", \"first_name\": \"Sam\", \"last_name\": \"Smith\", \"profile_photo\": null, \"resume\": null, \"job_group\": {\"id\": 4, \"name\": \"Java\"}, \"email\": \"samsmith@jobmail.com\", \"phone\": \"9843726396\", \"gender\": 1, \"address\": {\"id\": 7, \"country\": \"Nepal\", \"state\": \"Bagmati\", \"zip_code\": \"44600\", \"city\": \"Kathmandu\"}}",
+            "technical_skills": [
+                "Python",
+                "Django",
+                "Flask",
+                "Numpy",
+                "scipy",
+                "Scikit Learn",
+                "Deep Learning",
+                "Neural Networks",
+                "Javascript",
+                "Node.Js",
+                "React",
+                "Ajax",
+                "C",
+                "Html5",
+                "Bootstrap",
+                "Mysql",
+                "Mongodb",
+                "Linux",
+                "Cms",
+                "Docker"
+            ],
+            "soft_skills": [
+                "communication",
+                "leadership",
+                "punctual",
+                "management skill"
+            ],
+            "exps": "[{\"id\": 150, \"designation\": \"Data Mining Engineer\", \"company\": \"NewTech Pvt Ltd\", \"entry_date\": \"2016-09-08\", \"exit_date\": \"2017-01-09\", \"roles\": null}, {\"id\": 151, \"designation\": \"Vue JS Developer\", \"company\": \"Google Inc.\", \"entry_date\": \"2012-01-08\", \"exit_date\": \"2013-01-09\", \"roles\": null}, {\"id\": 152, \"designation\": \"Angular Developer\", \"company\": \"NewSunTech Pvt Ltd.\", \"entry_date\": \"2014-08-01\", \"exit_date\": \"2015-01-09\", \"roles\": null}]"
+        },
+        {
+            "user_id": 151,
+            "profile": "{\"user_pk\": 186, \"profile_id\": 151, \"full_name\": \"Sujan Maharjan\", \"first_name\": \"Sujan\", \"last_name\": \"Maharjan\", \"profile_photo\": null, \"resume\": null, \"job_group\": {\"id\": 1, \"name\": \"Python\"}, \"email\": \"pujan_321@yopmail.com\", \"phone\": \"9843815209\", \"gender\": 1, \"address\": {\"id\": 27, \"country\": \"Nepal\", \"state\": \"Bagmati\", \"zip_code\": \"44700\", \"city\": \"YALA\"}}",
+            "technical_skills": [
+                "Java",
+                "Javascript",
+                "Python",
+                "Django",
+                "Docker",
+                "HTML",
+                "Ruby",
+                "Perl",
+                "Flask",
+                "PHP",
+                "Numpy",
+                "Pandas"
+            ],
+            "soft_skills": [
+                "communication",
+                "leadership"
+            ],
+            "exps": "[{\"id\": 102, \"designation\": \"React Native Developer Intern\", \"company\": \"NewTech Pvt Ltd\", \"entry_date\": \"2016-09-08\", \"exit_date\": \"2017-01-09\", \"roles\": null}, {\"id\": 103, \"designation\": \"Python Flask Developer\", \"company\": \"Google Inc.\", \"entry_date\": \"2012-01-08\", \"exit_date\": \"2013-01-09\", \"roles\": null}]"
+        },
+        {
+            "user_id": 152,
+            "profile": "{\"user_pk\": 187, \"profile_id\": 152, \"full_name\": \"Sujan Maharjan\", \"first_name\": \"Sujan\", \"last_name\": \"Maharjan\", \"profile_photo\": \"/media/jobseeker_images/hellopujan/user1.jpg\", \"resume\": null, \"job_group\": {\"id\": 1, \"name\": \"Python\"}, \"email\": \"hellopujan@yopmail.com\", \"phone\": \"9843815209\", \"gender\": 1, \"address\": {\"id\": 27, \"country\": \"Nepal\", \"state\": \"Bagmati\", \"zip_code\": \"44700\", \"city\": \"YALA\"}}",
+            "technical_skills": [
+                "Java",
+                "Javascript",
+                "Python",
+                "Django",
+                "Docker",
+                "HTML",
+                "Ruby",
+                "Perl",
+                "Flask"
+            ],
+            "soft_skills": [
+                "leadership",
+                "management skill"
+            ],
+            "exps": "[{\"id\": 118, \"designation\": \"React Native Developer HEAD\", \"company\": \"NewTech Pvt Ltd\", \"entry_date\": \"2016-09-08\", \"exit_date\": \"2017-01-09\", \"roles\": null}, {\"id\": 119, \"designation\": \"Python Flask Developer HEAD\", \"company\": \"Google Inc.\", \"entry_date\": \"2012-01-08\", \"exit_date\": \"2013-01-09\", \"roles\": null}]"
+        },
+        {
+            "user_id": 179,
+            "profile": "{\"user_pk\": 249, \"profile_id\": 179, \"full_name\": \"Sam Jon\", \"first_name\": \"Sam\", \"last_name\": \"Jon\", \"profile_photo\": null, \"resume\": \"/media/jobseeker_documents/dummy_you/Bob-Bao_V5zDsXk.pdf\", \"job_group\": {\"id\": 1, \"name\": \"Python\"}, \"email\": \"dummyyou@yopmail.com\", \"phone\": \"9843726396\", \"gender\": 1, \"address\": {\"id\": 7, \"country\": \"Nepal\", \"state\": \"Bagmati\", \"zip_code\": \"44600\", \"city\": \"Kathmandu\"}}",
+            "technical_skills": [],
+            "soft_skills": [],
+            "exps": "[]"
+        },
+        {
+            "user_id": 167,
+            "profile": "{\"user_pk\": 207, \"profile_id\": 167, \"full_name\": \"David Skier\", \"first_name\": \"David\", \"last_name\": \"Skier\", \"profile_photo\": null, \"resume\": null, \"job_group\": {\"id\": 1, \"name\": \"Python\"}, \"email\": \"jobseeker6@yopmail.com\", \"phone\": \"9843726396\", \"gender\": 1, \"address\": {\"id\": 7, \"country\": \"Nepal\", \"state\": \"Bagmati\", \"zip_code\": \"44600\", \"city\": \"Kathmandu\"}}",
+            "technical_skills": [
+                "Python",
+                "Django",
+                "Docker",
+                "Flask",
+                "Numpy",
+                "scipy",
+                "Scikit Learn",
+                "Deep Learning",
+                "Neural Networks"
+            ],
+            "soft_skills": [
+                "communication",
+                "leadership"
+            ],
+            "exps": "[{\"id\": 142, \"designation\": \"Data Mining Engineer\", \"company\": \"NewTech Pvt Ltd\", \"entry_date\": \"2016-09-08\", \"exit_date\": \"2017-01-09\", \"roles\": null}, {\"id\": 143, \"designation\": \"Vue Developer\", \"company\": \"Google Inc.\", \"entry_date\": \"2012-01-08\", \"exit_date\": \"2013-01-09\", \"roles\": null}]"
+        },
+        {
+            "user_id": 180,
+            "profile": "{\"user_pk\": 269, \"profile_id\": 180, \"full_name\": \"Monica Geller\", \"first_name\": \"Monica\", \"last_name\": \"Geller\", \"profile_photo\": null, \"resume\": null, \"job_group\": {\"id\": 1, \"name\": \"Python\"}, \"email\": \"geller_monica@ktmsoft.com\", \"phone\": \"9843724890\", \"gender\": 2, \"address\": {\"id\": 7, \"country\": \"Nepal\", \"state\": \"Bagmati\", \"zip_code\": \"44600\", \"city\": \"Kathmandu\"}}",
+            "technical_skills": [
+                "Python",
+                "Django",
+                "Docker",
+                "Flask",
+                "Numpy",
+                "scipy",
+                "Scikit Learn",
+                "Deep Learning",
+                "Neural Networks",
+                "pandas"
+            ],
+            "soft_skills": [
+                "communication",
+                "leadership",
+                "punctual",
+                "management skill"
+            ],
+            "exps": "[{\"id\": 178, \"designation\": \"Data Mining Scientist\", \"company\": \"NewSoft Pvt Ltd\", \"entry_date\": \"2016-09-08\", \"exit_date\": \"2017-01-09\", \"roles\": null}]"
+        },
+        {
+            "user_id": 181,
+            "profile": "{\"user_pk\": 277, \"profile_id\": 181, \"full_name\": \"Monica Geller\", \"first_name\": \"Monica\", \"last_name\": \"Geller\", \"profile_photo\": null, \"resume\": null, \"job_group\": {\"id\": 1, \"name\": \"Python\"}, \"email\": \"geller_rachel@ktmsoft.com\", \"phone\": \"9843726908\", \"gender\": 2, \"address\": {\"id\": 7, \"country\": \"Nepal\", \"state\": \"Bagmati\", \"zip_code\": \"44600\", \"city\": \"Kathmandu\"}}",
+            "technical_skills": [],
+            "soft_skills": [],
+            "exps": "[]"
+        }
+    ],
+    "job": "{\"id\": 86, \"job_title\": \"Junior Java Developer\", \"job_description\":\" We are looking for a candidate who is Skilled in python, django, flask, HTML, css, java \", \"location\": {\"id\": 28, \"country\": \"Nepal\", \"state\": \"Bagmati\", \"zip_code\": \"44600\", \"city\": \"Sanepa\"}}"
+}
