@@ -135,6 +135,8 @@ def oneJDMultipleRes():
     if len(required_experience) == 0:
         real_exp = None
         required_experience = ['Experience in ' + job_title]
+    else:
+        real_exp = required_experience
 
     progress_pool = pd.read_csv(cfg.progress_pool, sep=",")
             

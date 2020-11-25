@@ -199,6 +199,8 @@ class SpacyNer():
         return imp_words
 
     def formatted_data(self,desig, org, exp, edu, loc,technical_skills,soft_skills):
+        technical_skills_filtered = [item.lower() for item in technical_skills]
+        soft_skills_filtered = [item.lower() for item in soft_skills]
         json_data = {
             "DESIGNATION": desig,
             "ORGANIZATION": org,
@@ -206,8 +208,8 @@ class SpacyNer():
             "EDUCATION": edu,
             "LOCATION": loc,
             "SKILLS":{
-                "TECHNICAL_SKILLS": list(set(technical_skills)),
-                "SOFT_SKILLS": list(set(soft_skills)),
+                "TECHNICAL_SKILLS": list(set(technical_skills_filtered)),
+                "SOFT_SKILLS": list(set(soft_skills_filtered)),
             }
         }
         return json_data
