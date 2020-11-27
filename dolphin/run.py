@@ -115,7 +115,10 @@ def oneResMultipleJD():
 @app.route("/generatescorejobdescription", methods=["POST", "GET"])
 def oneJDMultipleRes():
     form_data_ = request.get_json()
-    job = ast.literal_eval(form_data_.get('job'))
+    try:
+        job = ast.literal_eval(form_data_.get('job'))
+    except:
+        job = json.loads(form_data_.get('job'))
     # job_id = job.get('id')
     # scorer_save.job_description = job
 
