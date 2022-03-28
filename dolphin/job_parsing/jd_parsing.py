@@ -116,7 +116,7 @@ class SpacyNer():
         final_locations = [item for item in locations if len(item)<=50]
         final_designations = [item for item in designations if len(item)<=50]
         # ---Always return list of strings from here----
-        return list(set(final_designations)), list(set(final_organizations)), list(set(final_educations)), list(set(final_experiences)), list(set(final_locations))
+        return list(set(final_designations)), list(set(final_organizations)), list(set(final_experiences)), list(set(final_educations)), list(set(final_locations))
 
     # def get_skills_from_pipeline(self,jd_content):
     #     '''
